@@ -11,13 +11,12 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-
     # Emacs Twist
     org-babel.url = "github:emacs-twist/org-babel";
     twist.url = "github:emacs-twist/twist.nix";
     twist-overrides.url = "github:emacs-twist/overrides";
 
-     # Package registries for Twist
+    # Package registries for Twist
     melpa = {
       url = "github:melpa/melpa";
       flake = false;
@@ -43,7 +42,6 @@
       flake = false;
     };
 
-
   };
   outputs =
     {
@@ -55,6 +53,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = with inputs; [
         flake-parts.flakeModules.partitions
+        ./flake-module.nix
       ];
 
       systems = import inputs.systems;

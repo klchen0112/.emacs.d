@@ -1,0 +1,78 @@
+{
+  "nodes": {
+    "benchmark-init": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741867258,
+        "narHash": "sha256-woUqo6zPt/M87BtVFKX1MYEj8GWG4FOiaPvN1kLGjno=",
+        "owner": "dholm",
+        "repo": "benchmark-init-el",
+        "rev": "6507caa3c4cb2a6c9b85c771c5e9e5aeb7d745bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dholm",
+        "repo": "benchmark-init-el",
+        "type": "github"
+      }
+    },
+    "ef-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759823503,
+        "narHash": "sha256-TNlyjmtJ6UXKiiOyASvzzaSFZ1NXT7rWdJxsFpguC2k=",
+        "owner": "protesilaos",
+        "repo": "ef-themes",
+        "rev": "7945429c37b174300bafe8639b83c6666848964d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "protesilaos",
+        "repo": "ef-themes",
+        "type": "github"
+      }
+    },
+    "modus-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760071626,
+        "narHash": "sha256-JevRFTd5wrd93j5+6nPvftPFMP/3OQ6CEHuLkp/fjoE=",
+        "owner": "protesilaos",
+        "repo": "modus-themes",
+        "rev": "a391efc0f8e9f3ab4c932b403948d4b3ed1af040",
+        "type": "github"
+      },
+      "original": {
+        "owner": "protesilaos",
+        "repo": "modus-themes",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "benchmark-init": "benchmark-init",
+        "ef-themes": "ef-themes",
+        "modus-themes": "modus-themes",
+        "setup": "setup"
+      }
+    },
+    "setup": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756464926,
+        "narHash": "sha256-i8jJGv8nJ3f/vuZEyB1Fkn7ujIboWZCY9j1oTgVUvyc=",
+        "ref": "refs/heads/master",
+        "rev": "0cf74c50d90c00450f8a3425c1b84b3bccd99f84",
+        "revCount": 223,
+        "type": "git",
+        "url": "https://codeberg.org/pkal/setup.el"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/pkal/setup.el"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

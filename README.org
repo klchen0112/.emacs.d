@@ -1,0 +1,112 @@
+
+
+
+
+
+* Emacs
+
+
+
+
+** File Layout
+*** Features
+You'll notice several headings tagged with =@{feature}= like in =@mail=, these
+subtrees will only be tangled if *at least one* of those features are enabled when
+the config is built.
+
+*** init.el
+Everything is tangled into =init.el= by default and I don't really make any
+attempt to keep this file organized since it's not really intended to be
+interacted with.
+
+#+begin_src emacs-lisp
+;;; init.el -*- lexical-binding: t; -*-
+#+end_src
+
+*** early-init.el :early:
+=early-init.el= is tangled from the subtrees that are tagged with =early= and it
+should only be used to do minimal configuration that needs to occur early in the
+load sequence.
+
+#+begin_src emacs-lisp
+;;; early-init.el -*- lexical-binding: t; -*-
+#+end_src
+
+
+* Early :early:
+** Setup.el
+
+#+begin_src emacs-lisp
+ ;; (eval-when-compile
+    (require 'setup)
+    (require 'cl-lib)
+    (defmacro defsetup (name signature &rest body)
+      "Shorthand for `setup-define'.
+  NAME is the name of the local macro.  SIGNATURE is used as the
+  argument list for FN.  If BODY starts with a string, use this as
+  the value for :documentation.  Any following keywords are passed
+  as OPTS to `setup-define'."
+      (declare (debug defun))
+      (let (opts)
+        (when (stringp (car body))
+  	(setq opts (nconc (list :documentation (pop body))
+  			  opts)))
+        (while (keywordp (car body))
+  	(let* ((prop (pop body))
+  	       (val `',(pop body)))
+  	  (setq opts (nconc (list prop val) opts))))
+        `(setup-define ,name
+  		     (cl-function (lambda ,signature ,@body))
+  		     ,@opts))
+      )
+ ;;   )
+#+end_src
+
+
+*** package
+
+#+begin_src emacs-lisp
+;;  (eval-when-compile
+    (defsetup :package
+  	    (package)
+  	    "Fake installation of PACKAGE for twist-nix."
+  	    :repeatable t
+  	    :shorthand cadr)
+  ;;  )
+
+;;  (eval-when-compile
+    (defsetup
+     :set (&rest args)
+     "Set the default values of variables."
+     `(setq-default ,@args)
+     )
+  ;;  )
+  (setup (:package benchmark-init)
+         (:require benchmark-init)
+         (:with-function benchmark-init/activate
+  		       (:hook-into before-init-hook))
+         (:with-function benchmark-init/deactivate
+  		       (:hook-into after-init-hook)))
+#+end_src
+
+
+
+* Tool
+
+#+begin_src emacs-lisp
+  ;; (setup (:package magit))
+  ;;(setup (:package forge))
+
+  (setup (:package modus-themes)
+         (:require modus-themes)
+         )
+  (setup
+   (:package ef-themes)
+   (:require ef-themes)
+   (:option ef-themes-take-over-modus-themes-mode 1)
+   (:with-hook after-init-hook
+  	     (:hook (lambda ()
+  		      (modus-themes-load-random)
+    		      )))
+   )
+#+end_src
