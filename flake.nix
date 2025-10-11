@@ -10,6 +10,40 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+
+    # Emacs Twist
+    org-babel.url = "github:emacs-twist/org-babel";
+    twist.url = "github:emacs-twist/twist.nix";
+    twist-overrides.url = "github:emacs-twist/overrides";
+
+     # Package registries for Twist
+    melpa = {
+      url = "github:melpa/melpa";
+      flake = false;
+    };
+    gnu-elpa = {
+      # Use a GitHub mirror for a higher availability
+      url = "github:elpa-mirrors/elpa";
+      # url = "git+https://git.savannah.gnu.org/git/emacs/elpa.git?ref=main";
+      flake = false;
+    };
+    nongnu-elpa = {
+      # Use a GitHub mirror for a higher availability
+      url = "github:elpa-mirrors/nongnu";
+      # url = "git+https://git.savannah.gnu.org/git/emacs/nongnu.git?ref=main";
+      flake = false;
+    };
+    gnu-elpa-archive = {
+      url = "file+https://elpa.gnu.org/packages/archive-contents";
+      flake = false;
+    };
+    nongnu-elpa-archive = {
+      url = "file+https://elpa.nongnu.org/nongnu/archive-contents";
+      flake = false;
+    };
+
+
   };
   outputs =
     {

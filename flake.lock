@@ -1,5 +1,23 @@
 {
   "nodes": {
+    "elisp-helpers": {
+      "inputs": {
+        "fromElisp": "fromElisp"
+      },
+      "locked": {
+        "lastModified": 1754989269,
+        "narHash": "sha256-WNOlf4cEEUL+nfYHVXUPMuqzYJSWOOWGX2fZ9MR3zzo=",
+        "owner": "emacs-twist",
+        "repo": "elisp-helpers",
+        "rev": "04ce2b5a88256d1c0573c94e93de6eb0700cd3a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-twist",
+        "repo": "elisp-helpers",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -20,6 +38,66 @@
         "type": "github"
       }
     },
+    "fromElisp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723987997,
+        "narHash": "sha256-OhaVgTG6zjLByzl+uPTvtCld3p2uqgbCXmOl/s3LVRo=",
+        "owner": "talyz",
+        "repo": "fromElisp",
+        "rev": "f071a0e262c02c0895b575c4e322b7fd90713543",
+        "type": "github"
+      },
+      "original": {
+        "owner": "talyz",
+        "repo": "fromElisp",
+        "type": "github"
+      }
+    },
+    "gnu-elpa": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759437110,
+        "narHash": "sha256-uCc3easzETXqN5uRJzQxH/899+DwpAwOAxPO1/46ONw=",
+        "owner": "elpa-mirrors",
+        "repo": "elpa",
+        "rev": "185fdb1c3a0536e1fbc483a4e3acbf9b22179d43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elpa-mirrors",
+        "repo": "elpa",
+        "type": "github"
+      }
+    },
+    "gnu-elpa-archive": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-I0MHA3Q1S9H/knjDXoT5YocPWd6r0RbZR1+PDiYfSJI=",
+        "type": "file",
+        "url": "https://elpa.gnu.org/packages/archive-contents"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://elpa.gnu.org/packages/archive-contents"
+      }
+    },
+    "melpa": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759688407,
+        "narHash": "sha256-AFW4XhdlUja0BrL8CmPpdP2ANq3a29AwonjoZhRMjPs=",
+        "owner": "melpa",
+        "repo": "melpa",
+        "rev": "8fccc1e7a88546259efec961525040fc48620158",
+        "type": "github"
+      },
+      "original": {
+        "owner": "melpa",
+        "repo": "melpa",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1760103332,
@@ -36,11 +114,62 @@
         "type": "github"
       }
     },
+    "nongnu-elpa": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756987037,
+        "narHash": "sha256-BLBFT8ELt9fWrdXtC24oEubA/52ZicWmFLLwXBsY3Nw=",
+        "owner": "elpa-mirrors",
+        "repo": "nongnu",
+        "rev": "f5b312b749043106a17f388ea3d153239b9bd541",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elpa-mirrors",
+        "repo": "nongnu",
+        "type": "github"
+      }
+    },
+    "nongnu-elpa-archive": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-i1pBYSL4lE4Rj1Zz1RsdViHXD5pEIT65kmuCF6ng+iQ=",
+        "type": "file",
+        "url": "https://elpa.nongnu.org/nongnu/archive-contents"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://elpa.nongnu.org/nongnu/archive-contents"
+      }
+    },
+    "org-babel": {
+      "locked": {
+        "lastModified": 1731256202,
+        "narHash": "sha256-xtV0vIUhl3ZUzaUIHSaiWpybxyCgQ9Yp/MUGo3f5zvM=",
+        "owner": "emacs-twist",
+        "repo": "org-babel",
+        "rev": "a5d16c54aca35c07af59d216cda598163512db42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-twist",
+        "repo": "org-babel",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "gnu-elpa": "gnu-elpa",
+        "gnu-elpa-archive": "gnu-elpa-archive",
+        "melpa": "melpa",
         "nixpkgs": "nixpkgs",
-        "systems": "systems"
+        "nongnu-elpa": "nongnu-elpa",
+        "nongnu-elpa-archive": "nongnu-elpa-archive",
+        "org-babel": "org-babel",
+        "systems": "systems",
+        "twist": "twist",
+        "twist-overrides": "twist-overrides"
       }
     },
     "systems": {
@@ -55,6 +184,39 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "twist": {
+      "inputs": {
+        "elisp-helpers": "elisp-helpers"
+      },
+      "locked": {
+        "lastModified": 1759460592,
+        "narHash": "sha256-HpX25DafWkANa5IMM7lnzewP7lnvRNVeNnCjST8HhkA=",
+        "owner": "emacs-twist",
+        "repo": "twist.nix",
+        "rev": "4ec7d75f0c5a2133bfdf69c0e55a142935ae3898",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-twist",
+        "repo": "twist.nix",
+        "type": "github"
+      }
+    },
+    "twist-overrides": {
+      "locked": {
+        "lastModified": 1722071850,
+        "narHash": "sha256-lyVZGFJo9mgKUGWtMGqGq6T3wQnzQwemNryM2USEKMc=",
+        "owner": "emacs-twist",
+        "repo": "overrides",
+        "rev": "9dcd55a44ed7bf2324a1d2dc4579d5389ecac6b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-twist",
+        "repo": "overrides",
         "type": "github"
       }
     }
