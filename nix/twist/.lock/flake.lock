@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750343338,
+        "narHash": "sha256-pLb+dt/PPvKZi4sRN9/EPrKvEC1felBk9jJoXKq4fxI=",
+        "owner": "emacs-compat",
+        "repo": "compat",
+        "rev": "cccd41f549fa88031a32deb26253b462021d7e12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-compat",
+        "repo": "compat",
+        "type": "github"
+      }
+    },
     "ef-themes": {
       "flake": false,
       "locked": {
@@ -48,11 +64,47 @@
         "type": "github"
       }
     },
+    "org": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760267167,
+        "narHash": "sha256-fJPhtokCTs5d+IskmFW792PnJcukjfW8cAMlORIG1f0=",
+        "ref": "bugfix",
+        "rev": "0ea6bce3728f97f194340b3dbec87e72aa59d27b",
+        "revCount": 27876,
+        "type": "git",
+        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
+      },
+      "original": {
+        "ref": "bugfix",
+        "type": "git",
+        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
+      }
+    },
+    "org-modern": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758733536,
+        "narHash": "sha256-vWcrs8p1w+2+nJfakVwtN97298MaxIn8Cv7O8rn8RnM=",
+        "owner": "minad",
+        "repo": "org-modern",
+        "rev": "6c1c38d87fcaa794b64d847851fc54580c3e3b57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "org-modern",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "benchmark-init": "benchmark-init",
+        "compat": "compat",
         "ef-themes": "ef-themes",
         "modus-themes": "modus-themes",
+        "org": "org",
+        "org-modern": "org-modern",
         "setup": "setup"
       }
     },

@@ -3,6 +3,8 @@
 
 
 
+
+
 * Emacs
 
 
@@ -37,7 +39,7 @@ load sequence.
 ** Setup.el
 
 #+begin_src emacs-lisp
- ;; (eval-when-compile
+ (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
     (defmacro defsetup (name signature &rest body)
@@ -59,34 +61,28 @@ load sequence.
   		     (cl-function (lambda ,signature ,@body))
   		     ,@opts))
       )
- ;;   )
+    )
 #+end_src
 
 
 *** package
 
 #+begin_src emacs-lisp
-;;  (eval-when-compile
-    (defsetup :package
-  	    (package)
-  	    "Fake installation of PACKAGE for twist-nix."
-  	    :repeatable t
-  	    :shorthand cadr)
-  ;;  )
-
-;;  (eval-when-compile
-    (defsetup
-     :set (&rest args)
-     "Set the default values of variables."
-     `(setq-default ,@args)
+  (eval-when-compile
+      (defsetup :package
+    	    (package)
+    	    "Fake installation of PACKAGE for twist-nix."
+    	    :repeatable t
+    	    :shorthand cadr)
      )
-  ;;  )
-  (setup (:package benchmark-init)
-         (:require benchmark-init)
-         (:with-function benchmark-init/activate
-  		       (:hook-into before-init-hook))
-         (:with-function benchmark-init/deactivate
-  		       (:hook-into after-init-hook)))
+
+    (eval-when-compile
+      (defsetup
+       :set (&rest args)
+       "Set the default values of variables."
+       `(setq-default ,@args)
+       )
+      )
 #+end_src
 
 
@@ -96,6 +92,12 @@ load sequence.
 #+begin_src emacs-lisp
   ;; (setup (:package magit))
   ;;(setup (:package forge))
+    (setup (:package benchmark-init)
+           (:require benchmark-init)
+           (:with-function benchmark-init/activate
+    		       (:hook-into before-init-hook))
+           (:with-function benchmark-init/deactivate
+    		       (:hook-into after-init-hook)))
 
   (setup (:package modus-themes)
          (:require modus-themes)
@@ -105,8 +107,25 @@ load sequence.
    (:require ef-themes)
    (:option ef-themes-take-over-modus-themes-mode 1)
    (:with-hook after-init-hook
-  	     (:hook (lambda ()
-  		      (modus-themes-load-random)
-    		      )))
+    	     (:hook (lambda ()
+    		      (modus-themes-load-random)
+      		      )))
    )
-#+end_src
+
+  (setup org
+         (:package org)
+         (:also-load org-modern)
+         )
+
+  (setup org-modern
+         (:package org-modern)
+         (:set
+    	;; Edit settings
+    	org-auto-align-tags nil)
+         (global-org-modern-mode)
+         )
+   #+end_src
+
+
+
+

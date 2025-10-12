@@ -32,8 +32,8 @@ writeShellScriptBin name ''
 
   trap cleanup ERR EXIT
 
-  ln -s ${initFile}/init.el "$initdir/init.el"
-  ln -s ${earlyInitEl} "$initdir/early-init.el"
+  cp ${initFile}/init.el "$initdir/init.el"
+  cp ${earlyInitEl} "$initdir/early-init.el"
 
   ${emacs-env}/bin/emacs --init-directory="$initdir" "$@"
 ''
