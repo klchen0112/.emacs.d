@@ -1,15 +1,6 @@
 
 
-
-
-
-
-
 * Emacs
-
-
-
-
 ** File Layout
 *** Features
 You'll notice several headings tagged with =@{feature}= like in =@mail=, these
@@ -21,7 +12,7 @@ Everything is tangled into =init.el= by default and I don't really make any
 attempt to keep this file organized since it's not really intended to be
 interacted with.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -30,15 +21,23 @@ interacted with.
 should only be used to do minimal configuration that needs to occur early in the
 load sequence.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle early-init.el
 ;;; early-init.el -*- lexical-binding: t; -*-
 #+end_src
 
 
 * Early :early:
-** Setup.el
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle early-init.el
+:END:
+** Setup.el :early:
+
+
 
 #+begin_src emacs-lisp
+;; Disable package.el entirely since I am using twist.
+(setq package-enable-at-startup nil)
+(setq package-quickstart nil)
  (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
@@ -63,19 +62,20 @@ load sequence.
       )
     )
 #+end_src
-
-
-*** package
+*** package :early:
 
 #+begin_src emacs-lisp
   (eval-when-compile
-      (defsetup :package
+      (defsetup :pakage
     	    (package)
     	    "Fake installation of PACKAGE for twist-nix."
     	    :repeatable t
     	    :shorthand cadr)
      )
+#+end_src
 
+*** setup
+#+begin_src emacs-lisp
     (eval-when-compile
       (defsetup
        :set (&rest args)
@@ -88,16 +88,13 @@ load sequence.
 
 
 * Tool
-
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
 #+begin_src emacs-lisp
   ;; (setup (:package magit))
   ;;(setup (:package forge))
-    (setup (:package benchmark-init)
-           (:require benchmark-init)
-           (:with-function benchmark-init/activate
-    		       (:hook-into before-init-hook))
-           (:with-function benchmark-init/deactivate
-    		       (:hook-into after-init-hook)))
+
 
   (setup (:package modus-themes)
          (:require modus-themes)
@@ -106,10 +103,11 @@ load sequence.
    (:package ef-themes)
    (:require ef-themes)
    (:option ef-themes-take-over-modus-themes-mode 1)
-   (:with-hook after-init-hook
-    	     (:hook (lambda ()
-    		      (modus-themes-load-random)
-      		      )))
+   (:when-loaded
+
+
+    		      (modus-themes-load-theme 'ef-summer)
+      		      )
    )
 
   (setup org

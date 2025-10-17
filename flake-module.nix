@@ -43,7 +43,6 @@ in
     {
       lib,
       system,
-      emacs-config,
       pkgs,
       config,
       ...
@@ -54,7 +53,6 @@ in
       };
 
       packages = rec {
-        inherit emacs-config;
         emacs = getEmacsFromPkgs pkgs;
 
         initEl-base = pkgs.writeText "init.el" (filterReadme [
