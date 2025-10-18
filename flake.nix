@@ -62,12 +62,6 @@
 
       systems = import inputs.systems;
       partitions = {
-        checks = {
-          extraInputsFlake = ./partitions/checks;
-          module = {
-            imports = [ ./partitions/checks/flake-module.nix ];
-          };
-        };
         formatters = {
 
           extraInputsFlake = ./partitions/formats;
@@ -79,9 +73,9 @@
       };
 
       partitionedAttrs = {
-        devShells = "checks";
+        devShells = "formatters";
         formatter = "formatters";
+        checks = "formatters";
       };
     };
-
 }
