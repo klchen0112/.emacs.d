@@ -19,6 +19,12 @@
       repo = "cape";
       type = "github";
     };
+    closql = {
+      flake = false;
+      owner = "magit";
+      repo = "closql";
+      type = "github";
+    };
     compat = {
       flake = false;
       owner = "emacs-compat";
@@ -35,12 +41,6 @@
       flake = false;
       owner = "minad";
       repo = "consult";
-      type = "github";
-    };
-    consult-eglot = {
-      flake = false;
-      owner = "mohkale";
-      repo = "consult-eglot";
       type = "github";
     };
     corfu = {
@@ -114,16 +114,16 @@
       repo = "ef-themes";
       type = "github";
     };
-    eglot-booster = {
-      flake = false;
-      owner = "jdtsmith";
-      repo = "eglot-booster";
-      type = "github";
-    };
     eglot-java = {
       flake = false;
       owner = "yveszoundi";
       repo = "eglot-java";
+      type = "github";
+    };
+    emacsql = {
+      flake = false;
+      owner = "magit";
+      repo = "emacsql";
       type = "github";
     };
     embark = {
@@ -150,11 +150,29 @@
       repo = "f.el";
       type = "github";
     };
+    flycheck = {
+      flake = false;
+      owner = "flycheck";
+      repo = "flycheck";
+      type = "github";
+    };
+    forge = {
+      flake = false;
+      owner = "magit";
+      repo = "forge";
+      type = "github";
+    };
     fullframe = {
       flake = false;
       owner = "~tomterl";
       repo = "fullframe";
       type = "sourcehut";
+    };
+    ghub = {
+      flake = false;
+      owner = "magit";
+      repo = "ghub";
+      type = "github";
     };
     gradle-mode = {
       flake = false;
@@ -226,6 +244,12 @@
       flake = false;
       owner = "minad";
       repo = "marginalia";
+      type = "github";
+    };
+    markdown-mode = {
+      flake = false;
+      owner = "jrblevin";
+      repo = "markdown-mode";
       type = "github";
     };
     meow = {
@@ -401,6 +425,12 @@
       repo = "tempel-collection";
       type = "github";
     };
+    treepy = {
+      flake = false;
+      owner = "volrath";
+      repo = "treepy.el";
+      type = "github";
+    };
     treesit-fold = {
       flake = false;
       owner = "emacs-tree-sitter";
@@ -434,6 +464,12 @@
       flake = false;
       owner = "magit";
       repo = "with-editor";
+      type = "github";
+    };
+    yaml = {
+      flake = false;
+      owner = "zkry";
+      repo = "yaml.el";
       type = "github";
     };
   };
