@@ -501,6 +501,65 @@ Annotations for completion candidates.
          (:hook-into after-init-hook))
 #+end_src
 
+* Navigation
+
+** Dired
+#+begin_src emacs-lisp
+
+
+(setup dirvish
+  (:load-after dired)
+       (:package dirvish)
+       )
+
+(setup diredfl
+        (:load-after dired)
+       (:package diredfl)
+       )
+
+#+end_src
+
+*** Icons
+#+begin_src emacs-lisp
+
+  (setup nerd-icons-dired
+    (:package nerd-icons-dired)
+    (:load-after dired)
+         (:hook-into dired-mode-hook))
+
+#+end_src
+
+*** Git
+#+begin_src emacs-lisp :tangle no
+(setup dired-git-info
+    (:package dired-git-info)
+    )
+#+end_src
+
+** Isearch
+#+begin_src emacs-lisp
+(setup isearch
+       (:set isearch-lazy-count t))
+#+end_src
+
+** Occur
+#+begin_src emacs-lisp
+(setup replace)
+
+(setup noccur)
+#+end_src
+
+
+
+** Project
+#+begin_src emacs-lisp
+  (setup projectile
+         (:package projectile)
+         (projectile-mode +1)
+         )
+
+#+end_src
+
 
 * Tool 
 :PROPERTIES:
