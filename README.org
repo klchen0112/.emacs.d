@@ -907,6 +907,236 @@ Generic Language Server Protocol integration via ~eglot~.
   	)
 )
 #+end_src
+* Major modes
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no
+:END:
+
+** emacs-lisp
+#+begin_src emacs-lisp
+(setup elisp-mode
+       (:hook flymake-mode outline-minor-mode))
+#+end_src
+
+
+** outline
+Display outlines in text like files or use it in conjunction with other major modes via ~outline-minor-mode~.
+** cobol
+#+begin_src emacs-lisp :tangle no
+(setup cobol-mode
+(:package cobol-mode)
+  (:file-match "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
+#+end_src
+
+** csv
+#+begin_src emacs-lisp
+(setup csv-mode
+       (:package csv-mode)
+       (:file-match "\\.[Cc][Ss][Vv]\\'")
+       (:with-mode tsv-mode (:file-match "\\.tsv\\'"))
+       (:set csv-separators '("," "\t" ";")))
+#+end_src
+
+** git
+*** Packages
+**** git-modes
+*** Packages
+** java
+#+begin_src emacs-lisp
+(setup java-ts-mode)
+
+(setup eglot-java
+       (:package eglot-java)
+       (:load-after eglot)
+       (:hook-into java-base-mode-hook)
+       )
+
+#+end_src
+
+*** Packages
+**** gradle-mode
+#+begin_src emacs-lisp
+(setup gradle-mode
+       (:package gradle-mode)
+       (:hook-into java-base-mode-hook kotlin-mode-hook)
+       (:set gradle-executable-path "gradle"))
+#+end_src
+
+** json
+#+begin_src emacs-lisp
+  (setup json-ts-mode
+  		   
+         (:file-match "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
+         )
+
+#+end_src
+
+*** Packages
+**** json-navigator
+#+begin_src emacs-lisp
+(setup json-navigator)
+#+end_src
+
+** kotlin
+#+begin_src emacs-lisp
+(setup kotlin-mode
+       (:package kotlin-mode))
+#+end_src
+
+** lua
+#+begin_src emacs-lisp
+(setup lua-ts-mode
+  (:file-match "\\.lua\\'")
+)
+#+end_src
+
+** markdown
+#+begin_src emacs-lisp
+;;(setup markdown-mode
+;;       (:package markdown-mode)
+;;       (:file-match
+;;        "\\.markdown\\'"
+;;        "\\.md\\'")
+;;       (:hook markdown-display-inline-images)
+;;       (:set markdown-enable-wiki-links t)
+;;       (:set markdown-fontify-code-blocks-natively t)
+;;       (:set markdown-header-scaling t)
+;;       (:set markdown-hide-markup t)
+;;       (:set markdown-italic-underscore t)
+;;       (:set markdown-blockquote-display-char '("┃" ">"))
+;;       (:set markdown-list-item-bullets '("⏺" "▪"))
+;;       (:set markdown-make-gfm-checkboxes-buttons t)
+;;       (:set markdown-max-image-size '(1024 . 1024)))
+#+end_src
+
+*** Packages
+**** markdown-toc
+Generate Table of Contents.
+#+begin_src emacs-lisp
+;;(setup markdown-toc (:package markdown-toc))
+#+end_src
+
+
+** nix
+#+begin_src emacs-lisp
+(setup nix-ts-mode
+       (:package nix-ts-mode)
+  (:with-mode nix-ts-mode (:file-match "\\.nix\\'"))
+  (:hook eglot-mode-hook))
+(setup nix-mode
+       (:package nix-mode))
+#+end_src
+
+** nushell
+
+#+begin_src emacs-lisp
+(setup nushell-ts-mode
+       (:package nushell-ts-mode)
+       (:file-match "\\.nu\\'"))
+#+end_src
+
+** pdf
+*** Packages
+** python
+#+begin_src emacs-lisp :tangle no
+  (setup python-ts-mode
+       (:with-mode python-ts-mode  (:file-match "\\.py\\'"))
+         (:hook indent-bars-mode)
+         )
+
+  (setup lazy-ruff
+      (:load-after python-ts-mode)
+         (:package lazy-ruff)
+  )
+
+
+  (setup pet
+         (:package pet)
+         (:hook-into python-base-mode-hook))
+#+end_src
+
+*** Packages
+**** python-test
+#+begin_src emacs-lisp :tangle no
+(setup python-test
+
+  :ensure t
+  :bind
+  (:map python-ts-mode-map
+        ("C-. t a" . python-test-project)
+        ("C-. t f" . python-test-file)
+        ("C-. t t" . python-test-function))
+  :init
+  (setq python-test-backend 'pytest)
+  :config
+  (setq python-test-project-root-files
+        (append '("README.md") python-test-project-root-files)))
+#+end_src
+
+*** Packages
+**** flymake-racket
+*** Appearance
+**** Variable pitch
+Use variable-pitch font but still make sure everything aligns.
+#+begin_src emacs-lisp :tangle no
+(font-lock-add-keywords
+ 'rst-mode
+ '(("^[[:space:]-*+]+\\(\\[.\\]\\)?" 0 'fixed-pitch append))
+ 'append)
+#+end_src
+
+**** Bullet lists
+Pretty check-boxes as well as bullet lists.
+#+begin_src emacs-lisp :tangle no
+(font-lock-add-keywords
+ 'rst-mode
+ '(("^ *\\([-*+]\\) "
+    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "⏺"))))
+   ("^ *[-*+] \\[\\([Xx]\\)\\] "
+    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✕"))))))
+#+end_src
+
+** ruby
+*** Packages
+** scala
+#+begin_src emacs-lisp
+(setup scala-mode
+       (:package scala-mode)
+       (:file-match "\\.\\(scala\\|sbt\\)\\'"))
+#+end_src
+
+** sh
+#+begin_src emacs-lisp
+(setup sh-script
+       (  :hook
+          flymake-mode)
+       (:set
+        ;; Use regular indentation for line-continuation
+        sh-indent-after-continuation 'always)
+)
+#+end_src
+
+*** Packages
+** sql
+#+begin_src emacs-lisp
+(setup sql
+  (:set sql-mysql-options '("--protocol=tcp" "--prompt=" "--disable-pager")))
+#+end_src
+
+** terraform
+#+begin_src emacs-lisp :tangle no
+(setup terraform-mode
+(:package terraform-mode)
+)
+#+end_src
+
+** yaml
+#+begin_src emacs-lisp
+(setup yaml-ts-mode
+  (:file-match "\\.\\(e?ya?\\|ra\\)ml\\'")
+  (:hook indent-bars-mode)
+  )
+#+end_src
 
 * Tool 
 :PROPERTIES:
