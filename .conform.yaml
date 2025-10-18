@@ -31,5 +31,6 @@ policies:
           - editor
           - lang
           - lsp
+          - package
 
         descriptionLength: 72
