@@ -560,6 +560,218 @@ Annotations for completion candidates.
 
 #+end_src
 
+* Development
+Reduce scroll margin.
+#+begin_src emacs-lisp
+(defun prog-scroll-margin-setup ()
+  "Setup `scroll-margin' for `prog-mode'."
+  (setq-local scroll-margin 3))
+(add-hook 'prog-mode-hook #'prog-scroll-margin-setup)
+#+end_src
+
+** Compilation
+#+begin_src emacs-lisp
+#+end_src
+
+** Containers
+*** Docker
+#+begin_src emacs-lisp
+(setup docker
+       (:package docker))
+#+end_src
+
+**** Files
+Support for Docker related files.
+#+begin_src emacs-lisp
+  (setup dockerfile-ts-mode
+         (:file-match
+  	"Dockerfie"))
+#+end_src
+
+*** Kubernetes
+#+begin_src emacs-lisp
+(setup kubernetes (:package kubernetes))
+#+end_src
+
+** Coverage
+#+begin_src emacs-lisp
+
+#+end_src
+
+** Docs
+*** DevDocs
+Lookup documentation via DevDocs.
+#+begin_src emacs-lisp
+(setup devdocs
+       (:package devdocs))
+#+end_src
+
+** Folding
+Code folding with treesit-fold
+#+begin_src emacs-lisp
+(setup treesit-fold
+       (:only-if (fboundp 'treesit-available-p))
+       (:package treesit-fold)
+       )
+
+#+end_src
+
+** Formatting
+
+
+#+begin_src emacs-lisp
+(setup reformatter
+       (:package reformatter)
+    ;;   (:reformatters
+  	;; If you use prettier, you need to install its executable separately.
+  	;;(prettier
+  	;; :program "prettier"
+  	;; :args (list (concat "--plugin-search-dir="
+    ;;                         (expand-file-name
+    ;;                          (locate-dominating-file default-directory "package.json")))
+    ;;                 "--stdin-filepath" (buffer-file-name)))
+  	;;(treefmt
+  	;; :program "treefmt"
+  	;; :args (list "--stdin" (buffer-file-name)))
+
+  	;;(yamlfmt
+  	;; :program "yamlfmt"
+  	;; :args (list "-"))
+
+  	;;(jq-format
+  	;; :program "jq"
+  	;; :args (list "."))
+
+  	;;(biome-format
+  	;; :program
+  	;; (cond
+  	;;  ((executable-find "bunx")
+  	;;   "bunx"))
+  	;; :args (append (cond
+  	;;		((executable-find "bunx")
+  	;;		 nil))
+    ;;                   (list "@biomejs/biome" "format" (buffer-file-name)
+    ;;                         (concat "--stdin-file-path=" (buffer-file-name))))))
+    )
+
+#+end_src
+
+** REPL
+
+*** repl-toggle
+#+begin_src emacs-lisp
+(setup repl-toggle
+       (:package repl-toggle)
+  (:set rtog/goto-buffer-fun 'pop-to-buffer)
+  (:set rtog/mode-repl-alist
+        '((emacs-lisp-mode . ielm)
+          (org-mode . ielm))))
+#+end_src
+
+
+** Syntax checker
+Silence next/previous error, by default it produces a message every time.
+#+begin_src emacs-lisp
+(advice-add 'next-error :around #'quiet-function-advice)
+(advice-add 'previous-error :around #'quiet-function-advice)
+#+end_src
+
+*** flymake
+Connect flymake to =next-error-function= and add some navigation bindings. Disable the
+legacy diagnostic functions as some of them have bugs and cause instability (mainly the
+Haskell one).
+#+begin_src emacs-lisp
+(setup flymake
+  (:package flymake)
+  (:with-feature flymake-proc)
+  )
+
+#+end_src
+
+** Version control
+#+begin_src emacs-lisp
+(setq vc-follow-symlinks t)
+(setq vc-make-backup-files nil)
+#+end_src
+
+*** diff
+#+begin_src emacs-lisp
+(setup diff
+  (:set diff-font-lock-prettify t))
+#+end_src
+
+*** diff-hl
+Diff indicators in fringe
+#+begin_src emacs-lisp
+(setup diff-hl
+       (:package diff-hl))
+#+end_src
+
+*** magit
+Enhanced git related views and commands.
+#+begin_src emacs-lisp
+(setup magit
+       (:package magit)
+       )
+
+;;(setup forge
+;;      (:package forge))
+#+end_src
+
+** Env
+
+#+begin_src emacs-lisp
+(setup envrc
+       (:package envrc)
+       (:with-mode envrc-global-mode
+                   (:hook-into after-init-hook))
+       )
+#+end_src
+** LSP
+*** eglot
+Generic Language Server Protocol integration via ~eglot~.
+#+begin_src emacs-lisp
+(setup eglot
+       (:package eglot)
+       (:set
+        eglot-autoshutdown t
+        eglot-code-action-indications nil
+        eglot-confirm-server-edits nil
+        eglot-sync-connect nil)
+       )
+
+(setup consult-eglot
+       (:package consult-eglot)
+       (:load-after eglot)
+    (:with-feature consult-eglot-embark
+    (:when-loaded
+         (consult-eglot-embark-mode))
+
+       ))
+
+(setup eglot-booster
+
+       (:package eglot-booster)
+       (:set eglot-booster-io-only t)
+       (:when-loaded (:hook-into eglot-mode-hook))
+       )
+
+#+end_src
+** Debugger
+**** Dape
+#+begin_src emacs-lisp
+  (setup dape
+         (:package dape)
+         (:set
+  	dape-buffer-window-arrangement 'right
+  	dape-inlay-hints t)
+         (:when-loaded
+  	(add-hook after-init-hook 'daep-breakpoint-load)
+  	(add-hook kill-emasc-hook 'dape-breakpoint-save)
+  	(add-hook dape-compile-hook  'kill-buffer)
+  	))
+#+end_src
+
 
 * Tool 
 :PROPERTIES:
