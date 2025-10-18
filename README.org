@@ -600,7 +600,7 @@ Reduce scroll margin.
 Support for Docker related files.
 #+begin_src emacs-lisp
   (setup dockerfile-ts-mode
-         (:file-match
+         (:match-file
   	"Dockerfie"))
 #+end_src
 
@@ -925,15 +925,15 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+begin_src emacs-lisp :tangle no
 (setup cobol-mode
 (:package cobol-mode)
-  (:file-match "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
+  (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
 #+end_src
 
 ** csv
 #+begin_src emacs-lisp
 (setup csv-mode
        (:package csv-mode)
-       (:file-match "\\.[Cc][Ss][Vv]\\'")
-       (:with-mode tsv-mode (:file-match "\\.tsv\\'"))
+       (:match-file "\\.[Cc][Ss][Vv]\\'")
+       (:with-mode tsv-mode (:match-file "\\.tsv\\'"))
        (:option csv-separators '("," "\t" ";")))
 #+end_src
 
@@ -966,7 +966,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+begin_src emacs-lisp
   (setup json-ts-mode
   		   
-         (:file-match "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
+         (:match-file "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
          )
 
 #+end_src
@@ -986,7 +986,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 ** lua
 #+begin_src emacs-lisp
 (setup lua-ts-mode
-  (:file-match "\\.lua\\'")
+  (:match-file "\\.lua\\'")
 )
 #+end_src
 
@@ -994,7 +994,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+begin_src emacs-lisp
 ;;(setup markdown-mode
 ;;       (:package markdown-mode)
-;;       (:file-match
+;;       (:match-file
 ;;        "\\.markdown\\'"
 ;;        "\\.md\\'")
 ;;       (:hook markdown-display-inline-images)
@@ -1021,7 +1021,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
 (setup nix-ts-mode
        (:package nix-ts-mode)
-  (:with-mode nix-ts-mode (:file-match "\\.nix\\'"))
+  (:with-mode nix-ts-mode (:match-file "\\.nix\\'"))
   (:hook eglot-mode-hook))
 (setup nix-mode
        (:package nix-mode))
@@ -1032,7 +1032,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
 (setup nushell-ts-mode
        (:package nushell-ts-mode)
-       (:file-match "\\.nu\\'"))
+       (:match-file "\\.nu\\'"))
 #+end_src
 
 ** pdf
@@ -1040,7 +1040,7 @@ Generate Table of Contents.
 ** python
 #+begin_src emacs-lisp :tangle no
   (setup python-ts-mode
-       (:with-mode python-ts-mode  (:file-match "\\.py\\'"))
+       (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
          (:hook indent-bars-mode)
          )
 
@@ -1102,7 +1102,7 @@ Pretty check-boxes as well as bullet lists.
 #+begin_src emacs-lisp
 (setup scala-mode
        (:package scala-mode)
-       (:file-match "\\.\\(scala\\|sbt\\)\\'"))
+       (:match-file "\\.\\(scala\\|sbt\\)\\'"))
 #+end_src
 
 ** sh
@@ -1133,7 +1133,7 @@ Pretty check-boxes as well as bullet lists.
 ** yaml
 #+begin_src emacs-lisp
 (setup yaml-ts-mode
-  (:file-match "\\.\\(e?ya?\\|ra\\)ml\\'")
+  (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
   (:hook indent-bars-mode)
   )
 #+end_src
