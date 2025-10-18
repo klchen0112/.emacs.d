@@ -30,101 +30,102 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
+
+** disable package
+#+begin_src emacs-lisp
+  ;; Disable package.el in favor of straight.el
+  (setq package-enable-at-startup nil
+        package-quickstart nil)
+#+end_src
 ** Setup.el :early:
 
 
 
 #+begin_src emacs-lisp
-;; Disable package.el entirely since I am using twist.
-(setq package-enable-at-startup nil)
-(setq package-quickstart nil)
- (eval-when-compile
+  (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
-    (defmacro defsetup (name signature &rest body)
-      "Shorthand for `setup-define'.
-  NAME is the name of the local macro.  SIGNATURE is used as the
-  argument list for FN.  If BODY starts with a string, use this as
-  the value for :documentation.  Any following keywords are passed
-  as OPTS to `setup-define'."
-      (declare (debug defun))
-      (let (opts)
-        (when (stringp (car body))
-  	(setq opts (nconc (list :documentation (pop body))
-  			  opts)))
-        (while (keywordp (car body))
-  	(let* ((prop (pop body))
-  	       (val `',(pop body)))
-  	  (setq opts (nconc (list prop val) opts))))
-        `(setup-define ,name
-  		     (cl-function (lambda ,signature ,@body))
-  		     ,@opts))
-      )
-    )
+  )
 #+end_src
 *** package :early:
 
 #+begin_src emacs-lisp
   (eval-when-compile
-      (defsetup :pakage
-    	    (package)
-    	    "Fake installation of PACKAGE for twist-nix."
+      (setup-define :package
+    		  (lambda (package)
+  		    ()
+  		      )
+    	    :documentation "Fake installation of PACKAGE for twist-nix."
     	    :repeatable 
-    	    :shorthand cadr)
+    	    ))
      
-#+end_src
-
-*** setup
-#+begin_src emacs-lisp
-    (eval-when-compile
-      (defsetup
-       :set (&rest args)
-       "Set the default values of variables."
-       `(setq-default ,@args)
-       )
-      )
 #+end_src
 
 *** :defer
 
 #+begin_src emacs-lisp
-(eval-when-compile
-  (define-setup-macro :defer (seconds &optional func)
-    "Call a function at N seconds after init."
-    `(add-hook 'after-init-hook
-               (lambda ()
-                 (run-with-timer ,seconds nil
-                                 ,(or func (setup-get 'hook)))))))
+  (eval-when-compile
+    (setup-define :defer
+      		(lambda (seconds &optional func)
+  		  `(add-hook 'after-init-hook
+  			     (lambda ()
+  			       (run-with-timer ,seconds nil
+  					       ,(or func (setup-get 'hook))))))
+    		:documentation         "Call a function at N seconds after init."
+  		))
 #+end_src
 *** :reformatters
 #+begin_src emacs-lisp
   (eval-when-compile
-    (define-setup-macro
-     :reformatters (&rest entries)
-     "Define reformatters."
-     (let ((feature (setup-get 'feature)))
-       (macroexp-progn
-        (mapcar (pcase-lambda (`(,name . ,args))
-                  `(reformatter-define ,name ,@args))
-                entries)))))
+    (setup-define
+     :reformatters (lambda  (&rest entries)
+  		   (let ((feature (setup-get 'feature)))
+  		     (macroexp-progn
+  		      (mapcar (pcase-lambda (`(,name . ,args))
+  				`(reformatter-define ,name ,@args))
+  			      entries)))))
+    :documentation "Define reformatters."
+    )
 #+end_src
 *** :load-after
 #+begin_src emacs-lisp
-(eval-when-compile
-  (setup-define :load-after
-                (lambda (&rest features)
-                  (let ((body `(require ',(setup-get 'feature))))
-                    (dolist (feature (nreverse features))
-                      (setq body `(with-eval-after-load ',feature ,body)))
-                    body))
-                :documentation "Load the current feature after FEATURES."))
+  (eval-when-compile
+    (setup-define :load-after
+  		(lambda (&rest features)
+  		  (let ((body `(require ',(setup-get 'feature))))
+  		    (dolist (feature (nreverse features))
+  		      (setq body `(with-eval-after-load ',feature ,body)))
+  		    body))
+  		:documentation "Load the current feature after FEATURES.")
+    )
 #+end_src
 
 *** :nixpkgs
 #+begin_src emacs-lisp :yes
   (eval-when-compile
-    (define-setup-macro :nixpkgs (&rest nixpkgs)
-      "Fake installation of packages from NIXPKGS for executables."))
+    (setup-define :nixpkgs (lambda (&rest nixpkgs) ())
+     :documentation "Fake installation of packages from NIXPKGS for executables."))
+#+end_src
+
+* UI
+** theme
+#+begin_src emacs-lisp
+  (setup modus-themes
+         (:package modus-themes)
+         (:require modus-themes)
+         )
+  (setup ef-themes
+         (:package ef-themes)
+         (:require ef-themes)
+         (:option
+    	ef-themes-take-over-modus-themes-mode 1)
+         (:when-loaded
+    	(setq modus-themes-mixed-fonts t
+    	      modus-themes-italic-constructs t
+    	      modus-themes-disable-other-themes t)
+
+  	(modus-themes-load-theme 'ef-summer))
+         )
 #+end_src
 
 * Tool
@@ -136,19 +137,6 @@ load sequence.
   ;;(setup (:package forge))
 
 
-  (setup (:package modus-themes)
-         (:require modus-themes)
-         )
-  (setup
-   (:package ef-themes)
-   (:require ef-themes)
-   (:option ef-themes-take-over-modus-themes-mode 1)
-   (:when-loaded
-
-
-    		      (modus-themes-load-theme 'ef-summer)
-      		      )
-   )
 
   (setup org
          (:package org)
@@ -157,7 +145,7 @@ load sequence.
 
   (setup org-modern
          (:package org-modern)
-         (:set
+         (:option
     	;; Edit settings
     	org-auto-align-tags nil)
          (global-org-modern-mode)
