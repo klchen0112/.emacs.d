@@ -122,6 +122,13 @@ load sequence.
          (:only-if (fboundp 'treesit-available-p))
          )
 #+end_src
+** localization
+#+begin_src emacs-lisp
+  (setup localization
+       (:option calendar-week-start-day 1)
+       )
+
+#+end_src
 * UI
 ** theme
 #+begin_src emacs-lisp
@@ -148,7 +155,54 @@ load sequence.
   (setup nerd-icons
          (:package nerd-icons))
 #+end_src
-* Tool
+** Modeline
+#+begin_src emacs-lisp
+  (setup dashboard
+         (:package dashboard)
+         (:set  dashboard-icon-type 'nerd-icons)
+         (dashboard-setup-startup-hook)
+         )
+
+#+end_src
+
+** Dashboard
+#+begin_src emacs-lisp
+  (setup doom-modeline
+         (:package doom-modeline)
+         (:hook-into after-init-hook)
+         (:hook size-indication-mode)
+         (:hook column-number-mode)
+         )
+
+#+end_src
+** display-line-number
+#+begin_src emacs-lisp
+  (setup display-fill-column-indicator (:hook-into prog-mode))
+  (setup display-line-numbers (:hook-into prog-mode)
+         (:set display-line-numbers-width 2
+  	     display-line-numbers-type 'relative))
+#+end_src
+
+** Scroll
+#+begin_src emacs-lisp
+
+  (setup pixel-scroll
+         (:only-if  (version<= "29" emacs-version)
+  		  (:with-mode pixel-scroll-precision-mode
+  			      ;; TODO: Find a better way to hook the minor mode
+  			      (:hook-into find-file-hook
+  					  help-mode-hook))))
+#+end_src
+
+
+* Editor
+** Copy&Paste
+*** wsl copy
+#+begin_src emacs-lisp
+(setq select-active-regions nil)
+#+end_src
+
+* Tool 
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
