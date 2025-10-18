@@ -194,6 +194,24 @@ load sequence.
   					  help-mode-hook))))
 #+end_src
 
+*** Ligatures
+#+begin_src emacs-lisp
+(setup ligature
+       (:package ligature)
+       (:hook-into prog-mode-hook)
+       (:when-loaded (ligature-set-ligatures
+   'prog-mode
+   '("-<<" "-<" "-<-" "<--" "<---" "<<-" "<-" "->" "->>" "-->" "--->" "->-" ">-" ">>-" "<->" "<-->" "<--->" "<---->" "<!--"
+     "=<<" "=<" "=<=" "<==" "<===" "<<=" "<=" "=>" "=>>" "==>" "===>" "=>=" ">=" ">>=" "<=>" "<==>" "<===>" "<====>" "<!---"
+     "<------" "------>" "<=====>" "<~~" "<~" "~>" "~~>" "::" ":::" "\\/" "/\\" "==" "!=" "/=" "~=" "<>" "===" "!==" "=/=" "=!="
+     ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "<." "<.>" ".>" "+:" "-:" "=:" "<******>" "(*" "*)" "++" "+++" "|-" "-|"
+     "&&" "||"))
+     ))
+
+(setup prog-mode
+  (:set prettify-symbols-unprettify-at-point t))
+#+end_src
+
 
 * Editor & Keybindings
 ** Copy&Paste
