@@ -10,9 +10,8 @@
       pre-commit.settings.hooks = {
         # lint shell scripts
         nil.enable = true;
-
+        conform.enable = true;
       };
-      devShells.default = pkgs.gdb;
 
     };
 }
