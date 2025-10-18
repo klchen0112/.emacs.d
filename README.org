@@ -912,26 +912,39 @@ Generic Language Server Protocol integration via ~eglot~.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
+
+
+** Indentation guides
 #+begin_src emacs-lisp
-  ;; (setup (:package magit))
-  ;;(setup (:package forge))
+(setup indent-bars
+       (:package indent-bars)
+       (:set indent-bars-width-frac 0.2))
+#+end_src
+
+** Terminal
+*** eat
+#+begin_src emacs-lisp
+(setup eat
+       (:package eat))
+#+end_src
+
+** Check
+
+#+begin_src emacs-lisp
+(setup jinx
+(:package jinx))
+#+end_src
 
 
 
-  (setup org
-         (:package org)
-         (:also-load org-modern)
-         )
-
-  (setup org-modern
-         (:package org-modern)
-         (:option
-    	;; Edit settings
-    	org-auto-align-tags nil)
-         (global-org-modern-mode)
-         )
-   #+end_src
-
-
+#+begin_src emacs-lisp
+(setup (:package twist)
+    (add-hook 'emacs-startup-hook #'twist-watch-mode)
+)
+(setup (:package nix3)
+  (:set nix3-flake-remote-wait 20
+        nix3-registry-list-completion-options (list :add-to-registry t
+                                                    :require-match nil)))
+#+end_src
 
 
