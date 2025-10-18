@@ -179,7 +179,7 @@ load sequence.
 #+begin_src emacs-lisp
   (setup display-fill-column-indicator (:hook-into prog-mode))
   (setup display-line-numbers (:hook-into prog-mode)
-         (:set display-line-numbers-width 2
+         (:option display-line-numbers-width 2
   	     display-line-numbers-type 'relative))
 #+end_src
 
@@ -209,7 +209,7 @@ load sequence.
      ))
 
 (setup prog-mode
-  (:set prettify-symbols-unprettify-at-point t))
+  (:option prettify-symbols-unprettify-at-point t))
 #+end_src
 
 
@@ -329,7 +329,7 @@ load sequence.
 (setup which-key
        (:package which-key)
        (:hook-into after-init-hook)
-       (:set which-key-idle-delay 0.3)
+       (:option which-key-idle-delay 0.3)
        )
 
 #+end_src
@@ -338,7 +338,7 @@ Increase undo limit.
 #+begin_src emacs-lisp
 (setup undo-fu
        (:package undo-fu)
-       (:set undo-limit 1000000
+       (:option undo-limit 1000000
              undo-strong-limit (* 2 undo-limit))
        )
 #+end_src
@@ -363,7 +363,7 @@ Space-separated matching components matching in any order.
 #+begin_src emacs-lisp
 (setup orderless
        (:package orderless)
-       (:set
+       (:option
         completion-styles '(substring orderless)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
@@ -381,12 +381,12 @@ Completion Overlay Region FUnction.
        ;; load features
        (:also-load nerd-icons-corfu)
        (:with-feature corfu-popupinfo
-  		      (:set corfu-popupinfo-delay '(0.5 . 1.0))
+  		      (:option corfu-popupinfo-delay '(0.5 . 1.0))
   		      (:hook-into corfu-mode-hook))
        (:with-feature corfu-history
   		      (:hook-into corfu-mode-hook)
   		      )
-       (:set
+       (:option
   	corfu-auto t
   	corfu-atuo-refix 2
   	corfu-cycle t
@@ -414,7 +414,7 @@ Vertical interactive completion UI.
          (:also-load orderless)
          (:also-load marginalia)
          (:hook-into after-init-hook)
-         (:set vertico-cycle t)
+         (:option vertico-cycle t)
          )
 
 
@@ -425,7 +425,7 @@ Vertical interactive completion UI.
 (setup tempel
        (:package tempel)
        (:also-load tempel-collection)
-       (:set tempel-trigger-prefix "<")
+       (:option tempel-trigger-prefix "<")
        ;; Setup completion at point
        (defun tempel-setup-capf ()
   	 ;; Add the Tempel Capf to `completion-at-point-functions'.
@@ -479,7 +479,7 @@ Commands compatible with ~completing-read~.
 #+begin_src emacs-lisp
 (setup consult
        (:package consult)
-       (:set consult-preview-key "M-RET"))
+       (:option consult-preview-key "M-RET"))
 
 (setup consult-xref
 (:when-loaded
@@ -504,7 +504,7 @@ Commands compatible with ~completing-read~.
 *** dabbrev
 #+begin_src emacs-lisp
 (setup dabbrev
-       (:set
+       (:option
         dabbrev-case-replace nil
         dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
 #+end_src
@@ -557,7 +557,7 @@ Annotations for completion candidates.
 ** Isearch
 #+begin_src emacs-lisp
 (setup isearch
-       (:set isearch-lazy-count t))
+       (:option isearch-lazy-count t))
 #+end_src
 
 ** Occur
@@ -680,8 +680,8 @@ Code folding with treesit-fold
 #+begin_src emacs-lisp
 (setup repl-toggle
        (:package repl-toggle)
-  (:set rtog/goto-buffer-fun 'pop-to-buffer)
-  (:set rtog/mode-repl-alist
+  (:option rtog/goto-buffer-fun 'pop-to-buffer)
+  (:option rtog/mode-repl-alist
         '((emacs-lisp-mode . ielm)
           (org-mode . ielm))))
 #+end_src
@@ -715,7 +715,7 @@ Haskell one).
 *** diff
 #+begin_src emacs-lisp
 (setup diff
-  (:set diff-font-lock-prettify t))
+  (:option diff-font-lock-prettify t))
 #+end_src
 
 *** diff-hl
@@ -751,7 +751,7 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
 (setup eglot
        (:package eglot)
-       (:set
+       (:option
         eglot-autoshutdown t
         eglot-code-action-indications nil
         eglot-confirm-server-edits nil
@@ -770,7 +770,7 @@ Generic Language Server Protocol integration via ~eglot~.
 (setup eglot-booster
 
        (:package eglot-booster)
-       (:set eglot-booster-io-only t)
+       (:option eglot-booster-io-only t)
        (:when-loaded (:hook-into eglot-mode-hook))
        )
 
@@ -780,7 +780,7 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup dape
          (:package dape)
-         (:set
+         (:option
   	dape-buffer-window-arrangement 'right
   	dape-inlay-hints t)
          (:when-loaded
@@ -795,9 +795,9 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup org
          (:package org)
-         (:set org-directory "~/org")
+         (:option org-directory "~/org")
          (:with-feature org-agenda
-    		      (:set
+    		      (:option
     		       ;; 时间前导0
     		       org-agenda-time-leading-zero t
     		       ;; 默认显示区间
@@ -810,7 +810,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-download
          (:package org-download)
          (:load-after org)
-         (:set   org-download-method 'directory
+         (:option   org-download-method 'directory
     	       org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
     	       org-download-heading-lvl 'nil)
          )
@@ -819,7 +819,7 @@ Generic Language Server Protocol integration via ~eglot~.
          (:package org-modern)
          (:load-after org)
          (:when-loaded (:hook-into org-mode) (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
-         (:set
+         (:option
     	;; Edit settings
     	org-auto-align-tags nil
     	org-tags-column 0
@@ -862,7 +862,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-roam
          (:package org-roam)
          (:load-after org)
-         (:set org-roam-directory (file-truename org-directory))
+         (:option org-roam-directory (file-truename org-directory))
          (:when-loaded  (org-roam-db-autosync-mode)
   		      (setq org-id-link-to-org-use-id t)
   		      (setq org-roam-completion-everywhere t))
@@ -884,7 +884,7 @@ Generic Language Server Protocol integration via ~eglot~.
          (:package org-roam-timestamps)
          (:load-after org-roam)
          (:hook-into org-roam-mode-hook)
-         (:set org-roam-timestamps-parent-file t))
+         (:option org-roam-timestamps-parent-file t))
 
 
 
@@ -896,7 +896,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup consult-org-roam
     (:load-after org-roam consult)
          (:package consult-org-roam)
-         (:set
+         (:option
   	;; Use `ripgrep' for searching with `consult-org-roam-search'
   	consult-org-roam-grep-func #'consult-ripgrep
   	;; Configure a custom narrow key for `consult-buffer'
@@ -934,7 +934,7 @@ Display outlines in text like files or use it in conjunction with other major mo
        (:package csv-mode)
        (:file-match "\\.[Cc][Ss][Vv]\\'")
        (:with-mode tsv-mode (:file-match "\\.tsv\\'"))
-       (:set csv-separators '("," "\t" ";")))
+       (:option csv-separators '("," "\t" ";")))
 #+end_src
 
 ** git
@@ -959,7 +959,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 (setup gradle-mode
        (:package gradle-mode)
        (:hook-into java-base-mode-hook kotlin-mode-hook)
-       (:set gradle-executable-path "gradle"))
+       (:option gradle-executable-path "gradle"))
 #+end_src
 
 ** json
@@ -998,15 +998,15 @@ Display outlines in text like files or use it in conjunction with other major mo
 ;;        "\\.markdown\\'"
 ;;        "\\.md\\'")
 ;;       (:hook markdown-display-inline-images)
-;;       (:set markdown-enable-wiki-links t)
-;;       (:set markdown-fontify-code-blocks-natively t)
-;;       (:set markdown-header-scaling t)
-;;       (:set markdown-hide-markup t)
-;;       (:set markdown-italic-underscore t)
-;;       (:set markdown-blockquote-display-char '("┃" ">"))
-;;       (:set markdown-list-item-bullets '("⏺" "▪"))
-;;       (:set markdown-make-gfm-checkboxes-buttons t)
-;;       (:set markdown-max-image-size '(1024 . 1024)))
+;;       (:option markdown-enable-wiki-links t)
+;;       (:option markdown-fontify-code-blocks-natively t)
+;;       (:option markdown-header-scaling t)
+;;       (:option markdown-hide-markup t)
+;;       (:option markdown-italic-underscore t)
+;;       (:option markdown-blockquote-display-char '("┃" ">"))
+;;       (:option markdown-list-item-bullets '("⏺" "▪"))
+;;       (:option markdown-make-gfm-checkboxes-buttons t)
+;;       (:option markdown-max-image-size '(1024 . 1024)))
 #+end_src
 
 *** Packages
@@ -1110,7 +1110,7 @@ Pretty check-boxes as well as bullet lists.
 (setup sh-script
        (  :hook
           flymake-mode)
-       (:set
+       (:option
         ;; Use regular indentation for line-continuation
         sh-indent-after-continuation 'always)
 )
@@ -1120,7 +1120,7 @@ Pretty check-boxes as well as bullet lists.
 ** sql
 #+begin_src emacs-lisp
 (setup sql
-  (:set sql-mysql-options '("--protocol=tcp" "--prompt=" "--disable-pager")))
+  (:option sql-mysql-options '("--protocol=tcp" "--prompt=" "--disable-pager")))
 #+end_src
 
 ** terraform
@@ -1148,7 +1148,7 @@ Pretty check-boxes as well as bullet lists.
 #+begin_src emacs-lisp
 (setup indent-bars
        (:package indent-bars)
-       (:set indent-bars-width-frac 0.2))
+       (:option indent-bars-width-frac 0.2))
 #+end_src
 
 ** Terminal
@@ -1172,7 +1172,7 @@ Pretty check-boxes as well as bullet lists.
     (add-hook 'emacs-startup-hook #'twist-watch-mode)
 )
 (setup (:package nix3)
-  (:set nix3-flake-remote-wait 20
+  (:option nix3-flake-remote-wait 20
         nix3-registry-list-completion-options (list :add-to-registry t
                                                     :require-match nil)))
 #+end_src
