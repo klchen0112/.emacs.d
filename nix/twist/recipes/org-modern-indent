@@ -1,0 +1,2 @@
+(org-modern-indent :fetcher github
+	     :repo "jdtsmith/org-modern-indent")
