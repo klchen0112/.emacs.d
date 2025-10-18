@@ -106,7 +106,22 @@ load sequence.
     (setup-define :nixpkgs (lambda (&rest nixpkgs) ())
      :documentation "Fake installation of packages from NIXPKGS for executables."))
 #+end_src
-
+* Basic setting
+** benchmark-init
+#+begin_src emacs-lisp
+  (setup benchmark-init
+         (:package benchmark-init)
+         (:require benchmark-init)
+         (:only-if init-file-debug
+  		 (add-hook 'after-init-hook 'benchmark-init/deactivate))
+         )
+#+end_src
+** treesit
+#+begin_src emacs-lisp
+  (setup treesit
+         (:only-if (fboundp 'treesit-available-p))
+         )
+#+end_src
 * UI
 ** theme
 #+begin_src emacs-lisp
@@ -127,7 +142,12 @@ load sequence.
   	(modus-themes-load-theme 'ef-summer))
          )
 #+end_src
-
+** font
+** nerd-icons
+#+begin_src emacs-lisp
+  (setup nerd-icons
+         (:package nerd-icons))
+#+end_src
 * Tool
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
