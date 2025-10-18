@@ -2,23 +2,33 @@
 # SPDX-License-Identifier: MIT
 
 # Provide nixpkgs overlay from this config repository
-{ overlays
-, lib-makeConfig
+{
+  overlays,
+  lib-makeConfig,
 }:
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 let
   inherit (lib) types;
-  inherit (lib-makeConfig) makeConfig filterReadme archiveFilter earlyFilter earlySelector featureFilter;
+  inherit (lib-makeConfig)
+    makeConfig
+    filterReadme
+    archiveFilter
+    earlyFilter
+    earlySelector
+    featureFilter
+    ;
 
   cfg = config.programs.emacs-twist;
 
   pkgs' = pkgs.extend (lib.composeManyExtensions overlays);
 
-  mkScriptDesktopItem = script:
+  mkScriptDesktopItem =
+    script:
     pkgs.makeDesktopItem {
       inherit (script) name;
       desktopName = script.name;
@@ -122,29 +132,33 @@ in
       mimeType = [ "x-scheme-handler/org-protocol" ];
     };
 
-    home.file.${cfg.directory + "/java-debug-plugin.jar"} =
-      lib.mkIf cfg.settings.enableJava {
-        source = java-debug-plugin;
-      };
+    home.file.${cfg.directory + "/java-debug-plugin.jar"} = lib.mkIf cfg.settings.enableJava {
+      source = java-debug-plugin;
+    };
 
-    home.packages = with pkgs; [
-      # Font families used in my Emacs config
-      nerd-fonts.iosevka
-      nerd-fonts.iosevka-term
-      nerd-fonts.iosevka-term-slab
-      noto-fonts-emoji
-      symbola
-      emacs-all-the-icons-fonts
-    ] ++ (lib.optionals cfg.settings.enableYequakeScripts
-      (desktopItems ++ scripts));
+    home.packages =
+      with pkgs;
+      [
+        # Font families used in my Emacs config
+        nerd-fonts.iosevka
+        nerd-fonts.iosevka-term
+        nerd-fonts.iosevka-term-slab
+        noto-fonts-emoji
+        symbola
+        emacs-all-the-icons-fonts
+      ]
+      ++ (lib.optionals cfg.settings.enableYequakeScripts (desktopItems ++ scripts));
 
-    home.sessionVariables.LAUNCHER = lib.mkIf cfg.settings.enableYequakeScripts
-      (lib.mkDefault "emacs-launcher");
+    home.sessionVariables.LAUNCHER = lib.mkIf cfg.settings.enableYequakeScripts (
+      lib.mkDefault "emacs-launcher"
+    );
 
-    home.sessionVariables.EDITOR = lib.mkIf cfg.settings.enableDefaultEditor
-      (lib.mkDefault "emacsclient -t -a emacs");
-    home.sessionVariables.VISUAL = lib.mkIf cfg.settings.enableDefaultEditor
-      (lib.mkDefault "emacsclient -c -a emacs");
+    home.sessionVariables.EDITOR = lib.mkIf cfg.settings.enableDefaultEditor (
+      lib.mkDefault "emacsclient -t -a emacs"
+    );
+    home.sessionVariables.VISUAL = lib.mkIf cfg.settings.enableDefaultEditor (
+      lib.mkDefault "emacsclient -c -a emacs"
+    );
 
     # Generate a desktop file for emacsclient
     services.emacs = lib.mkIf cfg.serviceIntegration.enable {

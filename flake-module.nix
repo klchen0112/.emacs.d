@@ -26,18 +26,18 @@ let
 in
 {
   flake = {
-      homeModules = {
-        twist = {
-          imports = [
-            inputs.twist.homeModules.emacs-twist
-            (import ./modules/home-module.nix {
-              inherit lib-makeConfig;
-              inherit overlays;
-            })
-          ];
-        };
+    homeModules = {
+      twist = {
+        imports = [
+          inputs.twist.homeModules.emacs-twist
+          (import ./modules/home-module.nix {
+            inherit lib-makeConfig;
+            inherit overlays;
+          })
+        ];
       };
     };
+  };
 
   perSystem =
     {

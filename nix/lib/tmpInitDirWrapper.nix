@@ -1,12 +1,13 @@
 # SPDX-FileCopyrightText: 2023-2025 Akira Komamura
 # SPDX-License-Identifier: MIT
-{ writeShellScriptBin
-, runCommandLocal
-,
+{
+  writeShellScriptBin,
+  runCommandLocal,
 }:
-{ name ? "emacs-temp"
-, emacs-env
-, earlyInitEl
+{
+  name ? "emacs-temp",
+  emacs-env,
+  earlyInitEl,
 }:
 let
   # Make all init files into one file
