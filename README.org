@@ -147,12 +147,20 @@ load sequence.
   	(modus-themes-load-theme 'ef-summer))
          )
 #+end_src
+** Disable GUI components :early:
+#+begin_src emacs-lisp
+  (setq use-dialog-box nil)
+  (push '(undecorated . t) default-frame-alist)
+  (push '(menu-bar-lines . 0) default-frame-alist)
+  (push '(tool-bar-lines . 0) default-frame-alist)
+  (push '(vertical-scroll-bars) default-frame-alist)
+#+end_src
 ** font
 ** nerd-icons
 #+begin_src emacs-lisp
   (setup nerd-icons
          (:package nerd-icons))
-#+end_src
+#+end_src]
 ** Modeline
 #+begin_src emacs-lisp
   (setup dashboard
