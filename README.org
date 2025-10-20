@@ -1257,3 +1257,7 @@ Pretty check-boxes as well as bullet lists.
 #+end_src
 
 
+* Thanks
+- [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
+- [[https://github.com/akirak/emacs-config][akirak/emacs-config]]
+- [[https://github.com/terlar/emacs-config][terlar/emacs-config]]
