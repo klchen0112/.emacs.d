@@ -867,18 +867,18 @@
     "org": {
       "flake": false,
       "locked": {
-        "lastModified": 1760267167,
-        "narHash": "sha256-fJPhtokCTs5d+IskmFW792PnJcukjfW8cAMlORIG1f0=",
-        "ref": "bugfix",
-        "rev": "0ea6bce3728f97f194340b3dbec87e72aa59d27b",
-        "revCount": 27876,
+        "lastModified": 1754761417,
+        "narHash": "sha256-MbXBcN6PJ1YSZCyxrg5Fng9pVY9X5FHFB+KAFwQu7zQ=",
+        "ref": "dev",
+        "rev": "f9f909681a051c73c64cc7b030aa54d70bb78f80",
+        "revCount": 28482,
         "type": "git",
-        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
+        "url": "https://code.tecosaur.net/tec/org-mode"
       },
       "original": {
-        "ref": "bugfix",
+        "ref": "dev",
         "type": "git",
-        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
+        "url": "https://code.tecosaur.net/tec/org-mode"
       }
     },
     "org-appear": {

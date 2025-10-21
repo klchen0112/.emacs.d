@@ -326,9 +326,9 @@
     };
     org = {
       flake = false;
-      ref = "bugfix";
+      ref = "dev";
       type = "git";
-      url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
+      url = "https://code.tecosaur.net/tec/org-mode";
     };
     org-appear = {
       flake = false;
