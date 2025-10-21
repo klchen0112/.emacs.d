@@ -139,13 +139,9 @@ in
     home.packages =
       with pkgs;
       [
+        fd
+        ripgrep
         # Font families used in my Emacs config
-        nerd-fonts.iosevka
-        nerd-fonts.iosevka-term
-        nerd-fonts.iosevka-term-slab
-        noto-fonts-emoji
-        symbola
-        emacs-all-the-icons-fonts
       ]
       ++ (lib.optionals cfg.settings.enableYequakeScripts (desktopItems ++ scripts));
 
