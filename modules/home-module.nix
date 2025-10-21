@@ -141,8 +141,33 @@ in
       [
         fd
         ripgrep
+        # org mode dot
+        graphviz
+        imagemagick
+        # mpvi required
+        # tesseract5
+        # ffmpeg
+        # poppler
+        # ffmpegthumbnailer
+        # mediainfo
+        # sqlite
+        # email
+        # mu4e
+        # spell check
+        # hunspell
+        # languagetool
+        # for emacs lsp booster
+        emacs-lsp-booster
+        pkg-config
+        hugo
         # Font families used in my Emacs config
       ]
+      ++ (lib.optionals pkgs.stdenv.isDarwin) [
+        # pngpaste for org mode download clip
+        pngpaste
+        pkgs.local.org-reminders
+      ]
+
       ++ (lib.optionals cfg.settings.enableYequakeScripts (desktopItems ++ scripts));
 
     home.sessionVariables.LAUNCHER = lib.mkIf cfg.settings.enableYequakeScripts (
