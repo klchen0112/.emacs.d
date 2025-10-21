@@ -10,6 +10,9 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +60,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = with inputs; [
         flake-parts.flakeModules.partitions
+        pkgs-by-name-for-flake-parts.flakeModule
         ./flake-module.nix
       ];
 

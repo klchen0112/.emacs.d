@@ -55,7 +55,7 @@ in
         overlays = overlays;
         inherit system;
       };
-
+      pkgsDirectory = ./pkgs;
       packages = rec {
         emacs = getEmacsFromPkgs pkgs;
 
