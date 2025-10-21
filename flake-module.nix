@@ -18,7 +18,7 @@ let
     earlySelector
     featureFilter
     ;
-  getEmacsFromPkgs = pkgs: pkgs.emacs-pgtk;
+  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacs-macport);
   overlays = with inputs; [
     emacs-overlay.overlays.default
     org-babel.overlays.default
@@ -50,6 +50,10 @@ in
     {
       _module.args = {
         inherit makeConfig;
+      };
+      _module.args.pkgs = import inputs.nixpkgs {
+        overlays = overlays;
+        inherit system;
       };
 
       packages = rec {
