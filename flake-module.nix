@@ -4,7 +4,12 @@
 # Copyright (C) 2024-2025 Akira Komamura
 # SPDX-License-Identifier: MIT
 
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  withSystem,
+  ...
+}:
 let
   lib-makeConfig = import ./nix/lib/makeConfig.nix {
     inherit inputs lib getEmacsFromPkgs;
@@ -18,10 +23,11 @@ let
     earlySelector
     featureFilter
     ;
-  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacsIGC);
+  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.local.emacsIGC);
   overlays = with inputs; [
     emacs-overlay.overlays.default
     org-babel.overlays.default
+    self.overlays.default
   ];
 in
 {
@@ -37,6 +43,15 @@ in
         ];
       };
     };
+    overlays.default =
+      _final: prev:
+      withSystem prev.stdenv.hostPlatform.system (
+        { config, ... }:
+        {
+          local = config.packages;
+        }
+      );
+
   };
 
   perSystem =
@@ -55,7 +70,7 @@ in
         overlays = overlays;
         inherit system;
       };
-      pkgsDirectory = ./pkgs;
+      pkgsDirectory = ./pkgs/by-name;
       packages = rec {
         emacs = getEmacsFromPkgs pkgs;
 
