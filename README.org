@@ -1,3 +1,6 @@
+
+
+
 * Emacs
 ** File Layout
 *** Features
@@ -105,61 +108,21 @@ load sequence.
      :documentation "Fake installation of packages from NIXPKGS for executables."))
 #+end_src
 
-*** :eglot-server
+*** :eglot-server 
 #+begin_src emacs-lisp
   (eval-when-compile
-    (defsetup
-     :eglot-server (&rest assoc)
-     "Associate program with the current mode or specified mode(s) so eglot
-  knows who to talk to"
-     (let ((head (car assoc))
+    (setup-define
+        :eglot-server (lambda (&rest assoc)
+           (let ((head (car assoc))
            (tail (cdr assoc)))
        `(with-eval-after-load 'eglot
                   (if (stringp ,head)
                           (push (cons ',(setup-get 'mode) ',assoc) eglot-server-programs)
-                    (push (cons ,head  ',tail) eglot-server-programs))))))
-#+end_src
+                    (push (cons ,head  ',tail) eglot-server-programs)))))
 
-*** :bind-auto
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (defsetup
-     :bind-auto (key command)
-     "Bind KEY to COMMAND after autoloading it"
-     :repeatable t
-     :ensure (kbd nil)
-     :debug (form sexp)
-     ;; Unquote if quoted
-     (let ((cmd (if (memq (car-safe command) '(quote function))
-                    (cadr command)
-                  command)))
-       `(define-key ,(setup-get 'map) ,key
-                    (or (autoload ',cmd ,(symbol-name (setup-get 'feature)) nil t)
-                        #',cmd)))))
-#+end_src
-
-*** :auto-load
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (defsetup
-     :autoload (command)
-     "Autoload COMMAND if not already bound."
-     :debug (sexp)
-     :ensure (func)
-     :repeatable t
-     `(autoload ,command ,(symbol-name (setup-get 'feature)) nil t)))
-#+end_src
-
-*** :global-unbind
-#+begin_src emacs-lisp
-(eval-when-compile
-  (defsetup
-   :global-unbind (key)
-   "Globally unbind KEY."
-   `(global-unset-key ,key)
-   :debug '(form)
-   :ensure '(kbd)
-   :repeatable t))
+     :documentation "Associate program with the current mode or specified mode(s) so eglot
+  knows who to talk to"
+  ))
 #+end_src
 
 * Basic setting
