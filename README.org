@@ -342,6 +342,7 @@ load sequence.
   (setup meow
    (:package meow)
    (:require meow)
+   (:option meow-use-clipboard t)
    (:when-loaded
       (setq meow-cheatsheet-layout meow-cheatsheet-layout-engrammer)
     (meow-motion-overwrite-define-key
