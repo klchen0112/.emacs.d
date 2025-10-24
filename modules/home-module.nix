@@ -165,7 +165,7 @@ in
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
         pngpaste
-        pkgs.local.org-reminders
+        # org-reminders
       ]
 
       ++ (lib.optionals cfg.settings.enableYequakeScripts (desktopItems ++ scripts));

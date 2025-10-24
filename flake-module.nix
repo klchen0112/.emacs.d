@@ -23,7 +23,7 @@ let
     earlySelector
     featureFilter
     ;
-  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.local.emacsIGC);
+  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacsIGC);
   overlays = with inputs; [
     emacs-overlay.overlays.default
     org-babel.overlays.default
@@ -44,14 +44,21 @@ in
       };
     };
     overlays.default =
-      _final: prev:
+
+      final: prev:
       withSystem prev.stdenv.hostPlatform.system (
         { config, ... }:
         {
-          local = config.packages;
+          emacsIGC = config.packages.emacsIGC;
+          emacs-igc-pgtk = config.packages.emacs-igc-pgtk;
+          org-reminders = config.packages.org-reminders;
+          kl-emacs = config.packages.kl-emacs;
+          initEl = config.packages.initEl-all-features;
+          earlyInitEl = config.packages.earlyInitEl-all-features;
+          emacs-env-all-features = config.packages.emacs-env-all-features;
+          emacs-temp-all-features = config.packages.emacs-temp-all-features;
         }
       );
-
   };
 
   perSystem =
@@ -67,12 +74,23 @@ in
         inherit makeConfig;
       };
       _module.args.pkgs = import inputs.nixpkgs {
-        overlays = overlays;
+        overlays = overlays ++ [
+          (final: prev: {
+            emacsIGC = config.packages.emacsIGC;
+            emacs-igc-pgtk = config.packages.emacs-igc-pgtk;
+            org-reminders = config.packages.org-reminders;
+            kl-emacs = config.packages.kl-emacs;
+            initEl = config.packages.initEl-all-features;
+            earlyInitEl = config.packages.earlyInitEl-all-features;
+            emacs-env-all-features = config.packages.emacs-env-all-features;
+            emacs-temp-all-features = config.packages.emacs-temp-all-features;
+          })
+        ];
         inherit system;
       };
       pkgsDirectory = ./pkgs/by-name;
       packages = rec {
-        emacs = getEmacsFromPkgs pkgs;
+        kl-emacs = getEmacsFromPkgs pkgs;
 
         initEl-base = pkgs.writeText "init.el" (filterReadme [
           archiveFilter
