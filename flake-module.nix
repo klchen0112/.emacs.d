@@ -50,7 +50,6 @@ in
         { config, ... }:
         {
           emacsIGC = config.packages.emacsIGC;
-          emacs-igc-pgtk = config.packages.emacs-igc-pgtk;
           org-reminders = config.packages.org-reminders;
           kl-emacs = config.packages.kl-emacs;
           initEl = config.packages.initEl-all-features;
@@ -76,8 +75,6 @@ in
       _module.args.pkgs = import inputs.nixpkgs {
         overlays = overlays ++ [
           (final: prev: {
-            emacsIGC = config.packages.emacsIGC;
-            emacs-igc-pgtk = config.packages.emacs-igc-pgtk;
             org-reminders = config.packages.org-reminders;
             kl-emacs = config.packages.kl-emacs;
             initEl = config.packages.initEl-all-features;
@@ -91,7 +88,6 @@ in
       pkgsDirectory = ./pkgs/by-name;
       packages = rec {
         kl-emacs = getEmacsFromPkgs pkgs;
-
         initEl-base = pkgs.writeText "init.el" (filterReadme [
           archiveFilter
           earlyFilter
