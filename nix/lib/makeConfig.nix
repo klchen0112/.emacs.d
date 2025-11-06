@@ -74,7 +74,7 @@ in
       extraPackages = [ "setup" ];
       initParser = inputs.twist.lib.parseSetup { inherit lib; } { };
       configurationRevision = with builtins; "${substring 0 7 (hashFile "sha256" Readme)}";
-      lockDir = ../twist/.lock;
+      lockDir = ../twist/lock;
       inputOverrides = import ../twist/input-overrides.nix { inherit inputs pkgs; };
       registries = import ../twist/registries.nix { inherit inputs pkgs emacsPackage; };
       extraSiteStartElisp = ''

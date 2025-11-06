@@ -129,6 +129,6 @@ in
         };
 
       };
-      apps = config.packages.emacs-env-all-features.makeApps { lockDirName = "./nix/twist/.lock"; };
+      apps = config.packages.emacs-env-all-features.makeApps { lockDirName = "./nix/twist/lock"; };
     };
 }
