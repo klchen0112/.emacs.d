@@ -125,6 +125,21 @@ load sequence.
   ))
 #+end_src
 
+*** :prefix-map
+#+begin_src emacs-lisp
+  (eval-when-compile (setup-define :prefix-map
+    (lambda (prefix-map prefix)
+      `(define-key ,(setup-get 'map) ,prefix ,(if (boundp prefix-map)
+  					     prefix-map
+  					     (define-prefix-command prefix-map)
+  					     )
+  		 )
+  		 )
+    :documentation "Define a prefix map named MAP, and associate it to PREFIX in PARENT"
+    :repeatable t)
+  )
+#+end_src
+
 * Basic setting
 ** benchmark-init
 #+begin_src emacs-lisp
@@ -147,6 +162,14 @@ load sequence.
        (:option calendar-week-start-day 1)
        )
 
+#+end_src
+** prefix-keymap
+#+begin_src emacs-lisp
+  (setup keymap.c
+    (:with-map mode-specific-map
+      (:prefix-map notes-prefix-map "n"
+  		 ))
+    )
 #+end_src
 * UI
 ** theme
@@ -964,55 +987,58 @@ Generic Language Server Protocol integration via ~eglot~.
 
 #+end_src
 ** Org-roam
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 
-  (setup org-roam
-         (:package org-roam)
-         (:load-after org)
-         (:option org-roam-directory (file-truename org-directory))
-         (:when-loaded  (org-roam-db-autosync-mode)
-  		      (setq org-id-link-to-org-use-id t)
+    (setup org-roam
+           (:package org-roam)
+           (:load-after org)
+           (:option org-roam-directory (file-truename org-directory))
+           (:when-loaded  (org-roam-db-autosync-mode)
+    		      (setq org-id-link-to-org-use-id t)
   		      (setq org-roam-completion-everywhere t))
-         )
+  	 (:with-map notes-prefix-map
+  	   (:bind "f" 'org-roam-node-find)
+  	   )
+           )
 
-  (setup org-roam-ui
-  (:load-after org-roam)
-         (:package org-roam-ui)
-         (:load-after org-roam)
-         (:when-loaded
-  	(setq org-roam-ui-sync-theme t
-                org-roam-ui-follow t
-  	      org-roam-ui-update-on-save t
-                org-roam-ui-open-on-start nil
-  	      )
-  	))
-
-  (setup org-roam-timestamps
-         (:package org-roam-timestamps)
-         (:load-after org-roam)
-         (:hook-into org-roam-mode-hook)
-         (:option org-roam-timestamps-parent-file t))
-
-
-
-  (setup org-transclusion
+    (setup org-roam-ui
     (:load-after org-roam)
-         (:package org-transclusion)
-         (:hook-into org-roam-mode-hook) )
+           (:package org-roam-ui)
+           (:load-after org-roam)
+           (:when-loaded
+    	(setq org-roam-ui-sync-theme t
+                  org-roam-ui-follow t
+    	      org-roam-ui-update-on-save t
+                  org-roam-ui-open-on-start nil
+    	      )
+    	))
 
-  (setup consult-org-roam
-    (:load-after org-roam consult)
-         (:package consult-org-roam)
-         (:option
-  	;; Use `ripgrep' for searching with `consult-org-roam-search'
-  	consult-org-roam-grep-func #'consult-ripgrep
-  	;; Configure a custom narrow key for `consult-buffer'
-  	consult-org-roam-buffer-narrow-key ?r
-  	;; Display org-roam buffers right after non-org-roam buffers
-  	;; in consult-buffer (and not down at the bottom)
-  	consult-org-roam-buffer-after-buffers t
-  	)
-)
+    (setup org-roam-timestamps
+           (:package org-roam-timestamps)
+           (:load-after org-roam)
+           (:hook-into org-roam-mode-hook)
+           (:option org-roam-timestamps-parent-file t))
+
+
+
+    (setup org-transclusion
+      (:load-after org-roam)
+           (:package org-transclusion)
+           (:hook-into org-roam-mode-hook) )
+
+    (setup consult-org-roam
+      (:load-after org-roam consult)
+           (:package consult-org-roam)
+           (:option
+    	;; Use `ripgrep' for searching with `consult-org-roam-search'
+    	consult-org-roam-grep-func #'consult-ripgrep
+    	;; Configure a custom narrow key for `consult-buffer'
+    	consult-org-roam-buffer-narrow-key ?r
+    	;; Display org-roam buffers right after non-org-roam buffers
+    	;; in consult-buffer (and not down at the bottom)
+    	consult-org-roam-buffer-after-buffers t
+    	)
+  )
 #+end_src
 * Major modes
 :PROPERTIES:
