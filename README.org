@@ -52,14 +52,13 @@ load sequence.
 
 #+begin_src emacs-lisp
   (eval-when-compile
-      (setup-define :package
-    		  (lambda (package)
-  		    ()
-  		      )
-    	    :documentation "Fake installation of PACKAGE for twist-nix."
-    	    :repeatable 
-    	    ))
-     
+    (setup-define :package
+      (lambda (package)
+        ()
+        )
+      :documentation "Fake installation of PACKAGE for twist-nix."
+      :repeatable
+      ))
 #+end_src
 
 *** :defer
@@ -88,6 +87,7 @@ load sequence.
     :documentation "Define reformatters."
     )
 #+end_src
+
 *** :load-after
 #+begin_src emacs-lisp
   (eval-when-compile
@@ -710,7 +710,16 @@ Reduce scroll margin.
   (setq-local scroll-margin 3))
 (add-hook 'prog-mode-hook #'prog-scroll-margin-setup)
 #+end_src
+** format
+#+begin_src emacs-lisp
+      (setup reformatter
+        (:package reformatter)
+        )
 
+      (setup format-all
+        (:package format-all)
+        )
+#+end_src
 ** Compilation
 #+begin_src emacs-lisp
 #+end_src
@@ -762,40 +771,39 @@ Code folding with treesit-fold
 
 
 #+begin_src emacs-lisp
-(setup reformatter
-       (:package reformatter)
+  (setup reformatter
+    (:package reformatter)
     ;;   (:reformatters
-  	;; If you use prettier, you need to install its executable separately.
-  	;;(prettier
-  	;; :program "prettier"
-  	;; :args (list (concat "--plugin-search-dir="
+    ;; If you use prettier, you need to install its executable separately.
+    ;;(prettier
+    ;; :program "prettier"
+    ;; :args (list (concat "--plugin-search-dir="
     ;;                         (expand-file-name
     ;;                          (locate-dominating-file default-directory "package.json")))
     ;;                 "--stdin-filepath" (buffer-file-name)))
-  	;;(treefmt
-  	;; :program "treefmt"
-  	;; :args (list "--stdin" (buffer-file-name)))
+    ;;(treefmt
+    ;; :program "treefmt"
+    ;; :args (list "--stdin" (buffer-file-name)))
 
-  	;;(yamlfmt
-  	;; :program "yamlfmt"
-  	;; :args (list "-"))
+    ;;(yamlfmt
+    ;; :program "yamlfmt"
+    ;; :args (list "-"))
 
-  	;;(jq-format
-  	;; :program "jq"
-  	;; :args (list "."))
+    ;;(jq-format
+    ;; :program "jq"
+    ;; :args (list "."))
 
-  	;;(biome-format
-  	;; :program
-  	;; (cond
-  	;;  ((executable-find "bunx")
-  	;;   "bunx"))
-  	;; :args (append (cond
-  	;;		((executable-find "bunx")
-  	;;		 nil))
+    ;;(biome-format
+    ;; :program
+    ;; (cond
+    ;;  ((executable-find "bunx")
+    ;;   "bunx"))
+    ;; :args (append (cond
+    ;;		((executable-find "bunx")
+    ;;		 nil))
     ;;                   (list "@biomejs/biome" "format" (buffer-file-name)
     ;;                         (concat "--stdin-file-path=" (buffer-file-name))))))
     )
-
 #+end_src
 
 ** REPL
@@ -880,176 +888,174 @@ Enhanced git related views and commands.
 *** eglot
 Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
-    (setup eglot
-           ;;(:package eglot)
-           (:option
-            eglot-autoshutdown t
-            eglot-code-action-indications nil
-            eglot-confirm-server-edits nil
-    	eglot-sync-connect nil)
-           (:with-map code-prefix-map
-    	 (:bind "f" eglot-format-buffer)
-    	 (:bind "r" eglot-rename)
-   	 (:bind "d" eglot-find-typeDefinition)
-  	 (:bind "R" eglot-xref-find-references)
-  	 (:bind "j" eglot-find-declaration)
-  (:bind "i" eglot-find-implementation)
-    	)
-    	 )
-           
+  (setup eglot
+    ;;(:package eglot)
+    (:option
+     eglot-autoshutdown t
+     eglot-code-action-indications nil
+     eglot-confirm-server-edits nil
+     eglot-sync-connect nil)
+    (:with-map code-prefix-map
+      (:bind "f" eglot-format-buffer)
+      (:bind "r" eglot-rename)
+      (:bind "d" eglot-find-typeDefinition)
+      (:bind "R" eglot-xref-find-references)
+      (:bind "j" eglot-find-declaration)
+      (:bind "i" eglot-find-implementation)
+      )
+    )
 
-    (setup consult-eglot
-           (:package consult-eglot)
-           (:load-after eglot)
-        (:with-feature consult-eglot-embark
-        (:when-loaded
-             (consult-eglot-embark-mode))
 
-           ))
+  (setup consult-eglot
+    (:package consult-eglot)
+    (:load-after eglot)
+    (:with-feature consult-eglot-embark
+      (:when-loaded
+        (consult-eglot-embark-mode))
 
-    (setup eglot-booster
+      ))
 
-           (:package eglot-booster)
-           (:option eglot-booster-io-only t)
-           (:load-after eglot)
-           (:when-loaded (:hook-into eglot-mode-hook))
-           )
+  (setup eglot-booster
 
+    (:package eglot-booster)
+    (:option eglot-booster-io-only t)
+    (:load-after eglot)
+    (:when-loaded (:hook-into eglot-mode-hook))
+    )
 #+end_src
 ** Debugger
 **** Dape
 #+begin_src emacs-lisp
   (setup dape
-         (:package dape)
-         (:option
-  	dape-buffer-window-arrangement 'right
-  	dape-inlay-hints t)
-         (:when-loaded
-  	(add-hook after-init-hook 'daep-breakpoint-load)
-  	(add-hook kill-emasc-hook 'dape-breakpoint-save)
-  	(add-hook dape-compile-hook  'kill-buffer)
-  	))
+    (:package dape)
+    (:option
+     dape-buffer-window-arrangement 'right
+     dape-inlay-hints t)
+    (:when-loaded
+      (add-hook after-init-hook 'daep-breakpoint-load)
+      (add-hook kill-emasc-hook 'dape-breakpoint-save)
+      (add-hook dape-compile-hook  'kill-buffer)
+      ))
 #+end_src
 
 * Writing
 ** Org
 #+begin_src emacs-lisp
   (setup org
-         (:package org)
-         (:option org-directory "~/org")
-         (:with-feature org-agenda
-    		      (:option
-    		       ;; 时间前导0
-    		       org-agenda-time-leading-zero t
-    		       ;; 默认显示区间
-    		       org-agenda-span 6
-    		       ;; agenda view 默认从周一开始显示
-    		       org-agenda-start-on-weekday 1)
-    		      )
-         )
+    (:package org)
+    (:option org-directory "~/org")
+    (:with-feature org-agenda
+      (:option
+       ;; 时间前导0
+       org-agenda-time-leading-zero t
+       ;; 默认显示区间
+       org-agenda-span 6
+       ;; agenda view 默认从周一开始显示
+       org-agenda-start-on-weekday 1)
+      )
+    )
 
   (setup org-download
-         (:package org-download)
-         (:load-after org)
-         (:option   org-download-method 'directory
-    	       org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
-    	       org-download-heading-lvl 'nil)
-         )
+    (:package org-download)
+    (:load-after org)
+    (:option   org-download-method 'directory
+    	     org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
+    	     org-download-heading-lvl 'nil)
+    )
 
   (setup org-modern
-         (:package org-modern)
-         (:load-after org)
-         (:when-loaded (:hook-into org-mode) (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
-         (:option
-    	;; Edit settings
-    	org-auto-align-tags nil
-    	org-tags-column 0
-    	org-catch-invisible-edits 'show-and-error
-    	org-special-ctrl-a/e t
-    	org-insert-heading-respect-content t
+    (:package org-modern)
+    (:load-after org)
+    (:when-loaded (:hook-into org-mode) (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+    (:option
+     ;; Edit settings
+     org-auto-align-tags nil
+     org-tags-column 0
+     org-catch-invisible-edits 'show-and-error
+     org-special-ctrl-a/e t
+     org-insert-heading-respect-content t
 
-    	;; Org styling, hide markup etc.
-    	org-hide-emphasis-markers t
-    	org-pretty-entities t
-    	org-agenda-tags-column 0
-    	org-ellipsis "…")
-         (:when-loaded
-    	(modify-all-frames-parameters
-    	 '((right-divider-width . 40)
-    	   (internal-border-width . 40)))
-    	(dolist (face '(window-divider
-    			window-divider-first-pixel
-    			window-divider-last-pixel))
-    	  (face-spec-reset-face face)
-    	  (set-face-foreground face (face-attribute 'default :background)))
-    	(set-face-background 'fringe (face-attribute 'default :background))
-    	)
-        )
+     ;; Org styling, hide markup etc.
+     org-hide-emphasis-markers t
+     org-pretty-entities t
+     org-agenda-tags-column 0
+     org-ellipsis "…")
+    (:when-loaded
+      (modify-all-frames-parameters
+       '((right-divider-width . 40)
+         (internal-border-width . 40)))
+      (dolist (face '(window-divider
+    		    window-divider-first-pixel
+    		    window-divider-last-pixel))
+        (face-spec-reset-face face)
+        (set-face-foreground face (face-attribute 'default :background)))
+      (set-face-background 'fringe (face-attribute 'default :background))
+      )
+    )
 
   (setup org-modern-indent
     (:package org-modern-indent)
-         (:load-after org-modern)
-         (:when-loaded (:hook-into org-mode))
-         (:load-after org))
+    (:load-after org-modern)
+    (:when-loaded (:hook-into org-mode))
+    (:load-after org))
   (setup org-appear
-         (:load-after org)
-         (:package org-appear)
-         (:when-loaded (:hook-into org-mode)))
-
+    (:load-after org)
+    (:package org-appear)
+    (:when-loaded (:hook-into org-mode)))
 #+end_src
 ** Org-roam
 #+begin_src emacs-lisp
 
-    (setup org-roam
-           (:package org-roam)
-           (:load-after org)
-           (:option org-roam-directory (file-truename org-directory))
-           (:when-loaded  (org-roam-db-autosync-mode)
-    		      (setq org-id-link-to-org-use-id t)
-  		      (setq org-roam-completion-everywhere t))
-  	 (:with-map notes-prefix-map
-  	   (:bind "f" 'org-roam-node-find)
-  	   )
-           )
+  (setup org-roam
+    (:package org-roam)
+    (:load-after org)
+    (:option org-roam-directory (file-truename org-directory))
+    (:when-loaded  (org-roam-db-autosync-mode)
+    		 (setq org-id-link-to-org-use-id t)
+  		 (setq org-roam-completion-everywhere t))
+    (:with-map notes-prefix-map
+      (:bind "f" 'org-roam-node-find)
+      )
+    )
 
-    (setup org-roam-ui
+  (setup org-roam-ui
     (:load-after org-roam)
-           (:package org-roam-ui)
-           (:load-after org-roam)
-           (:when-loaded
-    	(setq org-roam-ui-sync-theme t
-                  org-roam-ui-follow t
-    	      org-roam-ui-update-on-save t
-                  org-roam-ui-open-on-start nil
-    	      )
-    	))
+    (:package org-roam-ui)
+    (:load-after org-roam)
+    (:when-loaded
+      (setq org-roam-ui-sync-theme t
+            org-roam-ui-follow t
+    	  org-roam-ui-update-on-save t
+            org-roam-ui-open-on-start nil
+    	  )
+      ))
 
-    (setup org-roam-timestamps
-           (:package org-roam-timestamps)
-           (:load-after org-roam)
-           (:hook-into org-roam-mode-hook)
-           (:option org-roam-timestamps-parent-file t))
+  (setup org-roam-timestamps
+    (:package org-roam-timestamps)
+    (:load-after org-roam)
+    (:hook-into org-roam-mode-hook)
+    (:option org-roam-timestamps-parent-file t))
 
 
 
-    (setup org-transclusion
-      (:load-after org-roam)
-           (:package org-transclusion)
-           (:hook-into org-roam-mode-hook) )
+  (setup org-transclusion
+    (:load-after org-roam)
+    (:package org-transclusion)
+    (:hook-into org-roam-mode-hook) )
 
-    (setup consult-org-roam
-      (:load-after org-roam consult)
-           (:package consult-org-roam)
-           (:option
-    	;; Use `ripgrep' for searching with `consult-org-roam-search'
-    	consult-org-roam-grep-func #'consult-ripgrep
-    	;; Configure a custom narrow key for `consult-buffer'
-    	consult-org-roam-buffer-narrow-key ?r
-    	;; Display org-roam buffers right after non-org-roam buffers
-    	;; in consult-buffer (and not down at the bottom)
-    	consult-org-roam-buffer-after-buffers t
-    	)
-  )
+  (setup consult-org-roam
+    (:load-after org-roam consult)
+    (:package consult-org-roam)
+    (:option
+     ;; Use `ripgrep' for searching with `consult-org-roam-search'
+     consult-org-roam-grep-func #'consult-ripgrep
+     ;; Configure a custom narrow key for `consult-buffer'
+     consult-org-roam-buffer-narrow-key ?r
+     ;; Display org-roam buffers right after non-org-roam buffers
+     ;; in consult-buffer (and not down at the bottom)
+     consult-org-roam-buffer-after-buffers t
+     )
+    )
 #+end_src
 * Major modes
 :PROPERTIES:
@@ -1067,9 +1073,9 @@ Generic Language Server Protocol integration via ~eglot~.
 Display outlines in text like files or use it in conjunction with other major modes via ~outline-minor-mode~.
 ** cobol
 #+begin_src emacs-lisp :tangle no
-(setup cobol-mode
-(:package cobol-mode)
-  (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
+  (setup cobol-mode
+    (:package cobol-mode)
+    (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
 #+end_src
 
 ** csv
@@ -1087,14 +1093,13 @@ Display outlines in text like files or use it in conjunction with other major mo
 *** Packages
 ** java
 #+begin_src emacs-lisp
-(setup java-ts-mode)
+  (setup java-ts-mode)
 
-(setup eglot-java
-       (:package eglot-java)
-       (:load-after eglot)
-       (:hook-into java-base-mode-hook)
-       )
-
+  (setup eglot-java
+    (:package eglot-java)
+    (:load-after eglot)
+    (:hook-into java-base-mode-hook)
+    )
 #+end_src
 
 *** Packages
@@ -1184,37 +1189,37 @@ Generate Table of Contents.
 ** python
 #+begin_src emacs-lisp :tangle no
   (setup python-ts-mode
-       (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
-         (:hook indent-bars-mode)
-         )
+    (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
+    (:hook indent-bars-mode)
+    )
 
   (setup lazy-ruff
-      (:load-after python-ts-mode)
-         (:package lazy-ruff)
-  )
+    (:load-after python-ts-mode)
+    (:package lazy-ruff)
+    )
 
 
   (setup pet
-         (:package pet)
-         (:hook-into python-base-mode-hook))
+    (:package pet)
+    (:hook-into python-base-mode-hook))
 #+end_src
 
 *** Packages
 **** python-test
 #+begin_src emacs-lisp :tangle no
-(setup python-test
+  (setup python-test
 
-  :ensure t
-  :bind
-  (:map python-ts-mode-map
-        ("C-. t a" . python-test-project)
-        ("C-. t f" . python-test-file)
-        ("C-. t t" . python-test-function))
-  :init
-  (setq python-test-backend 'pytest)
-  :config
-  (setq python-test-project-root-files
-        (append '("README.md") python-test-project-root-files)))
+    :ensure t
+    :bind
+    (:map python-ts-mode-map
+          ("C-. t a" . python-test-project)
+          ("C-. t f" . python-test-file)
+          ("C-. t t" . python-test-function))
+    :init
+    (setq python-test-backend 'pytest)
+    :config
+    (setq python-test-project-root-files
+          (append '("README.md") python-test-project-root-files)))
 #+end_src
 
 *** Packages
