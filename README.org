@@ -230,8 +230,7 @@ load sequence.
 #+begin_src emacs-lisp
   (setup display-fill-column-indicator (:hook-into prog-mode))
   (setup display-line-numbers (:hook-into prog-mode)
-  	 (:option display-line-numbers-mode t
-  	  display-line-numbers-width 2
+         (:option display-line-numbers-width 2
   	     display-line-numbers-type 'relative))
 #+end_src
 
@@ -829,14 +828,13 @@ Silence next/previous error, by default it produces a message every time.
 
 *** flycheck
 #+begin_src emacs-lisp
-    (setup flymake
-           (:package flycheck)
-           (:when-loaded
-  	  (:with-mode global-flycheck-mode
-  		      (:hook-into after-init-hook))
+  (setup flymake
+    (:hook-into after-init-hook)
+    (:with-map code-prefix-map
+      (:bind "e" flymake-show-project-diagnostics))
 
     	)
-    )
+   
 
 #+end_src
 
