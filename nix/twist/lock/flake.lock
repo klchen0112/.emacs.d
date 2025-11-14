@@ -128,6 +128,22 @@
         "type": "github"
       }
     },
+    "consult-org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708180945,
+        "narHash": "sha256-Gd/rgBbhXa+IP0KCG7bds4Deqhpi22wBQtasWTubQQQ=",
+        "owner": "jgru",
+        "repo": "consult-org-roam",
+        "rev": "a6dec09dcd06a3014409044399c4f8860ca45ef1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jgru",
+        "repo": "consult-org-roam",
+        "type": "github"
+      }
+    },
     "corfu": {
       "flake": false,
       "locked": {
@@ -221,6 +237,22 @@
       "original": {
         "owner": "dgutov",
         "repo": "diff-hl",
+        "type": "github"
+      }
+    },
+    "dired-git-info": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1577647788,
+        "narHash": "sha256-M75kskJ2Gx1AllWGcbgsj4Kf6MT2myJ7z2oRXdKOJLc=",
+        "owner": "clemera",
+        "repo": "dired-git-info",
+        "rev": "91d57e3a4c5104c66a3abc18e281ee55e8979176",
+        "type": "github"
+      },
+      "original": {
+        "owner": "clemera",
+        "repo": "dired-git-info",
         "type": "github"
       }
     },
@@ -977,6 +1009,54 @@
         "type": "github"
       }
     },
+    "org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762958066,
+        "narHash": "sha256-k1h0UJhPQ6a0QszcNYL1DzJy7xXcGO2XbHPaoOMMtuk=",
+        "owner": "org-roam",
+        "repo": "org-roam",
+        "rev": "6abb3bdc5a4491bbfa01d1f10d9ddb4fd4626887",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-roam",
+        "repo": "org-roam",
+        "type": "github"
+      }
+    },
+    "org-roam-timestamps": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667576645,
+        "narHash": "sha256-XPA1gjhRxuhUNMlfSRk4UqX9YFmaFvbVn9uozDLyFn0=",
+        "owner": "tefkah",
+        "repo": "org-roam-timestamps",
+        "rev": "c4ff1e2f5b0905b5caa917249aab56ddc1de1ab3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tefkah",
+        "repo": "org-roam-timestamps",
+        "type": "github"
+      }
+    },
+    "org-roam-ui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667644845,
+        "narHash": "sha256-dCoEQRi86eMerkMQPy3Ow/Kj9kzHxXRSrDk4cl8uLHo=",
+        "owner": "org-roam",
+        "repo": "org-roam-ui",
+        "rev": "5ac74960231db0bf7783c2ba7a19a60f582e91ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-roam",
+        "repo": "org-roam-ui",
+        "type": "github"
+      }
+    },
     "projectile": {
       "flake": false,
       "locked": {
@@ -1067,12 +1147,14 @@
         "cond-let": "cond-let",
         "consult": "consult",
         "consult-eglot": "consult-eglot",
+        "consult-org-roam": "consult-org-roam",
         "corfu": "corfu",
         "dape": "dape",
         "dash": "dash",
         "dashboard": "dashboard",
         "devdocs": "devdocs",
         "diff-hl": "diff-hl",
+        "dired-git-info": "dired-git-info",
         "diredfl": "diredfl",
         "dirvish": "dirvish",
         "docker": "docker",
@@ -1120,6 +1202,9 @@
         "org-download": "org-download",
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
+        "org-roam": "org-roam",
+        "org-roam-timestamps": "org-roam-timestamps",
+        "org-roam-ui": "org-roam-ui",
         "projectile": "projectile",
         "promise": "promise",
         "reformatter": "reformatter",
@@ -1129,6 +1214,7 @@
         "scala-mode": "scala-mode",
         "setup": "setup",
         "shrink-path": "shrink-path",
+        "simple-httpd": "simple-httpd",
         "tablist": "tablist",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
@@ -1138,6 +1224,7 @@
         "twist": "twist",
         "undo-fu": "undo-fu",
         "vertico": "vertico",
+        "websocket": "websocket",
         "which-key": "which-key",
         "with-editor": "with-editor",
         "yaml": "yaml"
@@ -1205,6 +1292,22 @@
         "owner": "bennya",
         "repo": "shrink-path.el",
         "type": "gitlab"
+      }
+    },
+    "simple-httpd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703869136,
+        "narHash": "sha256-9XVDGVN/m5pEto+g3FYrExhFOeIZdypDkYUGlMezLIc=",
+        "owner": "skeeto",
+        "repo": "emacs-web-server",
+        "rev": "3982c55e9061475038a3ccd61aecb2de3d407cec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "skeeto",
+        "repo": "emacs-web-server",
+        "type": "github"
       }
     },
     "tablist": {
@@ -1348,6 +1451,22 @@
       "original": {
         "owner": "minad",
         "repo": "vertico",
+        "type": "github"
+      }
+    },
+    "websocket": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691550335,
+        "narHash": "sha256-pN3gTdVH5IWUq0eGvkXBgkUcxzni2Iq24ZrHnIfxAC8=",
+        "owner": "ahyatt",
+        "repo": "emacs-websocket",
+        "rev": "40c208eaab99999d7c1e4bea883648da24c03be3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ahyatt",
+        "repo": "emacs-websocket",
         "type": "github"
       }
     },

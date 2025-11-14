@@ -49,6 +49,12 @@
       repo = "consult-eglot";
       type = "github";
     };
+    consult-org-roam = {
+      flake = false;
+      owner = "jgru";
+      repo = "consult-org-roam";
+      type = "github";
+    };
     corfu = {
       flake = false;
       owner = "minad";
@@ -83,6 +89,12 @@
       flake = false;
       owner = "dgutov";
       repo = "diff-hl";
+      type = "github";
+    };
+    dired-git-info = {
+      flake = false;
+      owner = "clemera";
+      repo = "dired-git-info";
       type = "github";
     };
     diredfl = {
@@ -366,6 +378,24 @@
       repo = "org-modern-indent";
       type = "github";
     };
+    org-roam = {
+      flake = false;
+      owner = "org-roam";
+      repo = "org-roam";
+      type = "github";
+    };
+    org-roam-timestamps = {
+      flake = false;
+      owner = "tefkah";
+      repo = "org-roam-timestamps";
+      type = "github";
+    };
+    org-roam-ui = {
+      flake = false;
+      owner = "org-roam";
+      repo = "org-roam-ui";
+      type = "github";
+    };
     projectile = {
       flake = false;
       owner = "bbatsov";
@@ -419,6 +449,12 @@
       repo = "shrink-path.el";
       type = "gitlab";
     };
+    simple-httpd = {
+      flake = false;
+      owner = "skeeto";
+      repo = "emacs-web-server";
+      type = "github";
+    };
     tablist = {
       flake = false;
       owner = "emacsorphanage";
@@ -470,6 +506,12 @@
       flake = false;
       owner = "minad";
       repo = "vertico";
+      type = "github";
+    };
+    websocket = {
+      flake = false;
+      owner = "ahyatt";
+      repo = "emacs-websocket";
       type = "github";
     };
     which-key = {
