@@ -647,7 +647,7 @@ Annotations for completion candidates.
 #+end_src
 
 *** Git
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (setup dired-git-info
     (:package dired-git-info)
     )
@@ -828,8 +828,14 @@ Diff indicators in fringe
 *** magit
 Enhanced git related views and commands.
 #+begin_src emacs-lisp
+  (setup (:package transient))
   (setup magit
-         (:package magit)     )
+    (:package magit)
+    (:when-loaded
+      (keymap-global-set "C-x g" 'magit-status)
+      )
+    )
+    
 
   (setup forge
          (:package forge)
@@ -849,32 +855,32 @@ Enhanced git related views and commands.
 *** eglot
 Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
-;;  (setup eglot
-;;         (:package eglot)
-;;         (:option
-;;          eglot-autoshutdown t
-;;          eglot-code-action-indications nil
-;;          eglot-confirm-server-edits nil
-;;          eglot-sync-connect nil)
-;;         )
-;;
-;;  (setup consult-eglot
-;;         (:package consult-eglot)
-;;         (:load-after eglot)
-;;      (:with-feature consult-eglot-embark
-;;      (:when-loaded
-;;           (consult-eglot-embark-mode))
-;;
-;;         ))
-;;
-;;  (setup eglot-booster
-;;
-;;         (:package eglot-booster)
-;;         (:option eglot-booster-io-only t)
-;;         (:load-after eglot)
-;;         (:when-loaded (:hook-into eglot-mode-hook))
-;;         )
-;;
+  (setup eglot
+         ;;(:package eglot)
+         (:option
+          eglot-autoshutdown t
+          eglot-code-action-indications nil
+          eglot-confirm-server-edits nil
+          eglot-sync-connect nil)
+         )
+
+  (setup consult-eglot
+         (:package consult-eglot)
+         (:load-after eglot)
+      (:with-feature consult-eglot-embark
+      (:when-loaded
+           (consult-eglot-embark-mode))
+
+         ))
+
+  (setup eglot-booster
+
+         (:package eglot-booster)
+         (:option eglot-booster-io-only t)
+         (:load-after eglot)
+         (:when-loaded (:hook-into eglot-mode-hook))
+         )
+
 #+end_src
 ** Debugger
 **** Dape

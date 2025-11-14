@@ -43,6 +43,12 @@
       repo = "consult";
       type = "github";
     };
+    consult-eglot = {
+      flake = false;
+      owner = "mohkale";
+      repo = "consult-eglot";
+      type = "github";
+    };
     corfu = {
       flake = false;
       owner = "minad";
@@ -112,6 +118,12 @@
       flake = false;
       owner = "protesilaos";
       repo = "ef-themes";
+      type = "github";
+    };
+    eglot-booster = {
+      flake = false;
+      owner = "jdtsmith";
+      repo = "eglot-booster";
       type = "github";
     };
     eglot-java = {
@@ -423,6 +435,12 @@
       flake = false;
       owner = "Crandel";
       repo = "tempel-collection";
+      type = "github";
+    };
+    transient = {
+      flake = false;
+      owner = "magit";
+      repo = "transient";
       type = "github";
     };
     treepy = {

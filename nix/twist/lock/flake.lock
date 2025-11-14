@@ -112,6 +112,22 @@
         "type": "github"
       }
     },
+    "consult-eglot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756632318,
+        "narHash": "sha256-T6ZYTnc9tqwU+UE7f7Yk74mgPg8O5S9rnNZOQs5seBA=",
+        "owner": "mohkale",
+        "repo": "consult-eglot",
+        "rev": "d8b444aac39edfc6473ffbd228df3e9119451b51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mohkale",
+        "repo": "consult-eglot",
+        "type": "github"
+      }
+    },
     "corfu": {
       "flake": false,
       "locked": {
@@ -301,6 +317,22 @@
       "original": {
         "owner": "protesilaos",
         "repo": "ef-themes",
+        "type": "github"
+      }
+    },
+    "eglot-booster": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752690112,
+        "narHash": "sha256-xUBQrQpw+JZxcqT1fy/8C2tjKwa7sLFHXamBm45Fa4Y=",
+        "owner": "jdtsmith",
+        "repo": "eglot-booster",
+        "rev": "cab7803c4f0adc7fff9da6680f90110674bb7a22",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jdtsmith",
+        "repo": "eglot-booster",
         "type": "github"
       }
     },
@@ -1034,6 +1066,7 @@
         "compat": "compat",
         "cond-let": "cond-let",
         "consult": "consult",
+        "consult-eglot": "consult-eglot",
         "corfu": "corfu",
         "dape": "dape",
         "dash": "dash",
@@ -1046,6 +1079,7 @@
         "doom-modeline": "doom-modeline",
         "eat": "eat",
         "ef-themes": "ef-themes",
+        "eglot-booster": "eglot-booster",
         "eglot-java": "eglot-java",
         "emacsql": "emacsql",
         "embark": "embark",
@@ -1098,6 +1132,7 @@
         "tablist": "tablist",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
+        "transient": "transient",
         "treepy": "treepy",
         "treesit-fold": "treesit-fold",
         "twist": "twist",
@@ -1217,6 +1252,22 @@
       "original": {
         "owner": "Crandel",
         "repo": "tempel-collection",
+        "type": "github"
+      }
+    },
+    "transient": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763130228,
+        "narHash": "sha256-hhu57m94doI8So4QYpziQUlHQ0QJKwdExEsO/sWyG0E=",
+        "owner": "magit",
+        "repo": "transient",
+        "rev": "5a37ade046d7150cc5aff679b782df9c081e5a2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "transient",
         "type": "github"
       }
     },
