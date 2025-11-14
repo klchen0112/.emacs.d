@@ -174,16 +174,16 @@
       repo = "f.el";
       type = "github";
     };
-    flycheck = {
-      flake = false;
-      owner = "flycheck";
-      repo = "flycheck";
-      type = "github";
-    };
     forge = {
       flake = false;
       owner = "magit";
       repo = "forge";
+      type = "github";
+    };
+    format-all = {
+      flake = false;
+      owner = "lassik";
+      repo = "emacs-format-all-the-code";
       type = "github";
     };
     fullframe = {
@@ -232,6 +232,12 @@
       flake = false;
       owner = "kubernetes-el";
       repo = "kubernetes-el";
+      type = "github";
+    };
+    language-id = {
+      flake = false;
+      owner = "lassik";
+      repo = "emacs-language-id";
       type = "github";
     };
     ligature = {

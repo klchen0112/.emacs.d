@@ -464,22 +464,6 @@
         "type": "github"
       }
     },
-    "flycheck": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762353195,
-        "narHash": "sha256-lAjrWvN840SHMYEUnlr6f4Yrb1+Ap301bnZC+mwPOfY=",
-        "owner": "flycheck",
-        "repo": "flycheck",
-        "rev": "b13548bb396cf4ed13b41fbc195c918266fb41f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "flycheck",
-        "repo": "flycheck",
-        "type": "github"
-      }
-    },
     "forge": {
       "flake": false,
       "locked": {
@@ -493,6 +477,22 @@
       "original": {
         "owner": "magit",
         "repo": "forge",
+        "type": "github"
+      }
+    },
+    "format-all": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732609775,
+        "narHash": "sha256-GXhLdOmLO5fQvs2NZ1P8qBHR32Xrb3E6URxnGpm1jZ0=",
+        "owner": "lassik",
+        "repo": "emacs-format-all-the-code",
+        "rev": "fd9c013f5f8094fef99ddabde07d9041737b8454",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lassik",
+        "repo": "emacs-format-all-the-code",
         "type": "github"
       }
     },
@@ -621,6 +621,22 @@
       "original": {
         "owner": "kubernetes-el",
         "repo": "kubernetes-el",
+        "type": "github"
+      }
+    },
+    "language-id": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729760092,
+        "narHash": "sha256-OGAtIxpMqFjJBjZYNb5oIhFBIVyfrvNTLRDCQWahNWI=",
+        "owner": "lassik",
+        "repo": "emacs-language-id",
+        "rev": "dbfbc4903ffb042552b458fac76ee9f67a022036",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lassik",
+        "repo": "emacs-language-id",
         "type": "github"
       }
     },
@@ -1168,8 +1184,8 @@
         "embark-consult": "embark-consult",
         "envrc": "envrc",
         "f": "f",
-        "flycheck": "flycheck",
         "forge": "forge",
+        "format-all": "format-all",
         "fullframe": "fullframe",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
@@ -1178,6 +1194,7 @@
         "jinx": "jinx",
         "kotlin-mode": "kotlin-mode",
         "kubernetes": "kubernetes",
+        "language-id": "language-id",
         "ligature": "ligature",
         "llama": "llama",
         "magit": "magit",
