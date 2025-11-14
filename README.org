@@ -13,7 +13,7 @@ Everything is tangled into =init.el= by default and I don't really make any
 attempt to keep this file organized since it's not really intended to be
 interacted with.
 
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -22,7 +22,7 @@ interacted with.
 should only be used to do minimal configuration that needs to occur early in the
 load sequence.
 
-#+begin_src emacs-lisp :tangle early-init.el
+#+begin_src emacs-lisp
 ;;; early-init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -128,7 +128,7 @@ load sequence.
 *** :prefix-map
 #+begin_src emacs-lisp
   (eval-when-compile (setup-define :prefix-map
-    (lambda (prefix-map prefix)
+    (lambda (prefix prefix-map)
       `(define-key ,(setup-get 'map) ,prefix ,(if (boundp prefix-map)
   					     prefix-map
   					     (define-prefix-command prefix-map)
@@ -167,8 +167,9 @@ load sequence.
 #+begin_src emacs-lisp
   (setup keymap.c
     (:with-map mode-specific-map
-      (:prefix-map notes-prefix-map "n"
-  		 ))
+      (:prefix-map "n" notes-prefix-map)
+      (:prefix-map "z" code-prefix-map )
+      )
     )
 #+end_src
 * UI
@@ -336,8 +337,8 @@ load sequence.
      ;; these deactivate the region, which is not helpful unless we're in normal
      ;; state.
      ;; TODO PR in suggested bindings
-     '("n" . next-line)
-     '("p" . previous-line)
+      '("n" . meow-next)
+   '("p" . meow-prev)
      '("<escape>" . ignore))
     (meow-leader-define-key
      ;; ;; The suggested bindings would have allowed us to use 'SPC j' and 'SPC k'
@@ -346,9 +347,10 @@ load sequence.
      ;; ;; `doom-leader-code-map', so that won't work. Nevertheless, we leave
      ;; ;; those bindings here anyway.
      ;; SPC j/k will run the original command in MOTION state
+     ;; <SPC> j/k to run original command while staying in motion state
+   '("j" . self-insert-command)
+   '("k" . self-insert-command)
      ;; (because we set `meow-motion-remap-prefix' to "C-")
-     '("j" . "C-j")
-     '("k" . "C-k")
      ;; Use SPC (0-9) for digit arguments.
      '("1" . meow-digit-argument)
      '("2" . meow-digit-argument)
@@ -878,31 +880,40 @@ Enhanced git related views and commands.
 *** eglot
 Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
-  (setup eglot
-         ;;(:package eglot)
-         (:option
-          eglot-autoshutdown t
-          eglot-code-action-indications nil
-          eglot-confirm-server-edits nil
-          eglot-sync-connect nil)
-         )
+    (setup eglot
+           ;;(:package eglot)
+           (:option
+            eglot-autoshutdown t
+            eglot-code-action-indications nil
+            eglot-confirm-server-edits nil
+    	eglot-sync-connect nil)
+           (:with-map code-prefix-map
+    	 (:bind "f" eglot-format-buffer)
+    	 (:bind "r" eglot-rename)
+   	 (:bind "d" eglot-find-typeDefinition)
+  	 (:bind "R" eglot-xref-find-references)
+  	 (:bind "j" eglot-find-declaration)
+  (:bind "i" eglot-find-implementation)
+    	)
+    	 )
+           
 
-  (setup consult-eglot
-         (:package consult-eglot)
-         (:load-after eglot)
-      (:with-feature consult-eglot-embark
-      (:when-loaded
-           (consult-eglot-embark-mode))
+    (setup consult-eglot
+           (:package consult-eglot)
+           (:load-after eglot)
+        (:with-feature consult-eglot-embark
+        (:when-loaded
+             (consult-eglot-embark-mode))
 
-         ))
+           ))
 
-  (setup eglot-booster
+    (setup eglot-booster
 
-         (:package eglot-booster)
-         (:option eglot-booster-io-only t)
-         (:load-after eglot)
-         (:when-loaded (:hook-into eglot-mode-hook))
-         )
+           (:package eglot-booster)
+           (:option eglot-booster-io-only t)
+           (:load-after eglot)
+           (:when-loaded (:hook-into eglot-mode-hook))
+           )
 
 #+end_src
 ** Debugger
