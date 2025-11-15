@@ -169,6 +169,7 @@ load sequence.
     (:with-map mode-specific-map
       (:prefix-map "n" notes-prefix-map)
       (:prefix-map "z" code-prefix-map )
+      (:prefix-map "s" search-prefix-map)
       )
     )
 #+end_src
@@ -601,16 +602,20 @@ Completion At Point Extensions.
 *** consult
 Commands compatible with ~completing-read~.
 #+begin_src emacs-lisp
-(setup consult
-       (:package consult)
-       (:option consult-preview-key "M-RET"))
+  (setup consult
+         (:package consult)
+         (:option consult-preview-key "M-RET")
+         (:with-map search-prefix-map
+  	 (:bind "b" consult-line)
+  )
+  	   )
 
-(setup consult-xref
-(:when-loaded
-       (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref))
-       (:load-after consult xref)
-       )
+  (setup consult-xref
+  (:when-loaded
+         (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref))
+         (:load-after consult xref)
+         )
 #+end_src
 *** embark
 #+begin_src emacs-lisp
@@ -712,13 +717,14 @@ Reduce scroll margin.
 #+end_src
 ** format
 #+begin_src emacs-lisp
-      (setup reformatter
-        (:package reformatter)
-        )
+  (setup reformatter
+    (:package reformatter)
+    )
 
-      (setup format-all
-        (:package format-all)
-        )
+  (setup format-all
+    (:package format-all)
+    (:hook-into prog-mode)
+    )
 #+end_src
 ** Compilation
 #+begin_src emacs-lisp
