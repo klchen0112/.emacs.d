@@ -32,7 +32,7 @@ load sequence.
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
 
-** disable package
+** disable package.el
 #+begin_src emacs-lisp
   ;; Disable package.el in favor of straight.el
   (setq package-enable-at-startup nil
@@ -46,6 +46,7 @@ load sequence.
   (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
+    (setq load-path-filter-function #'load-path-filter-cache-directory-files) 
   )
 #+end_src
 *** package
@@ -766,10 +767,11 @@ Lookup documentation via DevDocs.
 ** Folding
 Code folding with treesit-fold
 #+begin_src emacs-lisp
-(setup treesit-fold
-       (:only-if (fboundp 'treesit-available-p))
-       (:package treesit-fold)
-       )
+  (setup treesit-fold
+         (:only-if (fboundp 'treesit-available-p))
+         (:package treesit-fold)
+         (:option hs-show-indicators t)
+         )
 
 #+end_src
 
@@ -1069,8 +1071,10 @@ Generic Language Server Protocol integration via ~eglot~.
 
 ** emacs-lisp
 #+begin_src emacs-lisp
-(setup elisp-mode
-       (:hook flymake-mode outline-minor-mode))
+  (setup elisp-mode
+    (:hook flymake-mode outline-minor-mode)
+    (:option elisp-fontify-semantically t)
+    )
 #+end_src
 
 
