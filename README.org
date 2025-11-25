@@ -1,4 +1,4 @@
-
+#+ROAM_EXCLUDE: t
 
 
 * Emacs
