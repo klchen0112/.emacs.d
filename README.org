@@ -515,6 +515,27 @@ Increase undo limit.
 
 ** Synatax & Checker
 
+** Buffer
+#+begin_src emacs-lisp
+  (setup buffer
+    (setq create-lockfiles nil)
+    (setq make-backup-files nil)
+    (setq confirm-nonexistent-file-or-buffer t)
+    (setq highlight-nonselected-windows nil)
+    (setq-default cursor-in-non-selected-windows nil)
+
+    )
+#+end_src
+
+** auto save
+#+begin_src emacs-lisp
+  (setup files
+    (:with-mode auto-save-visited-mode
+      (:hook-into after-init-hook))
+    (:option auto-save-no-message t
+  	   save-abbrevs 'silently))
+#+end_src
+
 * Completion
 Enable indentation and completion with the =TAB= key.
 #+begin_src emacs-lisp
