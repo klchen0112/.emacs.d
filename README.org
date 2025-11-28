@@ -926,8 +926,15 @@ Silence next/previous error, by default it produces a message every time.
 *** diff-hl
 Diff indicators in fringe
 #+begin_src emacs-lisp
-(setup diff-hl
-       (:package diff-hl))
+  (setup diff-hl
+    (:package diff-hl)
+    (:option diff-hl-update-async t
+  	   diff-hl-ask-before-revert-hunk nil)
+    (:when-loaded
+     (global-diff-hl-mode 1)
+     (diff-hl-flydiff-mode 1)
+     )
+    )
 #+end_src
 
 *** magit
