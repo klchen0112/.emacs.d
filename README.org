@@ -14,7 +14,7 @@ attempt to keep this file organized since it's not really intended to be
 interacted with.
 
 #+begin_src emacs-lisp
-;;; init.el -*- lexical-binding: t; -*-
+  ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
 *** early-init.el :early:
@@ -34,6 +34,15 @@ load sequence.
 
 ** disable package.el
 #+begin_src emacs-lisp
+
+  (setq inhibit-startup-echo-area-message t)
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message nil)
+
+
+  (setq inhibit-default-init t)
+  (setq initial-major-mode 'fundamental-mode)
+
   ;; Disable package.el in favor of straight.el
   (setq package-enable-at-startup nil
         package-quickstart nil)
@@ -1103,6 +1112,12 @@ Generic Language Server Protocol integration via ~eglot~.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no
 :END:
+** auto-mode
+#+begin_src emacs-lisp
+  (setup auto-mode
+    (setq auto-mode-case-fold nil)
+     )
+#+end_src
 
 ** emacs-lisp
 #+begin_src emacs-lisp
