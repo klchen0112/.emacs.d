@@ -518,12 +518,12 @@ Increase undo limit.
 * Completion
 Enable indentation and completion with the =TAB= key.
 #+begin_src emacs-lisp
-;; (setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete)
 #+end_src
 
 Cycle with the =TAB= key if there are only few candidates.
 #+begin_src emacs-lisp
-;; (setq completion-cycle-threshold 3)
+(setq completion-cycle-threshold 3)
 #+end_src
 
 
