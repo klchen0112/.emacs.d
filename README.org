@@ -536,6 +536,14 @@ Increase undo limit.
   	   save-abbrevs 'silently))
 #+end_src
 
+** Ident
+#+begin_src emacs-lisp
+  (setup ident
+    (:package highlight-indent-guides)
+    (:hook-into prog-mode-hook)
+   )
+#+end_src
+
 * Completion
 Enable indentation and completion with the =TAB= key.
 #+begin_src emacs-lisp
