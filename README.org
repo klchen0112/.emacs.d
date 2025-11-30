@@ -160,6 +160,14 @@ load sequence.
   		 (add-hook 'after-init-hook 'benchmark-init/deactivate))
          )
 #+end_src
+** keyfreq
+#+begin_src emacs-lisp
+  (setup keyfreq
+    (:package keyfreq)
+    (:option keyfreq-mode 1
+  	   keyfreq-autosavemode 1))
+    
+#+end_src
 ** treesit
 #+begin_src emacs-lisp
   (setup treesit
@@ -187,21 +195,20 @@ load sequence.
 ** theme
 #+begin_src emacs-lisp
   (setup modus-themes
-         (:package modus-themes)
-         (:require modus-themes)
-         )
+    (:package modus-themes)
+    (:require modus-themes)
+    )
   (setup ef-themes
-         (:package ef-themes)
-         (:require ef-themes)
-         (:option
-    	ef-themes-take-over-modus-themes-mode 1)
-         (:when-loaded
-    	(setq modus-themes-mixed-fonts t
-    	      modus-themes-italic-constructs t
-    	      modus-themes-disable-other-themes t)
-
-  	(modus-themes-load-theme 'ef-summer))
-         )
+    (:package ef-themes)
+    (:require ef-themes)
+    (:option
+     ef-themes-take-over-modus-themes-mode 1)
+    (:when-loaded
+      (setq modus-themes-mixed-fonts t
+    	  modus-themes-italic-constructs t
+    	  modus-themes-disable-other-themes t)
+      (ef-themes-load-random))
+    )
 #+end_src
 ** Disable GUI components :early:
 #+begin_src emacs-lisp

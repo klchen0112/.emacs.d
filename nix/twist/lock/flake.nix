@@ -19,6 +19,12 @@
       repo = "cape";
       type = "github";
     };
+    centaur-tabs = {
+      flake = false;
+      owner = "ema2159";
+      repo = "centaur-tabs";
+      type = "github";
+    };
     closql = {
       flake = false;
       owner = "magit";
@@ -204,6 +210,12 @@
       repo = "emacs-gradle-mode";
       type = "github";
     };
+    highlight-indent-guides = {
+      flake = false;
+      owner = "DarthFennec";
+      repo = "highlight-indent-guides";
+      type = "github";
+    };
     indent-bars = {
       flake = false;
       owner = "jdtsmith";
@@ -220,6 +232,12 @@
       flake = false;
       owner = "minad";
       repo = "jinx";
+      type = "github";
+    };
+    keyfreq = {
+      flake = false;
+      owner = "dacap";
+      repo = "keyfreq";
       type = "github";
     };
     kotlin-mode = {
@@ -400,6 +418,12 @@
       flake = false;
       owner = "org-roam";
       repo = "org-roam-ui";
+      type = "github";
+    };
+    powerline = {
+      flake = false;
+      owner = "milkypostman";
+      repo = "powerline";
       type = "github";
     };
     projectile = {

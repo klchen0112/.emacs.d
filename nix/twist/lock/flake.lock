@@ -48,6 +48,22 @@
         "type": "github"
       }
     },
+    "centaur-tabs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763726747,
+        "narHash": "sha256-vij5xx5s882hY6AMaBNz1oqnr9IfyrZSVyuiLemfW8A=",
+        "owner": "ema2159",
+        "repo": "centaur-tabs",
+        "rev": "917544d139046232a10573f6c629d529b47e28aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ema2159",
+        "repo": "centaur-tabs",
+        "type": "github"
+      }
+    },
     "closql": {
       "flake": false,
       "locked": {
@@ -544,6 +560,22 @@
         "type": "github"
       }
     },
+    "highlight-indent-guides": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763744895,
+        "narHash": "sha256-KW6zFeSnt4jKFGQf+zU03e2TpLM1Iikl0IXxzZL7M8M=",
+        "owner": "DarthFennec",
+        "repo": "highlight-indent-guides",
+        "rev": "2182caa942f88e4080f5dee49df334ebea52aed0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DarthFennec",
+        "repo": "highlight-indent-guides",
+        "type": "github"
+      }
+    },
     "indent-bars": {
       "flake": false,
       "locked": {
@@ -589,6 +621,22 @@
       "original": {
         "owner": "minad",
         "repo": "jinx",
+        "type": "github"
+      }
+    },
+    "keyfreq": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699319187,
+        "narHash": "sha256-gzVNvqJvmcqEBui2tjMJE9Bqp0bC4Rl32b3ClLkEPKI=",
+        "owner": "dacap",
+        "repo": "keyfreq",
+        "rev": "c6955162307f37c2ac631d9daf118781009f8dda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dacap",
+        "repo": "keyfreq",
         "type": "github"
       }
     },
@@ -1073,6 +1121,22 @@
         "type": "github"
       }
     },
+    "powerline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668110182,
+        "narHash": "sha256-a6LbnwmzUy43BLTjYW4DapK0sQSI38g6nsuPjd4tNkw=",
+        "owner": "milkypostman",
+        "repo": "powerline",
+        "rev": "c35c35bdf5ce2d992882c1f06f0f078058870d4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "milkypostman",
+        "repo": "powerline",
+        "type": "github"
+      }
+    },
     "projectile": {
       "flake": false,
       "locked": {
@@ -1158,6 +1222,7 @@
         "aio": "aio",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
+        "centaur-tabs": "centaur-tabs",
         "closql": "closql",
         "compat": "compat",
         "cond-let": "cond-let",
@@ -1189,9 +1254,11 @@
         "fullframe": "fullframe",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
+        "highlight-indent-guides": "highlight-indent-guides",
         "indent-bars": "indent-bars",
         "inheritenv": "inheritenv",
         "jinx": "jinx",
+        "keyfreq": "keyfreq",
         "kotlin-mode": "kotlin-mode",
         "kubernetes": "kubernetes",
         "language-id": "language-id",
@@ -1222,6 +1289,7 @@
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
+        "powerline": "powerline",
         "projectile": "projectile",
         "promise": "promise",
         "reformatter": "reformatter",
