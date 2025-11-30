@@ -185,9 +185,10 @@ load sequence.
 #+begin_src emacs-lisp
   (setup keymap.c
     (:with-map mode-specific-map
-      (:prefix-map "n" notes-prefix-map)
-      (:prefix-map "z" code-prefix-map )
-      (:prefix-map "s" search-prefix-map)
+      (:prefix-map "n" kl-notes-prefix-map)
+      (:prefix-map "z" kl-code-prefix-map )
+      (:prefix-map "s" kl-search-prefix-map)
+      (:prefix-map "w" kl-window-prefix-map)
       )
     )
 #+end_src
@@ -324,6 +325,20 @@ load sequence.
   (:option prettify-symbols-unprettify-at-point t))
 #+end_src
 
+
+** Window
+#+begin_src emacs-lisp
+  (setup switch-window
+    (:package switch-window)
+    (:with-map kl-window-prefix-map
+      (:bind "o" switch-window)
+      (:bind "1" switch-window-then-maximize)
+      (:bind "2" switch-window-split-below)
+      (:bind "3" switch-window-split-right)
+      (:bind "4" switch-window-then-delete)
+      )
+   )
+#+end_src
 
 * Editor & Keybindings
 ** Copy&Paste
@@ -553,7 +568,7 @@ Increase undo limit.
 
 ** Ident
 #+begin_src emacs-lisp
-  (setup ident
+  (setup highlight-indent-guides
     (:package highlight-indent-guides)
     (:hook-into prog-mode-hook)
    )
@@ -926,7 +941,7 @@ Silence next/previous error, by default it produces a message every time.
 #+begin_src emacs-lisp
   (setup flymake
     (:hook-into after-init-hook)
-    (:with-map code-prefix-map
+    (:with-map kl-code-prefix-map
       (:bind "e" flymake-show-project-diagnostics))
 
     	)
@@ -997,7 +1012,7 @@ Generic Language Server Protocol integration via ~eglot~.
      eglot-code-action-indications nil
      eglot-confirm-server-edits nil
      eglot-sync-connect nil)
-    (:with-map code-prefix-map
+    (:with-map kl-code-prefix-map
       (:bind "f" eglot-format-buffer)
       (:bind "r" eglot-rename)
       (:bind "d" eglot-find-typeDefinition)
@@ -1115,7 +1130,7 @@ Generic Language Server Protocol integration via ~eglot~.
     (:when-loaded  (org-roam-db-autosync-mode)
     		 (setq org-id-link-to-org-use-id t)
   		 (setq org-roam-completion-everywhere t))
-    (:with-map notes-prefix-map
+    (:with-map kl-notes-prefix-map
       (:bind "f" 'org-roam-node-find)
       )
     )

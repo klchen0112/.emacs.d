@@ -485,6 +485,12 @@
       repo = "emacs-web-server";
       type = "github";
     };
+    switch-window = {
+      flake = false;
+      owner = "dimitri";
+      repo = "switch-window";
+      type = "github";
+    };
     tablist = {
       flake = false;
       owner = "emacsorphanage";

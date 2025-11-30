@@ -1300,6 +1300,7 @@
         "setup": "setup",
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
+        "switch-window": "switch-window",
         "tablist": "tablist",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
@@ -1392,6 +1393,22 @@
       "original": {
         "owner": "skeeto",
         "repo": "emacs-web-server",
+        "type": "github"
+      }
+    },
+    "switch-window": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743496783,
+        "narHash": "sha256-ZIWFcm2UsZ6TnvKTXNO9Y0LuuOVtsiyxt9MoSn2Gf2A=",
+        "owner": "dimitri",
+        "repo": "switch-window",
+        "rev": "8f771b571a1e60fac2d2a9845c0a5a52d5b440df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dimitri",
+        "repo": "switch-window",
         "type": "github"
       }
     },
