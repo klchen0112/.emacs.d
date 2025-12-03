@@ -189,6 +189,7 @@ load sequence.
       (:prefix-map "z" kl-code-prefix-map )
       (:prefix-map "s" kl-search-prefix-map)
       (:prefix-map "w" kl-window-prefix-map)
+      (:prefix-map "p" kl-project-prefix-map)
       )
     )
 #+end_src
@@ -338,6 +339,12 @@ load sequence.
       (:bind "4" switch-window-then-delete)
       )
    )
+#+end_src
+
+** posframe
+#+begin_src emacs-lisp
+  (setup posframe
+    (:package posframe))
 #+end_src
 
 * Editor & Keybindings
@@ -642,7 +649,9 @@ Vertical interactive completion UI.
          (:option vertico-cycle t)
          )
 
-
+  (setup vertico-posframe
+    (:package vertico-posframe)
+    (:option vertico-posframe-mode 1))
 #+end_src
 
 ** snippets
@@ -702,19 +711,21 @@ Completion At Point Extensions.
 Commands compatible with ~completing-read~.
 #+begin_src emacs-lisp
   (setup consult
-         (:package consult)
-         (:option consult-preview-key "M-RET")
-         (:with-map kl-search-prefix-map
-  	 (:bind "b" consult-line)
-  )
-  	   )
+    (:package consult)
+    (:option consult-preview-key "M-RET")
+    (:with-map kl-search-prefix-map
+      (:bind "b" consult-line)
+      ;;(:bind "B" consult-line-multi)
+      (:bind "p" consult-ripgrep)
+      )
+    )
 
   (setup consult-xref
-  (:when-loaded
-         (setq xref-show-xrefs-function #'consult-xref
-          xref-show-definitions-function #'consult-xref))
-         (:load-after consult xref)
-         )
+    (:when-loaded
+      (setq xref-show-xrefs-function #'consult-xref
+            xref-show-definitions-function #'consult-xref))
+    (:load-after consult xref)
+    )
 #+end_src
 *** embark
 #+begin_src emacs-lisp
