@@ -55,7 +55,7 @@ load sequence.
   (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
-    (setq load-path-filter-function #'load-path-filter-cache-directory-files) 
+    (setq load-path-filter-function #'load-path-filter-cache-directory-files)
   )
 #+end_src
 *** package
@@ -118,7 +118,7 @@ load sequence.
      :documentation "Fake installation of packages from NIXPKGS for executables."))
 #+end_src
 
-*** :eglot-server 
+*** :eglot-server
 #+begin_src emacs-lisp
   (eval-when-compile
     (setup-define
@@ -166,7 +166,7 @@ load sequence.
     (:package keyfreq)
     (:option keyfreq-mode 1
   	   keyfreq-autosavemode 1))
-    
+
 #+end_src
 ** treesit
 #+begin_src emacs-lisp
@@ -232,14 +232,14 @@ load sequence.
         (set-face-attribute (car face) nil :font (cdr face))))))
 
   (defvar symbol-fonts '(
-             "Apple Symobols"     
-             "Apple Color Emoji"  
-             "Symbola"            
-             "Noto Color Emoji"   
-             "Liberation Mono"    
-             "Noto Sans Symbols2" 
-             "Segoe UI Emoji"     
-             "FreeSerif"          
+             "Apple Symobols"
+             "Apple Color Emoji"
+             "Symbola"
+             "Noto Color Emoji"
+             "Liberation Mono"
+             "Noto Sans Symbols2"
+             "Segoe UI Emoji"
+             "FreeSerif"
              "Twitter Color Emoji")
     "Font Use for symbol")
   (dolist (font symbol-fonts)
@@ -526,7 +526,7 @@ load sequence.
 ** Keybiding
 *** Which-key
 #+begin_src emacs-lisp
-(setup which-key
+  (setup which-key
        (:package which-key)
        (:hook-into after-init-hook)
        (:option which-key-idle-delay 0.3)
@@ -602,36 +602,32 @@ Space-separated matching components matching in any order.
 *** corfu
 Completion Overlay Region FUnction.
 #+begin_src emacs-lisp
-
-(setup corfu
-       (:package corfu)
-       (:with-mode global-corfu-mode
-  		   (:hook-into after-init-hook))
-       ;; load features
-       (:also-load nerd-icons-corfu)
-       (:with-feature corfu-popupinfo
-  		      (:option corfu-popupinfo-delay '(0.5 . 1.0))
-  		      (:hook-into corfu-mode-hook))
-       (:with-feature corfu-history
-  		      (:hook-into corfu-mode-hook)
-  		      )
-       (:option
-  	corfu-auto t
-  	corfu-atuo-refix 2
-  	corfu-cycle t
-  	corfu-preselect 'prompt
-  	corfu-count 16
-  	corfu-max-width 120
-  	corfu-on-exact-match nil
-  	corfu-quit-at-boundary     'separator
-  	tab-always-indent 'complete))
-
-(setup nerd-icons-corfu
-       (:package nerd-icons-corfu)
-       (:also-load nerd-icons)
+  (setup corfu
+     (:package corfu)
+     (:with-mode global-corfu-mode
+       (:hook-into after-init-hook))
+     ;; load features
+     (:also-load nerd-icons-corfu)
+     (:with-feature corfu-popupinfo
+       (:option corfu-popupinfo-delay '(0.5 . 1.0))
+       (:hook-into corfu-mode-hook))
+     (:with-feature corfu-history
+       (:hook-into corfu-mode-hook)
        )
+     (:option
+      corfu-auto t
+      corfu-atuo-refix 2
+      corfu-cycle t
+      corfu-preselect 'prompt
+      corfu-count 16
+      corfu-max-width 120
+      corfu-on-exact-match nil
+      corfu-quit-at-boundary     'separator
+      tab-always-indent 'complete))
 
-
+   (setup nerd-icons-corfu
+     (:package nerd-icons-corfu)
+     )
 #+end_src
 
 ** Minibuffer
@@ -651,31 +647,30 @@ Vertical interactive completion UI.
 
 ** snippets
 #+begin_src emacs-lisp
-(setup tempel
-       (:package tempel)
-       (:also-load tempel-collection)
-       (:option tempel-trigger-prefix "<")
-       ;; Setup completion at point
-       (defun tempel-setup-capf ()
-  	 ;; Add the Tempel Capf to `completion-at-point-functions'.
-  	 ;; `tempel-expand' only triggers on exact matches. Alternatively use
-  	 ;; `tempel-complete' if you want to see all matches, but then you
-  	 ;; should also configure `tempel-trigger-prefix', such that Tempel
-  	 ;; does not trigger too often when you don't expect it. NOTE: We add
-  	 ;; `tempel-expand' *before* the main programming mode Capf, such
-  	 ;; that it will be tried first.
-  	 (setq-local completion-at-point-functions
-  		     (cons #'tempel-expand
-  			   completion-at-point-functions)))
-       (add-hook 'conf-mode-hook 'tempel-setup-capf)
-       (add-hook 'prog-mode-hook 'tempel-setup-capf)
-       (add-hook 'text-mode-hook 'tempel-setup-capf)
-       )
+  (setup tempel
+    (:package tempel)
+    (:also-load tempel-collection)
+    (:option tempel-trigger-prefix "<")
+    ;; Setup completion at point
+    (defun tempel-setup-capf ()
+      ;; Add the Tempel Capf to `completion-at-point-functions'.
+      ;; `tempel-expand' only triggers on exact matches. Alternatively use
+      ;; `tempel-complete' if you want to see all matches, but then you
+      ;; should also configure `tempel-trigger-prefix', such that Tempel
+      ;; does not trigger too often when you don't expect it. NOTE: We add
+      ;; `tempel-expand' *before* the main programming mode Capf, such
+      ;; that it will be tried first.
+      (setq-local completion-at-point-functions
+    		(cons #'tempel-expand
+    		      completion-at-point-functions)))
+    (add-hook 'conf-mode-hook 'tempel-setup-capf)
+    (add-hook 'prog-mode-hook 'tempel-setup-capf)
+    (add-hook 'text-mode-hook 'tempel-setup-capf)
+    )
 
-(setup tempel-collection
-       (:package tempel-collection)
-       )
-
+  (setup tempel-collection
+    (:package tempel-collection)
+    )
 #+end_src
 ** Extensions
 
@@ -709,7 +704,7 @@ Commands compatible with ~completing-read~.
   (setup consult
          (:package consult)
          (:option consult-preview-key "M-RET")
-         (:with-map search-prefix-map
+         (:with-map kl-search-prefix-map
   	 (:bind "b" consult-line)
   )
   	   )
@@ -921,12 +916,12 @@ Code folding with treesit-fold
 
 *** repl-toggle
 #+begin_src emacs-lisp
-(setup repl-toggle
-       (:package repl-toggle)
-  (:option rtog/goto-buffer-fun 'pop-to-buffer)
-  (:option rtog/mode-repl-alist
-        '((emacs-lisp-mode . ielm)
-          (org-mode . ielm))))
+;;#(setup repl-toggle
+;;#       (:package repl-toggle)
+;;#  (:option rtog/goto-buffer-fun 'pop-to-buffer)
+;;#  (:option rtog/mode-repl-alist
+;;#        '((emacs-lisp-mode . ielm)
+;;#          (org-mode . ielm))))
 #+end_src
 
 
@@ -945,7 +940,7 @@ Silence next/previous error, by default it produces a message every time.
       (:bind "e" flymake-show-project-diagnostics))
 
     	)
-   
+
 
 #+end_src
 
@@ -985,7 +980,7 @@ Enhanced git related views and commands.
       (keymap-global-set "C-x g" 'magit-status)
       )
     )
-    
+
 
   (setup forge
          (:package forge)
@@ -1059,6 +1054,7 @@ Generic Language Server Protocol integration via ~eglot~.
 ** Org
 #+begin_src emacs-lisp
   (setup org
+    (:defer 5)
     (:package org)
     (:option org-directory "~/org")
     (:with-feature org-agenda
@@ -1083,7 +1079,8 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-modern
     (:package org-modern)
     (:load-after org)
-    (:when-loaded (:hook-into org-mode) (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+    (:when-loaded (:hook-into org-mode)
+  		(add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
     (:option
      ;; Edit settings
      org-auto-align-tags nil
@@ -1239,7 +1236,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 ** json
 #+begin_src emacs-lisp
   (setup json-ts-mode
-  		   
+
          (:match-file "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
          )
 
@@ -1412,7 +1409,7 @@ Pretty check-boxes as well as bullet lists.
   )
 #+end_src
 
-* Tool 
+* Tool
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
