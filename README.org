@@ -651,7 +651,7 @@ Vertical interactive completion UI.
 
   (setup vertico-posframe
     (:package vertico-posframe)
-    (:option vertico-posframe-mode 1))
+    (:hook-into vertico-mode))
 #+end_src
 
 ** snippets
