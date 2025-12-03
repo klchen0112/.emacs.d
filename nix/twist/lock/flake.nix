@@ -192,12 +192,6 @@
       repo = "emacs-format-all-the-code";
       type = "github";
     };
-    fullframe = {
-      flake = false;
-      owner = "~tomterl";
-      repo = "fullframe";
-      type = "sourcehut";
-    };
     ghub = {
       flake = false;
       owner = "magit";
@@ -420,6 +414,12 @@
       repo = "org-roam-ui";
       type = "github";
     };
+    posframe = {
+      flake = false;
+      owner = "tumashu";
+      repo = "posframe";
+      type = "github";
+    };
     powerline = {
       flake = false;
       owner = "milkypostman";
@@ -443,12 +443,6 @@
       owner = "purcell";
       repo = "emacs-reformatter";
       type = "github";
-    };
-    repl-toggle = {
-      flake = false;
-      owner = "~tomterl";
-      repo = "repl-toggle";
-      type = "sourcehut";
     };
     request = {
       flake = false;
@@ -542,6 +536,12 @@
       flake = false;
       owner = "minad";
       repo = "vertico";
+      type = "github";
+    };
+    vertico-posframe = {
+      flake = false;
+      owner = "tumashu";
+      repo = "vertico-posframe";
       type = "github";
     };
     websocket = {

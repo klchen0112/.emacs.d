@@ -512,22 +512,6 @@
         "type": "github"
       }
     },
-    "fullframe": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1614337055,
-        "narHash": "sha256-S2UagqTTgAZQIuOSfpD4YZbkEiG/yu8/dKk/tcY1R+A=",
-        "owner": "~tomterl",
-        "repo": "fullframe",
-        "rev": "886b831c001b44ec95aec4ff36e8bc1b3003c786",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~tomterl",
-        "repo": "fullframe",
-        "type": "sourcehut"
-      }
-    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -1121,6 +1105,22 @@
         "type": "github"
       }
     },
+    "posframe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764060402,
+        "narHash": "sha256-9YJBidlDsqhTO6Ify9xsA2fOlvgia4fquEXwjiEfFJo=",
+        "owner": "tumashu",
+        "repo": "posframe",
+        "rev": "d93828bf6c36383c365bd564ad3bab5a4403804c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tumashu",
+        "repo": "posframe",
+        "type": "github"
+      }
+    },
     "powerline": {
       "flake": false,
       "locked": {
@@ -1185,22 +1185,6 @@
         "type": "github"
       }
     },
-    "repl-toggle": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1663660366,
-        "narHash": "sha256-MelfD/GTlRFyiGt3wA5lTTRfR5QZ+Qb1KhVZm//GDzw=",
-        "owner": "~tomterl",
-        "repo": "repl-toggle",
-        "rev": "e05996b4a2b988f93ccce67f933cfad00064360f",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~tomterl",
-        "repo": "repl-toggle",
-        "type": "sourcehut"
-      }
-    },
     "request": {
       "flake": false,
       "locked": {
@@ -1251,7 +1235,6 @@
         "f": "f",
         "forge": "forge",
         "format-all": "format-all",
-        "fullframe": "fullframe",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
         "highlight-indent-guides": "highlight-indent-guides",
@@ -1289,11 +1272,11 @@
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
+        "posframe": "posframe",
         "powerline": "powerline",
         "projectile": "projectile",
         "promise": "promise",
         "reformatter": "reformatter",
-        "repl-toggle": "repl-toggle",
         "request": "request",
         "s": "s",
         "scala-mode": "scala-mode",
@@ -1310,6 +1293,7 @@
         "twist": "twist",
         "undo-fu": "undo-fu",
         "vertico": "vertico",
+        "vertico-posframe": "vertico-posframe",
         "websocket": "websocket",
         "which-key": "which-key",
         "with-editor": "with-editor",
@@ -1553,6 +1537,22 @@
       "original": {
         "owner": "minad",
         "repo": "vertico",
+        "type": "github"
+      }
+    },
+    "vertico-posframe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757496433,
+        "narHash": "sha256-vfdZ11Y4tNyh7f1dHpHHJT5Xi/dYlSMcTTjc1vDHABg=",
+        "owner": "tumashu",
+        "repo": "vertico-posframe",
+        "rev": "d89a70743cfd95b7fcda621679b7555bbef51acb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tumashu",
+        "repo": "vertico-posframe",
         "type": "github"
       }
     },
