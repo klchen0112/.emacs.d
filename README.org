@@ -1,3 +1,4 @@
+
 #+ROAM_EXCLUDE: t
 
 
@@ -1065,7 +1066,6 @@ Generic Language Server Protocol integration via ~eglot~.
 ** Org
 #+begin_src emacs-lisp
   (setup org
-    (:defer 5)
     (:package org)
     (:option org-directory "~/org")
     (:with-feature org-agenda
@@ -1090,8 +1090,8 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-modern
     (:package org-modern)
     (:load-after org)
-    (:when-loaded (:hook-into org-mode)
-  		(add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+    (:hook-into org-mode)
+    (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
     (:option
      ;; Edit settings
      org-auto-align-tags nil
@@ -1121,12 +1121,13 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-modern-indent
     (:package org-modern-indent)
     (:load-after org-modern)
-    (:when-loaded (:hook-into org-mode))
+    (:hook-into org-mode)
     (:load-after org))
+
   (setup org-appear
     (:load-after org)
     (:package org-appear)
-    (:when-loaded (:hook-into org-mode)))
+    (:hook-into org-mode))
 #+end_src
 ** Org-roam
 #+begin_src emacs-lisp
