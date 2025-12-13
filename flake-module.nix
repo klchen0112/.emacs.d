@@ -23,7 +23,7 @@ let
     earlySelector
     featureFilter
     ;
-  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacsIGC);
+  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacs-igc);
   overlays = with inputs; [
     emacs-overlay.overlays.default
     org-babel.overlays.default
