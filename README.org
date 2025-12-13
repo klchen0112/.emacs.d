@@ -10,26 +10,20 @@ subtrees will only be tangled if *at least one* of those features are enabled wh
 the config is built.
 
 *** init.el
-:PROPERTIES:
-:ID:       2c0ad3c0-5c70-458e-b8dd-fa5f84235ca1
-:END:
 Everything is tangled into =init.el= by default and I don't really make any
 attempt to keep this file organized since it's not really intended to be
 interacted with.
 
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
 *** early-init.el :early:
-:PROPERTIES:
-:ID:       16dfc3df-f471-4217-8e8d-ff1fe988a83a
-:END:
 =early-init.el= is tangled from the subtrees that are tagged with =early= and it
 should only be used to do minimal configuration that needs to occur early in the
 load sequence.
 
-#+begin_src emacs-lisp :tangle early-init.el
+#+begin_src emacs-lisp
 ;;; early-init.el -*- lexical-binding: t; -*-
 #+end_src
 
