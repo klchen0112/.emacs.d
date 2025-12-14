@@ -34,9 +34,6 @@ load sequence.
 :END:
 
 ** disable package.el
-:PROPERTIES:
-:ID:       41b3439b-9556-4996-a14d-6dbf3ac26dd6
-:END:
 #+begin_src emacs-lisp
 
   (setq inhibit-startup-echo-area-message t)
@@ -52,12 +49,6 @@ load sequence.
         package-quickstart nil)
 #+end_src
 ** Setup.el :early:
-:PROPERTIES:
-:ID:       17c84aba-c415-48be-ab24-fb365871c4ba
-:END:
-
-
-
 #+begin_src emacs-lisp
   (eval-when-compile
     (require 'setup)
@@ -66,9 +57,6 @@ load sequence.
   )
 #+end_src
 *** package
-:PROPERTIES:
-:ID:       0f48d53a-445c-48c5-bcc4-ac02d233a780
-:END:
 
 #+begin_src emacs-lisp
   (eval-when-compile
@@ -82,9 +70,6 @@ load sequence.
 #+end_src
 
 *** :defer
-:PROPERTIES:
-:ID:       7e66b043-c29f-4ffe-a7e7-7c2fde0d370a
-:END:
 
 #+begin_src emacs-lisp
   (eval-when-compile
@@ -98,9 +83,6 @@ load sequence.
   		))
 #+end_src
 *** :reformatters
-:PROPERTIES:
-:ID:       b4a4a04d-1cfb-4e73-9da8-434b45b7d432
-:END:
 #+begin_src emacs-lisp
   (eval-when-compile
     (setup-define
@@ -115,9 +97,6 @@ load sequence.
 #+end_src
 
 *** :load-after
-:PROPERTIES:
-:ID:       fef607b9-1308-4198-8098-f579ec11dda0
-:END:
 #+begin_src emacs-lisp
   (eval-when-compile
     (setup-define :load-after
@@ -131,9 +110,6 @@ load sequence.
 #+end_src
 
 *** :nixpkgs
-:PROPERTIES:
-:ID:       6739395e-3378-4c37-b1c1-cd8498f9fdd4
-:END:
 #+begin_src emacs-lisp :yes
   (eval-when-compile
     (setup-define :nixpkgs (lambda (&rest nixpkgs) ())
@@ -141,9 +117,6 @@ load sequence.
 #+end_src
 
 *** :eglot-server
-:PROPERTIES:
-:ID:       d6838d25-be35-494d-a617-0c6317bd33bf
-:END:
 #+begin_src emacs-lisp
   (eval-when-compile
     (setup-define
@@ -161,9 +134,6 @@ load sequence.
 #+end_src
 
 *** :prefix-map
-:PROPERTIES:
-:ID:       5589fa52-9709-4d88-9a22-9f6e7136ae34
-:END:
 #+begin_src emacs-lisp
   (eval-when-compile (setup-define :prefix-map
     (lambda (prefix prefix-map)
@@ -1211,9 +1181,6 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 #+end_src
 * Major modes
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle no
-:END:
 ** auto-mode
 #+begin_src emacs-lisp
   (setup auto-mode
@@ -1455,9 +1422,6 @@ Pretty check-boxes as well as bullet lists.
 
 
 ** Indentation guides
-:PROPERTIES:
-:ID:       06bf00f5-6615-4344-b5ed-b37ab05dc3e9
-:END:
 #+begin_src emacs-lisp
 (setup indent-bars
        (:package indent-bars)
@@ -1466,18 +1430,12 @@ Pretty check-boxes as well as bullet lists.
 
 ** Terminal
 *** eat
-:PROPERTIES:
-:ID:       3313008d-38fa-498a-a9e8-9633e81c2560
-:END:
 #+begin_src emacs-lisp
 (setup eat
        (:package eat))
 #+end_src
 
 ** Check
-:PROPERTIES:
-:ID:       d7a0b0df-1af2-40c5-9cb6-cafbb86f78e8
-:END:
 
 #+begin_src emacs-lisp
 (setup jinx
