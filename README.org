@@ -1,6 +1,6 @@
 
 #+ROAM_EXCLUDE: t
-
+#+ROAM_TAG: nil
 
 * Emacs
 ** File Layout
@@ -14,7 +14,7 @@ Everything is tangled into =init.el= by default and I don't really make any
 attempt to keep this file organized since it's not really intended to be
 interacted with.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -23,7 +23,7 @@ interacted with.
 should only be used to do minimal configuration that needs to occur early in the
 load sequence.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle early-init.el
 ;;; early-init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -149,6 +149,10 @@ load sequence.
 #+end_src
 
 * Basic setting
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 ** benchmark-init
 #+begin_src emacs-lisp
   (setup benchmark-init
@@ -192,6 +196,10 @@ load sequence.
     )
 #+end_src
 * UI
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 ** theme
 #+begin_src emacs-lisp
   (setup modus-themes
@@ -346,6 +354,10 @@ load sequence.
 #+end_src
 
 * Editor & Keybindings
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 ** Copy&Paste
 *** wsl copy
 #+begin_src emacs-lisp
@@ -580,6 +592,10 @@ Increase undo limit.
 #+end_src
 
 * Completion
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 Enable indentation and completion with the =TAB= key.
 #+begin_src emacs-lisp
 (setq tab-always-indent 'complete)
@@ -757,6 +773,9 @@ Annotations for completion candidates.
 #+end_src
 
 * Navigation
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
 
 ** Dired
 #+begin_src emacs-lisp
@@ -816,6 +835,10 @@ Annotations for completion candidates.
 #+end_src
 
 * Development
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 Reduce scroll margin.
 #+begin_src emacs-lisp
 (defun prog-scroll-margin-setup ()
@@ -1060,6 +1083,10 @@ Generic Language Server Protocol integration via ~eglot~.
 #+end_src
 
 * Writing
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 ** Org
 #+begin_src emacs-lisp
   (setup org
@@ -1181,6 +1208,10 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 #+end_src
 * Major modes
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle init.el
+:END:
+
 ** auto-mode
 #+begin_src emacs-lisp
   (setup auto-mode
