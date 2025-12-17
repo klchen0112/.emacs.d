@@ -147,7 +147,24 @@ load sequence.
     :repeatable t)
   )
 #+end_src
-
+*** org-babel
+#+begin_src emacs-lisp
+  (eval-when-compile
+    (setup-define :org-babel-language
+      (lambda (t-or-language)
+        (let ((language (if (eq t-or-language t)
+  			  (thread-last
+  			    (setup-get 'feature)
+  			    (symbol-name)
+  			    (string-remove-prefix "ob-")
+  			    (intern))
+  			t-or-language)))
+  	`(with-eval-after-load 'ob
+  	   (cl-pushnew '(,language . t) org-babel-load-languages))))
+      :documentation "Define file names indicating the project root."
+      :repeatable t)
+    )
+#+end_src
 * Basic setting
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
@@ -595,10 +612,7 @@ Increase undo limit.
 
 ** Ident
 #+begin_src emacs-lisp
-  (setup highlight-indent-guides
-    (:package highlight-indent-guides)
-    (:hook-into prog-mode-hook)
-   )
+  
 #+end_src
 
 * Completion
@@ -1243,7 +1257,7 @@ Display outlines in text like files or use it in conjunction with other major mo
     (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
 #+end_src
 
-** csv
+** csv  
 #+begin_src emacs-lisp
 (setup csv-mode
        (:package csv-mode)
@@ -1251,7 +1265,11 @@ Display outlines in text like files or use it in conjunction with other major mo
        (:with-mode tsv-mode (:match-file "\\.tsv\\'"))
        (:option csv-separators '("," "\t" ";")))
 #+end_src
-
+** elisp
+#+begin_src emacs-lisp
+  (setup elisp-mode
+    (:hook outline-minor-mode))
+#+end_src
 ** git
 *** Packages
 **** git-modes
@@ -1355,16 +1373,15 @@ Generate Table of Contents.
 ** pdf
 *** Packages
 ** python
-#+begin_src emasc-lisp
+#+begin_src emacs-lisp
   (setup python-ts-mode
     (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
     (:hook indent-bars-mode)
+    (:org-babel-language t)
+    (:reformatters
+     (ruff :program "ruff"))
     )
 
-  (setup lazy-ruff
-    (:load-after python-ts-mode)
-    (:package lazy-ruff)
-    )
 
 
   (setup pet
