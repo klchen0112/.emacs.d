@@ -198,12 +198,6 @@
       repo = "emacs-gradle-mode";
       type = "github";
     };
-    highlight-indent-guides = {
-      flake = false;
-      owner = "DarthFennec";
-      repo = "highlight-indent-guides";
-      type = "github";
-    };
     indent-bars = {
       flake = false;
       owner = "jdtsmith";
@@ -400,6 +394,12 @@
       flake = false;
       owner = "org-roam";
       repo = "org-roam-ui";
+      type = "github";
+    };
+    pet = {
+      flake = false;
+      owner = "wyuenho";
+      repo = "emacs-pet";
       type = "github";
     };
     posframe = {

@@ -528,22 +528,6 @@
         "type": "github"
       }
     },
-    "highlight-indent-guides": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763744895,
-        "narHash": "sha256-KW6zFeSnt4jKFGQf+zU03e2TpLM1Iikl0IXxzZL7M8M=",
-        "owner": "DarthFennec",
-        "repo": "highlight-indent-guides",
-        "rev": "2182caa942f88e4080f5dee49df334ebea52aed0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DarthFennec",
-        "repo": "highlight-indent-guides",
-        "type": "github"
-      }
-    },
     "indent-bars": {
       "flake": false,
       "locked": {
@@ -1073,6 +1057,22 @@
         "type": "github"
       }
     },
+    "pet": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765851706,
+        "narHash": "sha256-5QMH8ilDwrbuid6rE5egTm1RKO/qHsifrCp+7/ke2ZI=",
+        "owner": "wyuenho",
+        "repo": "emacs-pet",
+        "rev": "99dfde30b7febc8b691f5562ca2f908369d0b836",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wyuenho",
+        "repo": "emacs-pet",
+        "type": "github"
+      }
+    },
     "posframe": {
       "flake": false,
       "locked": {
@@ -1204,7 +1204,6 @@
         "forge": "forge",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
-        "highlight-indent-guides": "highlight-indent-guides",
         "indent-bars": "indent-bars",
         "inheritenv": "inheritenv",
         "jinx": "jinx",
@@ -1238,6 +1237,7 @@
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
+        "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
         "projectile": "projectile",
