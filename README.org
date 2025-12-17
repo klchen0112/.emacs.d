@@ -357,7 +357,13 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
-************************************************************************ Large file
+** ui
+#+begin_src emacs-lisp
+  (setup editor-ui
+    (:option cursor-type 'bar)
+    )
+#+end_src
+** Large file
 #+begin_src emacs-lisp
   (setup vlf
     (:package vlf))
@@ -1327,12 +1333,15 @@ Generate Table of Contents.
 
 ** nix
 #+begin_src emacs-lisp
-(setup nix-ts-mode
-       (:package nix-ts-mode)
-  (:with-mode nix-ts-mode (:match-file "\\.nix\\'"))
-  (:hook eglot-mode-hook))
-(setup nix-mode
-       (:package nix-mode))
+  (setup nix-ts-mode
+         (:package nix-ts-mode)
+    (:with-mode nix-ts-mode (:match-file "\\.nix\\'"))
+    (:reformatters
+     (nixfmt-rfc-style :program "nixfmt")
+    )
+   )
+  (setup nix-mode
+         (:package nix-mode))
 #+end_src
 
 ** nushell
@@ -1432,10 +1441,10 @@ Pretty check-boxes as well as bullet lists.
 
 ** yaml
 #+begin_src emacs-lisp
-(setup yaml-ts-mode
-  (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
-  (:hook indent-bars-mode)
-  )
+  (setup yaml-ts-mode
+    (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
+    (:hook indent-bars-mode)
+    )
 #+end_src
 
 * Tool
