@@ -1455,9 +1455,14 @@ Pretty check-boxes as well as bullet lists.
 
 ** Indentation guides
 #+begin_src emacs-lisp
-(setup indent-bars
-       (:package indent-bars)
-       (:option indent-bars-width-frac 0.2))
+  (setup indent-bars
+    (:package indent-bars)
+    (:option indent-bars-width-frac 0.2
+  	   indent-bars-no-descend-lists t ; no extra bars in continued func arg lists
+  	   indent-bars-treesit-support t
+  	   indent-bars-treesit-ignore-blank-lines-types '("module")
+  	   )
+    )
 #+end_src
 
 ** Terminal
