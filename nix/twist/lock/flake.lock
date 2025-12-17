@@ -496,22 +496,6 @@
         "type": "github"
       }
     },
-    "format-all": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732609775,
-        "narHash": "sha256-GXhLdOmLO5fQvs2NZ1P8qBHR32Xrb3E6URxnGpm1jZ0=",
-        "owner": "lassik",
-        "repo": "emacs-format-all-the-code",
-        "rev": "fd9c013f5f8094fef99ddabde07d9041737b8454",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lassik",
-        "repo": "emacs-format-all-the-code",
-        "type": "github"
-      }
-    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -653,22 +637,6 @@
       "original": {
         "owner": "kubernetes-el",
         "repo": "kubernetes-el",
-        "type": "github"
-      }
-    },
-    "language-id": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1729760092,
-        "narHash": "sha256-OGAtIxpMqFjJBjZYNb5oIhFBIVyfrvNTLRDCQWahNWI=",
-        "owner": "lassik",
-        "repo": "emacs-language-id",
-        "rev": "dbfbc4903ffb042552b458fac76ee9f67a022036",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lassik",
-        "repo": "emacs-language-id",
         "type": "github"
       }
     },
@@ -1234,7 +1202,6 @@
         "envrc": "envrc",
         "f": "f",
         "forge": "forge",
-        "format-all": "format-all",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
         "highlight-indent-guides": "highlight-indent-guides",
@@ -1244,7 +1211,6 @@
         "keyfreq": "keyfreq",
         "kotlin-mode": "kotlin-mode",
         "kubernetes": "kubernetes",
-        "language-id": "language-id",
         "ligature": "ligature",
         "llama": "llama",
         "magit": "magit",

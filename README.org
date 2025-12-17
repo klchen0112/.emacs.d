@@ -357,7 +357,11 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
-
+************************************************************************ Large file
+#+begin_src emacs-lisp
+  (setup vlf
+    (:package vlf))
+#+end_src
 ** Copy&Paste
 *** wsl copy
 #+begin_src emacs-lisp
@@ -852,10 +856,6 @@ Reduce scroll margin.
     (:package reformatter)
     )
 
-  (setup format-all
-    (:package format-all)
-    (:hook-into prog-mode)
-    )
 #+end_src
 ** Compilation
 #+begin_src emacs-lisp
@@ -1346,7 +1346,7 @@ Generate Table of Contents.
 ** pdf
 *** Packages
 ** python
-#+begin_src emacs-lisp :tangle no
+#+begin_src emasc-lisp
   (setup python-ts-mode
     (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
     (:hook indent-bars-mode)
@@ -1360,24 +1360,16 @@ Generate Table of Contents.
 
   (setup pet
     (:package pet)
+    (:load-after python-ts-mode)
     (:hook-into python-base-mode-hook))
 #+end_src
 
 *** Packages
 **** python-test
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :
   (setup python-test
-
-    :ensure t
-    :bind
-    (:map python-ts-mode-map
-          ("C-. t a" . python-test-project)
-          ("C-. t f" . python-test-file)
-          ("C-. t t" . python-test-function))
-    :init
-    (setq python-test-backend 'pytest)
-    :config
-    (setq python-test-project-root-files
+    (:option python-test-backend 'pytest)
+    (:when-loaded
           (append '("README.md") python-test-project-root-files)))
 #+end_src
 
