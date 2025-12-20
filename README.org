@@ -223,6 +223,16 @@ load sequence.
     gcmh-high-cons-threshold (* 16 1024 1024) ; 16MB
      gcmh-verbose init-file-debug))
 #+end_src
+
+** performance
+#+begin_src emacs-lisp
+  (setq bidi-inhibit-bpa t)
+  (setq-default bidi-display-reordering 'left-to-right
+                bidi-paragraph-direction 'left-to-right)
+
+  (setq fast-but-imprecise-scrolling t)
+  (setq jit-lock-defer-time 0)
+#+end_src
 * UI
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
