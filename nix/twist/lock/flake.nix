@@ -186,6 +186,12 @@
       repo = "forge";
       type = "github";
     };
+    gcmh = {
+      flake = false;
+      owner = "koral";
+      repo = "gcmh";
+      type = "gitlab";
+    };
     ghub = {
       flake = false;
       owner = "magit";
@@ -513,6 +519,12 @@
       flake = false;
       owner = "emacs-twist";
       repo = "twist.el";
+      type = "github";
+    };
+    ultra-scroll = {
+      flake = false;
+      owner = "jdtsmith";
+      repo = "ultra-scroll";
       type = "github";
     };
     undo-fu = {

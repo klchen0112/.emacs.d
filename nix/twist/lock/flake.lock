@@ -496,6 +496,22 @@
         "type": "github"
       }
     },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "owner": "koral",
+        "repo": "gcmh",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "koral",
+        "repo": "gcmh",
+        "type": "gitlab"
+      }
+    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -1202,6 +1218,7 @@
         "envrc": "envrc",
         "f": "f",
         "forge": "forge",
+        "gcmh": "gcmh",
         "ghub": "ghub",
         "gradle-mode": "gradle-mode",
         "indent-bars": "indent-bars",
@@ -1257,6 +1274,7 @@
         "treepy": "treepy",
         "treesit-fold": "treesit-fold",
         "twist": "twist",
+        "ultra-scroll": "ultra-scroll",
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
@@ -1471,6 +1489,22 @@
       "original": {
         "owner": "emacs-twist",
         "repo": "twist.el",
+        "type": "github"
+      }
+    },
+    "ultra-scroll": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765846745,
+        "narHash": "sha256-MV0FNI+Crqlj3sxGwNcaGXGw0Z9v1MX+cJOeyZx0MhA=",
+        "owner": "jdtsmith",
+        "repo": "ultra-scroll",
+        "rev": "21c568b1a26e597714ad65b40f246dd6e9f71fdd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jdtsmith",
+        "repo": "ultra-scroll",
         "type": "github"
       }
     },
