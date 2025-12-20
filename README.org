@@ -175,7 +175,7 @@ load sequence.
   (setup benchmark-init
          (:package benchmark-init)
          (:only-if init-file-debug
-  		 (require 'benchmark-init)
+  		 (:require benchmark-init)
   		 (add-hook 'after-init-hook 'benchmark-init/deactivate))
          )
 #+end_src
@@ -242,6 +242,7 @@ load sequence.
   (push '(menu-bar-lines . 0) default-frame-alist)
   (push '(tool-bar-lines . 0) default-frame-alist)
   (push '(vertical-scroll-bars) default-frame-alist)
+  (advice-add #'x-apply-session-resources :override #'ignore)
 #+end_src
 ** font
 #+begin_src emacs-lisp
@@ -322,13 +323,13 @@ load sequence.
 
 ** Scroll
 #+begin_src emacs-lisp
-
-  (setup pixel-scroll
-         (:only-if  (version<= "29" emacs-version)
-  		  (:with-mode pixel-scroll-precision-mode
-  			      ;; TODO: Find a better way to hook the minor mode
-  			      (:hook-into find-file-hook
-  					  help-mode-hook))))
+  (setup ultra-scroll
+    (:package ultra-scroll)
+    (:option scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+          scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+    (:when-loaded
+      (ultra-scroll-mode 1))
+    )
 #+end_src
 
 *** Ligatures
