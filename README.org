@@ -793,9 +793,13 @@ Commands compatible with ~completing-read~.
          (:package embark))
   (setup embark-consult
          (:package embark-consult)
-         (:load-after embark consult)
+         (:load-after embark)
+           (:with-map minibuffer-local-map
+  	     (:bind "C-c C-o" embark-export)
+  	 )
          (:with-mode embark-collect-mode
   		   (:hook consult-preview-at-point-mode))
+         
          )
 #+end_src
 
