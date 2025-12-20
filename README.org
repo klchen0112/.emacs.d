@@ -204,6 +204,7 @@ load sequence.
 #+begin_src emacs-lisp
   (setup keymap.c
     (:with-map mode-specific-map
+;;      (:prefix-map "b" kl-buffer-prefix-map)
       (:prefix-map "n" kl-notes-prefix-map)
       (:prefix-map "z" kl-code-prefix-map )
       (:prefix-map "s" kl-search-prefix-map)
@@ -211,6 +212,16 @@ load sequence.
       (:prefix-map "p" kl-project-prefix-map)
       )
     )
+#+end_src
+** gcmh
+#+begin_src emacs-lisp
+
+  (setup gcmh
+    (:package gcmh)
+    (:hook-into after-init-hook)
+    (:option gcmh-idle-delay 5
+    gcmh-high-cons-threshold (* 16 1024 1024) ; 16MB
+     gcmh-verbose init-file-debug))
 #+end_src
 * UI
 :PROPERTIES:
