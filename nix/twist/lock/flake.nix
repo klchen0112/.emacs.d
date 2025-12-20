@@ -186,6 +186,12 @@
       repo = "forge";
       type = "github";
     };
+    format-all = {
+      flake = false;
+      owner = "lassik";
+      repo = "emacs-format-all-the-code";
+      type = "github";
+    };
     gcmh = {
       flake = false;
       owner = "koral";
@@ -238,6 +244,12 @@
       flake = false;
       owner = "kubernetes-el";
       repo = "kubernetes-el";
+      type = "github";
+    };
+    language-id = {
+      flake = false;
+      owner = "lassik";
+      repo = "emacs-language-id";
       type = "github";
     };
     ligature = {
@@ -430,12 +442,6 @@
       flake = false;
       owner = "chuntaro";
       repo = "emacs-promise";
-      type = "github";
-    };
-    reformatter = {
-      flake = false;
-      owner = "purcell";
-      repo = "emacs-reformatter";
       type = "github";
     };
     request = {

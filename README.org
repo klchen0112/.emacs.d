@@ -898,13 +898,6 @@ Reduce scroll margin.
   (setq-local scroll-margin 3))
 (add-hook 'prog-mode-hook #'prog-scroll-margin-setup)
 #+end_src
-** format
-#+begin_src emacs-lisp
-  (setup reformatter
-    (:package reformatter)
-    )
-
-#+end_src
 ** Compilation
 #+begin_src emacs-lisp
 #+end_src
@@ -957,38 +950,10 @@ Code folding with treesit-fold
 
 
 #+begin_src emacs-lisp
-  (setup reformatter
-    (:package reformatter)
-    ;;   (:reformatters
-    ;; If you use prettier, you need to install its executable separately.
-    ;;(prettier
-    ;; :program "prettier"
-    ;; :args (list (concat "--plugin-search-dir="
-    ;;                         (expand-file-name
-    ;;                          (locate-dominating-file default-directory "package.json")))
-    ;;                 "--stdin-filepath" (buffer-file-name)))
-    ;;(treefmt
-    ;; :program "treefmt"
-    ;; :args (list "--stdin" (buffer-file-name)))
+  (setup format-all
+    (:package format-all)
+    (:hook-into prog-mode)
 
-    ;;(yamlfmt
-    ;; :program "yamlfmt"
-    ;; :args (list "-"))
-
-    ;;(jq-format
-    ;; :program "jq"
-    ;; :args (list "."))
-
-    ;;(biome-format
-    ;; :program
-    ;; (cond
-    ;;  ((executable-find "bunx")
-    ;;   "bunx"))
-    ;; :args (append (cond
-    ;;		((executable-find "bunx")
-    ;;		 nil))
-    ;;                   (list "@biomejs/biome" "format" (buffer-file-name)
-    ;;                         (concat "--stdin-file-path=" (buffer-file-name))))))
     )
 #+end_src
 
@@ -1384,9 +1349,6 @@ Generate Table of Contents.
     (:package nix-ts-mode)
     (:nixpkgs "nixfmt")
     (:with-mode nix-ts-mode (:match-file "\\.nix\\'"))
-    (:reformatters
-     (nixfmt-rfc-style :program "nixfmt")
-     )
     )
   (setup nix-mode
     (:package nix-mode))
@@ -1408,11 +1370,7 @@ Generate Table of Contents.
     (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
     (:hook indent-bars-mode)
     (:org-babel-language t)
-    (:nixpkgs "ruff")
-    (:reformatters
-     (ruff :program "ruff"))
-    )
-
+   )
 
 
   (setup pet
