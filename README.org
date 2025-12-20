@@ -773,7 +773,7 @@ Commands compatible with ~completing-read~.
   (setup consult
     (:package consult)
     (:option consult-preview-key "M-RET")
-    (:nixpkgs "fd" "ripgrep")
+    (:nixpkgs fd ripgrep)
     (:with-map kl-search-prefix-map
       (:bind "b" consult-line)
       ;;(:bind "B" consult-line-multi)
@@ -1273,6 +1273,7 @@ Display outlines in text like files or use it in conjunction with other major mo
   (setup java-ts-mode)
 
   (setup eglot-java
+    (:nixpkgs jdt-language-server)
     (:package eglot-java)
     (:load-after eglot)
     (:hook-into java-base-mode-hook)
