@@ -47,24 +47,6 @@ in
           initFile
         ],
     }:
-    let
-      treeSitterLoadPath = lib.pipe pkgs.tree-sitter-grammars [
-        (lib.filterAttrs (name: _: name != "recurseForDerivations"))
-        lib.attrValues
-        (map (drv: {
-          # Some grammars don't contain "tree-sitter-" as the prefix,
-          # so add it explicitly.
-          name = "libtree-sitter-${
-            lib.pipe (lib.getName drv) [
-              (lib.removeSuffix "-grammar")
-              (lib.removePrefix "tree-sitter-")
-            ]
-          }${pkgs.stdenv.targetPlatform.extensions.sharedLibrary}";
-          path = "${drv}/parser";
-        }))
-        (pkgs.linkFarm "treesit-grammars")
-      ];
-    in
     (inputs.twist.lib.makeEnv {
       inherit pkgs;
       inherit emacsPackage;
@@ -77,9 +59,33 @@ in
       lockDir = ../twist/lock;
       inputOverrides = import ../twist/input-overrides.nix { inherit inputs pkgs; };
       registries = import ../twist/registries.nix { inherit inputs pkgs emacsPackage; };
-      extraSiteStartElisp = ''
-        (add-to-list 'treesit-extra-load-path "${treeSitterLoadPath}/")
-      '';
+      extraSiteStartElisp =
+        let
+          treesitterPackage = emacsPackage.pkgs.treesit-grammars.with-grammars (ps: [
+            ps.tree-sitter-dockerfile
+            ps.tree-sitter-elixir
+            ps.tree-sitter-go
+            ps.tree-sitter-gomod
+            ps.tree-sitter-heex
+            ps.tree-sitter-java
+            ps.tree-sitter-javascript
+            ps.tree-sitter-jsdoc
+            ps.tree-sitter-json
+            ps.tree-sitter-json5
+            ps.tree-sitter-lua
+            ps.tree-sitter-nix
+            ps.tree-sitter-nu
+            ps.tree-sitter-python
+            ps.tree-sitter-ruby
+            ps.tree-sitter-rust
+            ps.tree-sitter-typescript
+            ps.tree-sitter-yaml
+            ps.tree-sitter-toml
+          ]);
+        in
+        ''
+          (add-to-list 'treesit-extra-load-path "${treesitterPackage}/lib")
+        '';
     }).overrideScope
       (
         _final: prev: {
