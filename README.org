@@ -1,4 +1,4 @@
-
+#+title: kl's emcas config
 #+ROAM_EXCLUDE: t
 #+ROAM_TAG: nil
 
@@ -773,10 +773,12 @@ Commands compatible with ~completing-read~.
   (setup consult
     (:package consult)
     (:option consult-preview-key "M-RET")
+    (:nixpkgs "fd" "ripgrep")
     (:with-map kl-search-prefix-map
       (:bind "b" consult-line)
       ;;(:bind "B" consult-line-multi)
       (:bind "p" consult-ripgrep)
+      (:bind "f" consult-fd)
       )
     )
 
