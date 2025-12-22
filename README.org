@@ -958,7 +958,8 @@ Code folding with treesit-fold
   (setup format-all
     (:package format-all)
     (:hook-into prog-mode)
-
+    (:with-map kl-code-prefix-map
+      (:bind "f" format-all-buffer))
     )
 #+end_src
 
@@ -1059,11 +1060,10 @@ Generic Language Server Protocol integration via ~eglot~.
      eglot-confirm-server-edits nil
      eglot-sync-connect nil)
     (:with-map kl-code-prefix-map
-      (:bind "f" eglot-format-buffer)
       (:bind "r" eglot-rename)
       (:bind "d" eglot-find-typeDefinition)
-      (:bind "R" eglot-xref-find-references)
-      (:bind "j" eglot-find-declaration)
+      (:bind "R" xref-find-references)
+      (:bind "j" xref-find-declaration)
       (:bind "i" eglot-find-implementation)
       )
     )
