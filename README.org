@@ -881,6 +881,11 @@ Annotations for completion candidates.
 #+begin_src emacs-lisp
   (setup projectile
          (:package projectile)
+         (:with-map kl-project-prefix-map
+  	 (:bind "p" project-switch-project)
+  	 (:bind "d" project-find-dir)
+  	 (:bind "f" project-find-file)
+  	 )
          (projectile-mode +1)
          )
 
