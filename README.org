@@ -654,7 +654,15 @@ Increase undo limit.
 #+begin_src emacs-lisp
   
 #+end_src
-
+* Text segmentation
+#+begin_src emacs-lisp
+  (setup emt
+    (:package emt)
+    (:only-if IS-MAC
+  	    (:hook-into after-init)
+  	    )
+    )
+#+end_src
 * Completion
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
@@ -914,13 +922,6 @@ Annotations for completion candidates.
 :header-args:emacs-lisp: :tangle init.el
 :END:
 
-Reduce scroll margin.
-#+begin_src emacs-lisp
-(defun prog-scroll-margin-setup ()
-  "Setup `scroll-margin' for `prog-mode'."
-  (setq-local scroll-margin 3))
-(add-hook 'prog-mode-hook #'prog-scroll-margin-setup)
-#+end_src
 ** Compilation
 #+begin_src emacs-lisp
 #+end_src
