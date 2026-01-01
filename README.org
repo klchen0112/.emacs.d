@@ -169,7 +169,26 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
+** Constants
+#+begin_src emacs-lisp
+  (defconst IS-MAC (eq system-type 'darwin))
+  (defconst IS-LINUX (eq system-type 'gnu/linux))
+  (defconst IS-WINDOWS (eq system-type 'windows-nt))
+  (defconst IS-BSD (or IS-MAC (eq system-type 'berkeley-unix)))
+  (defun wsl? ()
+    "判断是否运行在 WSL 中。"
+    (and IS-LINUX
+         (with-temp-buffer
+           (when (file-readable-p "/proc/version")
+             (insert-file-contents "/proc/version")
+             (goto-char (point-min))
+             (re-search-forward
+              "Microsoft\\|WSL\\|microsoft"
+              nil t)))))
 
+  ;; 使用变量存储
+  (defconst IS-WSL (wsl?))
+#+end_src
 ** benchmark-init
 #+begin_src emacs-lisp
   (setup benchmark-init
@@ -1224,6 +1243,25 @@ Generic Language Server Protocol integration via ~eglot~.
      ;; in consult-buffer (and not down at the bottom)
      consult-org-roam-buffer-after-buffers t
      )
+    )
+#+end_src
+
+** Input Method
+#+begin_src emacs-lisp
+  ;;(setup rime
+  ;;    (:package rime)
+  ;;    (:option default-input-method "rime"))
+
+  (setup sis
+    (:package sis)
+    (:option sis-ism-lazyman-config
+    	   (cond
+  	    (IS-MAC '("com.apple.keylayout.UnicodeHexInput"
+    		     "im.rime.inputmethod.Squirrel.Rime"))
+    	    (IS-LINUX '("1" 'fcitx5))
+  	    (t '())
+  	    )
+    	   )
     )
 #+end_src
 * Major modes
