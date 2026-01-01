@@ -192,11 +192,10 @@ load sequence.
 ** benchmark-init
 #+begin_src emacs-lisp
   (setup benchmark-init
-         (:package benchmark-init)
-         (:only-if init-file-debug
-  		 (:require benchmark-init)
-  		 (add-hook 'after-init-hook 'benchmark-init/deactivate))
-         )
+    (:package benchmark-init)
+    (:require benchmark-init)
+    (add-hook 'after-init-hook 'benchmark-init/deactivate)
+    )
 #+end_src
 ** keyfreq
 #+begin_src emacs-lisp
