@@ -1257,11 +1257,21 @@ Generic Language Server Protocol integration via ~eglot~.
     (:option sis-ism-lazyman-config
     	   (cond
   	    (IS-MAC '("com.apple.keylayout.UnicodeHexInput"
-    		     "im.rime.inputmethod.Squirrel.Rime"))
+    		      "im.rime.inputmethod.Squirrel.Rime"))
     	    (IS-LINUX '("1" 'fcitx5))
   	    (t '())
   	    )
-    	   )
+
+  	   ;; enable the /cursor color/ mode
+  	   sis-global-cursor-color-mode t
+  	   ;; enable the /respect/ mode
+  	   sis-global-respect-mode t
+  	   ;; enable the /context/ mode for all buffers
+  	   sis-global-context-mode t
+  	   ;; enable the /inline english/ mode for all buffers
+  	   sis-global-inline-mode t)
+    (:with-hook sis-set-english
+      (:hook-into meow-insert-exit-hook))
     )
 #+end_src
 * Major modes
