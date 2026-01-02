@@ -711,11 +711,10 @@ Increase undo limit.
 * Text segmentation
 #+begin_src emacs-lisp
   (setup emt
-    (:package emt)
     (:only-if IS-MAC
+  	    (:package emt)
   	    (:hook-into after-init)
-  	    )
-    )
+    ))
 #+end_src
 * Completion
 :PROPERTIES:
@@ -1018,11 +1017,10 @@ Lookup documentation via DevDocs.
 Code folding with treesit-fold
 #+begin_src emacs-lisp
   (setup treesit-fold
-         (:only-if (fboundp 'treesit-available-p))
-         (:package treesit-fold)
-         (:option hs-show-indicators t)
-         )
-
+    (:only-if (fboundp 'treesit-available-p)
+  	    (:package treesit-fold)
+  	    (:option hs-show-indicators t)
+  	    ))
 #+end_src
 
 ** Formatting
