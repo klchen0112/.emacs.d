@@ -616,6 +616,10 @@ load sequence.
        (:option which-key-idle-delay 0.3)
        )
 
+  (setup which-key-posframe
+    (:package which-key-posframe)
+    (:hook-into which-key-mode)
+  )
 #+end_src
 ** Undo
 Increase undo limit.
@@ -633,20 +637,44 @@ Increase undo limit.
     (:package flycheck)
     (:with-hook global-flycheck-mode
       (:hook-into after-init-hook))
-    
+    (:option flycheck-emacs-lisp-load-path 'inherit
+  	   flycheck-idle-change-delay 1.0
+  	   flycheck-buffer-switch-check-intermediate-buffers t
+  	   flycheck-display-errors-delay 0.25
+
+  	   )
     )
 
-  (setup flycheck-popup-tip
-    (:package flycheck-popup-tip)
-    )
   (setup flycheck-posframe
-    (:package flycheck-posframe))
-
+    (:package flycheck-posframe)
+    (:hook-into flycheck-mode)
+  )
 
   (setup flyover
-    (:package flyover))
+    (:package flyover)
+    (:hook-into flycheck-mode)
+    (:option
+     flyover-levels '(error warning info)  ; Show all levels
+     ;; Use theme colors for error/warning/info faces
+     flyover-use-theme-colors t
 
+     ;; Adjust background lightness (lower values = darker)
+     flyover-background-lightness 45
 
+     ;; Make icon background darker than foreground
+     flyover-percent-darker 40
+
+     flyover-text-tint 'lighter ;; or 'darker or nil
+
+     ;; "Percentage to lighten or darken the text when tinting is enabled."
+     flyover-text-tint-percent 50
+     ;; Choose which checkers to use (flycheck, flymake, or both)
+     flyover-checkers '(flychek)
+
+     ;; Enable debug messages
+     flyover-debug nil
+     )
+    )
 #+end_src
 ** Buffer
 #+begin_src emacs-lisp
@@ -802,14 +830,15 @@ Vertical interactive completion UI.
 *** cape
 Completion At Point Extensions.
 #+begin_src emacs-lisp
-(setup cape
-       (:package cape)
-       (:when-loaded
-       (add-hook 'completion-at-point-functions #'cape-dabbrev)
-       (add-hook 'completion-at-point-functions #'cape-file)
-       (add-hook 'completion-at-point-functions #'cape-elisp-block)
-       )
-       )
+  (setup cape
+    (:package cape)
+    (:when-loaded
+      (add-hook 'completion-at
+  	      -point-functions #'cape-dabbrev)
+      (add-hook 'completion-at-point-functions #'cape-file)
+      (add-hook 'completion-at-point-functions #'cape-elisp-block)
+      )
+    )
 #+end_src
 
 *** consult
@@ -1023,13 +1052,6 @@ Silence next/previous error, by default it produces a message every time.
 
 *** flycheck
 #+begin_src emacs-lisp
-  (setup flymake
-    (:hook-into after-init-hook)
-    (:with-map kl-code-prefix-map
-      (:bind "e" flymake-show-project-diagnostics))
-
-    	)
-
 
 #+end_src
 
@@ -1271,7 +1293,7 @@ Generic Language Server Protocol integration via ~eglot~.
   ;;    (:package rime)
   ;;    (:option default-input-method "rime"))
 
-  (setup sis
+  (setup
     (:package sis)
     (:option sis-ism-lazyman-config
     	   (cond
@@ -1289,8 +1311,8 @@ Generic Language Server Protocol integration via ~eglot~.
   	   sis-global-context-mode t
   	   ;; enable the /inline english/ mode for all buffers
   	   sis-global-inline-mode t)
-    (:with-hook sis-set-english
-      (:hook-into meow-insert-exit-hook))
+    (:when-loaded
+      (add-hook #'sis-set-english 'meow-insert-exit-hook))
     )
 #+end_src
 * Major modes
@@ -1391,21 +1413,18 @@ Display outlines in text like files or use it in conjunction with other major mo
 
 ** markdown
 #+begin_src emacs-lisp
-;;(setup markdown-mode
-;;       (:package markdown-mode)
-;;       (:match-file
-;;        "\\.markdown\\'"
-;;        "\\.md\\'")
-;;       (:hook markdown-display-inline-images)
-;;       (:option markdown-enable-wiki-links t)
-;;       (:option markdown-fontify-code-blocks-natively t)
-;;       (:option markdown-header-scaling t)
-;;       (:option markdown-hide-markup t)
-;;       (:option markdown-italic-underscore t)
-;;       (:option markdown-blockquote-display-char '("┃" ">"))
-;;       (:option markdown-list-item-bullets '("⏺" "▪"))
-;;       (:option markdown-make-gfm-checkboxes-buttons t)
-;;       (:option markdown-max-image-size '(1024 . 1024)))
+  (setup markdown-mode
+    (:package markdown-mode)
+    (:match-file
+     "\\.markdown\\'"
+     "\\.md\\'")
+    (:option markdown-enable-wiki-links t)
+    (:option markdown-fontify-code-blocks-natively t)
+    (:option markdown-header-scaling t)
+    (:option markdown-hide-markup t)
+    (:option markdown-italic-underscore t)
+    (:option markdown-make-gfm-checkboxes-buttons t)
+    )
 #+end_src
 
 *** Packages

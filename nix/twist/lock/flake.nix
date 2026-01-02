@@ -192,12 +192,6 @@
       repo = "flycheck";
       type = "github";
     };
-    flycheck-popup-tip = {
-      flake = false;
-      owner = "flycheck";
-      repo = "flycheck-popup-tip";
-      type = "github";
-    };
     flycheck-posframe = {
       flake = false;
       owner = "alexmurray";
@@ -450,12 +444,6 @@
       repo = "emacs-pet";
       type = "github";
     };
-    popup = {
-      flake = false;
-      owner = "auto-complete";
-      repo = "popup-el";
-      type = "github";
-    };
     posframe = {
       flake = false;
       owner = "tumashu";
@@ -602,6 +590,12 @@
       flake = false;
       owner = "justbur";
       repo = "emacs-which-key";
+      type = "github";
+    };
+    which-key-posframe = {
+      flake = false;
+      owner = "emacsorphanage";
+      repo = "which-key-posframe";
       type = "github";
     };
     with-editor = {

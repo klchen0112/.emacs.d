@@ -512,22 +512,6 @@
         "type": "github"
       }
     },
-    "flycheck-popup-tip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1502581863,
-        "narHash": "sha256-5rerjijphmTeiJ0JxoRrvxtdRlbTYrLl0tQvUm1yJq4=",
-        "owner": "flycheck",
-        "repo": "flycheck-popup-tip",
-        "rev": "ef86aad907f27ca076859d8d9416f4f7727619c6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "flycheck",
-        "repo": "flycheck-popup-tip",
-        "type": "github"
-      }
-    },
     "flycheck-posframe": {
       "flake": false,
       "locked": {
@@ -1201,22 +1185,6 @@
         "type": "github"
       }
     },
-    "popup": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767198153,
-        "narHash": "sha256-dx0XD12aRxB9ipzjiwF9SpcXpo/3TF77DQNZkJwo80U=",
-        "owner": "auto-complete",
-        "repo": "popup-el",
-        "rev": "45a0b759076ce4139aba36dde0a2904136282e73",
-        "type": "github"
-      },
-      "original": {
-        "owner": "auto-complete",
-        "repo": "popup-el",
-        "type": "github"
-      }
-    },
     "posframe": {
       "flake": false,
       "locked": {
@@ -1331,7 +1299,6 @@
         "envrc": "envrc",
         "f": "f",
         "flycheck": "flycheck",
-        "flycheck-popup-tip": "flycheck-popup-tip",
         "flycheck-posframe": "flycheck-posframe",
         "flyover": "flyover",
         "forge": "forge",
@@ -1374,7 +1341,6 @@
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "pet": "pet",
-        "popup": "popup",
         "posframe": "posframe",
         "powerline": "powerline",
         "projectile": "projectile",
@@ -1400,6 +1366,7 @@
         "vertico-posframe": "vertico-posframe",
         "websocket": "websocket",
         "which-key": "which-key",
+        "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
         "yaml": "yaml"
       }
@@ -1721,6 +1688,22 @@
       "original": {
         "owner": "justbur",
         "repo": "emacs-which-key",
+        "type": "github"
+      }
+    },
+    "which-key-posframe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1678732869,
+        "narHash": "sha256-o6wQBcfp0XYbfVJy028jFM2gPfThsxGqWMzMsm4S7E0=",
+        "owner": "emacsorphanage",
+        "repo": "which-key-posframe",
+        "rev": "e4a9ce9a1b20de550fca51f14d055821980d534a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacsorphanage",
+        "repo": "which-key-posframe",
         "type": "github"
       }
     },
