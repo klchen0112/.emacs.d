@@ -1380,7 +1380,26 @@ Generic Language Server Protocol integration via ~eglot~.
     (setq auto-mode-case-fold nil)
      )
 #+end_src
+** cc-mode
+#+begin_src emacs-lisp
+  (setup cmake-mode
+    (:package cmake-mode)
+  )
 
+  (setup demangle-mode
+    (:package demangle-mode))
+
+  (setup disaster
+    (:package disaster))
+    
+  (setup cuda-mode
+    (:package cuda-mode))
+
+  (setup c-or-c++-mode
+    (:match-file ".h")
+
+  )
+#+end_src
 ** emacs-lisp
 #+begin_src emacs-lisp
   (setup elisp-mode
