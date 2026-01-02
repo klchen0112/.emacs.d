@@ -545,6 +545,12 @@
       repo = "s.el";
       type = "github";
     };
+    sbt-mode = {
+      flake = false;
+      owner = "hvesalai";
+      repo = "emacs-sbt-mode";
+      type = "github";
+    };
     scala-mode = {
       flake = false;
       owner = "hvesalai";

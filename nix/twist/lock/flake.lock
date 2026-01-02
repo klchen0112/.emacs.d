@@ -1534,6 +1534,7 @@
         "promise": "promise",
         "request": "request",
         "s": "s",
+        "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",
         "setup": "setup",
         "shrink-path": "shrink-path",
@@ -1572,6 +1573,22 @@
       "original": {
         "owner": "magnars",
         "repo": "s.el",
+        "type": "github"
+      }
+    },
+    "sbt-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712228717,
+        "narHash": "sha256-iGUXrj7yB7w6yPJQIRcntQeGJoNLk/BZ2s6bXgFh6Aw=",
+        "owner": "hvesalai",
+        "repo": "emacs-sbt-mode",
+        "rev": "cc68728a6ef0600aad369157b3a2d0ce56afba9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hvesalai",
+        "repo": "emacs-sbt-mode",
         "type": "github"
       }
     },

@@ -1588,7 +1588,13 @@ Pretty check-boxes as well as bullet lists.
 *** Packages
 ** rust
 #+begin_src emacs-lisp
-  (setup rust-mode)
+  (setup rust-mode
+    (:package rust-mode)
+    )
+
+
+  (setup rustic
+    (:package rustic))
 #+end_src
 ** scala
 #+begin_src emacs-lisp
