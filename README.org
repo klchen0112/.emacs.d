@@ -1431,10 +1431,11 @@ Display outlines in text like files or use it in conjunction with other major mo
   (setup elisp-mode
     (:hook outline-minor-mode))
 #+end_src
-** git
-*** Packages
-**** git-modes
-*** Packages
+** go
+#+begin_src emacs-lisp
+  (setup go-mode
+    (:package go-mode))
+#+end_src
 ** java
 #+begin_src emacs-lisp
   (setup java-ts-mode)
@@ -1455,7 +1456,14 @@ Display outlines in text like files or use it in conjunction with other major mo
        (:hook-into java-base-mode-hook kotlin-mode-hook)
        (:option gradle-executable-path "gradle"))
 #+end_src
+** just
+#+begin_src emacs-lisp
+  (setup just-mode
+    (:package just-mode))
 
+  (setup justl
+    (:package justl))
+#+end_src
 ** json
 #+begin_src emacs-lisp
   (setup json-ts-mode
@@ -1578,6 +1586,10 @@ Pretty check-boxes as well as bullet lists.
 
 ** ruby
 *** Packages
+** rust
+#+begin_src emacs-lisp
+  (setup rust-mode)
+#+end_src
 ** scala
 #+begin_src emacs-lisp
 (setup scala-mode

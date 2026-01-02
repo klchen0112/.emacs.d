@@ -13,24 +13,6 @@
       repo = "benchmark-init-el";
       type = "github";
     };
-    biblio = {
-      flake = false;
-      owner = "cpitclaudel";
-      repo = "biblio.el";
-      type = "github";
-    };
-    biblio-core = {
-      flake = false;
-      owner = "cpitclaudel";
-      repo = "biblio.el";
-      type = "github";
-    };
-    bibtex-completion = {
-      flake = false;
-      owner = "tmalsburg";
-      repo = "helm-bibtex";
-      type = "github";
-    };
     cape = {
       flake = false;
       owner = "minad";
@@ -66,6 +48,11 @@
       owner = "magit";
       repo = "closql";
       type = "github";
+    };
+    cmake-mode = {
+      flake = false;
+      type = "git";
+      url = "https://gitlab.kitware.com/cmake/cmake.git";
     };
     compat = {
       flake = false;
@@ -103,6 +90,12 @@
       repo = "corfu";
       type = "github";
     };
+    cuda-mode = {
+      flake = false;
+      owner = "chachi";
+      repo = "cuda-mode";
+      type = "github";
+    };
     dape = {
       flake = false;
       owner = "svaante";
@@ -119,6 +112,12 @@
       flake = false;
       owner = "emacs-dashboard";
       repo = "emacs-dashboard";
+      type = "github";
+    };
+    demangle-mode = {
+      flake = false;
+      owner = "liblit";
+      repo = "demangle-mode";
       type = "github";
     };
     devdocs = {
@@ -149,6 +148,12 @@
       flake = false;
       owner = "alexluigit";
       repo = "dirvish";
+      type = "github";
+    };
+    disaster = {
+      flake = false;
+      owner = "jart";
+      repo = "disaster";
       type = "github";
     };
     docker = {
@@ -264,6 +269,12 @@
       repo = "ghub";
       type = "github";
     };
+    go-mode = {
+      flake = false;
+      owner = "dominikh";
+      repo = "go-mode.el";
+      type = "github";
+    };
     gradle-mode = {
       flake = false;
       owner = "scubacabra";
@@ -286,6 +297,18 @@
       flake = false;
       owner = "minad";
       repo = "jinx";
+      type = "github";
+    };
+    just-mode = {
+      flake = false;
+      owner = "leon-barrett";
+      repo = "just-mode.el";
+      type = "github";
+    };
+    justl = {
+      flake = false;
+      owner = "psibi";
+      repo = "justl.el";
       type = "github";
     };
     keyfreq = {
@@ -460,12 +483,6 @@
       flake = false;
       owner = "org-roam";
       repo = "org-roam";
-      type = "github";
-    };
-    org-roam-bibtex = {
-      flake = false;
-      owner = "org-roam";
-      repo = "org-roam-bibtex";
       type = "github";
     };
     org-roam-timestamps = {
