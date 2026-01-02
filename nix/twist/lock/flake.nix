@@ -539,6 +539,18 @@
       repo = "emacs-request";
       type = "github";
     };
+    rust-mode = {
+      flake = false;
+      owner = "rust-lang";
+      repo = "rust-mode";
+      type = "github";
+    };
+    rustic = {
+      flake = false;
+      owner = "emacs-rustic";
+      repo = "rustic";
+      type = "github";
+    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -578,6 +590,12 @@
       flake = false;
       owner = "laishulu";
       repo = "emacs-smart-input-source";
+      type = "github";
+    };
+    spinner = {
+      flake = false;
+      owner = "Malabarba";
+      repo = "spinner.el";
       type = "github";
     };
     string-inflection = {
@@ -679,6 +697,12 @@
       flake = false;
       owner = "magit";
       repo = "with-editor";
+      type = "github";
+    };
+    xterm-color = {
+      flake = false;
+      owner = "atomontage";
+      repo = "xterm-color";
       type = "github";
     };
     yaml = {
