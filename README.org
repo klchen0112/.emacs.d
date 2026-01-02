@@ -1593,8 +1593,8 @@ Pretty check-boxes as well as bullet lists.
     )
 
 
-  (setup rustic
-    (:package rustic))
+  ;;(setup rustic
+  ;;  (:package rustic))
 #+end_src
 ** scala
 #+begin_src emacs-lisp
