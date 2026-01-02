@@ -628,7 +628,26 @@ Increase undo limit.
 #+end_src
 
 ** Synatax & Checker
+#+begin_src emacs-lisp
+  (setup flycheck
+    (:package flycheck)
+    (:with-hook global-flycheck-mode
+      (:hook-into after-init-hook))
+    
+    )
 
+  (setup flycheck-popup-tip
+    (:package flycheck-popup-tip)
+    )
+  (setup flycheck-posframe
+    (:package flycheck-posframe))
+
+
+  (setup flyover
+    (:package flyover))
+
+
+#+end_src
 ** Buffer
 #+begin_src emacs-lisp
   (setup buffer

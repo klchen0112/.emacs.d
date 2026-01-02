@@ -168,6 +168,12 @@
       repo = "embark";
       type = "github";
     };
+    emt = {
+      flake = false;
+      owner = "roife";
+      repo = "emt";
+      type = "github";
+    };
     envrc = {
       flake = false;
       owner = "purcell";
@@ -178,6 +184,30 @@
       flake = false;
       owner = "rejeep";
       repo = "f.el";
+      type = "github";
+    };
+    flycheck = {
+      flake = false;
+      owner = "flycheck";
+      repo = "flycheck";
+      type = "github";
+    };
+    flycheck-popup-tip = {
+      flake = false;
+      owner = "flycheck";
+      repo = "flycheck-popup-tip";
+      type = "github";
+    };
+    flycheck-posframe = {
+      flake = false;
+      owner = "alexmurray";
+      repo = "flycheck-posframe";
+      type = "github";
+    };
+    flyover = {
+      flake = false;
+      owner = "konrad1977";
+      repo = "flyover";
       type = "github";
     };
     forge = {
@@ -420,6 +450,12 @@
       repo = "emacs-pet";
       type = "github";
     };
+    popup = {
+      flake = false;
+      owner = "auto-complete";
+      repo = "popup-el";
+      type = "github";
+    };
     posframe = {
       flake = false;
       owner = "tumashu";
@@ -477,6 +513,12 @@
       flake = false;
       owner = "skeeto";
       repo = "emacs-web-server";
+      type = "github";
+    };
+    sis = {
+      flake = false;
+      owner = "laishulu";
+      repo = "emacs-smart-input-source";
       type = "github";
     };
     switch-window = {
