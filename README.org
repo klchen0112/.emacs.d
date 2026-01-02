@@ -1293,7 +1293,7 @@ Generic Language Server Protocol integration via ~eglot~.
   ;;    (:package rime)
   ;;    (:option default-input-method "rime"))
 
-  (setup
+  (setup sis
     (:package sis)
     (:option sis-ism-lazyman-config
     	   (cond
