@@ -13,6 +13,24 @@
       repo = "benchmark-init-el";
       type = "github";
     };
+    biblio = {
+      flake = false;
+      owner = "cpitclaudel";
+      repo = "biblio.el";
+      type = "github";
+    };
+    biblio-core = {
+      flake = false;
+      owner = "cpitclaudel";
+      repo = "biblio.el";
+      type = "github";
+    };
+    bibtex-completion = {
+      flake = false;
+      owner = "tmalsburg";
+      repo = "helm-bibtex";
+      type = "github";
+    };
     cape = {
       flake = false;
       owner = "minad";
@@ -23,6 +41,24 @@
       flake = false;
       owner = "ema2159";
       repo = "centaur-tabs";
+      type = "github";
+    };
+    citar = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar";
+      type = "github";
+    };
+    citar-org-roam = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar-org-roam";
+      type = "github";
+    };
+    citeproc = {
+      flake = false;
+      owner = "andras-simonyi";
+      repo = "citeproc-el";
       type = "github";
     };
     closql = {
@@ -426,6 +462,12 @@
       repo = "org-roam";
       type = "github";
     };
+    org-roam-bibtex = {
+      flake = false;
+      owner = "org-roam";
+      repo = "org-roam-bibtex";
+      type = "github";
+    };
     org-roam-timestamps = {
       flake = false;
       owner = "tefkah";
@@ -436,6 +478,12 @@
       flake = false;
       owner = "org-roam";
       repo = "org-roam-ui";
+      type = "github";
+    };
+    parsebib = {
+      flake = false;
+      owner = "joostkremers";
+      repo = "parsebib";
       type = "github";
     };
     pet = {
@@ -507,6 +555,12 @@
       flake = false;
       owner = "laishulu";
       repo = "emacs-smart-input-source";
+      type = "github";
+    };
+    string-inflection = {
+      flake = false;
+      owner = "akicho8";
+      repo = "string-inflection";
       type = "github";
     };
     switch-window = {

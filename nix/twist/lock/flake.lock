@@ -32,6 +32,54 @@
         "type": "github"
       }
     },
+    "biblio": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755007698,
+        "narHash": "sha256-3SK7Uls8p3oysopN60rai9auUZnceIVLvm8Zhj8mW/Y=",
+        "owner": "cpitclaudel",
+        "repo": "biblio.el",
+        "rev": "bb9d6b4b962fb2a4e965d27888268b66d868766b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cpitclaudel",
+        "repo": "biblio.el",
+        "type": "github"
+      }
+    },
+    "biblio-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755007698,
+        "narHash": "sha256-3SK7Uls8p3oysopN60rai9auUZnceIVLvm8Zhj8mW/Y=",
+        "owner": "cpitclaudel",
+        "repo": "biblio.el",
+        "rev": "bb9d6b4b962fb2a4e965d27888268b66d868766b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cpitclaudel",
+        "repo": "biblio.el",
+        "type": "github"
+      }
+    },
+    "bibtex-completion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731742005,
+        "narHash": "sha256-57TDV/TQVS7TMOILB5jOeU/9jETo10dtJqH3xkmoDeE=",
+        "owner": "tmalsburg",
+        "repo": "helm-bibtex",
+        "rev": "6064e8625b2958f34d6d40312903a85c173b5261",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tmalsburg",
+        "repo": "helm-bibtex",
+        "type": "github"
+      }
+    },
     "cape": {
       "flake": false,
       "locked": {
@@ -61,6 +109,54 @@
       "original": {
         "owner": "ema2159",
         "repo": "centaur-tabs",
+        "type": "github"
+      }
+    },
+    "citar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762688288,
+        "narHash": "sha256-SkOiFf7+0KKWMLM4jKcEIzvehNk5b0mwltk4fWOpf7k=",
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "rev": "dc7018eb36fb3540cb5b7fc526d6747144437eef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "type": "github"
+      }
+    },
+    "citar-org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745507478,
+        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "type": "github"
+      }
+    },
+    "citeproc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762154200,
+        "narHash": "sha256-OSpoHph99Vk7TmMOi33Ze3snPTO567ugQOV92IWA3bk=",
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
+        "rev": "a3d62ab8e40a75fcfc6e4c0c107e3137b4db6db8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
         "type": "github"
       }
     },
@@ -1137,6 +1233,22 @@
         "type": "github"
       }
     },
+    "org-roam-bibtex": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739620593,
+        "narHash": "sha256-3mduBB1xgStRnzEB22ATyVOthOIXKwSY1pcesFTG3MM=",
+        "owner": "org-roam",
+        "repo": "org-roam-bibtex",
+        "rev": "b065198f2c3bc2a47ae520acd2b1e00e7b0171e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-roam",
+        "repo": "org-roam-bibtex",
+        "type": "github"
+      }
+    },
     "org-roam-timestamps": {
       "flake": false,
       "locked": {
@@ -1166,6 +1278,22 @@
       "original": {
         "owner": "org-roam",
         "repo": "org-roam-ui",
+        "type": "github"
+      }
+    },
+    "parsebib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764261112,
+        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
+        "owner": "joostkremers",
+        "repo": "parsebib",
+        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joostkremers",
+        "repo": "parsebib",
         "type": "github"
       }
     },
@@ -1269,8 +1397,14 @@
       "inputs": {
         "aio": "aio",
         "benchmark-init": "benchmark-init",
+        "biblio": "biblio",
+        "biblio-core": "biblio-core",
+        "bibtex-completion": "bibtex-completion",
         "cape": "cape",
         "centaur-tabs": "centaur-tabs",
+        "citar": "citar",
+        "citar-org-roam": "citar-org-roam",
+        "citeproc": "citeproc",
         "closql": "closql",
         "compat": "compat",
         "cond-let": "cond-let",
@@ -1338,8 +1472,10 @@
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
         "org-roam": "org-roam",
+        "org-roam-bibtex": "org-roam-bibtex",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
+        "parsebib": "parsebib",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1352,6 +1488,7 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
+        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
         "tempel": "tempel",
@@ -1464,6 +1601,22 @@
       "original": {
         "owner": "laishulu",
         "repo": "emacs-smart-input-source",
+        "type": "github"
+      }
+    },
+    "string-inflection": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763116921,
+        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
+        "owner": "akicho8",
+        "repo": "string-inflection",
+        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akicho8",
+        "repo": "string-inflection",
         "type": "github"
       }
     },

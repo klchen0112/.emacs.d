@@ -170,6 +170,7 @@ load sequence.
 :header-args:emacs-lisp: :tangle init.el
 :END:
 ** Constants
+*** System Constants
 #+begin_src emacs-lisp
   (defconst IS-MAC (eq system-type 'darwin))
   (defconst IS-LINUX (eq system-type 'gnu/linux))
@@ -188,6 +189,12 @@ load sequence.
 
   ;; 使用变量存储
   (defconst IS-WSL (wsl?))
+#+end_src
+*** org-constants
+#+begin_src emacs-lisp
+  (defconst kl/bib (concat "~/org/" "academic.bib"))
+  (defconst kl/bib-notes (concat "~/org/" "references"))
+  (defconst kl/library-files "~/Documents/org-pdfs")
 #+end_src
 ** benchmark-init
 #+begin_src emacs-lisp
@@ -1286,7 +1293,56 @@ Generic Language Server Protocol integration via ~eglot~.
      )
     )
 #+end_src
+** citar
+#+begin_src emacs-lisp
+  (setup citar
+    (:package citar)
+    (:load-after org)
+    (:option
+     citar-bibliography kl/bib
+     citar-notes-paths '(kl/bib-notes)
 
+     org-cite-insert-processor 'citar
+     org-cite-follow-processor 'citar
+     org-cite-activate-processor 'citar
+
+     citar-default-action 'citar-open-notes
+
+     citar-at-point-function 'citar-dwim
+
+     citar-file-note-org-include '(org-id org-roam-ref)
+     citar-templates
+     '((main . "${author editor:30}     ${date year issued:4}     ${title:55}")
+       (suffix . "  ${tags keywords:40}")
+       (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
+       (note .
+  	   "${title}\n#+filetags: :references:
+  - bibliography ::
+  - tags :: ${tags}
+  - keywords :: ${keywords}
+  - previous work :: \n* Notes
+  :PROPERTIES:
+  :Custom_ID: ${=key=}
+  :URL: ${url}
+  :AUTHOR: ${author}
+  :NOTER_DOCUMENT: ${file}
+  :NOTER_PAGE:
+  :NOANKI: t
+  :END:")
+       )
+     )
+    )
+
+  (setup citar-org-roam
+    (:package citar-org-roam)
+    (:load-after citar org-roam)
+    (:when-loaded citar-org-roam-mode)
+    )
+  ;;(setup org-roam-bibtex
+  ;;  (:package org-roam-bibtex)
+  ;;  (:load-after org-roam citar)
+  ;;  )
+#+end_src
 ** Input Method
 #+begin_src emacs-lisp
   ;;(setup rime
