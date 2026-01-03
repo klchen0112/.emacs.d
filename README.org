@@ -2,7 +2,7 @@
 #+ROAM_EXCLUDE: t
 #+ROAM_TAG: nil
 
-* Emacs
+# * Emacs
 ** File Layout
 *** Features
 You'll notice several headings tagged with =@{feature}= like in =@mail=, these
@@ -697,16 +697,15 @@ Increase undo limit.
 
 ** auto save
 #+begin_src emacs-lisp
-  (setup files
-    (:with-mode auto-save-visited-mode
-      (:hook-into after-init-hook))
+  (setup auto-save-visited
+    (:hook-into after-init-hook)
     (:option auto-save-no-message t
   	   save-abbrevs 'silently))
 #+end_src
 
 ** Ident
 #+begin_src emacs-lisp
-  
+
 #+end_src
 * Text segmentation
 #+begin_src emacs-lisp
@@ -716,20 +715,7 @@ Increase undo limit.
   	    (:hook-into after-init)
     ))
 #+end_src
-* Completion
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle init.el
-:END:
 
-Enable indentation and completion with the =TAB= key.
-#+begin_src emacs-lisp
-(setq tab-always-indent 'complete)
-#+end_src
-
-Cycle with the =TAB= key if there are only few candidates.
-#+begin_src emacs-lisp
-(setq completion-cycle-threshold 3)
-#+end_src
 
 
 ** Style
@@ -746,47 +732,56 @@ Space-separated matching components matching in any order.
 
 ** Buffer
 *** corfu
-Completion Overlay Region FUnction.
+Completion Overlay Region Function.
 #+begin_src emacs-lisp
   (setup corfu
-     (:package corfu)
-     (:with-mode global-corfu-mode
-       (:hook-into after-init-hook))
-     ;; load features
-     (:also-load nerd-icons-corfu)
-     (:with-feature corfu-popupinfo
-       (:option corfu-popupinfo-delay '(0.5 . 1.0))
-       (:hook-into corfu-mode-hook))
-     (:with-feature corfu-history
-       (:hook-into corfu-mode-hook)
-       )
-     (:option
-      corfu-auto t
-      corfu-atuo-refix 2
-      corfu-cycle t
-      corfu-preselect 'prompt
-      corfu-count 16
-      corfu-max-width 120
-      corfu-on-exact-match nil
-      corfu-quit-at-boundary     'separator
-      tab-always-indent 'complete))
+    (:package corfu)
+    (:with-hook global-corfu-mode
+      (:hook-into after-init-hook))
+    (:with-hook corfu-history-mode
+      (:hook-into after-init-hook))
+    (:with-hook corfu-popupinfo-mode
+      (:hook-into after-init-hook))
+    ;; load features
+    (:also-load nerd-icons-corfu)
+    (:with-feature corfu-popupinfo
+      (:option corfu-popupinfo-delay '(0.5 . 1.0))
+      (:hook-into corfu-mode-hook))
+    (:with-feature corfu-history
+      (:hook-into corfu-mode-hook)
+      )
+    (:option
+     corfu-auto t
+     corfu-atuo-refix 2
+     corfu-cycle t
+     corfu-preselect 'prompt
+     corfu-count 16
+     corfu-max-width 120
+     corfu-on-exact-match nil
+     corfu-quit-at-boundary     'separator
+     ))
 
-   (setup nerd-icons-corfu
-     (:package nerd-icons-corfu)
-     )
-#+end_src
+  (setup emacs
+    (:option tab-always-indent 'complete
+    	   text-mode-ispell-word-completion nil
+    	   read-extended-command-predicate #'command-completion-default-include-p)
+    )
+
+  (setup nerd-icons-corfu
+    (:package nerd-icons-corfu))
+ #+end_src
 
 ** Minibuffer
 *** vertico
-Vertical interactive completion UI.
+Vertical interactive completion
 #+begin_src emacs-lisp
   (setup vertico
-         (:package vertico)
-         (:also-load orderless)
-         (:also-load marginalia)
-         (:hook-into after-init-hook)
-         (:option vertico-cycle t)
-         )
+    (:package vertico)
+    (:also-load orderless)
+    (:also-load marginalia)
+    (:hook-into after-init-hook)
+    (:option vertico-cycle t)
+    )
 
   (setup vertico-posframe
     (:package vertico-posframe)
@@ -839,35 +834,34 @@ Completion At Point Extensions.
   (setup cape
     (:package cape)
     (:when-loaded
-      (add-hook 'completion-at
-  	      -point-functions #'cape-dabbrev)
-      (add-hook 'completion-at-point-functions #'cape-file)
-      (add-hook 'completion-at-point-functions #'cape-elisp-block)
+      (add-hook #'completion-at-point-functions #'cape-dabbrev)
+      (add-hook #'completion-at-point-functions #'cape-file)
+      (add-hook #'completion-at-point-functions #'cape-dict)
       )
     )
-#+end_src
+ #+end_src
 
 *** consult
-Commands compatible with ~completing-read~.
-#+begin_src emacs-lisp
-  (setup consult
-    (:package consult)
-    (:option consult-preview-key "M-RET")
-    (:nixpkgs fd ripgrep)
-    (:with-map kl-search-prefix-map
-      (:bind "b" consult-line)
-      ;;(:bind "B" consult-line-multi)
-      (:bind "p" consult-ripgrep)
-      (:bind "f" consult-fd)
-      )
-    )
+  Commands compatible with ~completing-read~.
+ #+begin_src emacs-lisp
+   (setup consult
+     (:package consult)
+     (:option consult-preview-key "M-RET")
+     (:nixpkgs fd ripgrep)
+     (:with-map kl-search-prefix-map
+       (:bind "b" consult-line)
+       ;;(:bind "B" consult-line-multi)
+       (:bind "p" consult-ripgrep)
+       (:bind "f" consult-fd)
+       )
+     )
 
-  (setup consult-xref
-    (:when-loaded
-      (setq xref-show-xrefs-function #'consult-xref
-            xref-show-definitions-function #'consult-xref))
-    (:load-after consult xref)
-    )
+   (setup consult-xref
+     (:when-loaded
+       (setq xref-show-xrefs-function #'consult-xref
+             xref-show-definitions-function #'consult-xref))
+     (:load-after consult xref)
+     )
 #+end_src
 *** embark
 #+begin_src emacs-lisp
@@ -881,17 +875,25 @@ Commands compatible with ~completing-read~.
   	 )
          (:with-mode embark-collect-mode
   		   (:hook consult-preview-at-point-mode))
-         
+
          )
 #+end_src
 
 
 *** dabbrev
 #+begin_src emacs-lisp
-(setup dabbrev
-       (:option
-        dabbrev-case-replace nil
-        dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
+  (setup dabbrev
+    (:option
+     dabbrev-case-replace nil
+     dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))
+    (:when-loaded
+      (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
+      (add-to-list 'dabbrev-ignored-buffer-modes 'authinfo-mode)
+      (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
+      (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
+      (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode)
+      )
+    )
 #+end_src
 
 
@@ -1185,6 +1187,8 @@ Generic Language Server Protocol integration via ~eglot~.
        ;; agenda view 默认从周一开始显示
        org-agenda-start-on-weekday 1)
       )
+    (:when-loaded
+      (add-hook #'completion-at-point-function #'cape-elisp-block))
     )
 
   (setup org-download
@@ -1349,24 +1353,25 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup sis
     (:package sis)
-    (:option sis-ism-lazyman-config
-    	   (cond
-  	    (IS-MAC '("com.apple.keylayout.UnicodeHexInput"
-    		      "im.rime.inputmethod.Squirrel.Rime"))
-    	    (IS-LINUX '("1" 'fcitx5))
-  	    (t '())
-  	    )
-
-  	   ;; enable the /cursor color/ mode
-  	   sis-global-cursor-color-mode t
-  	   ;; enable the /respect/ mode
-  	   sis-global-respect-mode t
-  	   ;; enable the /context/ mode for all buffers
-  	   sis-global-context-mode t
-  	   ;; enable the /inline english/ mode for all buffers
-  	   sis-global-inline-mode t)
+    (:load-after meow)
+    (:option
+     ;; enable the /cursor color/ mode
+     ;;	   sis-global-cursor-color-mode t
+     ;;	   ;; enable the /respect/ mode
+     ;;	   sis-global-respect-mode t
+     ;;	   ;; enable the /context/ mode for all buffers
+     ;;	   sis-global-context-mode t
+     ;;	   ;; enable the /inline english/ mode for all buffers
+     sis-global-inline-mode t)
     (:when-loaded
-      (add-hook #'sis-set-english 'meow-insert-exit-hook))
+      (setq sis-ism-lazyman-config
+       (cond
+        (IS-MAC '("com.apple.keylayout.UnicodeHexInput" "im.rime.inputmethod.Squirrel.Rime"))
+        (IS-LINUX '("1" "2" 'fcitx5))
+        (t '())
+        )
+       )
+      (add-hook #'meow-insert-exit-hook #'sis-set-english))
     )
 #+end_src
 * Major modes
@@ -1391,7 +1396,7 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup disaster
     (:package disaster))
-    
+
   (setup cuda-mode
     (:package cuda-mode))
 
@@ -1418,7 +1423,7 @@ Display outlines in text like files or use it in conjunction with other major mo
     (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
 #+end_src
 
-** csv  
+** csv
 #+begin_src emacs-lisp
 (setup csv-mode
        (:package csv-mode)
@@ -1542,7 +1547,7 @@ Generate Table of Contents.
   (setup python-ts-mode
     (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
     (:hook indent-bars-mode)
-    (:org-babel-language t)
+    ;;(:org-babel-language t)
    )
 
 
