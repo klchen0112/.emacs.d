@@ -1776,13 +1776,15 @@ Pretty check-boxes as well as bullet lists.
   	   indent-bars-treesit-ignore-blank-lines-types '("module")
   	   )
     )
+  
 #+end_src
 
 ** Terminal
 *** eat
 #+begin_src emacs-lisp
-(setup eat
-       (:package eat))
+  (setup eat
+    (:package eat)
+    (:option eat-shell "nu"))
 #+end_src
 
 ** Check
