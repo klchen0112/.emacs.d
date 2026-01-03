@@ -752,6 +752,22 @@
         "type": "github"
       }
     },
+    "ht": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688363925,
+        "narHash": "sha256-suE9ncN4rTA/9GcfAK6B+m9vnE8pYpfGavCFrXpA0+8=",
+        "owner": "Wilfred",
+        "repo": "ht.el",
+        "rev": "1c49aad1c820c86f7ee35bf9fff8429502f60fef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wilfred",
+        "repo": "ht.el",
+        "type": "github"
+      }
+    },
     "indent-bars": {
       "flake": false,
       "locked": {
@@ -1329,6 +1345,22 @@
         "type": "github"
       }
     },
+    "org-super-agenda": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745199040,
+        "narHash": "sha256-AC7OqHwXJ5WCByh6fAz9WdJCqDN98fMove9/Wv1FuxM=",
+        "owner": "alphapapa",
+        "repo": "org-super-agenda",
+        "rev": "fb20ad9c8a9705aa05d40751682beae2d094e0fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "org-super-agenda",
+        "type": "github"
+      }
+    },
     "parsebib": {
       "flake": false,
       "locked": {
@@ -1490,6 +1522,7 @@
         "ghub": "ghub",
         "go-mode": "go-mode",
         "gradle-mode": "gradle-mode",
+        "ht": "ht",
         "indent-bars": "indent-bars",
         "inheritenv": "inheritenv",
         "jinx": "jinx",
@@ -1526,6 +1559,7 @@
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
+        "org-super-agenda": "org-super-agenda",
         "parsebib": "parsebib",
         "pet": "pet",
         "posframe": "posframe",
@@ -1549,11 +1583,13 @@
         "transient": "transient",
         "treepy": "treepy",
         "treesit-fold": "treesit-fold",
+        "ts": "ts",
         "twist": "twist",
         "ultra-scroll": "ultra-scroll",
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
+        "vulpea": "vulpea",
         "websocket": "websocket",
         "wgrep": "wgrep",
         "which-key": "which-key",
@@ -1818,6 +1854,22 @@
         "type": "github"
       }
     },
+    "ts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661210030,
+        "narHash": "sha256-2UU1cPaB+hyEtk4rjwoC54BERcAup99aCrTZn0pwkaI=",
+        "owner": "alphapapa",
+        "repo": "ts.el",
+        "rev": "552936017cfdec89f7fc20c254ae6b37c3f22c5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "ts.el",
+        "type": "github"
+      }
+    },
     "twist": {
       "flake": false,
       "locked": {
@@ -1895,6 +1947,22 @@
       "original": {
         "owner": "tumashu",
         "repo": "vertico-posframe",
+        "type": "github"
+      }
+    },
+    "vulpea": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767437976,
+        "narHash": "sha256-NEzEz6tlQGZu+5gSDkD0JuMBlvwT9ixn5/LuSplfjV8=",
+        "owner": "d12frosted",
+        "repo": "vulpea",
+        "rev": "8963248f89f34bf7bf4eaccfe140b49c38685a2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "d12frosted",
+        "repo": "vulpea",
         "type": "github"
       }
     },

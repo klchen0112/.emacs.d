@@ -281,6 +281,12 @@
       repo = "emacs-gradle-mode";
       type = "github";
     };
+    ht = {
+      flake = false;
+      owner = "Wilfred";
+      repo = "ht.el";
+      type = "github";
+    };
     indent-bars = {
       flake = false;
       owner = "jdtsmith";
@@ -497,6 +503,12 @@
       repo = "org-roam-ui";
       type = "github";
     };
+    org-super-agenda = {
+      flake = false;
+      owner = "alphapapa";
+      repo = "org-super-agenda";
+      type = "github";
+    };
     parsebib = {
       flake = false;
       owner = "joostkremers";
@@ -634,6 +646,12 @@
       repo = "treesit-fold";
       type = "github";
     };
+    ts = {
+      flake = false;
+      owner = "alphapapa";
+      repo = "ts.el";
+      type = "github";
+    };
     twist = {
       flake = false;
       owner = "emacs-twist";
@@ -661,6 +679,12 @@
       flake = false;
       owner = "tumashu";
       repo = "vertico-posframe";
+      type = "github";
+    };
+    vulpea = {
+      flake = false;
+      owner = "d12frosted";
+      repo = "vulpea";
       type = "github";
     };
     websocket = {
