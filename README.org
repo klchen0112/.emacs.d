@@ -1544,10 +1544,11 @@ Generate Table of Contents.
 *** Packages
 ** python
 #+begin_src emacs-lisp
+  (setup python
+     (:org-babel-language t))
   (setup python-ts-mode
     (:with-mode python-ts-mode  (:match-file "\\.py\\'"))
     (:hook indent-bars-mode)
-    ;;(:org-babel-language t)
    )
 
 
