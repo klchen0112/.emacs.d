@@ -1534,7 +1534,6 @@
         "promise": "promise",
         "request": "request",
         "rust-mode": "rust-mode",
-        "rustic": "rustic",
         "s": "s",
         "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",
@@ -1542,7 +1541,6 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
-        "spinner": "spinner",
         "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
@@ -1557,10 +1555,10 @@
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
         "websocket": "websocket",
+        "wgrep": "wgrep",
         "which-key": "which-key",
         "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
-        "xterm-color": "xterm-color",
         "yaml": "yaml"
       }
     },
@@ -1577,22 +1575,6 @@
       "original": {
         "owner": "rust-lang",
         "repo": "rust-mode",
-        "type": "github"
-      }
-    },
-    "rustic": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764582878,
-        "narHash": "sha256-n4H5CrJ7590BhqvNt+PtuqPrbgnjk/g7oEk9y8M4kWY=",
-        "owner": "emacs-rustic",
-        "repo": "rustic",
-        "rev": "e77f62facc1f6287bc62c1dd41a996b8fb25fea2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-rustic",
-        "repo": "rustic",
         "type": "github"
       }
     },
@@ -1705,22 +1687,6 @@
       "original": {
         "owner": "laishulu",
         "repo": "emacs-smart-input-source",
-        "type": "github"
-      }
-    },
-    "spinner": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1663246199,
-        "narHash": "sha256-Ad6J3xGUWD+WDP3BbsgKvxJb90VMOkjJuIt/fhBu+rs=",
-        "owner": "Malabarba",
-        "repo": "spinner.el",
-        "rev": "d4647ae87fb0cd24bc9081a3d287c860ff061c21",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Malabarba",
-        "repo": "spinner.el",
         "type": "github"
       }
     },
@@ -1948,6 +1914,22 @@
         "type": "github"
       }
     },
+    "wgrep": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733490377,
+        "narHash": "sha256-SQR3R/Vue/Rx3MvQiI6BotOKs39nES07hXsiOKMb/Kc=",
+        "owner": "mhayashi1120",
+        "repo": "Emacs-wgrep",
+        "rev": "49f09ab9b706d2312cab1199e1eeb1bcd3f27f6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mhayashi1120",
+        "repo": "Emacs-wgrep",
+        "type": "github"
+      }
+    },
     "which-key": {
       "flake": false,
       "locked": {
@@ -1993,22 +1975,6 @@
       "original": {
         "owner": "magit",
         "repo": "with-editor",
-        "type": "github"
-      }
-    },
-    "xterm-color": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765576093,
-        "narHash": "sha256-SLgkSXqlwZE+YihYPoMN633lUJx4PAuxCXkrHZqXH/0=",
-        "owner": "atomontage",
-        "repo": "xterm-color",
-        "rev": "86fab1d247eb5ebe6b40fa5073a70dfa487cd465",
-        "type": "github"
-      },
-      "original": {
-        "owner": "atomontage",
-        "repo": "xterm-color",
         "type": "github"
       }
     },

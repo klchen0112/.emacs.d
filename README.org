@@ -2,7 +2,7 @@
 #+ROAM_EXCLUDE: t
 #+ROAM_TAG: nil
 
-# * Emacs
+* Emacs
 ** File Layout
 *** Features
 You'll notice several headings tagged with =@{feature}= like in =@mail=, these
@@ -244,9 +244,9 @@ load sequence.
   (setup gcmh
     (:package gcmh)
     (:hook-into after-init-hook)
-    (:option gcmh-idle-delay 5
-    gcmh-high-cons-threshold (* 16 1024 1024) ; 16MB
-     gcmh-verbose init-file-debug))
+    (:option gcmh-idle-delay 30
+  	   gcmh-high-cons-threshold (* 16 1024 1024) ; 16MB
+  	   gcmh-verbose init-file-debug))
 #+end_src
 
 ** performance
@@ -866,17 +866,24 @@ Completion At Point Extensions.
 *** embark
 #+begin_src emacs-lisp
   (setup embark
-         (:package embark))
+    (:package embark))
+
   (setup embark-consult
          (:package embark-consult)
          (:load-after embark)
            (:with-map minibuffer-local-map
-  	     (:bind "C-c C-o" embark-export)
+  	     (:bind "C-c C-o" #'embark-collect)
+  	     (:bind "C-c C-e" #'embark-export)
   	 )
          (:with-mode embark-collect-mode
   		   (:hook consult-preview-at-point-mode))
-
+         (:with-mode #'consult-preview-at-point-mode
+  	 (:hook-into embark-collect-mode))
          )
+
+
+  (setup wgrep
+    (:package wgrep))
 #+end_src
 
 

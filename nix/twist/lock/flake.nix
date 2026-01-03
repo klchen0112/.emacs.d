@@ -545,12 +545,6 @@
       repo = "rust-mode";
       type = "github";
     };
-    rustic = {
-      flake = false;
-      owner = "emacs-rustic";
-      repo = "rustic";
-      type = "github";
-    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -590,12 +584,6 @@
       flake = false;
       owner = "laishulu";
       repo = "emacs-smart-input-source";
-      type = "github";
-    };
-    spinner = {
-      flake = false;
-      owner = "Malabarba";
-      repo = "spinner.el";
       type = "github";
     };
     string-inflection = {
@@ -681,6 +669,12 @@
       repo = "emacs-websocket";
       type = "github";
     };
+    wgrep = {
+      flake = false;
+      owner = "mhayashi1120";
+      repo = "Emacs-wgrep";
+      type = "github";
+    };
     which-key = {
       flake = false;
       owner = "justbur";
@@ -697,12 +691,6 @@
       flake = false;
       owner = "magit";
       repo = "with-editor";
-      type = "github";
-    };
-    xterm-color = {
-      flake = false;
-      owner = "atomontage";
-      repo = "xterm-color";
       type = "github";
     };
     yaml = {
