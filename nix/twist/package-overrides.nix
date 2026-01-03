@@ -4,6 +4,7 @@ final: prev: {
     pdf-tools
     emms
     rime
+    telega
     ;
  forge = prev.forge.overrideAttrs (o: {
     buildInputs = o.buildInputs ++ (with pkgs; [ git ]);

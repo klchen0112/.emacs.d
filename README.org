@@ -1804,7 +1804,12 @@ Pretty check-boxes as well as bullet lists.
                                                     :require-match nil)))
 #+end_src
 
-
+* Apps
+** telga
+#+begin_src emacs-lisp
+  (setup telega
+    (:package telega))
+#+end_src
 * Thanks
 - [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
 - [[https://github.com/akirak/emacs-config][akirak/emacs-config]]
