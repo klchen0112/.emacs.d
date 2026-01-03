@@ -713,7 +713,7 @@ Increase undo limit.
 #+begin_src emacs-lisp
 
 #+end_src
-* Text segmentation
+** Text segmentation
 #+begin_src emacs-lisp
   (setup emt
     (:only-if IS-MAC
@@ -1089,9 +1089,9 @@ Diff indicators in fringe
     (:option diff-hl-update-async t
   	   diff-hl-ask-before-revert-hunk nil)
     (:when-loaded
-     (global-diff-hl-mode 1)
-     (diff-hl-flydiff-mode 1)
-     )
+      (global-diff-hl-mode 1)
+      (diff-hl-flydiff-mode 1)
+      )
     )
 #+end_src
 
@@ -1107,20 +1107,19 @@ Enhanced git related views and commands.
       )
     )
 
-
   (setup forge
-         (:package forge)
-         (:load-after magit))
+    (:package forge)
+    (:load-after magit))
 #+end_src
 
 ** Env
 
 #+begin_src emacs-lisp
   (setup envrc
-         (:package envrc)
-         (:with-mode envrc-global-mode
-                     (:hook-into after-init-hook))
-         )
+    (:package envrc)
+    (:with-mode envrc-global-mode
+      (:hook-into after-init-hook))
+    )
 #+end_src
 ** LSP
 *** eglot
