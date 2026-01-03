@@ -728,12 +728,13 @@ Increase undo limit.
 *** orderless
 Space-separated matching components matching in any order.
 #+begin_src emacs-lisp
-(setup orderless
-       (:package orderless)
-       (:option
-        completion-styles '(substring orderless)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+  (setup orderless
+    (:package orderless)
+    (:option
+     completion-styles '(basic orderless)
+     completion-category-defaults nil
+     completion-category-overrides '((file (styles partial-completion)))
+     ))
 #+end_src
 
 ** Buffer
@@ -742,20 +743,13 @@ Completion Overlay Region Function.
 #+begin_src emacs-lisp
   (setup corfu
     (:package corfu)
-    (:with-hook global-corfu-mode
-      (:hook-into after-init-hook))
-    (:with-hook corfu-history-mode
-      (:hook-into after-init-hook))
-    (:with-hook corfu-popupinfo-mode
-      (:hook-into after-init-hook))
+    (:with-mode (prog-mode text-mode comint-mode)
+      (:hook corfu-mode))
+    (:hook corfu-history-mode)
+    (:hook corfu-popupinfo-mode)
     ;; load features
     (:also-load nerd-icons-corfu)
-    (:with-feature corfu-popupinfo
-      (:option corfu-popupinfo-delay '(0.5 . 1.0))
-      (:hook-into corfu-mode-hook))
-    (:with-feature corfu-history
-      (:hook-into corfu-mode-hook)
-      )
+    (:option corfu-popupinfo-delay '(0.5 . 1.0))
     (:option
      corfu-auto t
      corfu-atuo-refix 2
