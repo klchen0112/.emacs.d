@@ -1836,13 +1836,16 @@ Pretty check-boxes as well as bullet lists.
 
 
 #+begin_src emacs-lisp
-(setup (:package twist)
-    (add-hook 'emacs-startup-hook #'twist-watch-mode)
-)
-(setup (:package nix3)
-  (:option nix3-flake-remote-wait 20
-        nix3-registry-list-completion-options (list :add-to-registry t
-                                                    :require-match nil)))
+  (setup (:package twist)
+    (:with-mode twist-watch-mode
+      (:hook-into emacs-startup-hook)
+      )
+    )
+    
+  (setup (:package nix3)
+    (:option nix3-flake-remote-wait 20
+          nix3-registry-list-completion-options (list :add-to-registry t
+                                                      :require-match nil)))
 #+end_src
 
 * Apps
