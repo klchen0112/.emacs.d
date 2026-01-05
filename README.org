@@ -328,39 +328,43 @@ load sequence.
 #+end_src
 ** font
 #+begin_src emacs-lisp
-  (setup faces
-    (let ((faces '((default        . "M+1Code Nerd Font Mono")
-                   (fixed-pitch    . "M+1Code Nerd Font Mono")
-                   (variable-pitch . "M+1Code Nerd Font Propo")
-                   (bold           . "M+1Code Nerd Font Mono Bold")
-  	       (italic         . "M+1Code Nerd Font Mono"))))
-      (dolist (face faces)
-        (when (find-font (font-spec :name (cdr face)))
-        (set-face-attribute (car face) nil :font (cdr face))))))
 
-  (defvar symbol-fonts '(
-             "Apple Symobols"
-             "Apple Color Emoji"
-             "Symbola"
-             "Noto Color Emoji"
-             "Liberation Mono"
-             "Noto Sans Symbols2"
-             "Segoe UI Emoji"
-             "FreeSerif"
-             "Twitter Color Emoji")
-    "Font Use for symbol")
-  (dolist (font symbol-fonts)
-    (set-fontset-font t 'symbol font nil 'append))
-  (setup symbol
-    ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
+  (add-hook 'after-make-frame-functions
+          (lambda ()
+            ;; 设置主字体
+            (let ((faces '((default        . "M+1Code Nerd Font Mono")
+                           (fixed-pitch    . "M+1Code Nerd Font Mono")
+                           (variable-pitch . "M+1Code Nerd Font Propo")
+                           (bold           . "M+1Code Nerd Font Mono Bold")
+                           (italic         . "M+1Code Nerd Font Mono"))))
+              (dolist (face faces)
+                (when (find-font (font-spec :name (cdr face)))
+                  (set-face-attribute (car face) nil :font (cdr face)))))
+
+            ;; 设置符号字体
+            (defvar symbol-fonts '("Apple Symbols"
+                                   "Apple Color Emoji"
+                                   "Symbola"
+                                   "Noto Color Emoji"
+                                   "Liberation Mono"
+                                   "Noto Sans Symbols2"
+                                   "Segoe UI Emoji"
+                                   "FreeSerif"
+                                   "Twitter Color Emoji")
+              "Fonts used for symbols")
+            
+            (dolist (font symbol-fonts)
+              (set-fontset-font t 'symbol font nil 'append))
+            
+            ;; 设置特定字符集字体
+            ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
             ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-            (set-fontset-font t 'han      (font-spec :family "TsangerJinKai05"   ))
-            (set-fontset-font t 'kana      (font-spec :family "TsangerJinKai05"   ))
-            (set-fontset-font t 'hangul      (font-spec :family "TsangerJinKai05"   ))
-            (set-fontset-font t 'cjk-misc (font-spec :family "Noto Serif CJK SC" ))
-            ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-            (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"         ))
-  	  )
+            (set-fontset-font t 'han      (font-spec :family "TsangerJinKai05"))
+            (set-fontset-font t 'kana     (font-spec :family "TsangerJinKai05"))
+            (set-fontset-font t 'hangul   (font-spec :family "TsangerJinKai05"))
+            (set-fontset-font t 'cjk-misc (font-spec :family "Noto Serif CJK SC"))
+            ;; Cyrillic: Привет, Здравствуйте, Здрав, Здравейте
+            (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))))
 #+end_src
 ** nerd-icons
 #+begin_src emacs-lisp
