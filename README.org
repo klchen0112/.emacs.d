@@ -165,6 +165,38 @@ load sequence.
       :repeatable t)
     )
 #+end_src
+** navive comp
+#+begin_src emacs-lisp
+  (if (and (featurep 'native-compile)
+  	 (fboundp 'native-comp-available-p)
+  	 (native-comp-available-p))
+      (setq package-native-compile t))
+
+  (setq native-comp-warning-on-missing-source init-file-debug
+        native-comp-async-report-warnings-errors init-file-debug)
+
+  (setq jka-compr-verbose init-file-debug)
+  (setq byte-compile-warnings init-file-debug
+        byte-compile-verbose init-file-debug)
+
+
+#+end_src
+
+** lang
+#+begin_src emacs-lisp
+  (set-language-environment "UTF-8")
+
+  ;; Set-language-environment sets default-input-method, which is unwanted.
+  (setq default-input-method nil)
+
+  ;; Increase how much is read from processes in a single chunk
+  (setq read-process-output-max (* 2 1024 1024))  ; 1024kb
+
+  (setq process-adaptive-read-buffering nil)
+
+  ;; Don't ping things that look like domain names.
+  (setq ffap-machine-p-known 'reject)
+#+end_src
 * Basic setting
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
@@ -189,6 +221,10 @@ load sequence.
 
   ;; 使用变量存储
   (defconst IS-WSL (wsl?))
+#+end_src
+*** emacs-directory
+#+begin_src emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 #+end_src
 *** org-constants
 #+begin_src emacs-lisp
@@ -284,11 +320,11 @@ load sequence.
 ** Disable GUI components :early:
 #+begin_src emacs-lisp
   (setq use-dialog-box nil)
-  ;;(push '(undecorated . t) default-frame-alist)
-  (push '(menu-bar-lines . 0) default-frame-alist)
-  (push '(tool-bar-lines . 0) default-frame-alist)
-  (push '(vertical-scroll-bars) default-frame-alist)
-  (advice-add #'x-apply-session-resources :override #'ignore)
+  (menu-bar-mode -1)
+  (when (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+  (when (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
 #+end_src
 ** font
 #+begin_src emacs-lisp
@@ -403,6 +439,11 @@ load sequence.
 
 ** Window
 #+begin_src emacs-lisp
+  (setup window-divider
+    (:option window-divider-default-bottom-width 1
+  	   window-divider-default-right-width 1
+  	   window-divider-default-places t))
+    
   (setup switch-window
     (:package switch-window)
     (:with-map kl-window-prefix-map
@@ -425,6 +466,10 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
+** constanas
+#+begin_src emacs-lisp
+  (setq-default fill-column 80)
+#+end_src
 ** ui
 #+begin_src emacs-lisp
   (setup editor-ui
@@ -1764,13 +1809,13 @@ Pretty check-boxes as well as bullet lists.
 #+begin_src emacs-lisp
   (setup indent-bars
     (:package indent-bars)
-    (:option indent-bars-width-frac 0.2
+    (:option indent-tabs-mode nil
+  	   indent-bars-width-frac 0.2
   	   indent-bars-no-descend-lists t ; no extra bars in continued func arg lists
   	   indent-bars-treesit-support t
   	   indent-bars-treesit-ignore-blank-lines-types '("module")
   	   )
     )
-  
 #+end_src
 
 ** Terminal
