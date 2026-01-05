@@ -47,6 +47,9 @@ load sequence.
   ;; Disable package.el in favor of straight.el
   (setq package-enable-at-startup nil
         package-quickstart nil)
+  ;; disable gc in startup
+  (setq gc-cons-threshold most-positive-fixnum)
+  (setq gc-cons-percentage 1.0)
 #+end_src
 ** Setup.el :early:
 #+begin_src emacs-lisp
@@ -276,13 +279,18 @@ load sequence.
 #+end_src
 ** gcmh
 #+begin_src emacs-lisp
-
   (setup gcmh
     (:package gcmh)
     (:hook-into after-init-hook)
-    (:option gcmh-idle-delay 30
-  	   gcmh-high-cons-threshold (* 16 1024 1024) ; 16MB
+    (:option gcmh-idle-delay 'auto
+             gcmh-auto-idle-delay-factor 10
+  	   gcmh-high-cons-threshold (* 64 1024 1024) ; 128MB
   	   gcmh-verbose init-file-debug))
+
+  (run-with-timer 5 nil (lambda ()
+  			(setq gc-cons-threshold (* 128 1024 1024) ; 128MB
+  			      gc-cons-percentage 0.1))
+  		)
 #+end_src
 
 ** performance
