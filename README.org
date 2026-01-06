@@ -1208,14 +1208,21 @@ Generic Language Server Protocol integration via ~eglot~.
      eglot-confirm-server-edits nil
      eglot-sync-connect nil)
     (:with-map kl-code-prefix-map
-      (:bind "r" eglot-rename)
+      (:bind "R" eglot-rename)
       (:bind "d" eglot-find-typeDefinition)
-      (:bind "R" xref-find-references)
+      (:bind "r" eglot-x-find-refs)
       (:bind "j" xref-find-declaration)
       (:bind "i" eglot-find-implementation)
       )
     )
 
+  (setup eglot-x
+    (:package eglot-x)
+    (:load-after eglot)
+    (:when-loaded
+      (add-hook #'eglot-mode-hook #'eglot-x-setup)
+      )
+    )
 
   (setup consult-eglot
     (:package consult-eglot)

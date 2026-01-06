@@ -191,6 +191,12 @@
       repo = "eglot-java";
       type = "github";
     };
+    eglot-x = {
+      flake = false;
+      owner = "nemethf";
+      repo = "eglot-x";
+      type = "github";
+    };
     emacsql = {
       flake = false;
       owner = "magit";

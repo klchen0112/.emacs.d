@@ -512,6 +512,22 @@
         "type": "github"
       }
     },
+    "eglot-x": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766151035,
+        "narHash": "sha256-VvamDqZ3NowM6XfRlC2exsM6ssRBqWUw6ziKgqdphwM=",
+        "owner": "nemethf",
+        "repo": "eglot-x",
+        "rev": "b92c44e6b34f8df0539d3c8ab5992c5a7eb815d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nemethf",
+        "repo": "eglot-x",
+        "type": "github"
+      }
+    },
     "emacsql": {
       "flake": false,
       "locked": {
@@ -1507,6 +1523,7 @@
         "ef-themes": "ef-themes",
         "eglot-booster": "eglot-booster",
         "eglot-java": "eglot-java",
+        "eglot-x": "eglot-x",
         "emacsql": "emacsql",
         "embark": "embark",
         "embark-consult": "embark-consult",
