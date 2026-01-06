@@ -497,10 +497,12 @@ load sequence.
 #+begin_src emacs-lisp
   (setq-default fill-column 80)
 #+end_src
-** ui
+** cursor
 #+begin_src emacs-lisp
-  (setup editor-ui
-    (:option cursor-type 'bar)
+  (setup blink-cursor
+    (:option blink-cursor-mode t
+             cursor-type 'bar)
+
     )
 #+end_src
 
