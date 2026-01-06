@@ -207,6 +207,7 @@ load sequence.
 ** Constants
 *** System Constants
 #+begin_src emacs-lisp
+   
   (defconst IS-MAC (eq system-type 'darwin))
   (defconst IS-LINUX (eq system-type 'gnu/linux))
   (defconst IS-WINDOWS (eq system-type 'windows-nt))
@@ -216,6 +217,13 @@ load sequence.
 *** emacs-directory
 #+begin_src emacs-lisp
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (setq use-short-answers t
+        confirm-kill-emacs 'y-or-n-p
+        ring-bell-function 'ignore
+        )
+
+
+
 #+end_src
 *** org-constants
 #+begin_src emacs-lisp
@@ -420,6 +428,10 @@ load sequence.
     (:hook-into markdown-mode)
     (:option display-line-numbers-width 2
   	   display-line-numbers-type 'relative))
+
+
+  (setup global-hl-line
+    (:option global-hl-line-mode 1))
 #+end_src
 
 ** Scroll
@@ -490,6 +502,15 @@ load sequence.
   (setup editor-ui
     (:option cursor-type 'bar)
     )
+#+end_src
+
+** save file
+#+begin_src emacs-lisp
+  (setq global-auto-revert-mode t ;; auto refresh files
+        global-auto-revert-non-file-buffers t
+        save-place-mode t ;; save cursor
+        savehist-mode t ;; history'
+        )
 #+end_src
 ** Large file
 #+begin_src emacs-lisp
