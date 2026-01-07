@@ -817,7 +817,7 @@ Space-separated matching components matching in any order.
   (setup orderless
     (:package orderless)
     (:option
-     completion-styles '(basic orderless)
+     completion-styles '(orderless basic)
      completion-category-defaults nil
      completion-category-overrides '((file (styles partial-completion)))
      ))
@@ -1342,6 +1342,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-roam
     (:package org-roam)
     (:load-after org)
+    (:defer 5)
     (:option org-roam-directory (file-truename org-directory))
     (:when-loaded  (org-roam-db-autosync-mode)
     		 (setq org-id-link-to-org-use-id t)
