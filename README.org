@@ -283,10 +283,6 @@ load sequence.
   	   gcmh-high-cons-threshold (* 64 1024 1024) ; 128MB
   	   gcmh-verbose init-file-debug))
 
-  (run-with-timer 5 nil (lambda ()
-  			(setq gc-cons-threshold (* 128 1024 1024) ; 128MB
-  			      gc-cons-percentage 0.1))
-  		)
 #+end_src
 
 ** performance
