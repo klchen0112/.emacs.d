@@ -161,6 +161,12 @@ in
         pkg-config
         hugo
         # Font families used in my Emacs config
+
+        nerd-fonts."m+"
+        # emoji
+        twemoji-color-font
+        noto-fonts-color-emoji # 彩色的表情符号字体
+
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
