@@ -14,7 +14,7 @@ Everything is tangled into =init.el= by default and I don't really make any
 attempt to keep this file organized since it's not really intended to be
 interacted with.
 
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -23,7 +23,7 @@ interacted with.
 should only be used to do minimal configuration that needs to occur early in the
 load sequence.
 
-#+begin_src emacs-lisp :tangle early-init.el
+#+begin_src emacs-lisp
 ;;; early-init.el -*- lexical-binding: t; -*-
 #+end_src
 
@@ -48,8 +48,8 @@ load sequence.
   (setq package-enable-at-startup nil
         package-quickstart nil)
   ;; disable gc in startup
-  (setq gc-cons-threshold most-positive-fixnum)
-  (setq gc-cons-percentage 1.0)
+  ;;(setq gc-cons-threshold most-positive-fixnum)
+  ;;(setq gc-cons-percentage 1.0)
 #+end_src
 ** Setup.el :early:
 #+begin_src emacs-lisp
@@ -275,13 +275,13 @@ load sequence.
 #+end_src
 ** gcmh
 #+begin_src emacs-lisp
-  (setup gcmh
-    (:package gcmh)
-    (:hook-into after-init-hook)
-    (:option gcmh-idle-delay 'auto
-             gcmh-auto-idle-delay-factor 10
-  	   gcmh-high-cons-threshold (* 64 1024 1024) ; 128MB
-  	   gcmh-verbose init-file-debug))
+  ;;(setup gcmh
+  ;;  (:package gcmh)
+  ;;  (:hook-into after-init-hook)
+  ;;  (:option gcmh-idle-delay 'auto
+  ;;           gcmh-auto-idle-delay-factor 10
+  ;;	   gcmh-high-cons-threshold (* 64 1024 1024) ; 128MB
+  ;;	   gcmh-verbose init-file-debug))
 
 #+end_src
 
@@ -1499,49 +1499,49 @@ Generic Language Server Protocol integration via ~eglot~.
 #+end_src
 ** citar
 #+begin_src emacs-lisp
-  (setup citar
-    (:package citar)
-    (:load-after org)
-    (:option
-     citar-bibliography kl/bib
-     citar-notes-paths '(kl/bib-notes)
-
-     org-cite-insert-processor 'citar
-     org-cite-follow-processor 'citar
-     org-cite-activate-processor 'citar
-
-     citar-default-action 'citar-open-notes
-
-     citar-at-point-function 'citar-dwim
-
-     citar-file-note-org-include '(org-id org-roam-ref)
-     citar-templates
-     '((main . "${author editor:30}     ${date year issued:4}     ${title:55}")
-       (suffix . "  ${tags keywords:40}")
-       (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
-       (note .
-  	   "${title}\n#+filetags: :references:
-  - bibliography ::
-  - tags :: ${tags}
-  - keywords :: ${keywords}
-  - previous work :: \n* Notes
-  :PROPERTIES:
-  :Custom_ID: ${=key=}
-  :URL: ${url}
-  :AUTHOR: ${author}
-  :NOTER_DOCUMENT: ${file}
-  :NOTER_PAGE:
-  :NOANKI: t
-  :END:")
-       )
-     )
-    )
-
-  (setup citar-org-roam
-    (:package citar-org-roam)
-    (:load-after citar org-roam)
-    (:when-loaded citar-org-roam-mode)
-    )
+  ;;(setup citar
+  ;;  (:package citar)
+  ;;  (:load-after org)
+  ;;  (:option
+  ;;   citar-bibliography kl/bib
+  ;;   citar-notes-paths '(kl/bib-notes)
+  ;;
+  ;;   org-cite-insert-processor 'citar
+  ;;   org-cite-follow-processor 'citar
+  ;;   org-cite-activate-processor 'citar
+  ;;
+  ;;   citar-default-action 'citar-open-notes
+  ;;
+  ;;   citar-at-point-function 'citar-dwim
+  ;;
+  ;;   citar-file-note-org-include '(org-id org-roam-ref)
+  ;;   citar-templates
+  ;;   '((main . "${author editor:30}     ${date year issued:4}     ${title:55}")
+  ;;     (suffix . "  ${tags keywords:40}")
+  ;;     (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
+  ;;     (note .
+  ;;	   "${title}\n#+filetags: :references:
+  ;;- bibliography ::
+  ;;- tags :: ${tags}
+  ;;- keywords :: ${keywords}
+  ;;- previous work :: \n* Notes
+  ;;:PROPERTIES:
+  ;;:Custom_ID: ${=key=}
+  ;;:URL: ${url}
+  ;;:AUTHOR: ${author}
+  ;;:NOTER_DOCUMENT: ${file}
+  ;;:NOTER_PAGE:
+  ;;:NOANKI: t
+  ;;:END:")
+  ;;     )
+  ;;   )
+  ;;  )
+  ;;
+  ;;(setup citar-org-roam
+  ;;  (:package citar-org-roam)
+  ;;  (:load-after citar org-roam)
+  ;;  (:when-loaded citar-org-roam-mode)
+  ;;  )
   ;;(setup org-roam-bibtex
   ;;  (:package org-roam-bibtex)
   ;;  (:load-after org-roam citar)
@@ -1619,7 +1619,7 @@ Generic Language Server Protocol integration via ~eglot~.
 ** outline
 Display outlines in text like files or use it in conjunction with other major modes via ~outline-minor-mode~.
 ** cobol
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
   (setup cobol-mode
     (:package cobol-mode)
     (:match-file "\\.\\(cob\\|cbl\\|cpy\\)\\'"))
@@ -1811,7 +1811,7 @@ Generate Table of Contents.
 #+end_src
 
 ** terraform
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (setup terraform-mode
 (:package terraform-mode)
 )

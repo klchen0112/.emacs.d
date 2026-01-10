@@ -64,54 +64,6 @@
         "type": "github"
       }
     },
-    "citar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762688288,
-        "narHash": "sha256-SkOiFf7+0KKWMLM4jKcEIzvehNk5b0mwltk4fWOpf7k=",
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "rev": "dc7018eb36fb3540cb5b7fc526d6747144437eef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "type": "github"
-      }
-    },
-    "citar-org-roam": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745507478,
-        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "type": "github"
-      }
-    },
-    "citeproc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762154200,
-        "narHash": "sha256-OSpoHph99Vk7TmMOi33Ze3snPTO567ugQOV92IWA3bk=",
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
-        "rev": "a3d62ab8e40a75fcfc6e4c0c107e3137b4db6db8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
-        "type": "github"
-      }
-    },
     "closql": {
       "flake": false,
       "locked": {
@@ -142,6 +94,22 @@
       "original": {
         "type": "git",
         "url": "https://gitlab.kitware.com/cmake/cmake.git"
+      }
+    },
+    "cobol-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754857962,
+        "narHash": "sha256-AeFeivDBrFiuNUTTx6MkRA/0g7YF1egRkU8FnBqAs4c=",
+        "ref": "refs/heads/main",
+        "rev": "2428a0249d2059fadc7098d570fd79ed29f05b62",
+        "revCount": 54,
+        "type": "git",
+        "url": "https://git.sr.ht/~hjelmtech/cobol-mode"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.sr.ht/~hjelmtech/cobol-mode"
       }
     },
     "compat": {
@@ -704,22 +672,6 @@
         "type": "github"
       }
     },
-    "gcmh": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1605567102,
-        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
-        "owner": "koral",
-        "repo": "gcmh",
-        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "koral",
-        "repo": "gcmh",
-        "type": "gitlab"
-      }
-    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -765,6 +717,22 @@
       "original": {
         "owner": "scubacabra",
         "repo": "emacs-gradle-mode",
+        "type": "github"
+      }
+    },
+    "hcl-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728982426,
+        "narHash": "sha256-1j23lOoGM7pML2M0LXGKIVKjCmAtf4/J43l8JpPEfXI=",
+        "owner": "hcl-emacs",
+        "repo": "hcl-mode",
+        "rev": "1da895ed75d28d9f87cbf9b74f075d90ba31c0ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hcl-emacs",
+        "repo": "hcl-mode",
         "type": "github"
       }
     },
@@ -1377,22 +1345,6 @@
         "type": "github"
       }
     },
-    "parsebib": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764261112,
-        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
-        "type": "github"
-      },
-      "original": {
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "type": "github"
-      }
-    },
     "pet": {
       "flake": false,
       "locked": {
@@ -1495,11 +1447,9 @@
         "benchmark-init": "benchmark-init",
         "cape": "cape",
         "centaur-tabs": "centaur-tabs",
-        "citar": "citar",
-        "citar-org-roam": "citar-org-roam",
-        "citeproc": "citeproc",
         "closql": "closql",
         "cmake-mode": "cmake-mode",
+        "cobol-mode": "cobol-mode",
         "compat": "compat",
         "cond-let": "cond-let",
         "consult": "consult",
@@ -1535,10 +1485,10 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
-        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-mode": "go-mode",
         "gradle-mode": "gradle-mode",
+        "hcl-mode": "hcl-mode",
         "ht": "ht",
         "indent-bars": "indent-bars",
         "inheritenv": "inheritenv",
@@ -1577,7 +1527,6 @@
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
-        "parsebib": "parsebib",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1592,12 +1541,12 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
-        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
         "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
+        "terraform-mode": "terraform-mode",
         "transient": "transient",
         "treepy": "treepy",
         "treesit-fold": "treesit-fold",
@@ -1745,22 +1694,6 @@
         "type": "github"
       }
     },
-    "string-inflection": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763116921,
-        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
-        "owner": "akicho8",
-        "repo": "string-inflection",
-        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
-        "type": "github"
-      },
-      "original": {
-        "owner": "akicho8",
-        "repo": "string-inflection",
-        "type": "github"
-      }
-    },
     "switch-window": {
       "flake": false,
       "locked": {
@@ -1838,6 +1771,22 @@
       "original": {
         "owner": "Crandel",
         "repo": "tempel-collection",
+        "type": "github"
+      }
+    },
+    "terraform-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763244647,
+        "narHash": "sha256-NvMICA4oxw88bN5cfPt+ZNmuDGITR4Uz1/RBZ8QEYg0=",
+        "owner": "hcl-emacs",
+        "repo": "terraform-mode",
+        "rev": "01635df3625c0cec2bb4613a6f920b8569d41009",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hcl-emacs",
+        "repo": "terraform-mode",
         "type": "github"
       }
     },

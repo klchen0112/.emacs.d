@@ -25,24 +25,6 @@
       repo = "centaur-tabs";
       type = "github";
     };
-    citar = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar";
-      type = "github";
-    };
-    citar-org-roam = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar-org-roam";
-      type = "github";
-    };
-    citeproc = {
-      flake = false;
-      owner = "andras-simonyi";
-      repo = "citeproc-el";
-      type = "github";
-    };
     closql = {
       flake = false;
       owner = "magit";
@@ -53,6 +35,11 @@
       flake = false;
       type = "git";
       url = "https://gitlab.kitware.com/cmake/cmake.git";
+    };
+    cobol-mode = {
+      flake = false;
+      type = "git";
+      url = "https://git.sr.ht/~hjelmtech/cobol-mode";
     };
     compat = {
       flake = false;
@@ -263,12 +250,6 @@
       repo = "emacs-format-all-the-code";
       type = "github";
     };
-    gcmh = {
-      flake = false;
-      owner = "koral";
-      repo = "gcmh";
-      type = "gitlab";
-    };
     ghub = {
       flake = false;
       owner = "magit";
@@ -285,6 +266,12 @@
       flake = false;
       owner = "scubacabra";
       repo = "emacs-gradle-mode";
+      type = "github";
+    };
+    hcl-mode = {
+      flake = false;
+      owner = "hcl-emacs";
+      repo = "hcl-mode";
       type = "github";
     };
     ht = {
@@ -515,12 +502,6 @@
       repo = "org-super-agenda";
       type = "github";
     };
-    parsebib = {
-      flake = false;
-      owner = "joostkremers";
-      repo = "parsebib";
-      type = "github";
-    };
     pet = {
       flake = false;
       owner = "wyuenho";
@@ -604,12 +585,6 @@
       repo = "emacs-smart-input-source";
       type = "github";
     };
-    string-inflection = {
-      flake = false;
-      owner = "akicho8";
-      repo = "string-inflection";
-      type = "github";
-    };
     switch-window = {
       flake = false;
       owner = "dimitri";
@@ -638,6 +613,12 @@
       flake = false;
       owner = "Crandel";
       repo = "tempel-collection";
+      type = "github";
+    };
+    terraform-mode = {
+      flake = false;
+      owner = "hcl-emacs";
+      repo = "terraform-mode";
       type = "github";
     };
     transient = {
