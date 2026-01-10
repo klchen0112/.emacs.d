@@ -207,7 +207,7 @@ load sequence.
 ** Constants
 *** System Constants
 #+begin_src emacs-lisp
-   
+
   (defconst IS-MAC (eq system-type 'darwin))
   (defconst IS-LINUX (eq system-type 'gnu/linux))
   (defconst IS-WINDOWS (eq system-type 'windows-nt))
@@ -471,7 +471,7 @@ load sequence.
     (:option window-divider-default-bottom-width 1
   	   window-divider-default-right-width 1
   	   window-divider-default-places t))
-    
+
   (setup switch-window
     (:package switch-window)
     (:with-map kl-window-prefix-map
@@ -1866,7 +1866,7 @@ Generate Table of Contents.
       (:hook-into emacs-startup-hook)
       )
     )
-    
+
   (setup (:package nix3)
     (:option nix3-flake-remote-wait 20
           nix3-registry-list-completion-options (list :add-to-registry t
@@ -1876,14 +1876,14 @@ Generate Table of Contents.
 * Apps
 ** telga
 #+begin_src emacs-lisp
-  (setup telega
-    (:package telega)
-    (:with-function telega (:autoload-this))
-    (:when-loaded
-       (:also-load telega-url-shorten
-                  telega-bridge-bot
-                  telega-mnz))
-    )
+  ;;(setup telega
+  ;;  (:package telega)
+  ;;  (:with-function telega (:autoload-this))
+  ;;  (:when-loaded
+  ;;     (:also-load telega-url-shorten
+  ;;                telega-bridge-bot
+  ;;                telega-mnz))
+  ;;  )
 #+end_src
 * Thanks
 - [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
