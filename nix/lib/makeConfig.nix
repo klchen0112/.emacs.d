@@ -87,13 +87,15 @@ in
           (add-to-list 'treesit-extra-load-path "${treesitterPackage}/lib")
         '';
     }).overrideScope
-      (
-        _final: prev: {
-          elispPackages = prev.elispPackages.overrideScope (
-            import ../twist/package-overrides.nix {
-              inherit inputs pkgs;
-            }
-          );
-        }
+        (
+        lib.composeExtensions inputs.twist-overrides.overlays.twistScope (
+          _tself: tsuper: {
+            elispPackages = tsuper.elispPackages.overrideScope (
+              import ../twist/package-overrides.nix {
+                inherit pkgs;
+              }
+            );
+          }
+        )
       );
 }

@@ -1337,7 +1337,6 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-roam
     (:package org-roam)
-    (:load-after org)
     (:option org-roam-directory (file-truename org-directory))
     (:when-loaded  (org-roam-db-autosync-mode)
     		 (setq org-id-link-to-org-use-id t)
@@ -1878,7 +1877,13 @@ Generate Table of Contents.
 ** telga
 #+begin_src emacs-lisp
   (setup telega
-    (:package telega))
+    (:package telega)
+    (:with-function telega (:autoload-this))
+    (:when-loaded
+       (:also-load telega-url-shorten
+                  telega-bridge-bot
+                  telega-mnz))
+    )
 #+end_src
 * Thanks
 - [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
