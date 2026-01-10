@@ -326,14 +326,14 @@ load sequence.
     (tool-bar-mode -1))
   (when (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
-  (push '(menu-bar-lines . 0) default-frame-alist)
-  (push '(tool-bar-lines . 0) default-frame-alist)
+  ;; 添加到.emacs或init.el
+  (push '(menu-bar-lines . 0)   default-frame-alist)
+  (push '(tool-bar-lines . 0)   default-frame-alist)
   (push '(vertical-scroll-bars) default-frame-alist)
-
-
+  (push '(horizontal-scroll-bars) default-frame-alist)
+  (push '(undecorated-round . t) default-frame-alist)
   (when (boundp 'pgtk-wait-for-event-timeout)
     (setq pgtk-wait-for-event-timeout 0.001))
-
 
 
   (when (boundp 'w32-get-true-file-attributes)
