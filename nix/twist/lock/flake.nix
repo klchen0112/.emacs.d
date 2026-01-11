@@ -250,12 +250,6 @@
       repo = "emacs-format-all-the-code";
       type = "github";
     };
-    gcmh = {
-      flake = false;
-      owner = "koral";
-      repo = "gcmh";
-      type = "gitlab";
-    };
     ghub = {
       flake = false;
       owner = "magit";
