@@ -220,18 +220,6 @@
       repo = "f.el";
       type = "github";
     };
-    flycheck = {
-      flake = false;
-      owner = "flycheck";
-      repo = "flycheck";
-      type = "github";
-    };
-    flycheck-posframe = {
-      flake = false;
-      owner = "alexmurray";
-      repo = "flycheck-posframe";
-      type = "github";
-    };
     flyover = {
       flake = false;
       owner = "konrad1977";

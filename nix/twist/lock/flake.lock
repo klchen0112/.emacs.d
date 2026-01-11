@@ -592,38 +592,6 @@
         "type": "github"
       }
     },
-    "flycheck": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764923352,
-        "narHash": "sha256-RxzzLaXYgcKflz/FrQtd2V8Jq4F7f/pXgSc3DsC6AMk=",
-        "owner": "flycheck",
-        "repo": "flycheck",
-        "rev": "5c24d1b732e86433f34ebf5ec7ca3c985edbc744",
-        "type": "github"
-      },
-      "original": {
-        "owner": "flycheck",
-        "repo": "flycheck",
-        "type": "github"
-      }
-    },
-    "flycheck-posframe": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1657848824,
-        "narHash": "sha256-ktqBPPClj8ktvhleXePtLASJmVr4qMH0l5GhW/FSvbE=",
-        "owner": "alexmurray",
-        "repo": "flycheck-posframe",
-        "rev": "19896b922c76a0f460bf3fe8d8ebc2f9ac9028d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alexmurray",
-        "repo": "flycheck-posframe",
-        "type": "github"
-      }
-    },
     "flyover": {
       "flake": false,
       "locked": {
@@ -1480,8 +1448,6 @@
         "emt": "emt",
         "envrc": "envrc",
         "f": "f",
-        "flycheck": "flycheck",
-        "flycheck-posframe": "flycheck-posframe",
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",

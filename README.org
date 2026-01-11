@@ -736,28 +736,13 @@ Increase undo limit.
 
 ** Synatax & Checker
 #+begin_src emacs-lisp
-  (setup flycheck
-    (:package flycheck)
-    (:with-hook global-flycheck-mode
-      (:hook-into after-init-hook))
-    (:option flycheck-emacs-lisp-load-path 'inherit
-  	   flycheck-idle-change-delay 1.0
-  	   flycheck-buffer-switch-check-intermediate-buffers t
-  	   flycheck-display-errors-delay 0.25
+  (setup flymake  )
 
-  	   )
-    )
-
-  (setup flycheck-posframe
-    (:package flycheck-posframe)
-    (:load-after flycheck posframe)
-    (:hook-into flycheck-mode)
-    )
 
   (setup flyover
     (:package flyover)
-    (:hook-into flycheck-mode)
-    (:load-after flycheck posframe)
+    (:hook-into flymake)
+    (:load-after flymake)
     (:option
      flyover-levels '(error warning info)  ; Show all levels
      ;; Use theme colors for error/warning/info faces
@@ -1215,7 +1200,7 @@ Enhanced git related views and commands.
 Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup eglot
-    (:package eglot)
+    ;;(:package eglot)
     (:option
      eglot-autoshutdown t
      eglot-code-action-indications nil
