@@ -672,6 +672,22 @@
         "type": "github"
       }
     },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "owner": "koral",
+        "repo": "gcmh",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "koral",
+        "repo": "gcmh",
+        "type": "gitlab"
+      }
+    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -1485,6 +1501,7 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
+        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-mode": "go-mode",
         "gradle-mode": "gradle-mode",
@@ -1543,7 +1560,6 @@
         "sis": "sis",
         "switch-window": "switch-window",
         "tablist": "tablist",
-        "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
         "terraform-mode": "terraform-mode",
@@ -1556,7 +1572,6 @@
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
-        "visual-fill-column": "visual-fill-column",
         "vulpea": "vulpea",
         "websocket": "websocket",
         "wgrep": "wgrep",
@@ -1723,22 +1738,6 @@
       "original": {
         "owner": "emacsorphanage",
         "repo": "tablist",
-        "type": "github"
-      }
-    },
-    "telega": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767354531,
-        "narHash": "sha256-gXng96NJheno36CnGHSksDBTt0/rHS1S+xk7i29yi50=",
-        "owner": "zevlg",
-        "repo": "telega.el",
-        "rev": "e34fb226ec56b17f77a6eb99c22e98d82529d2de",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zevlg",
-        "repo": "telega.el",
         "type": "github"
       }
     },
@@ -1932,22 +1931,6 @@
         "owner": "tumashu",
         "repo": "vertico-posframe",
         "type": "github"
-      }
-    },
-    "visual-fill-column": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762771539,
-        "narHash": "sha256-b2iHi5A/1CVdwnbvbSpFyi8oJgpSiezPIfZLAzYQYuQ=",
-        "ref": "refs/heads/main",
-        "rev": "e1be9a1545157d24454d950c0ac79553c540edb7",
-        "revCount": 168,
-        "type": "git",
-        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
       }
     },
     "vulpea": {

@@ -250,6 +250,12 @@
       repo = "emacs-format-all-the-code";
       type = "github";
     };
+    gcmh = {
+      flake = false;
+      owner = "koral";
+      repo = "gcmh";
+      type = "gitlab";
+    };
     ghub = {
       flake = false;
       owner = "magit";
@@ -597,12 +603,6 @@
       repo = "tablist";
       type = "github";
     };
-    telega = {
-      flake = false;
-      owner = "zevlg";
-      repo = "telega.el";
-      type = "github";
-    };
     tempel = {
       flake = false;
       owner = "minad";
@@ -673,11 +673,6 @@
       owner = "tumashu";
       repo = "vertico-posframe";
       type = "github";
-    };
-    visual-fill-column = {
-      flake = false;
-      type = "git";
-      url = "https://codeberg.org/joostkremers/visual-fill-column.git";
     };
     vulpea = {
       flake = false;
