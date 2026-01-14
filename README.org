@@ -1201,6 +1201,8 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup eglot
     ;;(:package eglot)
+    (:with-function eglot-ensure
+      (:hook-into prog-mode))
     (:option
      eglot-autoshutdown t
      eglot-code-action-indications nil
