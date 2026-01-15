@@ -32,7 +32,13 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
-
+** Starup
+#+begin_src emacs-lisp
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (message "loaded Emacs in %0.03fs"
+                       (float-time (time-subtract after-init-time before-init-time)))))
+#+end_src
 ** disable package.el
 #+begin_src emacs-lisp
 
@@ -43,7 +49,7 @@ load sequence.
 
   (setq inhibit-default-init t)
   (setq initial-major-mode 'fundamental-mode)
-
+  (advice-add #'x-apply-session-resources :override #'ignore)
   ;; Disable package.el in favor of straight.el
   (setq package-enable-at-startup nil
         package-quickstart nil)
@@ -57,6 +63,7 @@ load sequence.
 #+end_src
 ** Setup.el :early:
 #+begin_src emacs-lisp
+  (setq byte-compile-warnings '(cl-functions))
   (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
@@ -208,6 +215,24 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
+
+** load path
+
+#+begin_src emacs-lisp
+  (require 'cl-extra)
+  (require 'cl-lib)
+
+  (defun filter-nix-store (paths)
+    (cl-remove-if-not
+     (lambda (s)
+       (string-prefix-p "/nix/store/" s))
+     paths))
+
+  (setq native-comp-eln-load-path (filter-nix-store native-comp-eln-load-path))
+  ;; Make sure to add back the user eln-cache
+  (push (expand-file-name "eln-cache/" user-emacs-directory) native-comp-eln-load-path)
+  (setq load-path (filter-nix-store load-path))
+#+end_src
 ** Constants
 *** System Constants
 #+begin_src emacs-lisp
@@ -240,6 +265,7 @@ load sequence.
   (setup benchmark-init
     (:package benchmark-init)
     (:require benchmark-init)
+    
     (add-hook 'after-init-hook 'benchmark-init/deactivate)
     )
 #+end_src
@@ -518,9 +544,12 @@ load sequence.
 #+begin_src emacs-lisp
   (setq global-auto-revert-mode t ;; auto refresh files
         global-auto-revert-non-file-buffers t
-        save-place-mode t ;; save cursor
         savehist-mode t ;; history'
         )
+
+
+  (setup save-place
+    (:hook-into after-init-hook))
 #+end_src
 ** Large file
 #+begin_src emacs-lisp
@@ -827,7 +856,6 @@ Completion Overlay Region Function.
     (:hook corfu-history-mode)
     (:hook corfu-popupinfo-mode)
     ;; load features
-    (:also-load nerd-icons-corfu)
     (:option corfu-popupinfo-delay '(0.5 . 1.0))
     (:option
      corfu-auto t
@@ -848,7 +876,11 @@ Completion Overlay Region Function.
 
   (setup nerd-icons-corfu
     (:load-after nerd-icons corfu)
-    (:package nerd-icons-corfu))
+    (:package nerd-icons-corfu)
+    (:when-loaded
+      (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+      )
+    )
  #+end_src
 
 ** Minibuffer
@@ -1015,7 +1047,6 @@ Annotations for completion candidates.
 
   (setup nerd-icons-dired
     (:package nerd-icons-dired)
-    (:load-after dired)
     (:hook-into dired-mode-hook))
 #+end_src
 
@@ -1795,10 +1826,8 @@ Generate Table of Contents.
 **** python-test
 #+begin_src emacs-lisp :
   (setup python-test
-    (:option python-test-backend 'pytest)
-    (:load-after pet)
-    (:when-loaded
-          (append '("README.md") python-test-project-root-files)))
+    (:package python-pytest)
+    )
 #+end_src
 
 *** Packages

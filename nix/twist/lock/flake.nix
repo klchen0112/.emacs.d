@@ -520,6 +520,12 @@
       repo = "emacs-promise";
       type = "github";
     };
+    python-pytest = {
+      flake = false;
+      owner = "wbolster";
+      repo = "emacs-python-pytest";
+      type = "github";
+    };
     request = {
       flake = false;
       owner = "tkf";
