@@ -6,7 +6,7 @@ final: prev: {
     rime
     telega
     ;
- forge = prev.forge.overrideAttrs (o: {
+  forge = prev.forge.overrideAttrs (o: {
     buildInputs = o.buildInputs ++ (with pkgs; [ gitFull ]);
   });
 

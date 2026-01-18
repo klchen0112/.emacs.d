@@ -86,7 +86,7 @@ in
           (add-to-list 'treesit-extra-load-path "${treesitterPackage}/lib")
         '';
     }).overrideScope
-        (
+      (
         lib.composeExtensions inputs.twist-overrides.overlays.twistScope (
           _tself: tsuper: {
             elispPackages = tsuper.elispPackages.overrideScope (
