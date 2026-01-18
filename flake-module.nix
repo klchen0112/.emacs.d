@@ -12,7 +12,7 @@
 }:
 let
   lib-makeConfig = import ./nix/lib/makeConfig.nix {
-    inherit inputs lib getEmacsFromPkgs;
+    inherit inputs lib;
     Readme = ./README.org;
   };
   inherit (lib-makeConfig)
@@ -23,7 +23,6 @@ let
     earlySelector
     featureFilter
     ;
-  getEmacsFromPkgs = pkgs: (if pkgs.stdenv.isLinux then pkgs.emacs-igc-pgtk else pkgs.emacsIGC);
   overlays = with inputs; [
     emacs-overlay.overlays.default
     org-babel.overlays.default
@@ -76,7 +75,7 @@ in
         overlays = overlays ++ [
           (final: prev: {
             org-reminders = config.packages.org-reminders;
-            kl-emacs = config.packages.kl-emacs;
+            emacsIGC = config.packages.emacsIGC;
             initEl = config.packages.initEl-all-features;
             earlyInitEl = config.packages.earlyInitEl-all-features;
             emacs-env-all-features = config.packages.emacs-env-all-features;
@@ -87,7 +86,6 @@ in
       };
       pkgsDirectory = ./pkgs/by-name;
       packages = rec {
-        kl-emacs = getEmacsFromPkgs pkgs;
         initEl-base = pkgs.writeText "init.el" (filterReadme [
           archiveFilter
           earlyFilter

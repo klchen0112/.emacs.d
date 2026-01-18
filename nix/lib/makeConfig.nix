@@ -6,7 +6,6 @@
   inputs,
   Readme,
   lib,
-  getEmacsFromPkgs,
 }:
 let
   ob = inputs.org-babel.lib;
@@ -33,7 +32,7 @@ in
       features ? [ ],
       prependToInitFile ? null,
       nativeCompileAheadDefault ? true,
-      emacsPackage ? getEmacsFromPkgs pkgs,
+      emacsPackage ? pkgs.emacsIGC,
       initFile ? (
         pkgs.writeText "init.el" (filterReadme [
           archiveFilter
