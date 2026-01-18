@@ -49,8 +49,6 @@ in
         { config, ... }:
         {
           emacsIGC = config.packages.emacsIGC;
-          org-reminders = config.packages.org-reminders;
-          kl-emacs = config.packages.kl-emacs;
           initEl = config.packages.initEl-all-features;
           earlyInitEl = config.packages.earlyInitEl-all-features;
           emacs-env-all-features = config.packages.emacs-env-all-features;
@@ -74,7 +72,6 @@ in
       _module.args.pkgs = import inputs.nixpkgs {
         overlays = overlays ++ [
           (final: prev: {
-            org-reminders = config.packages.org-reminders;
             emacsIGC = config.packages.emacsIGC;
             initEl = config.packages.initEl-all-features;
             earlyInitEl = config.packages.earlyInitEl-all-features;

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 final: prev: {
-  inherit (pkgs.kl-emacs.pkgs)
+  inherit (pkgs.emacsIGC.pkgs)
     pdf-tools
     emms
     rime
