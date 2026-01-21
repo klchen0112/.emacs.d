@@ -1217,6 +1217,22 @@
         "type": "github"
       }
     },
+    "org-mac-link": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697489275,
+        "narHash": "sha256-tyOjIiyNRXcR9CWVDQtMdNGF0ZDUcRb49duVK+BRxLQ=",
+        "owner": "aimebertrand",
+        "repo": "org-mac-link",
+        "rev": "e30171a6e98db90787ab8a23b3a7dc4fd13b10f9",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "aimebertrand",
+        "repo": "org-mac-link",
+        "type": "gitlab"
+      }
+    },
     "org-modern": {
       "flake": false,
       "locked": {
@@ -1246,6 +1262,22 @@
       "original": {
         "owner": "jdtsmith",
         "repo": "org-modern-indent",
+        "type": "github"
+      }
+    },
+    "org-noter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767916001,
+        "narHash": "sha256-9Sbv/LYRH48+W0MX+UkTwu3wGherII/qLp8rEvYaoBk=",
+        "owner": "org-noter",
+        "repo": "org-noter",
+        "rev": "81765d267e51efd8b4f5b7276000332ba3eabbf5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-noter",
+        "repo": "org-noter",
         "type": "github"
       }
     },
@@ -1310,6 +1342,22 @@
       "original": {
         "owner": "alphapapa",
         "repo": "org-super-agenda",
+        "type": "github"
+      }
+    },
+    "pdf-tools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767891768,
+        "narHash": "sha256-XOg2f8H9PAaa66YYfmQXmf/R4zzd6UlkQBotU0jDxLI=",
+        "owner": "vedang",
+        "repo": "pdf-tools",
+        "rev": "365f88238f46f9b1425685562105881800f10386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vedang",
+        "repo": "pdf-tools",
         "type": "github"
       }
     },
@@ -1503,12 +1551,15 @@
         "org": "org",
         "org-appear": "org-appear",
         "org-download": "org-download",
+        "org-mac-link": "org-mac-link",
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
+        "org-noter": "org-noter",
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
+        "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1526,6 +1577,7 @@
         "sis": "sis",
         "switch-window": "switch-window",
         "tablist": "tablist",
+        "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
         "terraform-mode": "terraform-mode",
@@ -1538,6 +1590,7 @@
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
+        "visual-fill-column": "visual-fill-column",
         "vulpea": "vulpea",
         "websocket": "websocket",
         "wgrep": "wgrep",
@@ -1704,6 +1757,22 @@
       "original": {
         "owner": "emacsorphanage",
         "repo": "tablist",
+        "type": "github"
+      }
+    },
+    "telega": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767354531,
+        "narHash": "sha256-gXng96NJheno36CnGHSksDBTt0/rHS1S+xk7i29yi50=",
+        "owner": "zevlg",
+        "repo": "telega.el",
+        "rev": "e34fb226ec56b17f77a6eb99c22e98d82529d2de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zevlg",
+        "repo": "telega.el",
         "type": "github"
       }
     },
@@ -1897,6 +1966,22 @@
         "owner": "tumashu",
         "repo": "vertico-posframe",
         "type": "github"
+      }
+    },
+    "visual-fill-column": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762771539,
+        "narHash": "sha256-b2iHi5A/1CVdwnbvbSpFyi8oJgpSiezPIfZLAzYQYuQ=",
+        "ref": "refs/heads/main",
+        "rev": "e1be9a1545157d24454d950c0ac79553c540edb7",
+        "revCount": 168,
+        "type": "git",
+        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
       }
     },
     "vulpea": {

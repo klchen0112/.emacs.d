@@ -1310,6 +1310,9 @@ Generic Language Server Protocol integration via ~eglot~.
     (:when-loaded
       (add-hook #'completion-at-point-function #'cape-elisp-block))
     )
+  
+  (setup org-mac-link
+    (:package org-mac-link))
 
   (setup org-download
     (:package org-download)
@@ -1518,6 +1521,11 @@ Generic Language Server Protocol integration via ~eglot~.
     (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
     (advice-add 'org-agenda :before #'bmg/vulpea-agenda-files-update)
     )
+#+end_src
+** org-noter
+#+begin_src emacs-lisp
+  (setup org-noter
+    (:package org-noter))
 #+end_src
 ** citar :ARCHIVE:
 #+begin_src emacs-lisp
@@ -1932,18 +1940,17 @@ Generate Table of Contents.
           nix3-registry-list-completion-options (list :add-to-registry t
                                                       :require-match nil)))
 #+end_src
-
+** pdf
+#+begin_src emacs-lisp
+  (setup pdf-tools
+    (:package pdf-tools))
+#+end_src
 * Apps
 ** telga
 #+begin_src emacs-lisp
-  ;;(setup telega
-  ;;  (:package telega)
-  ;;  (:with-function telega (:autoload-this))
-  ;;  (:when-loaded
-  ;;     (:also-load telega-url-shorten
-  ;;                telega-bridge-bot
-  ;;                telega-mnz))
-  ;;  )
+  (setup telega
+    (:package telega)
+   )
 #+end_src
 * Thanks
 - [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
