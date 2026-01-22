@@ -1,21 +1,8 @@
 { pkgs, ... }:
 {
-  citar = _: _: {
-    origin = {
-      type = "github";
-      owner = "emacs-citar";
-      repo = "citar";
-      ref = "main";
+   org-noter = _: prev: {
+    packageRequires = prev.packageRequires // {
+      pdf-tools = "0";
     };
   };
-
-  citar-org-roam = _: _: {
-    origin = {
-      type = "github";
-      owner = "emacs-citar";
-      repo = "citar-org-roam";
-      ref = "main";
-    };
-  };
-
 }

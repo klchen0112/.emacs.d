@@ -1943,7 +1943,10 @@ Generate Table of Contents.
 ** pdf
 #+begin_src emacs-lisp
   (setup pdf-tools
-    (:package pdf-tools))
+    (:package pdf-tools)
+    (:with-mode pdf-view-mode
+      (:match-file ".pdf"))
+    )
 #+end_src
 * Apps
 ** telga
