@@ -592,6 +592,22 @@
         "type": "github"
       }
     },
+    "flymake-shellcheck": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719436962,
+        "narHash": "sha256-ipmIvJgBL8uvVF8v8INu1Go2DaIeiVoIOxbiUv3Dz+U=",
+        "owner": "federicotdn",
+        "repo": "flymake-shellcheck",
+        "rev": "d55666f55e126f0e861f7e886202c17c6a1cf8f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "federicotdn",
+        "repo": "flymake-shellcheck",
+        "type": "github"
+      }
+    },
     "flyover": {
       "flake": false,
       "locked": {
@@ -1512,6 +1528,7 @@
         "emt": "emt",
         "envrc": "envrc",
         "f": "f",
+        "flymake-shellcheck": "flymake-shellcheck",
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",

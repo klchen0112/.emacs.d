@@ -1662,6 +1662,14 @@ Generic Language Server Protocol integration via ~eglot~.
     (setq auto-mode-case-fold nil)
      )
 #+end_src
+** bash
+#+begin_src emacs-lisp
+  (setup flymake-shellcheck
+    (:package flymake-shellcheck)
+    (:with-function flymake-shellcheck-load
+      (:hook-into sh-mode-hook))
+    )
+#+end_src
 ** cc-mode
 #+begin_src emacs-lisp
   (setup cmake-mode

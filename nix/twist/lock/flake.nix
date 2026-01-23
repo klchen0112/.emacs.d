@@ -220,6 +220,12 @@
       repo = "f.el";
       type = "github";
     };
+    flymake-shellcheck = {
+      flake = false;
+      owner = "federicotdn";
+      repo = "flymake-shellcheck";
+      type = "github";
+    };
     flyover = {
       flake = false;
       owner = "konrad1977";
