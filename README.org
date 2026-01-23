@@ -33,12 +33,6 @@ load sequence.
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
 ** Starup
-#+begin_src emacs-lisp
-  (add-hook 'emacs-startup-hook
-            (lambda ()
-              (message "loaded Emacs in %0.03fs"
-                       (float-time (time-subtract after-init-time before-init-time)))))
-#+end_src
 ** disable package.el
 #+begin_src emacs-lisp
 
@@ -382,19 +376,21 @@ load sequence.
     )
 
   ;; 设置符号字体
-  (defconst symbol-fonts
-    '("Apple Symbols"
-      "Apple Color Emoji"
-      "Symbola"
-      "Noto Color Emoji"
-      "Liberation Mono"
-      "Noto Sans Symbols2"
-      "Segoe UI Emoji"
-      "FreeSerif"
-      "Twitter Color Emoji")
-    "Fonts used for symbols"
-    )
+  (defun get-symbol-fonts ()
+    "Get appropriate symbol fonts based on platform."
+    (let ((base-fonts '("Symbola"
+                        "Noto Color Emoji"
+                        "Liberation Mono"
+                        "Noto Sans Symbols2"
+                        "Segoe UI Emoji"
+                        "FreeSerif"
+                        "Twitter Color Emoji")))
+      (if IS-MAC
+          (append '("Apple Symbols" "Apple Color Emoji") base-fonts)
+        base-fonts)))
 
+  (defconst symbol-fonts (get-symbol-fonts)
+    "Fonts used for symbols")
   (defun my-fonts ()
     ;; 设置主字体
 
