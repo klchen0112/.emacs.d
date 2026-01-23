@@ -1,4 +1,9 @@
-{ pkgs, lib, emacsPackage, ... }:
+{
+  pkgs,
+  lib,
+  emacsPackage,
+  ...
+}:
 final: prev:
 builtins.intersectAttrs prev {
   pdf-tools = emacsPackage.pkgs.pdf-tools;
