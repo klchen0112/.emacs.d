@@ -1134,7 +1134,11 @@ Code folding with treesit-fold
     (:only-if (fboundp 'treesit-available-p)
   	    (:package treesit-fold)
   	    (:option hs-show-indicators t)
-  	    ))
+              (:with-map kl-code-prefix-map
+                (:bind "c" treesit-fold-toggle)
+                )
+  	    )
+    )
 #+end_src
 
 ** Formatting
