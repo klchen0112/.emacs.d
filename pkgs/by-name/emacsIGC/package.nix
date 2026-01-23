@@ -6,7 +6,7 @@
   emacs-igc,
 }:
 if stdenv.hostPlatform.isLinux then
-  emacs-igc-pgtk
+  emacs-igc
 else
   (emacs-igc.override {
     withNativeCompilation = true;
