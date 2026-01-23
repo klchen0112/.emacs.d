@@ -331,7 +331,6 @@ load sequence.
   (setup ef-themes
     (:package ef-themes)
     (:require ef-themes)
-    (:load-after modus-themes)
     (:option
      ef-themes-take-over-modus-themes-mode 1)
     (:when-loaded
@@ -510,7 +509,6 @@ load sequence.
 
   (setup switch-window
     (:package switch-window)
-    (:load-after window-divider-mode)
     (:with-map kl-window-prefix-map
       (:bind "o" switch-window)
       (:bind "1" switch-window-then-maximize)
@@ -737,7 +735,6 @@ load sequence.
     )
   (setup meow-tree-sitter
     (:package meow-tree-sitter)
-    (:load-after meow treesit)
     (:when-loaded (meow-tree-sitter-register-defaults)
   		)
     )
@@ -752,7 +749,6 @@ load sequence.
     )
 
   (setup which-key-posframe
-    (:load-after which-key posframe)
     (:package which-key-posframe)
     (:hook-into which-key-mode)
     )
@@ -841,7 +837,6 @@ Space-separated matching components matching in any order.
 #+begin_src emacs-lisp
   (setup orderless
     (:package orderless)
-    (:load-after vertico)
     (:option
      completion-styles '(orderless basic)
      completion-category-defaults nil
@@ -879,7 +874,6 @@ Completion Overlay Region Function.
     )
 
   (setup nerd-icons-corfu
-    (:load-after nerd-icons corfu)
     (:package nerd-icons-corfu)
     (:when-loaded
       (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
@@ -898,7 +892,6 @@ Vertical interactive completion
     )
 
   (setup vertico-posframe
-    (:load-after vertico posframe)
     (:package vertico-posframe)
     (:hook-into vertico-mode))
 #+end_src
@@ -907,7 +900,6 @@ Vertical interactive completion
 #+begin_src emacs-lisp
   (setup tempel
     (:package tempel)
-    (:load-after corfu)
     (:option tempel-trigger-prefix "<")
     ;; Setup completion at point
     (defun tempel-setup-capf ()
@@ -928,7 +920,6 @@ Vertical interactive completion
 
   (setup tempel-collection
     (:package tempel-collection)
-    (:load-after tempel)
     )
 #+end_src
 ** Extensions
@@ -937,7 +928,6 @@ Vertical interactive completion
 #+begin_src emacs-lisp
   (setup nerd-icons-completion
     (:package nerd-icons-completion)
-    (:load-after nerd-icons marginalia)
     (:when-loaded
       (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
     )
@@ -970,12 +960,13 @@ Completion At Point Extensions.
        (:bind "f" consult-fd)
        )
      )
-
+   (setup xref
+     (:package xref))
+   
    (setup consult-xref
      (:when-loaded
        (setq xref-show-xrefs-function #'consult-xref
              xref-show-definitions-function #'consult-xref))
-     (:load-after consult xref)
      )
 #+end_src
 *** embark
@@ -984,17 +975,16 @@ Completion At Point Extensions.
     (:package embark))
 
   (setup embark-consult
-         (:package embark-consult)
-         (:load-after embark)
-           (:with-map minibuffer-local-map
-  	     (:bind "C-c C-o" #'embark-collect)
-  	     (:bind "C-c C-e" #'embark-export)
-  	 )
-         (:with-mode embark-collect-mode
-  		   (:hook consult-preview-at-point-mode))
-         (:with-mode #'consult-preview-at-point-mode
-  	 (:hook-into embark-collect-mode))
-         )
+    (:package embark-consult)
+    (:with-map minibuffer-local-map
+      (:bind "C-c C-o" #'embark-collect)
+      (:bind "C-c C-e" #'embark-export)
+      )
+    (:with-mode embark-collect-mode
+      (:hook consult-preview-at-point-mode))
+    (:with-mode #'consult-preview-at-point-mode
+      (:hook-into embark-collect-mode))
+    )
 
 
   (setup wgrep
@@ -1036,12 +1026,10 @@ Annotations for completion candidates.
 ** Dired
 #+begin_src emacs-lisp
   (setup dirvish
-    (:load-after dired)
     (:package dirvish)
     )
 
   (setup diredfl
-    (:load-after dired)
     (:package diredfl)
     )
 #+end_src
@@ -1134,7 +1122,6 @@ Lookup documentation via DevDocs.
 Code folding with treesit-fold
 #+begin_src emacs-lisp
   (setup treesit-fold
-    (:load-after treesit)
     (:only-if (fboundp 'treesit-available-p)
   	    (:package treesit-fold)
   	    (:option hs-show-indicators t)
@@ -1221,8 +1208,7 @@ Enhanced git related views and commands.
     )
 
   (setup forge
-    (:package forge)
-    (:load-after magit))
+    (:package forge))
 #+end_src
 
 ** Env
@@ -1258,7 +1244,6 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup eglot-x
     (:package eglot-x)
-    (:load-after eglot)
     (:when-loaded
       (add-hook #'eglot-mode-hook #'eglot-x-setup)
       )
@@ -1266,18 +1251,16 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup consult-eglot
     (:package consult-eglot)
-    (:load-after eglot consult)
     (:with-feature consult-eglot-embark
       (:when-loaded
         (consult-eglot-embark-mode))
-
-      ))
+      )
+    )
 
   (setup eglot-booster
     (:nixpkgs emacs-lsp-booster)
     (:package eglot-booster)
     (:option eglot-booster-io-only t)
-    (:load-after eglot)
     (:when-loaded (:hook-into eglot-mode-hook))
     )
 #+end_src
@@ -1306,7 +1289,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org
     (:package org)
     (:option org-directory "~/org")
-    (:with-feature org-agenda
+    (:when-loaded
       (:option
        ;; 时间前导0
        org-agenda-time-leading-zero t
@@ -1314,25 +1297,22 @@ Generic Language Server Protocol integration via ~eglot~.
        org-agenda-span 6
        ;; agenda view 默认从周一开始显示
        org-agenda-start-on-weekday 1)
-      )
-    (:when-loaded
+
       (add-hook #'completion-at-point-function #'cape-elisp-block))
     )
-  
+
   (setup org-mac-link
     (:package org-mac-link))
 
   (setup org-download
     (:package org-download)
-    (:load-after org)
-    (:option   org-download-method 'directory
-    	     org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
-    	     org-download-heading-lvl 'nil)
+    (:option org-download-method 'directory
+    	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
+    	   org-download-heading-lvl 'nil)
     )
 
   (setup org-modern
     (:package org-modern)
-    (:load-after org)
     (:hook-into org-mode)
     (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
     (:option
@@ -1363,12 +1343,10 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-modern-indent
     (:package org-modern-indent)
-    (:load-after org-modern)
     (:hook-into org-mode)
-    (:load-after org))
-
+    )
+  
   (setup org-appear
-    (:load-after org)
     (:package org-appear)
     (:hook-into org-mode))
 #+end_src
@@ -1377,7 +1355,6 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-roam
     (:package org-roam)
-    (:load-after org)
     (:option org-roam-directory (file-truename org-directory))
     (:when-loaded 
     		 (setq org-id-link-to-org-use-id t)
@@ -1388,9 +1365,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup org-roam-ui
-    (:load-after org-roam)
     (:package org-roam-ui)
-    (:load-after org-roam)
     (:when-loaded
       (setq org-roam-ui-sync-theme t
             org-roam-ui-follow t
@@ -1401,19 +1376,16 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-roam-timestamps
     (:package org-roam-timestamps)
-    (:load-after org-roam)
     (:hook-into org-roam-mode-hook)
     (:option org-roam-timestamps-parent-file t))
 
 
 
   (setup org-transclusion
-    (:load-after org-roam)
     (:package org-transclusion)
     (:hook-into org-roam-mode-hook) )
 
   (setup consult-org-roam
-    (:load-after org-roam consult)
     (:package consult-org-roam)
     (:option
      ;; Use `ripgrep' for searching with `consult-org-roam-search'
@@ -1524,7 +1496,6 @@ Generic Language Server Protocol integration via ~eglot~.
         result)))
   (setup vulpea
     (:package vulpea)
-    (:load-after org-roam)
     (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
     (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
     (advice-add 'org-agenda :before #'bmg/vulpea-agenda-files-update)
@@ -1539,7 +1510,6 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup citar
     (:package citar)
-    (:load-after org)
     (:also-load cl-lib)
     (:with-function citar-capf-setup
       (:hook-into org-mode)
@@ -1615,14 +1585,12 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup citar-embark
-    (:load-after citar embark)
     (:when-loaded (citar-embark-mode)))
 
 
 
   (setup citar-org-roam
     (:package citar-org-roam)
-    (:load-after citar org-roam)
     (:when-loaded citar-org-roam-mode)
     )
 #+end_src
@@ -1634,7 +1602,6 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup sis
     (:package sis)
-    (:load-after meow)
     (:option
      ;; enable the /cursor color/ mode
      ;;	   sis-global-cursor-color-mode t
@@ -1737,7 +1704,6 @@ Display outlines in text like files or use it in conjunction with other major mo
   (setup eglot-java
     (:nixpkgs jdt-language-server)
     (:package eglot-java)
-    (:load-after eglot)
     (:hook-into java-base-mode-hook)
     )
 #+end_src
@@ -1842,7 +1808,6 @@ Generate Table of Contents.
 
   (setup pet
     (:package pet)
-    (:load-after python-ts-mode)
     (:hook-into python-base-mode-hook))
 #+end_src
 
