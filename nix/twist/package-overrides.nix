@@ -1,6 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, emacsPackage, ... }:
 final: prev:
 builtins.intersectAttrs prev {
+  pdf-tools = emacsPackage.pkgs.pdf-tools;
   forge = prev.forge.overrideAttrs (o: {
     buildInputs = o.buildInputs ++ (with pkgs; [ gitFull ]);
   });

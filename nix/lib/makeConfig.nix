@@ -91,7 +91,7 @@ in
           _tself: tsuper: {
             elispPackages = tsuper.elispPackages.overrideScope (
               import ../twist/package-overrides.nix {
-                inherit pkgs lib;
+                inherit pkgs lib emacsPackage;
               }
             );
           }
