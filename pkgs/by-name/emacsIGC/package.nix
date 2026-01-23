@@ -6,9 +6,9 @@
   emacs-igc,
 }:
 if stdenv.hostPlatform.isLinux then
-  emacs-igc
+  emacs-igc-pgtk
 else
-  (emacs-igc.override {
+  (emacs-igc-pgtk.override {
     withNativeCompilation = true;
     withMailutils = false;
   }).overrideAttrs
