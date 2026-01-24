@@ -258,9 +258,9 @@ load sequence.
 #+begin_src emacs-lisp
   (setup benchmark-init
     (:package benchmark-init)
-    (:require benchmark-init)
-    
-    (add-hook 'after-init-hook 'benchmark-init/deactivate)
+    (:only-if init-file-debug
+     (:require benchmark-init)
+     (add-hook 'after-init-hook 'benchmark-init/deactivate))
     )
 #+end_src
 ** keyfreq
@@ -336,8 +336,10 @@ load sequence.
     (:when-loaded
       (setq modus-themes-mixed-fonts t
     	  modus-themes-italic-constructs t
-    	  modus-themes-disable-other-themes t)
-      (ef-themes-load-random))
+          modus-themes-disable-other-themes t)
+      (modus-themes-load-theme 'ef-summer)
+      ;;(ef-themes-load-random)
+      )
     )
 #+end_src
 ** Disable GUI components :early:
@@ -437,9 +439,6 @@ load sequence.
 #+begin_src emacs-lisp
   (setup centaur-tabs
     (:package centaur-tabs)
-    (:when-loaded
-      (centaur-tabs-mode t)
-      )
     )
 #+end_src
 ** Dashboard
@@ -447,8 +446,6 @@ load sequence.
   (setup doom-modeline
     (:package doom-modeline)
     (:hook-into after-init-hook)
-    (:hook size-indication-mode)
-    (:hook column-number-mode)
     )
 #+end_src
 ** display-line-number
@@ -457,17 +454,20 @@ load sequence.
     (:hook-into prog-mode)
     (:hook-into org-mode)
     (:hook-into markdown-mode))
-  
+
   (setup display-line-numbers
     (:hook-into prog-mode)
     (:hook-into org-mode)
     (:hook-into markdown-mode)
     (:option display-line-numbers-width 2
-  	   display-line-numbers-type 'relative))
+    	   display-line-numbers-type 'relative))
 
 
   (setup global-hl-line
-    (:option global-hl-line-mode 1))
+    (:hook-into prog-mode)
+    (:hook-into org-mode)
+    (:hook-into markdown-mode)
+    )
 #+end_src
 
 ** Scroll
@@ -476,8 +476,7 @@ load sequence.
     (:package ultra-scroll)
     (:option scroll-conservatively 3 ; or whatever value you prefer, since v0.4
              scroll-margin 0)        ; important: scroll-margin>0 not yet supported
-    (:when-loaded
-      (ultra-scroll-mode 1))
+    (:hook-into after-init)
     )
 #+end_src
 
@@ -505,7 +504,8 @@ load sequence.
   (setup window-divider
     (:option window-divider-default-bottom-width 1
   	   window-divider-default-right-width 1
-  	   window-divider-default-places t))
+             window-divider-default-places t)
+    (:hook-into after-init))
 
   (setup switch-window
     (:package switch-window)
@@ -516,7 +516,7 @@ load sequence.
       (:bind "3" switch-window-split-right)
       (:bind "4" switch-window-then-delete)
       )
-   )
+    )
 #+end_src
 
 ** posframe
@@ -771,7 +771,6 @@ Increase undo limit.
   (setup flyover
     (:package flyover)
     (:hook-into flymake)
-    (:load-after flymake)
     (:option
      flyover-levels '(error warning info)  ; Show all levels
      ;; Use theme colors for error/warning/info faces
@@ -1201,6 +1200,7 @@ Enhanced git related views and commands.
   (setup (:package transient))
   (setup magit
     (:nixpkgs git)
+    (:autoload-this)
     (:package magit)
     (:when-loaded
       (keymap-global-set "C-x g" 'magit-status)
@@ -1208,6 +1208,7 @@ Enhanced git related views and commands.
     )
 
   (setup forge
+    (:autoload-this)
     (:package forge))
 #+end_src
 
@@ -1287,18 +1288,22 @@ Generic Language Server Protocol integration via ~eglot~.
 ** Org
 #+begin_src emacs-lisp
   (setup org
+    (:autoload-this)
     (:package org)
     (:option org-directory "~/org")
+    (:option
+     ;; 时间前导0
+     org-agenda-time-leading-zero t
+     ;; 默认显示区间
+     org-agenda-span 6
+     ;; agenda view 默认从周一开始显示
+     org-agenda-start-on-weekday 1)
     (:when-loaded
-      (:option
-       ;; 时间前导0
-       org-agenda-time-leading-zero t
-       ;; 默认显示区间
-       org-agenda-span 6
-       ;; agenda view 默认从周一开始显示
-       org-agenda-start-on-weekday 1)
-
       (add-hook #'completion-at-point-function #'cape-elisp-block))
+    )
+
+  (setup org-agenda
+    (:autoload-this)
     )
 
   (setup org-mac-link
@@ -1306,12 +1311,14 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-download
     (:package org-download)
+    (:autoload-this)
     (:option org-download-method 'directory
     	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
     	   org-download-heading-lvl 'nil)
     )
 
   (setup org-modern
+    (:autoload-this)
     (:package org-modern)
     (:hook-into org-mode)
     (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
@@ -1342,11 +1349,13 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup org-modern-indent
+    (:autoload-this)
     (:package org-modern-indent)
     (:hook-into org-mode)
     )
-  
+
   (setup org-appear
+    (:autoload-this)
     (:package org-appear)
     (:hook-into org-mode))
 #+end_src
@@ -1356,9 +1365,9 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-roam
     (:package org-roam)
     (:option org-roam-directory (file-truename org-directory))
-    (:when-loaded 
-    		 (setq org-id-link-to-org-use-id t)
-  		 (setq org-roam-completion-everywhere t))
+    (:when-loaded
+      (setq org-id-link-to-org-use-id t)
+      (setq org-roam-completion-everywhere t))
     (:with-map kl-notes-prefix-map
       (:bind "f" 'org-roam-node-find)
       )
@@ -1496,9 +1505,11 @@ Generic Language Server Protocol integration via ~eglot~.
         result)))
   (setup vulpea
     (:package vulpea)
-    (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
-    (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
-    (advice-add 'org-agenda :before #'bmg/vulpea-agenda-files-update)
+    (:when-loaded
+      (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
+      (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
+      (advice-add 'org-agenda :before #'bmg/vulpea-agenda-files-update)
+      )
     )
 #+end_src
 ** org-noter
