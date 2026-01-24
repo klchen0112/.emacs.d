@@ -1524,7 +1524,7 @@ Generic Language Server Protocol integration via ~eglot~.
       )
     )
 #+end_src
-** org-noter
+** org-noter :ARCHIVE:
 #+begin_src emacs-lisp
   (setup org-noter
     (:package org-noter))
@@ -1923,12 +1923,6 @@ Generate Table of Contents.
     (:option eat-shell "nu"))
 #+end_src
 
-** Check
-
-#+begin_src emacs-lisp
-  (setup jinx
-    (:package jinx))
-#+end_src
 
 ** twist nix3
 
@@ -1944,7 +1938,7 @@ Generate Table of Contents.
           nix3-registry-list-completion-options (list :add-to-registry t
                                                       :require-match nil)))
 #+end_src
-** pdf
+** pdf :ARCHIVE:
 #+begin_src emacs-lisp
   (setup pdf-tools
     (:package pdf-tools)
@@ -1953,7 +1947,7 @@ Generate Table of Contents.
     )
 #+end_src
 * Apps
-** telga
+** telga :ARCHIVE:
 #+begin_src emacs-lisp
   (setup telega
     (:package telega)
