@@ -1287,77 +1287,78 @@ Generic Language Server Protocol integration via ~eglot~.
 
 ** Org
 #+begin_src emacs-lisp
-  (setup org
-    (:autoload-this)
-    (:package org)
-    (:option org-directory "~/org")
-    (:option
-     ;; 时间前导0
-     org-agenda-time-leading-zero t
-     ;; 默认显示区间
-     org-agenda-span 6
-     ;; agenda view 默认从周一开始显示
-     org-agenda-start-on-weekday 1)
-    (:when-loaded
-      (add-hook #'completion-at-point-function #'cape-elisp-block))
-    )
-
-  (setup org-agenda
-    (:autoload-this)
-    )
-
-  (setup org-mac-link
-    (:package org-mac-link))
-
-  (setup org-download
-    (:package org-download)
-    (:autoload-this)
-    (:option org-download-method 'directory
-    	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
-    	   org-download-heading-lvl 'nil)
-    )
-
-  (setup org-modern
-    (:autoload-this)
-    (:package org-modern)
-    (:hook-into org-mode)
-    (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
-    (:option
-     ;; Edit settings
-     org-auto-align-tags nil
-     org-tags-column 0
-     org-catch-invisible-edits 'show-and-error
-     org-special-ctrl-a/e t
-     org-insert-heading-respect-content t
-
-     ;; Org styling, hide markup etc.
-     org-hide-emphasis-markers t
-     org-pretty-entities t
-     org-agenda-tags-column 0
-     org-ellipsis "…")
-    (:when-loaded
-      (modify-all-frames-parameters
-       '((right-divider-width . 40)
-         (internal-border-width . 40)))
-      (dolist (face '(window-divider
-    		    window-divider-first-pixel
-    		    window-divider-last-pixel))
-        (face-spec-reset-face face)
-        (set-face-foreground face (face-attribute 'default :background)))
-      (set-face-background 'fringe (face-attribute 'default :background))
+    (setup org
+      (:autoload-this)
+      (:package org)
+      (:option org-directory "~/org")
+      (:option
+       ;; 时间前导0
+       org-agenda-time-leading-zero t
+       ;; 默认显示区间
+       org-agenda-span 6
+       ;; agenda view 默认从周一开始显示
+       org-agenda-start-on-weekday 1)
+      (:when-loaded
+        (add-hook #'completion-at-point-function #'cape-elisp-block))
       )
-    )
 
-  (setup org-modern-indent
-    (:autoload-this)
-    (:package org-modern-indent)
-    (:hook-into org-mode)
-    )
+    (setup org-agenda
+      (:autoload-this)
+      )
 
-  (setup org-appear
-    (:autoload-this)
-    (:package org-appear)
-    (:hook-into org-mode))
+    (setup org-mac-link
+      (:package org-mac-link)
+     )
+
+    (setup org-download
+      (:package org-download)
+      (:autoload-this)
+      (:option org-download-method 'directory
+      	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
+      	   org-download-heading-lvl 'nil)
+      )
+
+    (setup org-modern
+      (:autoload-this)
+      (:package org-modern)
+      (:hook-into org-mode)
+      (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+      (:option
+       ;; Edit settings
+       org-auto-align-tags nil
+       org-tags-column 0
+       org-catch-invisible-edits 'show-and-error
+       org-special-ctrl-a/e t
+       org-insert-heading-respect-content t
+
+       ;; Org styling, hide markup etc.
+       org-hide-emphasis-markers t
+       org-pretty-entities t
+       org-agenda-tags-column 0
+       org-ellipsis "…")
+      (:when-loaded
+        (modify-all-frames-parameters
+         '((right-divider-width . 40)
+           (internal-border-width . 40)))
+        (dolist (face '(window-divider
+      		    window-divider-first-pixel
+      		    window-divider-last-pixel))
+          (face-spec-reset-face face)
+          (set-face-foreground face (face-attribute 'default :background)))
+        (set-face-background 'fringe (face-attribute 'default :background))
+        )
+      )
+
+    (setup org-modern-indent
+      (:autoload-this)
+      (:package org-modern-indent)
+      (:hook-into org-mode)
+      )
+
+    (setup org-appear
+      (:autoload-this)
+      (:package org-appear)
+      (:hook-into org-mode))
 #+end_src
 ** Org-roam 
 #+begin_src emacs-lisp

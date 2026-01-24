@@ -6,10 +6,32 @@
 }:
 final: prev:
 builtins.intersectAttrs prev {
-  pdf-tools = emacsPackage.pkgs.pdf-tools;
-  forge = prev.forge.overrideAttrs (o: {
-    buildInputs = o.buildInputs ++ (with pkgs; [ gitFull ]);
-  });
+  #pdf-tools = prev.pdf-tools.overrideAttrs (old: {
+  #  CXXFLAGS = "-std=c++17";
+
+  #  nativeBuildInputs = [
+  #    pkgs.autoconf
+  #    pkgs.automake
+  #    pkgs.pkg-config
+  #    pkgs.removeReferencesTo
+  #  ];
+
+  #  buildInputs = old.buildInputs ++ [
+  #    pkgs.libpng
+  #    pkgs.zlib
+  #    pkgs.poppler
+  #  ];
+
+  #  preBuild = ''
+  #    ls -alh
+  #    bash ./server/autobuild
+
+  #    cp server/epdfinfo .
+
+
+  #    rm -r Makefile lisp server'';
+
+  #});
   telega = prev.telega.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [
       pkgs.tdlib

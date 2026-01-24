@@ -25,6 +25,24 @@
       repo = "centaur-tabs";
       type = "github";
     };
+    citar = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar";
+      type = "github";
+    };
+    citar-org-roam = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar-org-roam";
+      type = "github";
+    };
+    citeproc = {
+      flake = false;
+      owner = "andras-simonyi";
+      repo = "citeproc-el";
+      type = "github";
+    };
     closql = {
       flake = false;
       owner = "magit";
@@ -508,6 +526,12 @@
       repo = "org-super-agenda";
       type = "github";
     };
+    parsebib = {
+      flake = false;
+      owner = "joostkremers";
+      repo = "parsebib";
+      type = "github";
+    };
     pdf-tools = {
       flake = false;
       owner = "vedang";
@@ -601,6 +625,12 @@
       flake = false;
       owner = "laishulu";
       repo = "emacs-smart-input-source";
+      type = "github";
+    };
+    string-inflection = {
+      flake = false;
+      owner = "akicho8";
+      repo = "string-inflection";
       type = "github";
     };
     switch-window = {
