@@ -1287,10 +1287,17 @@ Generic Language Server Protocol integration via ~eglot~.
 
 ** Org
 #+begin_src emacs-lisp
-    (setup org
-      (:autoload-this)
-      (:package org)
-      (:option org-directory "~/org")
+  (setup org
+    (:autoload-this)
+    (:package org)
+    (:option org-directory "~/org")
+    (:when-loaded
+      (add-hook #'completion-at-point-function #'cape-elisp-block))
+    )
+
+  (setup org-agenda
+    (:autoload-this)
+    (:when-loaded
       (:option
        ;; 时间前导0
        org-agenda-time-leading-zero t
@@ -1298,73 +1305,69 @@ Generic Language Server Protocol integration via ~eglot~.
        org-agenda-span 6
        ;; agenda view 默认从周一开始显示
        org-agenda-start-on-weekday 1)
-      (:when-loaded
-        (add-hook #'completion-at-point-function #'cape-elisp-block))
       )
+    )
 
-    (setup org-agenda
-      (:autoload-this)
-      )
+  (setup org-mac-link
+    (:package org-mac-link)
+    )
 
-    (setup org-mac-link
-      (:package org-mac-link)
-     )
-
-    (setup org-download
-      (:package org-download)
-      (:autoload-this)
-      (:option org-download-method 'directory
+  (setup org-download
+    (:package org-download)
+    (:autoload-this)
+    (:option org-download-method 'directory
       	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
       	   org-download-heading-lvl 'nil)
-      )
+    )
 
-    (setup org-modern
-      (:autoload-this)
-      (:package org-modern)
-      (:hook-into org-mode)
-      (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
-      (:option
-       ;; Edit settings
-       org-auto-align-tags nil
-       org-tags-column 0
-       org-catch-invisible-edits 'show-and-error
-       org-special-ctrl-a/e t
-       org-insert-heading-respect-content t
+  (setup org-modern
+    (:autoload-this)
+    (:package org-modern)
+    (:hook-into org-mode)
+    (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+    (:option
+     ;; Edit settings
+     org-auto-align-tags nil
+     org-tags-column 0
+     org-catch-invisible-edits 'show-and-error
+     org-special-ctrl-a/e t
+     org-insert-heading-respect-content t
 
-       ;; Org styling, hide markup etc.
-       org-hide-emphasis-markers t
-       org-pretty-entities t
-       org-agenda-tags-column 0
-       org-ellipsis "…")
-      (:when-loaded
-        (modify-all-frames-parameters
-         '((right-divider-width . 40)
-           (internal-border-width . 40)))
-        (dolist (face '(window-divider
+     ;; Org styling, hide markup etc.
+     org-hide-emphasis-markers t
+     org-pretty-entities t
+     org-agenda-tags-column 0
+     org-ellipsis "…")
+    (:when-loaded
+      (modify-all-frames-parameters
+       '((right-divider-width . 40)
+         (internal-border-width . 40)))
+      (dolist (face '(window-divider
       		    window-divider-first-pixel
       		    window-divider-last-pixel))
-          (face-spec-reset-face face)
-          (set-face-foreground face (face-attribute 'default :background)))
-        (set-face-background 'fringe (face-attribute 'default :background))
-        )
+        (face-spec-reset-face face)
+        (set-face-foreground face (face-attribute 'default :background)))
+      (set-face-background 'fringe (face-attribute 'default :background))
       )
+    )
 
-    (setup org-modern-indent
-      (:autoload-this)
-      (:package org-modern-indent)
-      (:hook-into org-mode)
-      )
+  (setup org-modern-indent
+    (:autoload-this)
+    (:package org-modern-indent)
+    (:hook-into org-mode)
+    )
 
-    (setup org-appear
-      (:autoload-this)
-      (:package org-appear)
-      (:hook-into org-mode))
+  (setup org-appear
+    (:autoload-this)
+    (:package org-appear)
+    (:hook-into org-mode))
 #+end_src
 ** Org-roam 
 #+begin_src emacs-lisp
 
   (setup org-roam
     (:package org-roam)
+    (:autoload-this)
     (:option org-roam-directory (file-truename org-directory))
     (:when-loaded
       (setq org-id-link-to-org-use-id t)
@@ -1375,6 +1378,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup org-roam-ui
+    (:autoload-this)
     (:package org-roam-ui)
     (:when-loaded
       (setq org-roam-ui-sync-theme t
@@ -1385,6 +1389,7 @@ Generic Language Server Protocol integration via ~eglot~.
       ))
 
   (setup org-roam-timestamps
+    (:autoload-this)
     (:package org-roam-timestamps)
     (:hook-into org-roam-mode-hook)
     (:option org-roam-timestamps-parent-file t))
@@ -1396,6 +1401,7 @@ Generic Language Server Protocol integration via ~eglot~.
     (:hook-into org-roam-mode-hook) )
 
   (setup consult-org-roam
+    (:autoload-this)
     (:package consult-org-roam)
     (:option
      ;; Use `ripgrep' for searching with `consult-org-roam-search'
@@ -1410,7 +1416,11 @@ Generic Language Server Protocol integration via ~eglot~.
 
 
   (setup org-super-agenda
-    (:package org-super-agenda))
+    (:package org-super-agenda)
+    (:autoload-this)
+    (:when-loaded
+      org-super-agenda-mode)
+    )
 
   (defun bmg/vulpea-project-p ()
     "Return non-nil if current buffer has any todo entry.
@@ -1506,6 +1516,7 @@ Generic Language Server Protocol integration via ~eglot~.
         result)))
   (setup vulpea
     (:package vulpea)
+    (:autoload-this)
     (:when-loaded
       (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
       (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
