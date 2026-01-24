@@ -61,7 +61,6 @@ load sequence.
   (eval-when-compile
     (require 'setup)
     (require 'cl-lib)
-    (setq load-path-filter-function #'load-path-filter-cache-directory-files)
     )
 #+end_src
 *** package
@@ -418,7 +417,7 @@ load sequence.
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (with-selected-frame frame
-                    (my-fonts frame))))
+                    (my-fonts))))
     (my-fonts))
 #+end_src
 ** nerd-icons
@@ -1218,6 +1217,7 @@ Enhanced git related views and commands.
 
 #+begin_src emacs-lisp
   (setup envrc
+    (:autoload-this)
     (:package envrc)
     (:with-mode envrc-global-mode
       (:hook-into after-init-hook))
@@ -1229,6 +1229,7 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup eglot
     ;;(:package eglot)
+    (:autoload-this)
     (:with-function eglot-ensure
       (:hook-into prog-mode))
     (:option
@@ -1246,6 +1247,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup eglot-x
+    (:autoload-this)
     (:package eglot-x)
     (:when-loaded
       (add-hook #'eglot-mode-hook #'eglot-x-setup)
@@ -1253,6 +1255,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup consult-eglot
+    (:autoload-this)
     (:package consult-eglot)
     (:with-feature consult-eglot-embark
       (:when-loaded
@@ -1261,6 +1264,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup eglot-booster
+    (:autoload-this)
     (:nixpkgs emacs-lsp-booster)
     (:package eglot-booster)
     (:option eglot-booster-io-only t)
@@ -1271,6 +1275,7 @@ Generic Language Server Protocol integration via ~eglot~.
 **** Dape
 #+begin_src emacs-lisp
   (setup dape
+    (:autoload-this)
     (:package dape)
     (:option
      dape-buffer-window-arrangement 'right
@@ -1311,6 +1316,7 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup org-mac-link
+    (:autoload-this)
     (:package org-mac-link)
     )
 
@@ -1399,6 +1405,7 @@ Generic Language Server Protocol integration via ~eglot~.
 
 
   (setup org-transclusion
+    (:autoload-this)
     (:package org-transclusion)
     (:hook-into org-roam-mode-hook) )
 
@@ -1706,22 +1713,21 @@ Display outlines in text like files or use it in conjunction with other major mo
 
 ** csv
 #+begin_src emacs-lisp
-(setup csv-mode
-       (:package csv-mode)
-       (:match-file "\\.[Cc][Ss][Vv]\\'")
-       (:with-mode tsv-mode (:match-file "\\.tsv\\'"))
-       (:option csv-separators '("," "\t" ";")))
-#+end_src
-** elisp
-#+begin_src emacs-lisp
-  (setup elisp-mode
-    (:hook outline-minor-mode))
+  (setup csv-mode
+    (:autoload-this)
+    (:package csv-mode)
+    (:match-file "\\.[Cc][Ss][Vv]\\'")
+    (:with-mode tsv-mode (:match-file "\\.tsv\\'"))
+    (:option csv-separators '("," "\t" ";")))
 #+end_src
 ** java
 #+begin_src emacs-lisp
-  (setup java-ts)
+  (setup java-ts
+    (:autoload-this)
+    )
 
   (setup eglot-java
+    (:autoload-this)
     (:nixpkgs jdt-language-server)
     (:package eglot-java)
     (:hook-into java-base-mode-hook)
@@ -1731,21 +1737,25 @@ Display outlines in text like files or use it in conjunction with other major mo
 *** Packages
 **** gradle-mode
 #+begin_src emacs-lisp
-(setup gradle-mode
-       (:package gradle-mode)
-       (:hook-into java-base-mode-hook kotlin-mode-hook)
-       (:option gradle-executable-path "gradle"))
+  (setup gradle-mode
+    (:autoload-this)
+    (:package gradle-mode)
+    (:hook-into java-base-mode-hook kotlin-mode-hook)
+    (:option gradle-executable-path "gradle"))
 #+end_src
 
 ** javascript
 #+begin_src emacs-lisp
   (setup js-ts
+    (:autoload-this)
+
     (:match-file "\\.[mc]?js\\'")
     (:match-file "\\.es6\\'" )
     (:match-file "\\.pac\\'" )
     )
 
   (setup typescript-ts
+    (:autoload-this)
     (:package typescript-mode)
 
 
@@ -1753,6 +1763,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 
 
   (setup nodejs-repl
+    (:autoload-this)
     (:package nodejs-repl))
 #+end_src
 ** web
@@ -1760,6 +1771,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 
   (setup web
     (:package web-mode  )
+    (:autoload-this)
     )
 
 #+end_src
@@ -1773,11 +1785,11 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+end_src
 ** json
 #+begin_src emacs-lisp
-  (setup json-ts-mode
+  (setup json-ts
+    (:autoload-this)
 
-         (:match-file "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
-         )
-
+    (:match-file "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
+    )
 #+end_src
 
 *** Packages
@@ -1937,6 +1949,7 @@ Generate Table of Contents.
 ** yaml
 #+begin_src emacs-lisp
   (setup yaml-ts
+    (:autoload-this)
     (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
     (:hook indent-bars-mode)
     )
