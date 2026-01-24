@@ -446,6 +446,8 @@ load sequence.
   (setup doom-modeline
     (:package doom-modeline)
     (:hook-into after-init-hook)
+    (:option doom-modeline-minor-modes t
+             doom-modeline-indent-info t)
     )
 #+end_src
 ** display-line-number
