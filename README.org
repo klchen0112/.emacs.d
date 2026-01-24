@@ -1770,9 +1770,10 @@ Display outlines in text like files or use it in conjunction with other major mo
 
 ** lua
 #+begin_src emacs-lisp
-(setup lua-ts-mode
-  (:match-file "\\.lua\\'")
-)
+  (setup lua-ts-mode
+    (:nixpkgs lua-language-server)
+    (:match-file "\\.lua\\'")
+  )
 #+end_src
 
 ** markdown
@@ -1795,7 +1796,7 @@ Display outlines in text like files or use it in conjunction with other major mo
 **** markdown-toc
 Generate Table of Contents.
 #+begin_src emacs-lisp
-;;(setup markdown-toc (:package markdown-toc))
+(setup markdown-toc (:package markdown-toc))
 #+end_src
 
 
@@ -1817,9 +1818,30 @@ Generate Table of Contents.
        (:package nushell-ts-mode)
        (:match-file "\\.nu\\'"))
 #+end_src
+** go
+#+begin_src emacs-lisp
+  (setup go-ts
+    (:package go-mode)
+    (:match-file "/go\\.mod\\'" ))
 
-** pdf
-*** Packages
+
+  (setup go-work-ts
+    (:match-file "/go\\.work\\'"))
+
+  (setup gorepl
+    (:package gorepl-mode)
+    )
+
+  (setup go-tag
+    (:package go-tag)
+    )
+
+
+  (setup go-gen-test
+    (:package go-gen-test)
+
+    )
+#+end_src
 ** python
 #+begin_src emacs-lisp
   (setup python
