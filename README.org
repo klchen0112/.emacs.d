@@ -1717,14 +1717,9 @@ Display outlines in text like files or use it in conjunction with other major mo
   (setup elisp-mode
     (:hook outline-minor-mode))
 #+end_src
-** go
-#+begin_src emacs-lisp
-  (setup go-mode
-    (:package go-mode))
-#+end_src
 ** java
 #+begin_src emacs-lisp
-  (setup java-ts-mode)
+  (setup java-ts)
 
   (setup eglot-java
     (:nixpkgs jdt-language-server)
@@ -1740,6 +1735,33 @@ Display outlines in text like files or use it in conjunction with other major mo
        (:package gradle-mode)
        (:hook-into java-base-mode-hook kotlin-mode-hook)
        (:option gradle-executable-path "gradle"))
+#+end_src
+
+** javascript
+#+begin_src emacs-lisp
+  (setup js-ts
+    (:match-file "\\.[mc]?js\\'")
+    (:match-file "\\.es6\\'" )
+    (:match-file "\\.pac\\'" )
+    )
+
+  (setup typescript-ts
+    (:package typescript-mode)
+
+
+    )
+
+
+  (setup nodejs-repl
+    (:package nodejs-repl))
+#+end_src
+** web
+#+begin_src emacs-lisp
+
+  (setup web
+    (:package web-mode  )
+    )
+
 #+end_src
 ** just
 #+begin_src emacs-lisp
@@ -1914,7 +1936,7 @@ Generate Table of Contents.
 
 ** yaml
 #+begin_src emacs-lisp
-  (setup yaml-ts-mode
+  (setup yaml-ts
     (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
     (:hook indent-bars-mode)
     )

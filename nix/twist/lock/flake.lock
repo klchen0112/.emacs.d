@@ -64,54 +64,6 @@
         "type": "github"
       }
     },
-    "citar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762688288,
-        "narHash": "sha256-SkOiFf7+0KKWMLM4jKcEIzvehNk5b0mwltk4fWOpf7k=",
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "rev": "dc7018eb36fb3540cb5b7fc526d6747144437eef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "type": "github"
-      }
-    },
-    "citar-org-roam": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745507478,
-        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "type": "github"
-      }
-    },
-    "citeproc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768301259,
-        "narHash": "sha256-KbxUMduCSP+cdpvMYw20n9mVn+D/nCNUx5/DEXO3Wh8=",
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
-        "rev": "4bde999a41803fe519ea80eab8b813d53503eebd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
-        "type": "github"
-      }
-    },
     "closql": {
       "flake": false,
       "locked": {
@@ -720,6 +672,22 @@
         "type": "github"
       }
     },
+    "go-gen-test": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686948832,
+        "narHash": "sha256-9wgqJqE2+9Tkob9PZfRTcvBUE36n5yRw59IGmv38AWE=",
+        "owner": "s-kostyaev",
+        "repo": "go-gen-test",
+        "rev": "af00a9abbaba2068502327ecdef574fd894a884b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "s-kostyaev",
+        "repo": "go-gen-test",
+        "type": "github"
+      }
+    },
     "go-mode": {
       "flake": false,
       "locked": {
@@ -733,6 +701,38 @@
       "original": {
         "owner": "dominikh",
         "repo": "go-mode.el",
+        "type": "github"
+      }
+    },
+    "go-tag": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673419893,
+        "narHash": "sha256-wvf1vtkHuP5MYt+AkH5HeY0B+tESO0XL0ylD3FPivdo=",
+        "owner": "brantou",
+        "repo": "emacs-go-tag",
+        "rev": "33f2059551d5298ca228d90f525b99d1a8d70364",
+        "type": "github"
+      },
+      "original": {
+        "owner": "brantou",
+        "repo": "emacs-go-tag",
+        "type": "github"
+      }
+    },
+    "gorepl-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1577096364,
+        "narHash": "sha256-jTYyjhukwfZXPTSMk9iY3dpV1LlpU1uygBdV6kvBsXk=",
+        "owner": "manute",
+        "repo": "gorepl-mode",
+        "rev": "6a73bf352e8d893f89cad36c958c4db2b5e35e07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "manute",
+        "repo": "gorepl-mode",
         "type": "github"
       }
     },
@@ -784,6 +784,22 @@
         "type": "github"
       }
     },
+    "hydra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742129692,
+        "narHash": "sha256-OtGbTkC3j4jFlcbopvHhRoUJlDjnIsO4eeDYgngNntY=",
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "rev": "59a2a45a35027948476d1d7751b0f0215b1e61aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "indent-bars": {
       "flake": false,
       "locked": {
@@ -813,22 +829,6 @@
       "original": {
         "owner": "purcell",
         "repo": "inheritenv",
-        "type": "github"
-      }
-    },
-    "jinx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760350719,
-        "narHash": "sha256-owG4qMSWJSX9ZGk6K/0zXw2eXe1tFDSzB7ctgrYrmD8=",
-        "owner": "minad",
-        "repo": "jinx",
-        "rev": "e0ad6ea90e25c363a419eb5dbc378ae82252ed0a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "minad",
-        "repo": "jinx",
         "type": "github"
       }
     },
@@ -960,6 +960,22 @@
         "type": "github"
       }
     },
+    "lv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742129692,
+        "narHash": "sha256-OtGbTkC3j4jFlcbopvHhRoUJlDjnIsO4eeDYgngNntY=",
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "rev": "59a2a45a35027948476d1d7751b0f0215b1e61aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "magit": {
       "flake": false,
       "locked": {
@@ -1037,6 +1053,22 @@
       "original": {
         "owner": "jrblevin",
         "repo": "markdown-mode",
+        "type": "github"
+      }
+    },
+    "markdown-toc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765397934,
+        "narHash": "sha256-z6+Xg1YM5MlDsCYdbOk8IyhKwTNHkDjvpykVqLSJ6Yo=",
+        "owner": "ardumont",
+        "repo": "markdown-toc",
+        "rev": "29e5c0f33ed026a5f993e4211f52debd7c02b3ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ardumont",
+        "repo": "markdown-toc",
         "type": "github"
       }
     },
@@ -1200,6 +1232,22 @@
         "type": "github"
       }
     },
+    "nodejs-repl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749736232,
+        "narHash": "sha256-wjenD2S2eh2zqAvOQQbmc9ZrxIl10p7FcS48BvGerbg=",
+        "owner": "abicky",
+        "repo": "nodejs-repl.el",
+        "rev": "c232b4964bd1c9f202fd515685b42c69af415f19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abicky",
+        "repo": "nodejs-repl.el",
+        "type": "github"
+      }
+    },
     "nushell-ts-mode": {
       "flake": false,
       "locked": {
@@ -1329,22 +1377,6 @@
         "type": "github"
       }
     },
-    "org-noter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767916001,
-        "narHash": "sha256-9Sbv/LYRH48+W0MX+UkTwu3wGherII/qLp8rEvYaoBk=",
-        "owner": "org-noter",
-        "repo": "org-noter",
-        "rev": "81765d267e51efd8b4f5b7276000332ba3eabbf5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "org-noter",
-        "repo": "org-noter",
-        "type": "github"
-      }
-    },
     "org-roam": {
       "flake": false,
       "locked": {
@@ -1406,38 +1438,6 @@
       "original": {
         "owner": "alphapapa",
         "repo": "org-super-agenda",
-        "type": "github"
-      }
-    },
-    "parsebib": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764261112,
-        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
-        "type": "github"
-      },
-      "original": {
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "type": "github"
-      }
-    },
-    "pdf-tools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767891768,
-        "narHash": "sha256-XOg2f8H9PAaa66YYfmQXmf/R4zzd6UlkQBotU0jDxLI=",
-        "owner": "vedang",
-        "repo": "pdf-tools",
-        "rev": "365f88238f46f9b1425685562105881800f10386",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vedang",
-        "repo": "pdf-tools",
         "type": "github"
       }
     },
@@ -1559,9 +1559,6 @@
         "benchmark-init": "benchmark-init",
         "cape": "cape",
         "centaur-tabs": "centaur-tabs",
-        "citar": "citar",
-        "citar-org-roam": "citar-org-roam",
-        "citeproc": "citeproc",
         "closql": "closql",
         "cmake-mode": "cmake-mode",
         "cobol-mode": "cobol-mode",
@@ -1600,13 +1597,16 @@
         "forge": "forge",
         "format-all": "format-all",
         "ghub": "ghub",
+        "go-gen-test": "go-gen-test",
         "go-mode": "go-mode",
+        "go-tag": "go-tag",
+        "gorepl-mode": "gorepl-mode",
         "gradle-mode": "gradle-mode",
         "hcl-mode": "hcl-mode",
         "ht": "ht",
+        "hydra": "hydra",
         "indent-bars": "indent-bars",
         "inheritenv": "inheritenv",
-        "jinx": "jinx",
         "just-mode": "just-mode",
         "justl": "justl",
         "keyfreq": "keyfreq",
@@ -1615,11 +1615,13 @@
         "language-id": "language-id",
         "ligature": "ligature",
         "llama": "llama",
+        "lv": "lv",
         "magit": "magit",
         "magit-popup": "magit-popup",
         "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
+        "markdown-toc": "markdown-toc",
         "meow": "meow",
         "meow-tree-sitter": "meow-tree-sitter",
         "modus-themes": "modus-themes",
@@ -1630,6 +1632,7 @@
         "nix-mode": "nix-mode",
         "nix-ts-mode": "nix-ts-mode",
         "nix3": "nix3",
+        "nodejs-repl": "nodejs-repl",
         "nushell-ts-mode": "nushell-ts-mode",
         "orderless": "orderless",
         "org": "org",
@@ -1638,13 +1641,10 @@
         "org-mac-link": "org-mac-link",
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
-        "org-noter": "org-noter",
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
-        "parsebib": "parsebib",
-        "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1660,10 +1660,8 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
-        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
-        "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
         "terraform-mode": "terraform-mode",
@@ -1672,12 +1670,13 @@
         "treesit-fold": "treesit-fold",
         "ts": "ts",
         "twist": "twist",
+        "typescript-mode": "typescript-mode",
         "ultra-scroll": "ultra-scroll",
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
-        "visual-fill-column": "visual-fill-column",
         "vulpea": "vulpea",
+        "web-mode": "web-mode",
         "websocket": "websocket",
         "wgrep": "wgrep",
         "which-key": "which-key",
@@ -1814,22 +1813,6 @@
         "type": "github"
       }
     },
-    "string-inflection": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763116921,
-        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
-        "owner": "akicho8",
-        "repo": "string-inflection",
-        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
-        "type": "github"
-      },
-      "original": {
-        "owner": "akicho8",
-        "repo": "string-inflection",
-        "type": "github"
-      }
-    },
     "switch-window": {
       "flake": false,
       "locked": {
@@ -1859,22 +1842,6 @@
       "original": {
         "owner": "emacsorphanage",
         "repo": "tablist",
-        "type": "github"
-      }
-    },
-    "telega": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767354531,
-        "narHash": "sha256-gXng96NJheno36CnGHSksDBTt0/rHS1S+xk7i29yi50=",
-        "owner": "zevlg",
-        "repo": "telega.el",
-        "rev": "e34fb226ec56b17f77a6eb99c22e98d82529d2de",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zevlg",
-        "repo": "telega.el",
         "type": "github"
       }
     },
@@ -2006,6 +1973,22 @@
         "type": "github"
       }
     },
+    "typescript-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764276054,
+        "narHash": "sha256-xyZ//xJmPZ6vqaGoKnEXhFj+EMzQyRhD8eitA7fX8X8=",
+        "owner": "emacs-typescript",
+        "repo": "typescript.el",
+        "rev": "2535780bdb318d86761b9bd21b0347ca6a89628f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-typescript",
+        "repo": "typescript.el",
+        "type": "github"
+      }
+    },
     "ultra-scroll": {
       "flake": false,
       "locked": {
@@ -2070,22 +2053,6 @@
         "type": "github"
       }
     },
-    "visual-fill-column": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762771539,
-        "narHash": "sha256-b2iHi5A/1CVdwnbvbSpFyi8oJgpSiezPIfZLAzYQYuQ=",
-        "ref": "refs/heads/main",
-        "rev": "e1be9a1545157d24454d950c0ac79553c540edb7",
-        "revCount": 168,
-        "type": "git",
-        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
-      }
-    },
     "vulpea": {
       "flake": false,
       "locked": {
@@ -2099,6 +2066,22 @@
       "original": {
         "owner": "d12frosted",
         "repo": "vulpea",
+        "type": "github"
+      }
+    },
+    "web-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765733334,
+        "narHash": "sha256-evzaxUoyGUSitQk9LyJWe12wOtVBDKZq+RGPqDgFFaw=",
+        "owner": "fxbois",
+        "repo": "web-mode",
+        "rev": "1e7694aee87722f9e51b6e39c35d175d83a1fb2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fxbois",
+        "repo": "web-mode",
         "type": "github"
       }
     },

@@ -25,24 +25,6 @@
       repo = "centaur-tabs";
       type = "github";
     };
-    citar = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar";
-      type = "github";
-    };
-    citar-org-roam = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar-org-roam";
-      type = "github";
-    };
-    citeproc = {
-      flake = false;
-      owner = "andras-simonyi";
-      repo = "citeproc-el";
-      type = "github";
-    };
     closql = {
       flake = false;
       owner = "magit";
@@ -268,10 +250,28 @@
       repo = "ghub";
       type = "github";
     };
+    go-gen-test = {
+      flake = false;
+      owner = "s-kostyaev";
+      repo = "go-gen-test";
+      type = "github";
+    };
     go-mode = {
       flake = false;
       owner = "dominikh";
       repo = "go-mode.el";
+      type = "github";
+    };
+    go-tag = {
+      flake = false;
+      owner = "brantou";
+      repo = "emacs-go-tag";
+      type = "github";
+    };
+    gorepl-mode = {
+      flake = false;
+      owner = "manute";
+      repo = "gorepl-mode";
       type = "github";
     };
     gradle-mode = {
@@ -292,6 +292,12 @@
       repo = "ht.el";
       type = "github";
     };
+    hydra = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "hydra";
+      type = "github";
+    };
     indent-bars = {
       flake = false;
       owner = "jdtsmith";
@@ -302,12 +308,6 @@
       flake = false;
       owner = "purcell";
       repo = "inheritenv";
-      type = "github";
-    };
-    jinx = {
-      flake = false;
-      owner = "minad";
-      repo = "jinx";
       type = "github";
     };
     just-mode = {
@@ -358,6 +358,12 @@
       repo = "llama";
       type = "github";
     };
+    lv = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "hydra";
+      type = "github";
+    };
     magit = {
       flake = false;
       owner = "magit";
@@ -386,6 +392,12 @@
       flake = false;
       owner = "jrblevin";
       repo = "markdown-mode";
+      type = "github";
+    };
+    markdown-toc = {
+      flake = false;
+      owner = "ardumont";
+      repo = "markdown-toc";
       type = "github";
     };
     meow = {
@@ -448,6 +460,12 @@
       repo = "nix3.el";
       type = "github";
     };
+    nodejs-repl = {
+      flake = false;
+      owner = "abicky";
+      repo = "nodejs-repl.el";
+      type = "github";
+    };
     nushell-ts-mode = {
       flake = false;
       owner = "herbertjones";
@@ -496,12 +514,6 @@
       repo = "org-modern-indent";
       type = "github";
     };
-    org-noter = {
-      flake = false;
-      owner = "org-noter";
-      repo = "org-noter";
-      type = "github";
-    };
     org-roam = {
       flake = false;
       owner = "org-roam";
@@ -524,18 +536,6 @@
       flake = false;
       owner = "alphapapa";
       repo = "org-super-agenda";
-      type = "github";
-    };
-    parsebib = {
-      flake = false;
-      owner = "joostkremers";
-      repo = "parsebib";
-      type = "github";
-    };
-    pdf-tools = {
-      flake = false;
-      owner = "vedang";
-      repo = "pdf-tools";
       type = "github";
     };
     pet = {
@@ -627,12 +627,6 @@
       repo = "emacs-smart-input-source";
       type = "github";
     };
-    string-inflection = {
-      flake = false;
-      owner = "akicho8";
-      repo = "string-inflection";
-      type = "github";
-    };
     switch-window = {
       flake = false;
       owner = "dimitri";
@@ -643,12 +637,6 @@
       flake = false;
       owner = "emacsorphanage";
       repo = "tablist";
-      type = "github";
-    };
-    telega = {
-      flake = false;
-      owner = "zevlg";
-      repo = "telega.el";
       type = "github";
     };
     tempel = {
@@ -699,6 +687,12 @@
       repo = "twist.el";
       type = "github";
     };
+    typescript-mode = {
+      flake = false;
+      owner = "emacs-typescript";
+      repo = "typescript.el";
+      type = "github";
+    };
     ultra-scroll = {
       flake = false;
       owner = "jdtsmith";
@@ -722,15 +716,16 @@
       repo = "vertico-posframe";
       type = "github";
     };
-    visual-fill-column = {
-      flake = false;
-      type = "git";
-      url = "https://codeberg.org/joostkremers/visual-fill-column.git";
-    };
     vulpea = {
       flake = false;
       owner = "d12frosted";
       repo = "vulpea";
+      type = "github";
+    };
+    web-mode = {
+      flake = false;
+      owner = "fxbois";
+      repo = "web-mode";
       type = "github";
     };
     websocket = {
