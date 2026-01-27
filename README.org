@@ -381,7 +381,7 @@ load sequence.
     (let ((base-fonts '("Symbola"
                         "Noto Color Emoji"
                         "Liberation Mono"
-                        "Noto Sans Symbols2"
+                        "Noto Sans Symbols 2"
                         "Segoe UI Emoji"
                         "FreeSerif"
                         "Twitter Color Emoji")))
@@ -408,7 +408,7 @@ load sequence.
     (set-fontset-font t 'han      (font-spec :family "TsangerJinKai05"))
     (set-fontset-font t 'kana     (font-spec :family "TsangerJinKai05"))
     (set-fontset-font t 'hangul   (font-spec :family "TsangerJinKai05"))
-    (set-fontset-font t 'cjk-misc (font-spec :family "Noto Serif CJK SC"))
+    (set-fontset-font t 'cjk-misc (font-spec :family "LXGW WenKai"))
     ;; Cyrillic: Привет, Здравствуйте, Здрав, Здравейте
     (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
     )
@@ -419,6 +419,26 @@ load sequence.
                   (with-selected-frame frame
                     (my-fonts))))
     (my-fonts))
+
+  (setup fonts
+    (:nixpkgs material-design-icons)
+    (:nixpkgs font-awesome)
+    (:nixpkgs twemoji-color-font)
+    (:nixpkgs noto-fonts-color-emoji )
+    ;;    (:nixpkgs symbola)
+    (:nixpkgs liberation_ttf)
+    (:nixpkgs overpass)
+    (:nixpkgs freefont_ttf)
+    (:nixpkgs cm_unicode)
+    (:nixpkgs hanazono)
+    (:nixpkgs lmodern)
+    (:nixpkgs lmmath)
+    (:nixpkgs noto-fonts)
+    (:nixpkgs noto-fonts-cjk-sans )
+    (:nixpkgs nerd-fonts.symbols-only)
+    (:nixpkgs nerd-fonts.hack)
+    (:nixpkgs googlesans-code)
+    )
 #+end_src
 ** nerd-icons
 #+begin_src emacs-lisp
