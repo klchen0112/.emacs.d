@@ -33,6 +33,12 @@ load sequence.
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
 ** Starup
+#+begin_src emacs-lisp
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (message "Loaded Emacs in %.03fs"
+                       (float-time (time-subtract after-init-time before-init-time)))))
+#+end_src
 ** disable package.el
 #+begin_src emacs-lisp
 
@@ -450,7 +456,7 @@ load sequence.
   (setup nerd-icons
          (:package nerd-icons))
 #+end_src
-** Modeline
+** dashbord :ARCHIVE:
 #+begin_src emacs-lisp
   (setup dashboard
     (:package dashboard)
@@ -976,6 +982,7 @@ Completion At Point Extensions.
  #+begin_src emacs-lisp
    (setup consult
      (:package consult)
+     (:require consult)
      (:option consult-preview-key "M-RET")
      (:nixpkgs fd ripgrep)
      (:with-map kl-search-prefix-map
@@ -987,7 +994,7 @@ Completion At Point Extensions.
      )
    (setup xref
      (:package xref))
-   
+
    (setup consult-xref
      (:when-loaded
        (setq xref-show-xrefs-function #'consult-xref
