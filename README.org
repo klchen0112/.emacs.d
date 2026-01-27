@@ -368,11 +368,12 @@ load sequence.
 ** font
 #+begin_src emacs-lisp
   (defconst main-fonts
-    '((default        . "M+1Code Nerd Font Mono")
-      (fixed-pitch    . "M+1Code Nerd Font Mono")
-      (variable-pitch . "M+1Code Nerd Font Propo")
-      (bold           . "M+1Code Nerd Font Mono Bold")
-      (italic         . "M+1Code Nerd Font Mono"))
+    '((default        . "Pragmasevka Nerd Font")
+      (fixed-pitch    . "Pragmasevka Nerd Font")
+      (variable-pitch . "Pragmasevka Nerd Font")
+      (bold           . "Pragmasevka Nerd Font Bold")
+      (italic         . "Pragmasevka Nerd Font")
+      )
     )
 
   ;; 设置符号字体
@@ -391,6 +392,7 @@ load sequence.
 
   (defconst symbol-fonts (get-symbol-fonts)
     "Fonts used for symbols")
+
   (defun my-fonts ()
     ;; 设置主字体
 
@@ -413,12 +415,15 @@ load sequence.
     (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
     )
 
+
   (if (daemonp)
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (with-selected-frame frame
-                    (my-fonts))))
-    (my-fonts))
+                    (when (display-graphic-p)
+                      (my-fonts)))))
+    (when (display-graphic-p) (my-fonts))
+    )
 
   (setup fonts
     (:nixpkgs material-design-icons)
