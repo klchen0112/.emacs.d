@@ -517,7 +517,7 @@ load sequence.
   (setup nerd-icons
          (:package nerd-icons))
 #+end_src
-** dashbord
+** dashbord :ARCHIVE:
 #+begin_src emacs-lisp
   (setup dashboard
     (:package dashboard)
@@ -621,10 +621,6 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
 :END:
-** constanas
-#+begin_src emacs-lisp
-  (setq-default fill-column 80)
-#+end_src
 ** cursor
 #+begin_src emacs-lisp
   (setup blink-cursor
@@ -657,7 +653,8 @@ load sequence.
 #+end_src
 ** Editor Config
 #+begin_src emacs-lisp
-(setup editorconfig)
+  (setup editorconfig
+    (:option fill-column 80))
 #+end_src
 ** Meow with treesitter
 
@@ -879,7 +876,7 @@ Increase undo limit.
      ;; "Percentage to lighten or darken the text when tinting is enabled."
      flyover-text-tint-percent 50
      ;; Choose which checkers to use (flycheck, flymake, or both)
-     flyover-checkers '(flychek)
+     flyover-checkers '(flymake)
 
      ;; Enable debug messages
      flyover-debug nil
