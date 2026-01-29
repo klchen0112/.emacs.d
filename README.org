@@ -373,63 +373,124 @@ load sequence.
 #+end_src
 ** font
 #+begin_src emacs-lisp
-  (defconst main-fonts
+  ;; 定义字体配置（延迟执行的核心）
+  (defconst my/main-fonts
     '((default        . "Pragmasevka Nerd Font")
       (fixed-pitch    . "Pragmasevka Nerd Font")
       (variable-pitch . "Pragmasevka Nerd Font")
       (bold           . "Pragmasevka Nerd Font Bold")
-      (italic         . "Pragmasevka Nerd Font")
-      )
-    )
+      (italic         . "Pragmasevka Nerd Font")))
 
-  ;; 设置符号字体
-  (defun get-symbol-fonts ()
-    "Get appropriate symbol fonts based on platform."
-    (let ((base-fonts '("Symbola"
-                        "Noto Color Emoji"
-                        "Liberation Mono"
-                        "Noto Sans Symbols 2"
-                        "Segoe UI Emoji"
-                        "FreeSerif"
-                        "Twitter Color Emoji")))
-      (if IS-MAC
-          (append '("Apple Symbols" "Apple Color Emoji") base-fonts)
-        base-fonts)))
-
-  (defconst symbol-fonts (get-symbol-fonts)
+  (defconst my/symbol-fonts
+    (if IS-MAC
+        '("Apple Symbols" "Apple Color Emoji" "Symbola" "Noto Color Emoji"
+          "Segoe UI Emoji" "Twitter Color Emoji")
+      '("Symbola" "Noto Color Emoji" "Segoe UI Emoji" "Liberation Mono"
+        "Noto Sans Symbols 2" "FreeSerif" "Twitter Color Emoji"))
     "Fonts used for symbols")
 
-  (defun my-fonts ()
-    ;; 设置主字体
+  ;; 辅助函数：异步检查字体是否存在
+  (defun my/check-font-exists (font-name)
+    "检查字体是否存在（缓存结果）"
+    (or (get-text-property 0 'exists font-name)  ; 使用文本属性缓存结果
+        (let ((exists (find-font (font-spec :name font-name))))
+          (put-text-property 0 1 'exists exists font-name)
+          exists)))
 
-    (dolist (face main-fonts)
-      (when (find-font (font-spec :name (cdr face)))
-        (set-face-attribute (car face) nil :font (cdr face))))
+  ;; 核心字体设置函数（优化版）
+  (defun my/setup-fonts ()
+    "设置字体（延迟执行，优化性能）"
+    (when (display-graphic-p)
+      (message "设置字体...")
 
+      ;; 1. 设置主字体（只设置存在的字体）
+      (dolist (face my/main-fonts)
+        (let ((font-name (cdr face))
+              (face-name (car face)))
+          (when (my/check-font-exists font-name)
+            (set-face-attribute face-name nil :font font-name))))
 
-    (dolist (font symbol-fonts)
-      (set-fontset-font t 'symbol font nil 'append))
+      ;; 2. 设置符号字体（批量设置）
+      (let ((available-symbol-fonts
+             (cl-remove-if-not #'my/check-font-exists my/symbol-fonts)))
+        (when available-symbol-fonts
+          ;; 使用 set-fontset-font 的 append 参数一次性添加多个字体
+          (set-fontset-font t 'symbol (car available-symbol-fonts))
+          (dolist (font (cdr available-symbol-fonts))
+            (set-fontset-font t 'symbol font nil 'append))))
 
-    ;; 设置特定字符集字体
-    ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
-    ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-    (set-fontset-font t 'han      (font-spec :family "TsangerJinKai05"))
-    (set-fontset-font t 'kana     (font-spec :family "TsangerJinKai05"))
-    (set-fontset-font t 'hangul   (font-spec :family "TsangerJinKai05"))
-    (set-fontset-font t 'cjk-misc (font-spec :family "LXGW WenKai"))
-    ;; Cyrillic: Привет, Здравствуйте, Здрав, Здравейте
-    (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
-    )
+      ;; 3. 设置特定字符集字体（按需延迟加载）
+      (my/setup-cjk-fonts)
 
+      (message "字体设置完成")))
 
-  (if (daemonp)
+  ;; CJK字体设置（按需延迟）
+  (defun my/setup-cjk-fonts ()
+    "设置CJK字体（可以进一步延迟或按需调用）"
+    ;; 中文字体
+    (when (my/check-font-exists "TsangerJinKai05")
+      (set-fontset-font t 'han    (font-spec :family "TsangerJinKai05"))
+      (set-fontset-font t 'kana   (font-spec :family "TsangerJinKai05"))
+      (set-fontset-font t 'hangul (font-spec :family "TsangerJinKai05")))
+
+    ;; 其他CJK字体
+    (when (my/check-font-exists "Noto Sans")
+      (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans")))
+
+    ;; 西里尔字体
+    (when (my/check-font-exists "Noto Serif")
+      (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))))
+
+  ;; 按需加载CJK字体
+  (defun my/setup-cjk-fonts-if-needed ()
+    "在需要时加载CJK字体"
+    (when (and (display-graphic-p)
+               (or (memq major-mode '(org-mode markdown-mode latex-mode))
+                   (string-match "\\cC" (buffer-string))))  ; 检测中文字符
+      (my/setup-cjk-fonts)))
+
+  ;; 字体设置调度函数
+  (defun my/schedule-font-setup ()
+    "调度字体设置，避免启动时阻塞"
+    (cond
+     ;; 守护进程模式：在新帧创建时设置字体
+     ((daemonp)
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (with-selected-frame frame
-                    (when (display-graphic-p)
-                      (my-fonts)))))
-    (when (display-graphic-p) (my-fonts))
-    )
+                    (run-with-idle-timer 0.1 nil #'my/setup-fonts)))))
+
+     ;; 图形界面模式：延迟设置字体
+     ((display-graphic-p)
+      ;; 先设置基本字体，CJK字体按需加载
+      (run-with-idle-timer 0.1 nil
+                           (lambda ()
+                             ;; 立即设置主字体和符号字体
+                             (my/setup-fonts)
+                             ;; 添加按需加载CJK字体的钩子
+                             (add-hook 'find-file-hook #'my/setup-cjk-fonts-if-needed)
+                             (add-hook 'after-change-major-mode-hook #'my/setup-cjk-fonts-if-needed))))
+
+     ;; 终端模式：不设置图形字体
+     (t nil)))
+
+  ;; 执行字体设置调度
+  (my/schedule-font-setup)
+
+  ;; 可选：性能监控代码（调试用）
+  (defun my/profile-font-setup ()
+    "监控字体设置性能"
+    (let ((start-time (current-time)))
+      (my/setup-fonts)
+      (let ((elapsed (float-time (time-subtract (current-time) start-time))))
+        (message "字体设置耗时: %.3f 秒" elapsed))))
+
+  ;; 可选：手动重新加载字体的命令
+  (defun my/reload-fonts ()
+    "手动重新加载所有字体"
+    (interactive)
+    (my/setup-fonts)
+    (message "字体已重新加载"))
 
   (setup fonts
     (:nixpkgs material-design-icons)
@@ -456,11 +517,10 @@ load sequence.
   (setup nerd-icons
          (:package nerd-icons))
 #+end_src
-** dashbord :ARCHIVE:
+** dashbord
 #+begin_src emacs-lisp
   (setup dashboard
     (:package dashboard)
-    (:load-after nerd-icons)
     (:option  dashboard-icon-type 'nerd-icons)
     (dashboard-setup-startup-hook)
     )
