@@ -32,7 +32,7 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
-** Starup
+** Starup :ARCHIVE:
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook
             (lambda ()
@@ -331,11 +331,13 @@ load sequence.
 #+begin_src emacs-lisp
   (setup modus-themes
     (:package modus-themes)
+    (:require modus-themes)
     )
 
   (setup ef-themes
     (:package ef-themes)
     (:require ef-themes)
+    (:load-after modus-themes)
     (:option
      ef-themes-take-over-modus-themes-mode 1)
     (:when-loaded
@@ -475,7 +477,6 @@ load sequence.
      (t nil)))
 
   ;; 执行字体设置调度
-  (my/schedule-font-setup)
 
   ;; 可选：性能监控代码（调试用）
   (defun my/profile-font-setup ()
@@ -491,6 +492,7 @@ load sequence.
     (interactive)
     (my/setup-fonts)
     (message "字体已重新加载"))
+  (my/schedule-font-setup)
 
   (setup fonts
     (:nixpkgs material-design-icons)
@@ -515,14 +517,17 @@ load sequence.
 ** nerd-icons
 #+begin_src emacs-lisp
   (setup nerd-icons
-         (:package nerd-icons))
+    (:require nerd-icons)
+    (:package nerd-icons))
 #+end_src
 ** dashboard
 #+begin_src emacs-lisp
   (setup dashboard
     (:package dashboard)
     (:load-after nerd-icons)
+    (:require dashboard)
     (:option initial-buffer-choice 'dashboard-open
+             dashboard-projects-backend 'projectile
              dashboard-center-content t
              dashboard-vertically-center-content t
              dashboard-icon-type 'nerd-icons
@@ -544,7 +549,10 @@ load sequence.
                                          dashboard-insert-items
                                          dashboard-insert-newline
                                          dashboard-insert-footer))
-    (add-hook 'server-after-make-frame-hook 'dashboard-open)
+    (if (daemonp)
+        (add-hook 'server-after-make-frame-hook 'dashboard-open)
+      (dashboard-setup-startup-hook)
+      )
     )
 #+end_src
 ** Tabs
@@ -1637,6 +1645,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup vulpea
     (:package vulpea)
     (:autoload-this)
+    (:load-after org-roam org-agenda)
     (:when-loaded
       (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
       (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
