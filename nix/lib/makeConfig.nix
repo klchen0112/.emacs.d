@@ -32,7 +32,7 @@ in
       features ? [ ],
       prependToInitFile ? null,
       nativeCompileAheadDefault ? true,
-      emacsPackage ? pkgs.emacsIGC,
+      emacsPackage ? pkgs.emacsPlus,
       initFile ? (
         pkgs.writeText "init.el" (filterReadme [
           archiveFilter

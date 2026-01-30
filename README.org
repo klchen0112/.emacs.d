@@ -1658,7 +1658,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-noter
     (:package org-noter))
 #+end_src
-** citar :ARCHIVE:
+** citar
 #+begin_src emacs-lisp
   (setup citar
     (:package citar)
@@ -1737,12 +1737,14 @@ Generic Language Server Protocol integration via ~eglot~.
     )
 
   (setup citar-embark
+    (:load-after embark citar)
     (:when-loaded (citar-embark-mode)))
 
 
 
   (setup citar-org-roam
     (:package citar-org-roam)
+    (:load-after org-roam citar)
     (:when-loaded citar-org-roam-mode)
     )
 #+end_src

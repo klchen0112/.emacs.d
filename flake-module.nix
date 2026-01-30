@@ -49,6 +49,7 @@ in
         { config, ... }:
         {
           emacsIGC = config.packages.emacsIGC;
+          emacsPlus = config.packages.emacsPlus;
           initEl = config.packages.initEl-all-features;
           earlyInitEl = config.packages.earlyInitEl-all-features;
           emacs-env-all-features = config.packages.emacs-env-all-features;

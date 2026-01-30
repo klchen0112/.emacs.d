@@ -64,6 +64,54 @@
         "type": "github"
       }
     },
+    "citar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762688288,
+        "narHash": "sha256-SkOiFf7+0KKWMLM4jKcEIzvehNk5b0mwltk4fWOpf7k=",
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "rev": "dc7018eb36fb3540cb5b7fc526d6747144437eef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "type": "github"
+      }
+    },
+    "citar-org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745507478,
+        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "type": "github"
+      }
+    },
+    "citeproc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768301259,
+        "narHash": "sha256-KbxUMduCSP+cdpvMYw20n9mVn+D/nCNUx5/DEXO3Wh8=",
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
+        "rev": "4bde999a41803fe519ea80eab8b813d53503eebd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
+        "type": "github"
+      }
+    },
     "closql": {
       "flake": false,
       "locked": {
@@ -654,6 +702,22 @@
         "owner": "lassik",
         "repo": "emacs-format-all-the-code",
         "type": "github"
+      }
+    },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "owner": "koral",
+        "repo": "gcmh",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "koral",
+        "repo": "gcmh",
+        "type": "gitlab"
       }
     },
     "ghub": {
@@ -1441,6 +1505,22 @@
         "type": "github"
       }
     },
+    "parsebib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764261112,
+        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
+        "owner": "joostkremers",
+        "repo": "parsebib",
+        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joostkremers",
+        "repo": "parsebib",
+        "type": "github"
+      }
+    },
     "pet": {
       "flake": false,
       "locked": {
@@ -1559,6 +1639,9 @@
         "benchmark-init": "benchmark-init",
         "cape": "cape",
         "centaur-tabs": "centaur-tabs",
+        "citar": "citar",
+        "citar-org-roam": "citar-org-roam",
+        "citeproc": "citeproc",
         "closql": "closql",
         "cmake-mode": "cmake-mode",
         "cobol-mode": "cobol-mode",
@@ -1596,6 +1679,7 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
+        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-gen-test": "go-gen-test",
         "go-mode": "go-mode",
@@ -1645,6 +1729,7 @@
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
+        "parsebib": "parsebib",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1653,7 +1738,6 @@
         "python-pytest": "python-pytest",
         "request": "request",
         "rust-mode": "rust-mode",
-        "rustic": "rustic",
         "s": "s",
         "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",
@@ -1661,7 +1745,7 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
-        "spinner": "spinner",
+        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
         "tempel": "tempel",
@@ -1684,7 +1768,6 @@
         "which-key": "which-key",
         "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
-        "xterm-color": "xterm-color",
         "yaml": "yaml"
       }
     },
@@ -1701,22 +1784,6 @@
       "original": {
         "owner": "rust-lang",
         "repo": "rust-mode",
-        "type": "github"
-      }
-    },
-    "rustic": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764582878,
-        "narHash": "sha256-n4H5CrJ7590BhqvNt+PtuqPrbgnjk/g7oEk9y8M4kWY=",
-        "owner": "emacs-rustic",
-        "repo": "rustic",
-        "rev": "e77f62facc1f6287bc62c1dd41a996b8fb25fea2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-rustic",
-        "repo": "rustic",
         "type": "github"
       }
     },
@@ -1832,19 +1899,19 @@
         "type": "github"
       }
     },
-    "spinner": {
+    "string-inflection": {
       "flake": false,
       "locked": {
-        "lastModified": 1663246199,
-        "narHash": "sha256-Ad6J3xGUWD+WDP3BbsgKvxJb90VMOkjJuIt/fhBu+rs=",
-        "owner": "Malabarba",
-        "repo": "spinner.el",
-        "rev": "d4647ae87fb0cd24bc9081a3d287c860ff061c21",
+        "lastModified": 1763116921,
+        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
+        "owner": "akicho8",
+        "repo": "string-inflection",
+        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
         "type": "github"
       },
       "original": {
-        "owner": "Malabarba",
-        "repo": "spinner.el",
+        "owner": "akicho8",
+        "repo": "string-inflection",
         "type": "github"
       }
     },
@@ -2197,22 +2264,6 @@
       "original": {
         "owner": "magit",
         "repo": "with-editor",
-        "type": "github"
-      }
-    },
-    "xterm-color": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765576093,
-        "narHash": "sha256-SLgkSXqlwZE+YihYPoMN633lUJx4PAuxCXkrHZqXH/0=",
-        "owner": "atomontage",
-        "repo": "xterm-color",
-        "rev": "86fab1d247eb5ebe6b40fa5073a70dfa487cd465",
-        "type": "github"
-      },
-      "original": {
-        "owner": "atomontage",
-        "repo": "xterm-color",
         "type": "github"
       }
     },

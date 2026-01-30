@@ -25,6 +25,24 @@
       repo = "centaur-tabs";
       type = "github";
     };
+    citar = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar";
+      type = "github";
+    };
+    citar-org-roam = {
+      flake = false;
+      owner = "emacs-citar";
+      repo = "citar-org-roam";
+      type = "github";
+    };
+    citeproc = {
+      flake = false;
+      owner = "andras-simonyi";
+      repo = "citeproc-el";
+      type = "github";
+    };
     closql = {
       flake = false;
       owner = "magit";
@@ -243,6 +261,12 @@
       owner = "lassik";
       repo = "emacs-format-all-the-code";
       type = "github";
+    };
+    gcmh = {
+      flake = false;
+      owner = "koral";
+      repo = "gcmh";
+      type = "gitlab";
     };
     ghub = {
       flake = false;
@@ -538,6 +562,12 @@
       repo = "org-super-agenda";
       type = "github";
     };
+    parsebib = {
+      flake = false;
+      owner = "joostkremers";
+      repo = "parsebib";
+      type = "github";
+    };
     pet = {
       flake = false;
       owner = "wyuenho";
@@ -586,12 +616,6 @@
       repo = "rust-mode";
       type = "github";
     };
-    rustic = {
-      flake = false;
-      owner = "emacs-rustic";
-      repo = "rustic";
-      type = "github";
-    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -633,10 +657,10 @@
       repo = "emacs-smart-input-source";
       type = "github";
     };
-    spinner = {
+    string-inflection = {
       flake = false;
-      owner = "Malabarba";
-      repo = "spinner.el";
+      owner = "akicho8";
+      repo = "string-inflection";
       type = "github";
     };
     switch-window = {
@@ -768,12 +792,6 @@
       flake = false;
       owner = "magit";
       repo = "with-editor";
-      type = "github";
-    };
-    xterm-color = {
-      flake = false;
-      owner = "atomontage";
-      repo = "xterm-color";
       type = "github";
     };
     yaml = {
