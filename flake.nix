@@ -48,7 +48,7 @@
 
     # Emacs Twist
     org-babel.url = "github:emacs-twist/org-babel";
-    twist.url = "github:emacs-twist/twist.nix";
+    twist.url = "github:klchen0112/twist.nix/darwin";
     twist-overrides.url = "github:emacs-twist/overrides";
 
     # Package registries for Twist
