@@ -1168,6 +1168,22 @@
         "type": "github"
       }
     },
+    "mermaid-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752865117,
+        "narHash": "sha256-dOk2/BlHNc9cDTqcvjCgU67gN/TW9aVR7TebMKqmnZw=",
+        "owner": "abrochard",
+        "repo": "mermaid-mode",
+        "rev": "9535d513b41ed11bcd91f644815e2db6430c1560",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abrochard",
+        "repo": "mermaid-mode",
+        "type": "github"
+      }
+    },
     "modus-themes": {
       "flake": false,
       "locked": {
@@ -1325,6 +1341,22 @@
       "original": {
         "owner": "herbertjones",
         "repo": "nushell-ts-mode",
+        "type": "github"
+      }
+    },
+    "ob-mermaid": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768888898,
+        "narHash": "sha256-8tziawxPGxwyVplwW5yVr+gr7tQhJjg4zhS1xE/xM2U=",
+        "owner": "arnm",
+        "repo": "ob-mermaid",
+        "rev": "4f814ad5e1b96764af52d53799288ff3acc94b47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arnm",
+        "repo": "ob-mermaid",
         "type": "github"
       }
     },
@@ -1708,6 +1740,7 @@
         "markdown-toc": "markdown-toc",
         "meow": "meow",
         "meow-tree-sitter": "meow-tree-sitter",
+        "mermaid-mode": "mermaid-mode",
         "modus-themes": "modus-themes",
         "nerd-icons": "nerd-icons",
         "nerd-icons-completion": "nerd-icons-completion",
@@ -1718,6 +1751,7 @@
         "nix3": "nix3",
         "nodejs-repl": "nodejs-repl",
         "nushell-ts-mode": "nushell-ts-mode",
+        "ob-mermaid": "ob-mermaid",
         "orderless": "orderless",
         "org": "org",
         "org-appear": "org-appear",

@@ -2124,6 +2124,15 @@ Generate Table of Contents.
     )
 #+end_src
 
+** mermaid
+#+begin_src emacs-lisp
+  (setup mermaid
+    (:package mermaid-mode)
+    (:package ob-mermaid)
+    (:nixpkgs mermaid-cli)
+    (:org-babel-language t)
+    )
+#+end_src
 * Tool
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
