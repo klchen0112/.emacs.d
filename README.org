@@ -188,6 +188,29 @@ load sequence.
       :repeatable t)
     )
 #+end_src
+
+** org-src-lang
+#+begin_src emacs-lisp
+  (eval-when-compile
+
+    (setup-define :org-src-lang
+      (lambda (&rest langs)
+        `(with-eval-after-load 'org-src
+           (let ((name ',(thread-last
+                           (setup-get 'mode)
+                           (symbol-name)
+                           (string-remove-suffix "-mode"))))
+             (dolist (lang ',langs)
+               (add-to-list 'org-src-lang-modes (cons lang (intern name)))
+               )
+             )
+           )
+        )
+      :documentation "Define language mappings for org-src blocks."
+      )
+
+    )
+#+end_src
 ** navive comp
 #+begin_src emacs-lisp
   (if (and (featurep 'native-compile)
@@ -974,8 +997,8 @@ Increase undo limit.
 ** Text segmentation
 #+begin_src emacs-lisp
   (setup emt
+    (:package emt)
     (:only-if IS-MAC
-  	    (:package emt)
   	    (:hook-into after-init)
   	    )
     )
@@ -1027,6 +1050,7 @@ Completion Overlay Region Function.
 
   (setup nerd-icons-corfu
     (:package nerd-icons-corfu)
+    (:load-after nerd-icons corfu)
     (:when-loaded
       (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
       )
@@ -1071,6 +1095,7 @@ Vertical interactive completion
     )
 
   (setup tempel-collection
+    (:load-after tempel)
     (:package tempel-collection)
     )
 #+end_src
@@ -1080,6 +1105,7 @@ Vertical interactive completion
 #+begin_src emacs-lisp
   (setup nerd-icons-completion
     (:package nerd-icons-completion)
+    (:load-after nerd-icons marginalia)
     (:when-loaded
       (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
     )
@@ -1129,6 +1155,7 @@ Completion At Point Extensions.
 
   (setup embark-consult
     (:package embark-consult)
+    (:load-after embark consult)
     (:with-map minibuffer-local-map
       (:bind "C-c C-o" #'embark-collect)
       (:bind "C-c C-e" #'embark-export)
@@ -1167,7 +1194,6 @@ Annotations for completion candidates.
 #+begin_src emacs-lisp
   (setup marginalia
          (:package marginalia)
-         (:also-load nerd-icons-completion)
          (:hook-into after-init-hook))
 #+end_src
 
@@ -1205,9 +1231,9 @@ Annotations for completion candidates.
 
 *** Icons
 #+begin_src emacs-lisp
-
   (setup nerd-icons-dired
     (:package nerd-icons-dired)
+    (:load-after nerd-icons dired)
     (:hook-into dired-mode-hook))
 #+end_src
 
@@ -1215,6 +1241,7 @@ Annotations for completion candidates.
 #+begin_src emacs-lisp
   (setup dired-git-info
     (:package dired-git-info)
+    (:load-after dired)
     )
 #+end_src
 
@@ -1229,7 +1256,8 @@ Annotations for completion candidates.
 ** Isearch
 #+begin_src emacs-lisp
   (setup isearch
-    (:option isearch-lazy-count t))
+    (:option isearch-lazy-count t
+             isearch-allow-scroll t))
 #+end_src
 
 ** Occur
@@ -1586,6 +1614,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-roam-ui
     (:autoload-this)
     (:package org-roam-ui)
+    (:load-after org-roam)
     (:when-loaded
       (setq org-roam-ui-sync-theme t
             org-roam-ui-follow t
@@ -1597,6 +1626,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-roam-timestamps
     (:autoload-this)
     (:package org-roam-timestamps)
+    (:load-after org-roam)
     (:hook-into org-roam-mode-hook)
     (:option org-roam-timestamps-parent-file t))
 
@@ -1609,6 +1639,7 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup consult-org-roam
     (:autoload-this)
+    (:load-after org-roam consult)
     (:package consult-org-roam)
     (:option
      ;; Use `ripgrep' for searching with `consult-org-roam-search'
@@ -2112,12 +2143,13 @@ Generate Table of Contents.
 ** rust
 #+begin_src emacs-lisp
   (setup rust-mode
+    (:match-file "\\.rs\\'")
     (:package rust-mode)
     )
 
 
-  ;;(setup rustic
-  ;;  (:package rustic))
+;;  (setup rustic
+;;    (:package rustic))
 #+end_src
 ** scala
 #+begin_src emacs-lisp
@@ -2158,7 +2190,13 @@ Generate Table of Contents.
     (:hook indent-bars-mode)
     )
 #+end_src
-
+** toml
+#+begin_src emacs-lisp
+  (setup toml-ts-mode
+    (:org-src-lang "toml")
+    (:match-file "\\.toml\\'")
+    )
+#+end_src
 ** mermaid
 #+begin_src emacs-lisp
   (setup mermaid
