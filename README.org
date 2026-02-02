@@ -41,25 +41,15 @@ load sequence.
 #+end_src
 ** disable package.el
 #+begin_src emacs-lisp
+  (setq
+   inhibit-startup-echo-area-message t
+   inhibit-startup-screen t
+   initial-scratch-message nil
+   inhibit-default-init t
+   initial-major-mode 'fundamental-mode
+   )
 
-  (setq inhibit-startup-echo-area-message t)
-  (setq inhibit-startup-screen t)
-  (setq initial-scratch-message nil)
-
-
-  (setq inhibit-default-init t)
-  (setq initial-major-mode 'fundamental-mode)
   (advice-add #'x-apply-session-resources :override #'ignore)
-  ;; Disable package.el in favor of straight.el
-  (setq package-enable-at-startup nil
-        package-quickstart nil)
-  ;; disable gc in startup
-  (setq gc-cons-threshold most-positive-fixnum)
-  (setq gc-cons-percentage 1.0)
-  (run-with-timer 5 nil (lambda ()
-                          (setq gc-cons-threshold (* 64 1024 1024) ;; 64MB
-                                gc-cons-percentage 0.1)
-                          ))
 #+end_src
 ** gc
 #+begin_src emacs-lisp
@@ -84,6 +74,10 @@ load sequence.
     (require 'setup)
     (require 'cl-lib)
     )
+  ;; Disable package.el in favor of straight.el
+  (setq package-enable-at-startup nil
+        package-quickstart nil)
+
 #+end_src
 *** package
 
@@ -324,8 +318,6 @@ load sequence.
     (:package gcmh)
     (:hook-into after-init-hook)
     (:option gcmh-idle-delay 'auto
-             gcmh-auto-idle-delay-factor 10
-  	   gcmh-high-cons-threshold (* 128 1024 1024) ; 128MB
              gcmh-verbose init-file-debug))
 #+end_src
 
@@ -555,6 +547,12 @@ load sequence.
                                (projects  . 5)
                                (agenda    . 5)
                                (registers . 5))
+             dashboard-item-shortcuts '((recents . "r")
+                                        (bookmarks . "m")
+                                        (projects . "j")
+                                        (agenda . "a")
+                                        (registers . "e"))
+
              dashboard-startupify-list '(dashboard-insert-banner
                                          dashboard-insert-newline
                                          dashboard-insert-banner-title
@@ -601,10 +599,8 @@ load sequence.
     	   display-line-numbers-type 'relative))
 
 
-  (setup global-hl-line
-    (:hook-into prog-mode)
-    (:hook-into org-mode)
-    (:hook-into markdown-mode)
+  (setup hl-line
+    (:hook-into prog-mode text-mode)
     )
 #+end_src
 
@@ -699,8 +695,30 @@ load sequence.
 #+end_src
 ** Editor Config
 #+begin_src emacs-lisp
+  (setup buffer
+    (:option buffer-file-coding-system 'utf-8
+             indicate-empty-lines t
+             )
+    )
+
   (setup editorconfig
     (:option fill-column 80))
+#+end_src
+
+** tab-width
+#+begin_src emacs-lisp
+  (setup tab-width
+    (:option tab-width 2)
+    (:with-mode (org-mode)
+      (:local-set tab-width 2))
+
+    (:with-mode (emacs-lisp-mode)
+      (:local-set tab-width 8))
+    (:with-mode (makefile-mode zig-mode zig-ts-mode java-ts-mode kotlin-ts-mode)
+      (:local-set tab-width 4))
+    (:with-mode (js-mode typescript-mode sh-mode python-mode)
+      (:local-set tab-width 2))
+    )
 #+end_src
 ** Meow with treesitter
 
@@ -1158,8 +1176,24 @@ Annotations for completion candidates.
 :header-args:emacs-lisp: :tangle init.el
 :END:
 
+** recentf
+#+begin_src emacs-lisp
+  (setup recentf
+    (:hook-into after-init-hook)
+    (:option recentf-max-menu-items 1000
+             recentf-auto-cleanup 'never)
+    )
+#+end_src
 ** Dired
 #+begin_src emacs-lisp
+  (setup dired
+    (:option dired-recursive-copies 'always
+             dired-recursive-deletes 'top
+             dired-auto-revert-buffer t
+             dired-vc-rename-file t
+             )
+    )
+
   (setup dirvish
     (:package dirvish)
     )
@@ -1184,6 +1218,14 @@ Annotations for completion candidates.
     )
 #+end_src
 
+** bookmark
+#+begin_src emacs-lisp
+  (setup bookmark
+    (:option bookmark-save-flag t
+             bookmark-sort-flag 'last-modified)
+
+    )
+#+end_src
 ** Isearch
 #+begin_src emacs-lisp
   (setup isearch
@@ -1219,6 +1261,7 @@ Annotations for completion candidates.
 
 ** Compilation
 #+begin_src emacs-lisp
+  (setup compile)
 #+end_src
 
 ** Containers
@@ -1873,6 +1916,9 @@ Generic Language Server Protocol integration via ~eglot~.
 
 ** outline
 Display outlines in text like files or use it in conjunction with other major modes via ~outline-minor-mode~.
+#+begin_src emacs-lisp
+  (setup outline)
+#+end_src
 ** cobol
 #+begin_src emacs-lisp
   (setup cobol-mode
