@@ -32,12 +32,14 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
-** Starup :ARCHIVE:
+** Starup 
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook
             (lambda ()
-              (message "Loaded Emacs in %.03fs"
-                       (float-time (time-subtract after-init-time before-init-time)))))
+              (message "Loaded %d Emacs in %.03fs"
+                       (length features)
+                       (float-time (time-subtract after-init-time before-init-time)))
+              ))
 #+end_src
 ** disable package.el
 #+begin_src emacs-lisp
@@ -362,12 +364,10 @@ load sequence.
 #+begin_src emacs-lisp
   (setup modus-themes
     (:package modus-themes)
-    (:require modus-themes)
     )
 
   (setup ef-themes
     (:package ef-themes)
-    (:require ef-themes)
     (:load-after modus-themes)
     (:option
      ef-themes-take-over-modus-themes-mode 1)
@@ -1069,6 +1069,7 @@ Vertical interactive completion
 
   (setup vertico-posframe
     (:package vertico-posframe)
+    (:load-after vertico posframe)
     (:hook-into vertico-mode))
 #+end_src
 
@@ -2142,14 +2143,14 @@ Generate Table of Contents.
 *** Packages
 ** rust
 #+begin_src emacs-lisp
-  (setup rust-mode
+  (setup rust-ts-mode
     (:match-file "\\.rs\\'")
-    (:package rust-mode)
+    (:org-src-lang "rust")
     )
 
 
-;;  (setup rustic
-;;    (:package rustic))
+  ;;  (setup rustic
+  ;;    (:package rustic))
 #+end_src
 ** scala
 #+begin_src emacs-lisp
@@ -2201,6 +2202,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup mermaid
     (:package mermaid-mode)
+    (:org-src-lang "mermaid")
     (:package ob-mermaid)
     (:nixpkgs mermaid-cli)
     (:org-babel-language t)
@@ -2237,13 +2239,15 @@ Generate Table of Contents.
 ** twist nix3
 
 #+begin_src emacs-lisp
-  (setup (:package twist)
+  (setup twist
+    (:package twist)
     (:with-mode twist-watch-mode
       (:hook-into emacs-startup-hook)
       )
     )
 
-  (setup (:package nix3)
+  (setup nix3
+    (:package nix3)
     (:option nix3-flake-remote-wait 20
           nix3-registry-list-completion-options (list :add-to-registry t
                                                       :require-match nil)))
