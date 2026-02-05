@@ -253,19 +253,6 @@ load sequence.
 ** load path
 
 #+begin_src emacs-lisp
-  (require 'cl-extra)
-  (require 'cl-lib)
-
-  (defun filter-nix-store (paths)
-    (cl-remove-if-not
-     (lambda (s)
-       (string-prefix-p "/nix/store/" s))
-     paths))
-
-  (setq native-comp-eln-load-path (filter-nix-store native-comp-eln-load-path))
-  ;; Make sure to add back the user eln-cache
-  (push (expand-file-name "eln-cache/" user-emacs-directory) native-comp-eln-load-path)
-  (setq load-path (filter-nix-store load-path))
 #+end_src
 ** Constants
 *** System Constants
@@ -298,10 +285,10 @@ load sequence.
 #+begin_src emacs-lisp
   (setup benchmark-init
     (:package benchmark-init)
-    (:only-if init-file-debug
-     (:require benchmark-init)
-     (add-hook 'after-init-hook 'benchmark-init/deactivate))
-    )
+    ;;    (:only-if init-file-debug
+    (:require benchmark-init)
+    (add-hook 'after-init-hook 'benchmark-init/deactivate))
+  ;;  )
 #+end_src
 ** keyfreq
 #+begin_src emacs-lisp
@@ -314,15 +301,14 @@ load sequence.
 ** treesit
 #+begin_src emacs-lisp
   (setup treesit
-         (:only-if (fboundp 'treesit-available-p))
-         )
+    (:only-if (fboundp 'treesit-available-p))
+    )
 #+end_src
 ** localization
 #+begin_src emacs-lisp
   (setup localization
-       (:option calendar-week-start-day 1)
-       )
-
+    (:option calendar-week-start-day 1)
+    )
 #+end_src
 ** prefix-keymap
 #+begin_src emacs-lisp
@@ -418,7 +404,7 @@ load sequence.
     (if IS-MAC
         '("Apple Symbols" "Apple Color Emoji" "Symbola" "Noto Color Emoji"
           "Segoe UI Emoji" "Twitter Color Emoji")
-      '("Symbola" "Noto Color Emoji" "Segoe UI Emoji" "Liberation Mono"
+      '(  "Liberation Mono"
         "Noto Sans Symbols 2" "FreeSerif" "Twitter Color Emoji"))
     "Fonts used for symbols")
 
@@ -453,7 +439,6 @@ load sequence.
             (set-fontset-font t 'symbol font nil 'append))))
 
       ;; 3. 设置特定字符集字体（按需延迟加载）
-      (my/setup-cjk-fonts)
 
       (message "字体设置完成")))
 
@@ -495,14 +480,13 @@ load sequence.
 
      ;; 图形界面模式：延迟设置字体
      ((display-graphic-p)
+      (my/setup-fonts)
       ;; 先设置基本字体，CJK字体按需加载
       (run-with-idle-timer 0.1 nil
                            (lambda ()
                              ;; 立即设置主字体和符号字体
-                             (my/setup-fonts)
                              ;; 添加按需加载CJK字体的钩子
-                             (add-hook 'find-file-hook #'my/setup-cjk-fonts-if-needed)
-                             (add-hook 'after-change-major-mode-hook #'my/setup-cjk-fonts-if-needed))))
+                             my/setup-cjk-fonts)))
 
      ;; 终端模式：不设置图形字体
      (t nil)))
@@ -523,8 +507,8 @@ load sequence.
     (interactive)
     (my/setup-fonts)
     (message "字体已重新加载"))
-  (my/schedule-font-setup)
-
+  ;;(my/schedule-font-setup)
+  (my/profile-font-setup)
   (setup fonts
     (:nixpkgs material-design-icons)
     (:nixpkgs font-awesome)
@@ -542,7 +526,6 @@ load sequence.
     (:nixpkgs noto-fonts-cjk-sans )
     (:nixpkgs nerd-fonts.symbols-only)
     (:nixpkgs nerd-fonts.hack)
-    (:nixpkgs googlesans-code)
     )
 #+end_src
 ** nerd-icons
