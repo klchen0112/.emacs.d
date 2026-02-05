@@ -125,13 +125,13 @@ load sequence.
 #+begin_src emacs-lisp
   (eval-when-compile
     (setup-define :load-after
-  		(lambda (&rest features)
-  		  (let ((body `(require ',(setup-get 'feature))))
-  		    (dolist (feature (nreverse features))
-  		      (setq body `(with-eval-after-load ',feature ,body)))
-  		    body))
-  		:documentation "Load the current feature after FEATURES.")
-    )
+      (lambda (&rest features)
+        (cl-reduce
+         (lambda (f acc) `(with-eval-after-load ',f ,acc)) ; f 是包名(symbol), acc 是已生成的代码块
+         features
+         :initial-value `(require ',(setup-get 'feature))
+         :from-end t))
+      :documentation "Load the current feature after all FEATURES are loaded."))
 #+end_src
 
 *** :nixpkgs
