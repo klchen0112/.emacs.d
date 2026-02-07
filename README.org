@@ -347,10 +347,6 @@ load sequence.
 
 ** theme
 #+begin_src emacs-lisp
-  (setup modus-themes
-    (:package modus-themes)
-    (:require modus-themes)
-    )
 
   (setup ef-themes
     (:package ef-themes)
@@ -358,10 +354,18 @@ load sequence.
     (:require ef-themes)
     (:option
      ef-themes-take-over-modus-themes-mode 1)
+    (modus-themes-include-derivatives-mode 1)
     (:when-loaded
-      (:option modus-themes-mixed-fonts t
-    	  modus-themes-italic-constructs t
-          modus-themes-disable-other-themes t)
+      (:option
+       modus-themes-to-rotate modus-themes-items
+       modus-themes-mixed-fonts t
+       modus-themes-variable-pitch-ui t
+       modus-themes-italic-constructs t
+       modus-themes-bold-constructs t
+       modus-themes-completions '((t . (bold)))
+       modus-themes-prompts '(bold)
+       modus-themes-common-palette-overrides nil
+       modus-themes-disable-otehr-themes t)
       (modus-themes-load-theme 'ef-elea-dark)
       ;;(ef-themes-load-random)
       )
