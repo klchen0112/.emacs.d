@@ -143,12 +143,6 @@
       repo = "dired-git-info";
       type = "github";
     };
-    diredfl = {
-      flake = false;
-      owner = "purcell";
-      repo = "diredfl";
-      type = "github";
-    };
     dirvish = {
       flake = false;
       owner = "alexluigit";
@@ -620,12 +614,6 @@
       flake = false;
       owner = "tkf";
       repo = "emacs-request";
-      type = "github";
-    };
-    rust-mode = {
-      flake = false;
-      owner = "rust-lang";
-      repo = "rust-mode";
       type = "github";
     };
     "s" = {

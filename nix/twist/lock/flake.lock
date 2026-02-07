@@ -384,22 +384,6 @@
         "type": "github"
       }
     },
-    "diredfl": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733053302,
-        "narHash": "sha256-FT+OGJHJRocJbSSpVSGQlORWk2/LRdwTM6FECGB636Y=",
-        "owner": "purcell",
-        "repo": "diredfl",
-        "rev": "fe72d2e42ee18bf6228bba9d7086de4098f18a70",
-        "type": "github"
-      },
-      "original": {
-        "owner": "purcell",
-        "repo": "diredfl",
-        "type": "github"
-      }
-    },
     "dirvish": {
       "flake": false,
       "locked": {
@@ -1691,7 +1675,6 @@
         "devdocs": "devdocs",
         "diff-hl": "diff-hl",
         "dired-git-info": "dired-git-info",
-        "diredfl": "diredfl",
         "dirvish": "dirvish",
         "disaster": "disaster",
         "docker": "docker",
@@ -1771,7 +1754,6 @@
         "promise": "promise",
         "python-pytest": "python-pytest",
         "request": "request",
-        "rust-mode": "rust-mode",
         "s": "s",
         "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",
@@ -1803,22 +1785,6 @@
         "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
         "yaml": "yaml"
-      }
-    },
-    "rust-mode": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767254958,
-        "narHash": "sha256-MVHCEznnbHXFkNAHt2OmD9TcPpEE1Wx8GiO49cqMtvA=",
-        "owner": "rust-lang",
-        "repo": "rust-mode",
-        "rev": "ae161dca23db7531e021205d4bee18ab8a8f3938",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rust-lang",
-        "repo": "rust-mode",
-        "type": "github"
       }
     },
     "s": {
