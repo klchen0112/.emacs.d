@@ -3,12 +3,15 @@
   fetchpatch,
   lib,
   emacs-pgtk,
+  emacs-git-pgtk,
+  emacs-igc-pgtk,
   emacs-macport,
 }:
 if stdenv.isLinux then
-  emacs-pgtk.override {
-    withNativeCompilation = true;
-    withMailutils = false;
-  }
+  emacs-pgtk
+#  emacs-git-pgtk.override {
+#   withNativeCompilation = true;
+#  withMailutils = false;
+#  }
 else
   emacs-macport

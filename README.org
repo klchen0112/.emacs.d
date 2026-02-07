@@ -36,7 +36,7 @@ load sequence.
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook
             (lambda ()
-              (message "Loaded %d Emacs in %.03fs"
+              (message "Loaded %d Features in %.03fs"
                        (length features)
                        (float-time (time-subtract after-init-time before-init-time)))
               ))
@@ -257,7 +257,6 @@ load sequence.
 ** Constants
 *** System Constants
 #+begin_src emacs-lisp
-
   (defconst IS-MAC (eq system-type 'darwin))
   (defconst IS-LINUX (eq system-type 'gnu/linux))
   (defconst IS-WINDOWS (eq system-type 'windows-nt))
@@ -271,9 +270,6 @@ load sequence.
         confirm-kill-emacs 'y-or-n-p
         ring-bell-function 'ignore
         )
-
-
-
 #+end_src
 *** org-constants
 #+begin_src emacs-lisp
@@ -286,9 +282,11 @@ load sequence.
   (setup benchmark-init
     (:package benchmark-init)
     ;;    (:only-if init-file-debug
-    (:require benchmark-init)
-    (add-hook 'after-init-hook 'benchmark-init/deactivate))
-  ;;  )
+    ;; (:require benchmark-init)
+    ;;  )
+    )
+  (require 'benchmark-init)
+  (add-hook 'emacs-startup-hook 'benchmark-init/deactivate)
 #+end_src
 ** keyfreq
 #+begin_src emacs-lisp
@@ -329,7 +327,9 @@ load sequence.
     (:package gcmh)
     (:hook-into after-init-hook)
     (:option gcmh-idle-delay 'auto
-             gcmh-verbose init-file-debug))
+             gcmh-high-cons-threshold (* 16 1024 1024)
+             gcmh-verbose init-file-debug)
+    )
 #+end_src
 
 ** performance
@@ -350,18 +350,20 @@ load sequence.
 #+begin_src emacs-lisp
   (setup modus-themes
     (:package modus-themes)
+    (:require modus-themes)
     )
 
   (setup ef-themes
     (:package ef-themes)
     (:load-after modus-themes)
+    (:require ef-themes)
     (:option
      ef-themes-take-over-modus-themes-mode 1)
     (:when-loaded
-      (setq modus-themes-mixed-fonts t
+      (:option modus-themes-mixed-fonts t
     	  modus-themes-italic-constructs t
           modus-themes-disable-other-themes t)
-      (modus-themes-load-theme 'ef-summer)
+      (modus-themes-load-theme 'ef-elea-dark)
       ;;(ef-themes-load-random)
       )
     )
@@ -390,31 +392,23 @@ load sequence.
           w32-pipe-read-delay 0               ; faster IPC
           w32-pipe-buffer-size (* 64 1024)))  ; read more at a time (was 4K)
 #+end_src
-** font
+** font 
 #+begin_src emacs-lisp
   ;; 定义字体配置（延迟执行的核心）
   (defconst my/main-fonts
     '((default        . "Pragmasevka Nerd Font")
       (fixed-pitch    . "Pragmasevka Nerd Font")
       (variable-pitch . "Pragmasevka Nerd Font")
-      (bold           . "Pragmasevka Nerd Font Bold")
+      (bold           . "Pragmasevka Nerd Font")
       (italic         . "Pragmasevka Nerd Font")))
 
   (defconst my/symbol-fonts
     (if IS-MAC
         '("Apple Symbols" "Apple Color Emoji" "Symbola" "Noto Color Emoji"
           "Segoe UI Emoji" "Twitter Color Emoji")
-      '(  "Liberation Mono"
-        "Noto Sans Symbols 2" "FreeSerif" "Twitter Color Emoji"))
+      '( "Twitter Color Emoji" "Liberation Mono"
+          "Noto Sans Symbols 2" "FreeSerif" ))
     "Fonts used for symbols")
-
-  ;; 辅助函数：异步检查字体是否存在
-  (defun my/check-font-exists (font-name)
-    "检查字体是否存在（缓存结果）"
-    (or (get-text-property 0 'exists font-name)  ; 使用文本属性缓存结果
-        (let ((exists (find-font (font-spec :name font-name))))
-          (put-text-property 0 1 'exists exists font-name)
-          exists)))
 
   ;; 核心字体设置函数（优化版）
   (defun my/setup-fonts ()
@@ -426,46 +420,26 @@ load sequence.
       (dolist (face my/main-fonts)
         (let ((font-name (cdr face))
               (face-name (car face)))
-          (when (my/check-font-exists font-name)
-            (set-face-attribute face-name nil :font font-name))))
+          (set-face-attribute face-name nil :family font-name)))
 
       ;; 2. 设置符号字体（批量设置）
-      (let ((available-symbol-fonts
-             (cl-remove-if-not #'my/check-font-exists my/symbol-fonts)))
-        (when available-symbol-fonts
-          ;; 使用 set-fontset-font 的 append 参数一次性添加多个字体
-          (set-fontset-font t 'symbol (car available-symbol-fonts))
-          (dolist (font (cdr available-symbol-fonts))
-            (set-fontset-font t 'symbol font nil 'append))))
+      ;; 使用 set-fontset-font 的 append 参数一次性添加多个字体
+      (set-fontset-font t 'symbol (car my/symbol-fonts))
+      (dolist (font (cdr my/symbol-fonts))
+        (set-fontset-font t 'symbol font nil 'append))
+      (set-fontset-font t 'han    (font-spec :family "TsangerJinKai05"))
+      (set-fontset-font t 'kana   (font-spec :family "TsangerJinKai05"))
+      (set-fontset-font t 'hangul (font-spec :family "TsangerJinKai05"))
+      (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans"))
+
+      ;; 西里尔字体
+      (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
 
       ;; 3. 设置特定字符集字体（按需延迟加载）
 
       (message "字体设置完成")))
 
-  ;; CJK字体设置（按需延迟）
-  (defun my/setup-cjk-fonts ()
-    "设置CJK字体（可以进一步延迟或按需调用）"
-    ;; 中文字体
-    (when (my/check-font-exists "TsangerJinKai05")
-      (set-fontset-font t 'han    (font-spec :family "TsangerJinKai05"))
-      (set-fontset-font t 'kana   (font-spec :family "TsangerJinKai05"))
-      (set-fontset-font t 'hangul (font-spec :family "TsangerJinKai05")))
 
-    ;; 其他CJK字体
-    (when (my/check-font-exists "Noto Sans")
-      (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans")))
-
-    ;; 西里尔字体
-    (when (my/check-font-exists "Noto Serif")
-      (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))))
-
-  ;; 按需加载CJK字体
-  (defun my/setup-cjk-fonts-if-needed ()
-    "在需要时加载CJK字体"
-    (when (and (display-graphic-p)
-               (or (memq major-mode '(org-mode markdown-mode latex-mode))
-                   (string-match "\\cC" (buffer-string))))  ; 检测中文字符
-      (my/setup-cjk-fonts)))
 
   ;; 字体设置调度函数
   (defun my/schedule-font-setup ()
@@ -476,17 +450,12 @@ load sequence.
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (with-selected-frame frame
-                    (run-with-idle-timer 0.1 nil #'my/setup-fonts)))))
+                    (my/setup-fonts)))))
 
      ;; 图形界面模式：延迟设置字体
      ((display-graphic-p)
       (my/setup-fonts)
-      ;; 先设置基本字体，CJK字体按需加载
-      (run-with-idle-timer 0.1 nil
-                           (lambda ()
-                             ;; 立即设置主字体和符号字体
-                             ;; 添加按需加载CJK字体的钩子
-                             my/setup-cjk-fonts)))
+      )
 
      ;; 终端模式：不设置图形字体
      (t nil)))
@@ -645,7 +614,7 @@ load sequence.
     (:option window-divider-default-bottom-width 1
   	   window-divider-default-right-width 1
              window-divider-default-places t)
-    (:hook-into after-init))
+    (:hook-into after-make-frame-functions))
 
   (setup switch-window
     (:package switch-window)
@@ -924,8 +893,9 @@ Increase undo limit.
 
 ** Synatax & Checker
 #+begin_src emacs-lisp
-  (setup flymake  )
-
+  (setup flymake
+    (:hook-into prog-mode text-mode)
+    )
 
   (setup flyover
     (:package flyover)
@@ -982,7 +952,7 @@ Increase undo limit.
   (setup emt
     (:package emt)
     (:only-if IS-MAC
-  	    (:hook-into after-init)
+              (:hook-into after-init)
   	    )
     )
 #+end_src
@@ -1008,22 +978,24 @@ Completion Overlay Region Function.
 #+begin_src emacs-lisp
   (setup corfu
     (:package corfu)
-    (:with-mode (prog-mode text-mode comint-mode)
-      (:hook corfu-mode))
     (:hook corfu-history-mode)
     (:hook corfu-popupinfo-mode)
+    (:when-loaded
+      (global-corfu-mode 1)
+      (corfu-indexed-mode 1)
+      (corfu-history-mode 1)
+      )
     ;; load features
-    (:option corfu-popupinfo-delay '(0.5 . 1.0))
-    (:option
-     corfu-auto t
-     corfu-atuo-refix 2
-     corfu-cycle t
-     corfu-preselect 'prompt
-     corfu-count 16
-     corfu-max-width 120
-     corfu-on-exact-match nil
-     corfu-quit-at-boundary     'separator
-     ))
+    (:option corfu-popupinfo-delay '(0.5 . 1.0)
+             corfu-auto t
+             corfu-atuo-refix 2
+             corfu-cycle t
+             corfu-preselect 'prompt
+             corfu-count 16
+             corfu-max-width 120
+             corfu-on-exact-match nil
+             corfu-quit-at-boundary     'separator
+             ))
 
   (setup emacs
     (:option tab-always-indent 'complete
@@ -1060,6 +1032,7 @@ Vertical interactive completion
 #+begin_src emacs-lisp
   (setup tempel
     (:package tempel)
+    (:load-after corfu)
     (:option tempel-trigger-prefix "<")
     ;; Setup completion at point
     (defun tempel-setup-capf ()
@@ -1127,6 +1100,7 @@ Completion At Point Extensions.
      (:package xref))
 
    (setup consult-xref
+     (:load-after consult xref)
      (:when-loaded
        (setq xref-show-xrefs-function #'consult-xref
              xref-show-definitions-function #'consult-xref))
@@ -1146,7 +1120,7 @@ Completion At Point Extensions.
       )
     (:with-mode embark-collect-mode
       (:hook consult-preview-at-point-mode))
-    (:with-mode #'consult-preview-at-point-mode
+    (:with-mode #'conslt-preview-at-point-mode
       (:hook-into embark-collect-mode))
     )
 
@@ -1205,12 +1179,10 @@ Annotations for completion candidates.
     )
 
   (setup dirvish
+    (:load-after dired)
     (:package dirvish)
     )
 
-  (setup diredfl
-    (:package diredfl)
-    )
 #+end_src
 
 *** Icons
@@ -1312,8 +1284,8 @@ Lookup documentation via DevDocs.
 Code folding with treesit-fold
 #+begin_src emacs-lisp
   (setup treesit-fold
+    (:package treesit-fold)
     (:only-if (fboundp 'treesit-available-p)
-  	    (:package treesit-fold)
   	    (:option hs-show-indicators t)
               (:with-map kl-code-prefix-map
                 (:bind "c" treesit-fold-toggle)
@@ -1439,6 +1411,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup eglot-x
     (:autoload-this)
     (:package eglot-x)
+    (:load-after eglot)
     (:when-loaded
       (add-hook #'eglot-mode-hook #'eglot-x-setup)
       )
@@ -1447,19 +1420,20 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup consult-eglot
     (:autoload-this)
     (:package consult-eglot)
+    (:load-after consult eglot)
     (:with-feature consult-eglot-embark
       (:when-loaded
         (consult-eglot-embark-mode))
       )
     )
 
-  (setup eglot-booster
-    (:autoload-this)
-    (:nixpkgs emacs-lsp-booster)
-    (:package eglot-booster)
-    (:option eglot-booster-io-only t)
-    (:when-loaded (:hook-into eglot-mode-hook))
-    )
+  ;;(setup eglot-booster
+  ;;  (:autoload-this)
+  ;;  (:nixpkgs emacs-lsp-booster)
+  ;;  (:package eglot-booster)
+  ;;  (:option eglot-booster-io-only t)
+  ;;  (:when-loaded (:hook-into eglot-mode-hook))
+  ;;  )
 #+end_src
 ** Debugger
 **** Dape
@@ -1494,6 +1468,7 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-agenda
     (:autoload-this)
+    (:load-after org)
     (:when-loaded
       (:option
        ;; 时间前导0
@@ -1507,11 +1482,13 @@ Generic Language Server Protocol integration via ~eglot~.
 
   (setup org-mac-link
     (:autoload-this)
+    (:load-after org)
     (:package org-mac-link)
     )
 
   (setup org-download
     (:package org-download)
+    (:load-after org)
     (:autoload-this)
     (:option org-download-method 'directory
       	   org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach"
@@ -1521,6 +1498,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-modern
     (:autoload-this)
     (:package org-modern)
+    (:load-after org)
     (:hook-into org-mode)
     (:when-loaded (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
     (:option
@@ -1541,6 +1519,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-modern-indent
     (:autoload-this)
     (:package org-modern-indent)
+    (:load-after org org-modern)
     (:hook-into org-mode)
     )
 
