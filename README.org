@@ -392,23 +392,31 @@ load sequence.
           w32-pipe-read-delay 0               ; faster IPC
           w32-pipe-buffer-size (* 64 1024)))  ; read more at a time (was 4K)
 #+end_src
-** font 
+** font
 #+begin_src emacs-lisp
   ;; 定义字体配置（延迟执行的核心）
   (defconst my/main-fonts
     '((default        . "Pragmasevka Nerd Font")
       (fixed-pitch    . "Pragmasevka Nerd Font")
       (variable-pitch . "Pragmasevka Nerd Font")
-      (bold           . "Pragmasevka Nerd Font")
+      (bold           . "Pragmasevka Nerd Font Bold")
       (italic         . "Pragmasevka Nerd Font")))
 
   (defconst my/symbol-fonts
     (if IS-MAC
         '("Apple Symbols" "Apple Color Emoji" "Symbola" "Noto Color Emoji"
           "Segoe UI Emoji" "Twitter Color Emoji")
-      '( "Twitter Color Emoji" "Liberation Mono"
-          "Noto Sans Symbols 2" "FreeSerif" ))
+      '(  "Liberation Mono"
+        "Noto Sans Symbols 2" "FreeSerif" "Twitter Color Emoji"))
     "Fonts used for symbols")
+
+  ;; 辅助函数：异步检查字体是否存在
+  (defun my/check-font-exists (font-name)
+    "检查字体是否存在（缓存结果）"
+    (or (get-text-property 0 'exists font-name)  ; 使用文本属性缓存结果
+        (let ((exists (find-font (font-spec :name font-name))))
+          (put-text-property 0 1 'exists exists font-name)
+          exists)))
 
   ;; 核心字体设置函数（优化版）
   (defun my/setup-fonts ()
