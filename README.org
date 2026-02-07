@@ -929,11 +929,11 @@ Increase undo limit.
 ** Buffer
 #+begin_src emacs-lisp
   (setup buffer
-    (setq create-lockfiles nil)
-    (setq make-backup-files nil)
-    (setq confirm-nonexistent-file-or-buffer t)
-    (setq highlight-nonselected-windows nil)
-    (setq-default cursor-in-non-selected-windows nil)
+    (:option create-lockfiles nil
+             make-backup-files nil
+             confirm-nonexistent-file-or-buffer t
+             highlight-nonselected-windows nil
+             cursor-in-non-selected-windows nil)
 
     )
 #+end_src
