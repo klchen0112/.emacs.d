@@ -1430,13 +1430,13 @@ Generic Language Server Protocol integration via ~eglot~.
       )
     )
 
-  ;;(setup eglot-booster
-  ;;  (:autoload-this)
-  ;;  (:nixpkgs emacs-lsp-booster)
-  ;;  (:package eglot-booster)
-  ;;  (:option eglot-booster-io-only t)
-  ;;  (:when-loaded (:hook-into eglot-mode-hook))
-  ;;  )
+  (setup eglot-booster
+    (:autoload-this)
+    (:nixpkgs emacs-lsp-booster)
+    (:package eglot-booster)
+    (:option eglot-booster-io-only t)
+    (:when-loaded (:hook-into eglot-mode-hook))
+    )
 #+end_src
 ** Debugger
 **** Dape
