@@ -28,10 +28,35 @@ builtins.intersectAttrs prev {
 
   #    cp server/epdfinfo .
 
-
   #    rm -r Makefile lisp server'';
 
   #});
+  reader = prev.reader.overrideAttrs (old: {
+    buildInputs =
+      old.buildInputs
+      ++ (with pkgs; [
+        mupdf-headless
+        breakpointHook
+      ]);
+
+    buildFlags = [
+      "CC=cc"
+      "USE_PKGCONFIG=yes"
+    ];
+    files = ''(:defaults "render-core.so")'';
+    makeFlags = (old.makeFlags or [ ]) ++ [
+      "CC=${pkgs.stdenv.cc.targetPrefix}cc" # 考虑交叉编译兼容性
+      "USE_PKGCONFIG=yes"
+    ];
+    nativeBuildInputs = with pkgs; [ pkg-config ];
+    preBuild = ''
+      echo "Current directory: $(pwd)"
+      mkdir -p build
+      ls
+      ls
+    '';
+
+  });
   telega = prev.telega.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [
       pkgs.tdlib

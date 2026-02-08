@@ -1,0 +1,2 @@
+(reader :fetcher github
+	     :repo "simmsb/emacs-reader")

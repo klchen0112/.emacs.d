@@ -216,8 +216,8 @@
     };
     emt = {
       flake = false;
-      owner = "roife";
-      repo = "emt";
+      owner = "simmsb";
+      repo = "emacs-reader";
       type = "github";
     };
     envrc = {
@@ -608,6 +608,12 @@
       flake = false;
       owner = "wbolster";
       repo = "emacs-python-pytest";
+      type = "github";
+    };
+    reader = {
+      flake = false;
+      owner = "roife";
+      repo = "emt";
       type = "github";
     };
     request = {

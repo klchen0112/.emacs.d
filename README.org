@@ -2217,6 +2217,15 @@ Generate Table of Contents.
           nix3-registry-list-completion-options (list :add-to-registry t
                                                       :require-match nil)))
 #+end_src
+
+** reader
+#+begin_src emacs-lisp
+  (setup reader
+    (:package reader)
+
+
+    )
+#+end_src
 ** pdf :ARCHIVE:
 #+begin_src emacs-lisp
   (setup pdf-tools
