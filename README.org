@@ -402,7 +402,7 @@ load sequence.
     '((default        . "Pragmasevka Nerd Font")
       (fixed-pitch    . "Pragmasevka Nerd Font")
       (variable-pitch . "Pragmasevka Nerd Font")
-      (bold           . "Pragmasevka Nerd Font")
+      (bold           . "Pragmasevka Nerd Font Bold")
       (italic         . "Pragmasevka Nerd Font")))
 
   (defconst my/symbol-fonts
