@@ -438,14 +438,39 @@ load sequence.
       (set-fontset-font t 'han    (font-spec :family "TsangerJinKai05"))
       (set-fontset-font t 'kana   (font-spec :family "TsangerJinKai05"))
       (set-fontset-font t 'hangul (font-spec :family "TsangerJinKai05"))
-      (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans"))
+      (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans CJK SC"))
+
+      ;; South East Asia: ជំរាបសួរ, ສະບາຍດີ, မင်္ဂလာပါ, สวัสดีครับ
+      (set-fontset-font t 'khmer "Noto Sans Khmer")
+      (set-fontset-font t 'lao "Noto Sans Lao")
+      (set-fontset-font t 'burmese "Noto Sans Myanmar")
+      (set-fontset-font t 'thai "Noto Sans Thai")
+
+      ;; Africa: ሠላም
+      (set-fontset-font t 'ethiopic "Noto Sans Ethiopic")
+
+      ;; Middle/Near East: שלום, السّلام عليكم
+      (set-fontset-font t 'hebrew "Noto Sans Hebrew")
+      (set-fontset-font t 'arabic "Noto Sans Arabic")
+
+      ;;  South Asia: નમસ્તે, नमस्ते, ನಮಸ್ಕಾರ, നമസ്കാരം, ଶୁଣିବେ,
+      ;;              ආයුබෝවන්, வணக்கம், నమస్కారం, བཀྲ་ཤིས་བདེ་ལེགས༎
+      (set-fontset-font t 'gujarati "Noto Sans Gujarati")
+      (set-fontset-font t 'devanagari "Noto Sans Devanagari")
+      (set-fontset-font t 'kannada "Noto Sans Kannada")
+      (set-fontset-font t 'malayalam "Noto Sans Malayalam")
+      (set-fontset-font t 'oriya "Noto Sans Oriya")
+      (set-fontset-font t 'sinhala "Noto Sans Sinhala")
+      (set-fontset-font t 'tamil "Noto Sans Tamil")
+      (set-fontset-font t 'telugu "Noto Sans Telugu")
+      (set-fontset-font t 'tibetan "Noto Sans Tibetan")
+
 
       ;; 西里尔字体
       ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-      (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
+      (set-fontset-font t 'cyrillic (font-spec :family "Noto Sans"))
 
       ;; 3. 设置特定字符集字体（按需延迟加载）
-
       (message "字体设置完成")))
 
 
