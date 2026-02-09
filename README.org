@@ -399,18 +399,21 @@ load sequence.
 #+begin_src emacs-lisp
   ;; 定义字体配置（延迟执行的核心）
   (defconst my/main-fonts
-    '((default        . "Pragmasevka Nerd Font")
-      (fixed-pitch    . "Pragmasevka Nerd Font")
-      (variable-pitch . "Pragmasevka Nerd Font")
-      (bold           . "Pragmasevka Nerd Font Bold")
-      (italic         . "Pragmasevka Nerd Font")))
+    '((default        . "M+CodeLat50 Nerd Font Propo")
+      (fixed-pitch    . "M+CodeLat50 Nerd Font Propo")
+      (variable-pitch . "M+CodeLat50 Nerd Font Propo")
+      (bold           . "M+CodeLat50 Nerd Font Propo")
+      (italic         . "M+CodeLat50 Nerd Font Propo")))
 
   (defconst my/symbol-fonts
     (if IS-MAC
         '("Apple Symbols" "Apple Color Emoji" "Symbola" "Noto Color Emoji"
-          "Segoe UI Emoji" "Twitter Color Emoji")
-      '( "Twitter Color Emoji" "Liberation Mono"
-          "Noto Sans Symbols 2" "FreeSerif" ))
+          "Liberation Mono"
+          "Segoe UI Emoji" "FreeSerif" "Twitter Color Emoji")
+      '("Symbola" "Noto Color Emoji"
+        "Liberation Mono"
+        "Segoe UI Emoji" "FreeSerif" "Twitter Color Emoji")
+      )
     "Fonts used for symbols")
 
   ;; 核心字体设置函数（优化版）
@@ -427,15 +430,18 @@ load sequence.
 
       ;; 2. 设置符号字体（批量设置）
       ;; 使用 set-fontset-font 的 append 参数一次性添加多个字体
+      ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
       (set-fontset-font t 'symbol (car my/symbol-fonts))
       (dolist (font (cdr my/symbol-fonts))
         (set-fontset-font t 'symbol font nil 'append))
+      ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
       (set-fontset-font t 'han    (font-spec :family "TsangerJinKai05"))
       (set-fontset-font t 'kana   (font-spec :family "TsangerJinKai05"))
       (set-fontset-font t 'hangul (font-spec :family "TsangerJinKai05"))
       (set-fontset-font t 'cjk-misc (font-spec :family "Noto Sans"))
 
       ;; 西里尔字体
+      ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
       (set-fontset-font t 'cyrillic (font-spec :family "Noto Serif"))
 
       ;; 3. 设置特定字符集字体（按需延迟加载）
