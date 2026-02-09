@@ -423,7 +423,7 @@ load sequence.
       (dolist (face my/main-fonts)
         (let ((font-name (cdr face))
               (face-name (car face)))
-          (set-face-attribute face-name nil :family font-name)))
+          (set-face-attribute face-name nil :family font-name :height 120)))
 
       ;; 2. 设置符号字体（批量设置）
       ;; 使用 set-fontset-font 的 append 参数一次性添加多个字体
@@ -2218,7 +2218,7 @@ Generate Table of Contents.
                                                       :require-match nil)))
 #+end_src
 
-** reader
+** reader :ARCHIVE:
 #+begin_src emacs-lisp
   (setup reader
     (:package reader)

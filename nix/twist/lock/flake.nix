@@ -216,8 +216,8 @@
     };
     emt = {
       flake = false;
-      owner = "simmsb";
-      repo = "emacs-reader";
+      owner = "roife";
+      repo = "emt";
       type = "github";
     };
     envrc = {
@@ -612,8 +612,8 @@
     };
     reader = {
       flake = false;
-      owner = "roife";
-      repo = "emt";
+      owner = "simmsb";
+      repo = "emacs-reader";
       type = "github";
     };
     request = {

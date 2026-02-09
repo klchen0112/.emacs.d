@@ -43,7 +43,6 @@ in
       };
     };
     overlays.default =
-
       final: prev:
       withSystem prev.stdenv.hostPlatform.system (
         { config, ... }:
@@ -54,6 +53,7 @@ in
           earlyInitEl = config.packages.earlyInitEl-all-features;
           emacs-env-all-features = config.packages.emacs-env-all-features;
           emacs-temp-all-features = config.packages.emacs-temp-all-features;
+          render-core = config.packages.render-core;
         }
       );
   };
@@ -78,6 +78,7 @@ in
             earlyInitEl = config.packages.earlyInitEl-all-features;
             emacs-env-all-features = config.packages.emacs-env-all-features;
             emacs-temp-all-features = config.packages.emacs-temp-all-features;
+            render-core = config.packages.render-core;
           })
         ];
         inherit system;

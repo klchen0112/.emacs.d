@@ -579,16 +579,16 @@
     "emt": {
       "flake": false,
       "locked": {
-        "lastModified": 1765185556,
-        "narHash": "sha256-jJkOzb3CqF746aam9NuGyNbLngLktokU7+XK2OlyLwY=",
-        "owner": "simmsb",
-        "repo": "emacs-reader",
-        "rev": "bb8d87d675a33fa31f5f092bfbdd42f5e88e5e44",
+        "lastModified": 1735748514,
+        "narHash": "sha256-ewHZxytYw2NPkhF4zdl/fRSiBSN2jZAkdM4Ykb1x90Q=",
+        "owner": "roife",
+        "repo": "emt",
+        "rev": "b7f46fae280dba3269e9110f3cb61d2dd4fa67cc",
         "type": "github"
       },
       "original": {
-        "owner": "simmsb",
-        "repo": "emacs-reader",
+        "owner": "roife",
+        "repo": "emt",
         "type": "github"
       }
     },
@@ -1636,16 +1636,16 @@
     "reader": {
       "flake": false,
       "locked": {
-        "lastModified": 1735748514,
-        "narHash": "sha256-ewHZxytYw2NPkhF4zdl/fRSiBSN2jZAkdM4Ykb1x90Q=",
-        "owner": "roife",
-        "repo": "emt",
-        "rev": "b7f46fae280dba3269e9110f3cb61d2dd4fa67cc",
+        "lastModified": 1765185556,
+        "narHash": "sha256-jJkOzb3CqF746aam9NuGyNbLngLktokU7+XK2OlyLwY=",
+        "owner": "simmsb",
+        "repo": "emacs-reader",
+        "rev": "bb8d87d675a33fa31f5f092bfbdd42f5e88e5e44",
         "type": "github"
       },
       "original": {
-        "owner": "roife",
-        "repo": "emt",
+        "owner": "simmsb",
+        "repo": "emacs-reader",
         "type": "github"
       }
     },

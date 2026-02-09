@@ -1,2 +1,1 @@
-(reader :fetcher github
-	     :repo "simmsb/emacs-reader")
+(reader :fetcher codeberg  :repo "MonadicSheep/emacs-reader")
