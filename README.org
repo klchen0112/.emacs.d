@@ -685,7 +685,6 @@ load sequence.
 #+begin_src emacs-lisp
   (setq global-auto-revert-mode t ;; auto refresh files
         global-auto-revert-non-file-buffers t
-        savehist-mode t ;; history'
         )
 
 
@@ -1012,25 +1011,30 @@ Completion Overlay Region Function.
 #+begin_src emacs-lisp
   (setup corfu
     (:package corfu)
+    (:require corfu)
     (:hook corfu-history-mode)
     (:hook corfu-popupinfo-mode)
-    (:when-loaded
-      (global-corfu-mode 1)
-      (corfu-indexed-mode 1)
-      (corfu-history-mode 1)
-      )
+    (:hook corfu-indexed-mode)
+    (global-corfu-mode 1)
     ;; load features
     (:option corfu-popupinfo-delay '(0.5 . 1.0)
              corfu-auto t
              corfu-atuo-refix 2
              corfu-cycle t
              corfu-preselect 'prompt
-             corfu-count 16
+             corfu-count 9
              corfu-max-width 120
              corfu-on-exact-match nil
              corfu-quit-at-boundary     'separator
-             ))
+             corfu-indexed-start 1
+             )
+    )
 
+
+  (dotimes (i 9)
+    (define-key corfu-mode-map
+                      (kbd (format "M-%s" i))
+                      (kbd (format "C-%s <tab>" i))))
   (setup emacs
     (:option tab-always-indent 'complete
     	   text-mode-ispell-word-completion nil
@@ -1044,6 +1048,7 @@ Completion Overlay Region Function.
       (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
       )
     )
+
  #+end_src
 
 ** Minibuffer
