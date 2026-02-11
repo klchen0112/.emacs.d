@@ -2277,6 +2277,13 @@ Generate Table of Contents.
     (:package telega)
    )
 #+end_src
+
+** Tramp
+#+begin_src emacs-lisp
+  (setup tramp-rpc
+    (:package tramp-rpc)
+    )
+#+end_src
 * Thanks
 - [[https://github.com/carsonhenrich/emacs-config][carsonhenrich/emacs-config]]
 - [[https://github.com/akirak/emacs-config][akirak/emacs-config]]

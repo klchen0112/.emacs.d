@@ -1,2 +1,2 @@
-(emt :fetcher github
-	     :repo "roife/emt")
+(tramp-rpc :fetcher github
+	     :repo "ArthurHeymans/emacs-tramp-rpc")

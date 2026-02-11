@@ -216,8 +216,8 @@
     };
     emt = {
       flake = false;
-      owner = "roife";
-      repo = "emt";
+      owner = "ArthurHeymans";
+      repo = "emacs-tramp-rpc";
       type = "github";
     };
     envrc = {
@@ -442,6 +442,12 @@
       repo = "modus-themes";
       type = "github";
     };
+    msgpack = {
+      flake = false;
+      owner = "xuchunyang";
+      repo = "msgpack.el";
+      type = "github";
+    };
     nerd-icons = {
       flake = false;
       owner = "rainstormstudio";
@@ -610,12 +616,6 @@
       repo = "emacs-python-pytest";
       type = "github";
     };
-    reader = {
-      flake = false;
-      owner = "simmsb";
-      repo = "emacs-reader";
-      type = "github";
-    };
     request = {
       flake = false;
       owner = "tkf";
@@ -697,6 +697,12 @@
       flake = false;
       owner = "hcl-emacs";
       repo = "terraform-mode";
+      type = "github";
+    };
+    tramp-rpc = {
+      flake = false;
+      owner = "roife";
+      repo = "emt";
       type = "github";
     };
     transient = {

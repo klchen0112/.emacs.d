@@ -579,16 +579,16 @@
     "emt": {
       "flake": false,
       "locked": {
-        "lastModified": 1735748514,
-        "narHash": "sha256-ewHZxytYw2NPkhF4zdl/fRSiBSN2jZAkdM4Ykb1x90Q=",
-        "owner": "roife",
-        "repo": "emt",
-        "rev": "b7f46fae280dba3269e9110f3cb61d2dd4fa67cc",
+        "lastModified": 1770824268,
+        "narHash": "sha256-v4rtaIs/1dFznNKei1cJKhMYeEm1R4GHkZkvpGLK7FM=",
+        "owner": "ArthurHeymans",
+        "repo": "emacs-tramp-rpc",
+        "rev": "0accbb8e1987cee4ebfe8a6d3d9e3d942e12d7ea",
         "type": "github"
       },
       "original": {
-        "owner": "roife",
-        "repo": "emt",
+        "owner": "ArthurHeymans",
+        "repo": "emacs-tramp-rpc",
         "type": "github"
       }
     },
@@ -1184,6 +1184,22 @@
         "type": "github"
       }
     },
+    "msgpack": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1584968399,
+        "narHash": "sha256-5pP2uhTvtaLYAuexOXikePLG1UJ7xMW1uMHJfnoqKj0=",
+        "owner": "xuchunyang",
+        "repo": "msgpack.el",
+        "rev": "90e3086f259549b1667a3c5b9aa2d70aaeaa4d3d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xuchunyang",
+        "repo": "msgpack.el",
+        "type": "github"
+      }
+    },
     "nerd-icons": {
       "flake": false,
       "locked": {
@@ -1633,22 +1649,6 @@
         "type": "github"
       }
     },
-    "reader": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765185556,
-        "narHash": "sha256-jJkOzb3CqF746aam9NuGyNbLngLktokU7+XK2OlyLwY=",
-        "owner": "simmsb",
-        "repo": "emacs-reader",
-        "rev": "bb8d87d675a33fa31f5f092bfbdd42f5e88e5e44",
-        "type": "github"
-      },
-      "original": {
-        "owner": "simmsb",
-        "repo": "emacs-reader",
-        "type": "github"
-      }
-    },
     "request": {
       "flake": false,
       "locked": {
@@ -1741,6 +1741,7 @@
         "meow-tree-sitter": "meow-tree-sitter",
         "mermaid-mode": "mermaid-mode",
         "modus-themes": "modus-themes",
+        "msgpack": "msgpack",
         "nerd-icons": "nerd-icons",
         "nerd-icons-completion": "nerd-icons-completion",
         "nerd-icons-corfu": "nerd-icons-corfu",
@@ -1769,7 +1770,6 @@
         "projectile": "projectile",
         "promise": "promise",
         "python-pytest": "python-pytest",
-        "reader": "reader",
         "request": "request",
         "s": "s",
         "sbt-mode": "sbt-mode",
@@ -1784,6 +1784,7 @@
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
         "terraform-mode": "terraform-mode",
+        "tramp-rpc": "tramp-rpc",
         "transient": "transient",
         "treepy": "treepy",
         "treesit-fold": "treesit-fold",
@@ -2009,6 +2010,22 @@
       "original": {
         "owner": "hcl-emacs",
         "repo": "terraform-mode",
+        "type": "github"
+      }
+    },
+    "tramp-rpc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735748514,
+        "narHash": "sha256-ewHZxytYw2NPkhF4zdl/fRSiBSN2jZAkdM4Ykb1x90Q=",
+        "owner": "roife",
+        "repo": "emt",
+        "rev": "b7f46fae280dba3269e9110f3cb61d2dd4fa67cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "roife",
+        "repo": "emt",
         "type": "github"
       }
     },
