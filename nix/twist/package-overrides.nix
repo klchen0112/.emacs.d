@@ -30,6 +30,30 @@ builtins.intersectAttrs prev {
   #    rm -r Makefile lisp server'';
 
   #});
+  pdf-tools = prev.pdf-tools.overrideAttrs (old: {
+    nativeBuildInputs = with pkgs; [
+      autoconf
+      automake
+      pkg-config
+    ];
+    buildInputs =
+      old.buildInputs
+      ++ (with pkgs; [
+        libpng
+        zlib
+        poppler
+      ]);
+    preBuild = ''
+      cd server
+      ./autogen.sh
+      ./configure -q
+      make
+      cp epdfinfo ..
+      cd ..
+      rm -r server
+    '';
+  });
+
   reader = prev.reader.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ (with pkgs; [ breakpointHook ]);
     files = ''(:defaults "${lib.getLib pkgs.render-core}/lib/render-core.*"))'';

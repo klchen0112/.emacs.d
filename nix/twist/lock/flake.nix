@@ -77,6 +77,12 @@
       repo = "consult";
       type = "github";
     };
+    consult-dir = {
+      flake = false;
+      owner = "karthink";
+      repo = "consult-dir";
+      type = "github";
+    };
     consult-eglot = {
       flake = false;
       owner = "mohkale";
@@ -578,6 +584,12 @@
       flake = false;
       owner = "joostkremers";
       repo = "parsebib";
+      type = "github";
+    };
+    pdf-tools = {
+      flake = false;
+      owner = "vedang";
+      repo = "pdf-tools";
       type = "github";
     };
     pet = {

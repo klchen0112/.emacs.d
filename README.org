@@ -49,6 +49,9 @@ load sequence.
    initial-scratch-message nil
    inhibit-default-init t
    initial-major-mode 'fundamental-mode
+   inhibit-compacting-font-caches t
+   load-prefer-newer t
+   native-comp-async-report-warnings-errors 'slient
    )
 
   (advice-add #'x-apply-session-resources :override #'ignore)
@@ -133,7 +136,17 @@ load sequence.
          :from-end t))
       :documentation "Load the current feature after all FEATURES are loaded."))
 #+end_src
-
+*** :after
+#+begin_src emacs-lisp
+  (eval-when-compile
+    (setup-define :after
+      (lambda (feature &rest body)
+        `(with-eval-after-load ',feature ,@body))
+      :documentation "Eval BODY after FEATURE."
+      :after-loaded t
+      :indent 1)
+    )
+#+end_src
 *** :nixpkgs
 #+begin_src emacs-lisp :yes
   (eval-when-compile
@@ -551,11 +564,11 @@ load sequence.
              dashboard-display-icons-p t
              dashboard-set-heading-icons t
              dashboard-set-file-icons t
-             dashboard-items '((recents   . 5)
+             dashboard-items '((recents   . 10)
                                (bookmarks . 5)
                                (projects  . 5)
                                (agenda    . 5)
-                               (registers . 5))
+                               (registers . 5) )
              dashboard-item-shortcuts '((recents . "r")
                                         (bookmarks . "m")
                                         (projects . "j")
@@ -590,7 +603,8 @@ load sequence.
     (:package doom-modeline)
     (:hook-into after-init-hook)
     (:option doom-modeline-minor-modes t
-             doom-modeline-indent-info t)
+             doom-modeline-indent-info t
+             column-number-mode t)
     )
 #+end_src
 ** display-line-number
@@ -697,9 +711,9 @@ load sequence.
     (:package vlf))
 #+end_src
 ** Copy&Paste
-*** wsl copy
 #+begin_src emacs-lisp
-(setq select-active-regions nil)
+  (setq mouse-yank-at-point t)
+  (setq select-active-regions nil)
 #+end_src
 ** Editor Config
 #+begin_src emacs-lisp
@@ -999,10 +1013,13 @@ Space-separated matching components matching in any order.
   (setup orderless
     (:package orderless)
     (:option
-     completion-styles '(orderless basic)
+     completion-styles '(orderless initials basic)
+     orderless-matching-styles '(orderless-regexp
+                                 orderless-initialism
+                                 orderless-literal)
      completion-category-defaults nil
      completion-category-overrides '((file (styles partial-completion)))
-     ))
+     )) 
 #+end_src
 
 ** Buffer
@@ -1125,18 +1142,28 @@ Completion At Point Extensions.
  #+begin_src emacs-lisp
    (setup consult
      (:package consult)
+     (:load-after vertico)
      (:require consult)
      (:option consult-preview-key "M-RET")
      (:nixpkgs fd ripgrep)
+     (keymap-global-set "C-x b" 'consult-buffer)
+     (keymap-global-set "C-x 4 b" 'consult-buffer-other-window)
+     (keymap-global-set "C-x 5 b" 'consult-buffer-other-frame)
+
+     (keymap-global-set "C-x r b" 'consult-bookmark)
+     (keymap-global-set "M-g g" 'consult-goto-line)
+     (keymap-global-set "M-g i" 'consult-imenu)
+
+
      (:with-map kl-search-prefix-map
        (:bind "b" consult-line)
-       ;;(:bind "B" consult-line-multi)
+       (:bind "B" consult-line-multi)
        (:bind "p" consult-ripgrep)
        (:bind "f" consult-fd)
+       (:bind "F" consult-recent-file)
        )
      )
-   (setup xref
-     (:package xref))
+
 
    (setup consult-xref
      (:load-after consult xref)
@@ -1144,11 +1171,30 @@ Completion At Point Extensions.
        (setq xref-show-xrefs-function #'consult-xref
              xref-show-definitions-function #'consult-xref))
      )
+
+
+   (setup consult-dir
+     (:package consult-dir)
+     (:load-after consult)
+     (keymap-global-set "C-x C-d" 'consult-dir)
+     (:with-map minibuffer-local-completion-map
+       (:bind
+        "C-x C-d" consult-dir
+        "C-x C-j" consult-dir-jump-file))
+     (:after vertico
+             (:with-map vertico-map
+               (:bind
+                "C-x C-d" consult-dir
+                "C-x C-j" consult-dir-jump-file)))
+     )
 #+end_src
 *** embark
 #+begin_src emacs-lisp
   (setup embark
-    (:package embark))
+    (:package embark)
+
+    
+    )
 
   (setup embark-consult
     (:package embark-consult)
@@ -1159,8 +1205,9 @@ Completion At Point Extensions.
       )
     (:with-mode embark-collect-mode
       (:hook consult-preview-at-point-mode))
-    (:with-mode #'conslt-preview-at-point-mode
-      (:hook-into embark-collect-mode))
+    (:after vertico
+            (:with-map vertico-map
+                      (:bind "M-o" embark-act)))
     )
 
 
@@ -1263,7 +1310,12 @@ Annotations for completion candidates.
 #+end_src
 
 
-
+** eldoc
+#+begin_src emacs-lisp
+  (setup eldoc
+    (:option eldoc-documentation-strategy #'eldoc-documentation-compose
+             eldoc-echo-area-use-multiline-p t))
+#+end_src
 ** Project
 #+begin_src emacs-lisp
   (setup projectile
@@ -1848,10 +1900,9 @@ Generic Language Server Protocol integration via ~eglot~.
      )
     )
 
-  (setup citar-embark
-    (:load-after embark citar)
-    (:when-loaded (citar-embark-mode)))
-
+;;  (setup citar-embark
+  ;;  (:load-after embark citar)
+   ;; (:when-loaded (citar-embark-mode)))
 
 
   (setup citar-org-roam
@@ -2262,7 +2313,7 @@ Generate Table of Contents.
 
     )
 #+end_src
-** pdf :ARCHIVE:
+** pdf 
 #+begin_src emacs-lisp
   (setup pdf-tools
     (:package pdf-tools)

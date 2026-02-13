@@ -5,4 +5,9 @@
       pdf-tools = "0";
     };
   };
+   pdf-tools = _: prev: {
+    files = prev.files // {
+      "server" = "server";
+    };
+  };
 }

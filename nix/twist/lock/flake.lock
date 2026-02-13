@@ -208,6 +208,22 @@
         "type": "github"
       }
     },
+    "consult-dir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760933765,
+        "narHash": "sha256-wsyzn+YxIqqeIip5mLOVD6TqNyf2D7TrxeBOPITQ52g=",
+        "owner": "karthink",
+        "repo": "consult-dir",
+        "rev": "1497b46d6f48da2d884296a1297e5ace1e050eb5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karthink",
+        "repo": "consult-dir",
+        "type": "github"
+      }
+    },
     "consult-eglot": {
       "flake": false,
       "locked": {
@@ -1553,6 +1569,22 @@
         "type": "github"
       }
     },
+    "pdf-tools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767891768,
+        "narHash": "sha256-XOg2f8H9PAaa66YYfmQXmf/R4zzd6UlkQBotU0jDxLI=",
+        "owner": "vedang",
+        "repo": "pdf-tools",
+        "rev": "365f88238f46f9b1425685562105881800f10386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vedang",
+        "repo": "pdf-tools",
+        "type": "github"
+      }
+    },
     "pet": {
       "flake": false,
       "locked": {
@@ -1680,6 +1712,7 @@
         "compat": "compat",
         "cond-let": "cond-let",
         "consult": "consult",
+        "consult-dir": "consult-dir",
         "consult-eglot": "consult-eglot",
         "consult-org-roam": "consult-org-roam",
         "corfu": "corfu",
@@ -1764,6 +1797,7 @@
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
         "parsebib": "parsebib",
+        "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
