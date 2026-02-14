@@ -1817,7 +1817,7 @@ Generic Language Server Protocol integration via ~eglot~.
       )
     )
 #+end_src
-** org-noter :ARCHIVE:
+** org-noter 
 #+begin_src emacs-lisp
   (setup org-noter
     (:package org-noter))

@@ -1489,6 +1489,22 @@
         "type": "github"
       }
     },
+    "org-noter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767916001,
+        "narHash": "sha256-9Sbv/LYRH48+W0MX+UkTwu3wGherII/qLp8rEvYaoBk=",
+        "owner": "org-noter",
+        "repo": "org-noter",
+        "rev": "81765d267e51efd8b4f5b7276000332ba3eabbf5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-noter",
+        "repo": "org-noter",
+        "type": "github"
+      }
+    },
     "org-roam": {
       "flake": false,
       "locked": {
@@ -1792,6 +1808,7 @@
         "org-mac-link": "org-mac-link",
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
+        "org-noter": "org-noter",
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
@@ -1815,6 +1832,7 @@
         "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
+        "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
         "terraform-mode": "terraform-mode",
@@ -1829,6 +1847,7 @@
         "undo-fu": "undo-fu",
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
+        "visual-fill-column": "visual-fill-column",
         "vulpea": "vulpea",
         "web-mode": "web-mode",
         "websocket": "websocket",
@@ -1996,6 +2015,22 @@
       "original": {
         "owner": "emacsorphanage",
         "repo": "tablist",
+        "type": "github"
+      }
+    },
+    "telega": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770987499,
+        "narHash": "sha256-1PGf1Twb/w4eJZJzajQEACgdxMmfY4q+tX69nVs9HNQ=",
+        "owner": "zevlg",
+        "repo": "telega.el",
+        "rev": "ec6ecb191fe4cc0e4d3ecf62ef6bc870a6e708a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zevlg",
+        "repo": "telega.el",
         "type": "github"
       }
     },
@@ -2221,6 +2256,22 @@
         "owner": "tumashu",
         "repo": "vertico-posframe",
         "type": "github"
+      }
+    },
+    "visual-fill-column": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762771539,
+        "narHash": "sha256-b2iHi5A/1CVdwnbvbSpFyi8oJgpSiezPIfZLAzYQYuQ=",
+        "ref": "refs/heads/main",
+        "rev": "e1be9a1545157d24454d950c0ac79553c540edb7",
+        "revCount": 168,
+        "type": "git",
+        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
       }
     },
     "vulpea": {
