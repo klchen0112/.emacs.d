@@ -238,6 +238,12 @@
       repo = "f.el";
       type = "github";
     };
+    flycheck = {
+      flake = false;
+      owner = "flycheck";
+      repo = "flycheck";
+      type = "github";
+    };
     flymake-shellcheck = {
       flake = false;
       owner = "federicotdn";

@@ -32,6 +32,11 @@ load sequence.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle early-init.el
 :END:
+** User
+#+begin_src emacs-lisp
+  (setq user-full-name "klchen0112"
+        user-mail-address "klchen0112@gmail.com")
+#+end_src
 ** Starup 
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook
@@ -74,10 +79,10 @@ load sequence.
 #+end_src
 ** Setup.el :early:
 #+begin_src emacs-lisp
+  (require 'cl-lib)
   (setq byte-compile-warnings '(cl-functions))
   (eval-when-compile
     (require 'setup)
-    (require 'cl-lib)
     )
   ;; Disable package.el in favor of straight.el
   (setq package-enable-at-startup nil
@@ -232,7 +237,10 @@ load sequence.
   	 (fboundp 'native-comp-available-p)
   	 (native-comp-available-p))
       (setq package-native-compile t))
-
+  (with-eval-after-load 'comp
+    (setq native-comp-async-jobs-number 8)
+    (setq native-comp-speed 3)
+    (setq native-comp-always-compile t))
   (setq native-comp-warning-on-missing-source init-file-debug
         native-comp-async-report-warnings-errors init-file-debug)
 
@@ -399,6 +407,8 @@ load sequence.
   (push '(vertical-scroll-bars) default-frame-alist)
   (push '(horizontal-scroll-bars) default-frame-alist)
   (push '(undecorated-round . t) default-frame-alist)
+  (push '(left-fringe . 1) default-frame-alist)
+  (push '(right-fringe . 1) default-frame-alist)
   (when (boundp 'pgtk-wait-for-event-timeout)
     (setq pgtk-wait-for-event-timeout 0.001))
 
@@ -940,13 +950,14 @@ Increase undo limit.
 
 ** Synatax & Checker
 #+begin_src emacs-lisp
-  (setup flymake
+  (setup flycheck
+    (:package flycheck)
     (:hook-into prog-mode text-mode)
     )
 
   (setup flyover
     (:package flyover)
-    (:hook-into flymake)
+    (:hook-into flycheck)
     (:option
      flyover-levels '(error warning info)  ; Show all levels
      ;; Use theme colors for error/warning/info faces
@@ -963,7 +974,7 @@ Increase undo limit.
      ;; "Percentage to lighten or darken the text when tinting is enabled."
      flyover-text-tint-percent 50
      ;; Choose which checkers to use (flycheck, flymake, or both)
-     flyover-checkers '(flymake)
+     flyover-checkers '(flycheck)
 
      ;; Enable debug messages
      flyover-debug nil
@@ -1133,6 +1144,8 @@ Completion At Point Extensions.
       (add-hook #'completion-at-point-functions #'cape-dabbrev)
       (add-hook #'completion-at-point-functions #'cape-file)
       (add-hook #'completion-at-point-functions #'cape-dict)
+      (add-hook #'completion-at-point-functions #'cape-elisp-block)
+      
       )
     )
  #+end_src
@@ -1553,8 +1566,6 @@ Generic Language Server Protocol integration via ~eglot~.
     (:autoload-this)
     (:package org)
     (:option org-directory "~/org")
-    (:when-loaded
-      (add-hook #'completion-at-point-function #'cape-elisp-block))
     )
 
   (setup org-agenda
@@ -1952,11 +1963,6 @@ Generic Language Server Protocol integration via ~eglot~.
 #+end_src
 ** bash
 #+begin_src emacs-lisp
-  (setup flymake-shellcheck
-    (:package flymake-shellcheck)
-    (:with-function flymake-shellcheck-load
-      (:hook-into sh-mode-hook))
-    )
 #+end_src
 ** cc-mode
 #+begin_src emacs-lisp
@@ -1981,7 +1987,7 @@ Generic Language Server Protocol integration via ~eglot~.
 ** emacs-lisp
 #+begin_src emacs-lisp
   (setup elisp-mode
-    (:hook flymake-mode outline-minor-mode)
+    (:hook flycheck-mode outline-minor-mode indent-bars-mode)
     (:option elisp-fontify-semantically t)
     )
 #+end_src
@@ -2045,8 +2051,6 @@ Display outlines in text like files or use it in conjunction with other major mo
   (setup typescript-ts
     (:autoload-this)
     (:package typescript-mode)
-
-
     )
 
 
@@ -2163,7 +2167,6 @@ Generate Table of Contents.
 
   (setup go-gen-test
     (:package go-gen-test)
-
     )
 #+end_src
 ** python
@@ -2180,19 +2183,15 @@ Generate Table of Contents.
     (:hook-into python-base-mode-hook))
 #+end_src
 
-*** Packages
-**** python-test
-#+begin_src emacs-lisp :
+*** python-test
+#+begin_src emacs-lisp
   (setup python-test
     (:package python-pytest)
     )
 #+end_src
 
-*** Packages
-**** flymake-racket
-*** Appearance
+
 ** ruby
-*** Packages
 ** rust
 #+begin_src emacs-lisp
   (setup rust-ts-mode
@@ -2219,6 +2218,7 @@ Generate Table of Contents.
      ;; Use regular indentation for line-continuation
      sh-indent-after-continuation 'always)
     )
+
 #+end_src
 
 *** Packages
@@ -2226,6 +2226,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup sql
     (:option sql-mysql-options '("--protocol=tcp" "--prompt=" "--disable-pager")))
+  
 #+end_src
 
 ** terraform
@@ -2233,12 +2234,12 @@ Generate Table of Contents.
   (setup terraform-mode
     (:package terraform-mode)
     )
+  
 #+end_src
 
 ** yaml
 #+begin_src emacs-lisp
   (setup yaml-ts
-    (:autoload-this)
     (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
     (:hook indent-bars-mode)
     )

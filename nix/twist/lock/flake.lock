@@ -640,6 +640,22 @@
         "type": "github"
       }
     },
+    "flycheck": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771080155,
+        "narHash": "sha256-niS14c0ZLjoy+HumKteVKRESsVQPd4R15gpXx1qv7oo=",
+        "owner": "flycheck",
+        "repo": "flycheck",
+        "rev": "4774c401a9c35b817722b2aa0a2d8390c38588e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "flycheck",
+        "repo": "flycheck",
+        "type": "github"
+      }
+    },
     "flymake-shellcheck": {
       "flake": false,
       "locked": {
@@ -1755,6 +1771,7 @@
         "emt": "emt",
         "envrc": "envrc",
         "f": "f",
+        "flycheck": "flycheck",
         "flymake-shellcheck": "flymake-shellcheck",
         "flyover": "flyover",
         "forge": "forge",
