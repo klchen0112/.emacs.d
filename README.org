@@ -2313,7 +2313,7 @@ Generate Table of Contents.
 
     )
 #+end_src
-** pdf 
+** pdf :note:
 #+begin_src emacs-lisp
   (setup pdf-tools
     (:package pdf-tools)
@@ -2322,7 +2322,7 @@ Generate Table of Contents.
     )
 #+end_src
 * Apps
-** telga :ARCHIVE:
+** telga :telga:
 #+begin_src emacs-lisp
   (setup telega
     (:package telega)
