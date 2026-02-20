@@ -173,6 +173,12 @@
       repo = "doom-modeline";
       type = "github";
     };
+    easysession = {
+      flake = false;
+      owner = "jamescherti";
+      repo = "easysession.el";
+      type = "github";
+    };
     eat = {
       flake = false;
       type = "git";
@@ -242,12 +248,6 @@
       flake = false;
       owner = "flycheck";
       repo = "flycheck";
-      type = "github";
-    };
-    flymake-shellcheck = {
-      flake = false;
-      owner = "federicotdn";
-      repo = "flymake-shellcheck";
       type = "github";
     };
     flyover = {
@@ -602,6 +602,12 @@
       flake = false;
       owner = "vedang";
       repo = "pdf-tools";
+      type = "github";
+    };
+    perspective = {
+      flake = false;
+      owner = "nex3";
+      repo = "perspective-el";
       type = "github";
     };
     pet = {

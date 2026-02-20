@@ -9,5 +9,5 @@
     files = prev.files // {
       "server" = "server";
     };
-  };
+   };
 }

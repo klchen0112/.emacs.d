@@ -464,6 +464,22 @@
         "type": "github"
       }
     },
+    "easysession": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771472513,
+        "narHash": "sha256-XZZNjtjPuNQodUZTQnLv9yUdUyAjtdgCEPOkod4RZAo=",
+        "owner": "jamescherti",
+        "repo": "easysession.el",
+        "rev": "b7c62529deeb1c49f41b5c8885a49fb2f6065102",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamescherti",
+        "repo": "easysession.el",
+        "type": "github"
+      }
+    },
     "eat": {
       "flake": false,
       "locked": {
@@ -653,22 +669,6 @@
       "original": {
         "owner": "flycheck",
         "repo": "flycheck",
-        "type": "github"
-      }
-    },
-    "flymake-shellcheck": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719436962,
-        "narHash": "sha256-ipmIvJgBL8uvVF8v8INu1Go2DaIeiVoIOxbiUv3Dz+U=",
-        "owner": "federicotdn",
-        "repo": "flymake-shellcheck",
-        "rev": "d55666f55e126f0e861f7e886202c17c6a1cf8f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "federicotdn",
-        "repo": "flymake-shellcheck",
         "type": "github"
       }
     },
@@ -1617,6 +1617,22 @@
         "type": "github"
       }
     },
+    "perspective": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770791615,
+        "narHash": "sha256-Ht1QUWcf/WbKqfGNsQOVPEGwQ+JgNw980zyhe+ioQuw=",
+        "owner": "nex3",
+        "repo": "perspective-el",
+        "rev": "64ef5eaaab9e7564e8b9788ce6d0e2359daf5dca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nex3",
+        "repo": "perspective-el",
+        "type": "github"
+      }
+    },
     "pet": {
       "flake": false,
       "locked": {
@@ -1760,6 +1776,7 @@
         "disaster": "disaster",
         "docker": "docker",
         "doom-modeline": "doom-modeline",
+        "easysession": "easysession",
         "eat": "eat",
         "ef-themes": "ef-themes",
         "eglot-booster": "eglot-booster",
@@ -1772,7 +1789,6 @@
         "envrc": "envrc",
         "f": "f",
         "flycheck": "flycheck",
-        "flymake-shellcheck": "flymake-shellcheck",
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
@@ -1832,6 +1848,7 @@
         "org-super-agenda": "org-super-agenda",
         "parsebib": "parsebib",
         "pdf-tools": "pdf-tools",
+        "perspective": "perspective",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
