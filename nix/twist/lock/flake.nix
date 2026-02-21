@@ -604,12 +604,6 @@
       repo = "pdf-tools";
       type = "github";
     };
-    perspective = {
-      flake = false;
-      owner = "nex3";
-      repo = "perspective-el";
-      type = "github";
-    };
     pet = {
       flake = false;
       owner = "wyuenho";
@@ -709,6 +703,12 @@
       flake = false;
       owner = "emacsorphanage";
       repo = "tablist";
+      type = "github";
+    };
+    tabspaces = {
+      flake = false;
+      owner = "mclear-tools";
+      repo = "tabspaces";
       type = "github";
     };
     telega = {

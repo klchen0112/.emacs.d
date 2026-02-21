@@ -1617,22 +1617,6 @@
         "type": "github"
       }
     },
-    "perspective": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770791615,
-        "narHash": "sha256-Ht1QUWcf/WbKqfGNsQOVPEGwQ+JgNw980zyhe+ioQuw=",
-        "owner": "nex3",
-        "repo": "perspective-el",
-        "rev": "64ef5eaaab9e7564e8b9788ce6d0e2359daf5dca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nex3",
-        "repo": "perspective-el",
-        "type": "github"
-      }
-    },
     "pet": {
       "flake": false,
       "locked": {
@@ -1848,7 +1832,6 @@
         "org-super-agenda": "org-super-agenda",
         "parsebib": "parsebib",
         "pdf-tools": "pdf-tools",
-        "perspective": "perspective",
         "pet": "pet",
         "posframe": "posframe",
         "powerline": "powerline",
@@ -1866,6 +1849,7 @@
         "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
+        "tabspaces": "tabspaces",
         "telega": "telega",
         "tempel": "tempel",
         "tempel-collection": "tempel-collection",
@@ -2049,6 +2033,22 @@
       "original": {
         "owner": "emacsorphanage",
         "repo": "tablist",
+        "type": "github"
+      }
+    },
+    "tabspaces": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770480187,
+        "narHash": "sha256-Ji+TLlWD4oFS96h/mtYF/JgZFHWG8udT/QH/k+D1WrI=",
+        "owner": "mclear-tools",
+        "repo": "tabspaces",
+        "rev": "cd9f780bd69747fb8a598be1d4347e2e161c2d82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mclear-tools",
+        "repo": "tabspaces",
         "type": "github"
       }
     },

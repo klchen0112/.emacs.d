@@ -1384,13 +1384,27 @@ Annotations for completion candidates.
     )
 #+end_src
 
-*** perspective
+*** tabspaces
 #+begin_src emacs-lisp
-  (setup perspective
-    (:package perspective)
-
-
-    )
+  (setup tabspaces
+    (:package tabspaces)
+    (:hook-into after-init)
+    (:option
+     tabspaces-use-filtered-buffers-as-default t
+     tabspaces-default-tab "Default"
+     tabspaces-remove-to-default t
+     tabspaces-include-buffers '("*scratch*")
+     tabspaces-initialize-project-with-todo t
+     tabspaces-todo-file-name "project-todo.org"
+     ;; sessions
+     tabspaces-session t
+     tabspaces-session-auto-restore t
+     ;; additional options
+     tabspaces-fully-resolve-paths t  ; Resolve relative project paths to absolute
+     tabspaces-exclude-buffers '("*Messages*" "*Compile-Log*")  ; Additional buffers to exclude
+     tab-bar-new-tab-choice "*scratch*"
+     )
+  )
 #+end_src
 * Development
 :PROPERTIES:
