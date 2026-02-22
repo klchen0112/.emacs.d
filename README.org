@@ -601,12 +601,6 @@ load sequence.
       )
     )
 #+end_src
-** Tabs
-#+begin_src emacs-lisp
-  (setup centaur-tabs
-    (:package centaur-tabs)
-    )
-#+end_src
 ** Dashboard
 #+begin_src emacs-lisp
   (setup doom-modeline
