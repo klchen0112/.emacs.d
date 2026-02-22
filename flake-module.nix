@@ -47,7 +47,6 @@ in
       withSystem prev.stdenv.hostPlatform.system (
         { config, ... }:
         {
-          emacsIGC = config.packages.emacsIGC;
           emacsPlus = config.packages.emacsPlus;
           initEl = config.packages.initEl-all-features;
           earlyInitEl = config.packages.earlyInitEl-all-features;
@@ -73,7 +72,7 @@ in
       _module.args.pkgs = import inputs.nixpkgs {
         overlays = overlays ++ [
           (final: prev: {
-            emacsIGC = config.packages.emacsIGC;
+            emacsPlus = config.packages.emacsPlus;
             initEl = config.packages.initEl-all-features;
             earlyInitEl = config.packages.earlyInitEl-all-features;
             emacs-env-all-features = config.packages.emacs-env-all-features;
