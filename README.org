@@ -37,7 +37,7 @@ load sequence.
   (setq user-full-name "klchen0112"
         user-mail-address "klchen0112@gmail.com")
 #+end_src
-** Starup 
+** Starup
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook
             (lambda ()
@@ -418,7 +418,7 @@ load sequence.
           w32-pipe-read-delay 0               ; faster IPC
           w32-pipe-buffer-size (* 64 1024)))  ; read more at a time (was 4K)
 #+end_src
-** font 
+** font
 #+begin_src emacs-lisp
   ;; 定义字体配置（延迟执行的核心）
   (defconst my/main-fonts
@@ -1030,7 +1030,7 @@ Space-separated matching components matching in any order.
                                  orderless-literal)
      completion-category-defaults nil
      completion-category-overrides '((file (styles partial-completion)))
-     )) 
+     ))
 #+end_src
 
 ** Buffer
@@ -1145,7 +1145,7 @@ Completion At Point Extensions.
       (add-hook #'completion-at-point-functions #'cape-file)
       (add-hook #'completion-at-point-functions #'cape-dict)
       (add-hook #'completion-at-point-functions #'cape-elisp-block)
-      
+
       )
     )
  #+end_src
@@ -1206,7 +1206,7 @@ Completion At Point Extensions.
   (setup embark
     (:package embark)
 
-    
+
     )
 
   (setup embark-consult
@@ -1728,7 +1728,7 @@ Generic Language Server Protocol integration via ~eglot~.
       (setq org-latex-preview-mode-update-delay 0.25))
     )
 #+end_src
-** Org-roam 
+** Org-roam
 #+begin_src emacs-lisp
 
   (setup org-roam
@@ -1896,7 +1896,7 @@ Generic Language Server Protocol integration via ~eglot~.
       )
     )
 #+end_src
-** org-noter 
+** org-noter
 #+begin_src emacs-lisp
   (setup org-noter
     (:package org-noter))
@@ -2294,7 +2294,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup sql
     (:option sql-mysql-options '("--protocol=tcp" "--prompt=" "--disable-pager")))
-  
+
 #+end_src
 
 ** terraform
@@ -2302,7 +2302,7 @@ Generate Table of Contents.
   (setup terraform-mode
     (:package terraform-mode)
     )
-  
+
 #+end_src
 
 ** yaml
@@ -2393,7 +2393,7 @@ Generate Table of Contents.
     )
 #+end_src
 * Apps
-** telga :telga:
+** telga :ARCHIVE:
 #+begin_src emacs-lisp
   (setup telega
     (:package telega)
