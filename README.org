@@ -1382,7 +1382,6 @@ Annotations for completion candidates.
 #+begin_src emacs-lisp
   (setup tabspaces
     (:package tabspaces)
-    (:hook-into after-init)
     (:option
      tabspaces-use-filtered-buffers-as-default t
      tabspaces-default-tab "Default"
@@ -1568,7 +1567,7 @@ Generic Language Server Protocol integration via ~eglot~.
     (:with-map kl-code-prefix-map
       (:bind "R" eglot-rename)
       (:bind "d" eglot-find-typeDefinition)
-      (:bind "r" eglot-x-find-refs)
+      (:bind "r" xref-find-references)
       (:bind "j" xref-find-declaration)
       (:bind "i" eglot-find-implementation)
       )
