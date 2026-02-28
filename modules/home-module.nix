@@ -66,7 +66,7 @@ in
             pkgs = pkgs';
           };
         };
-
+        services.emacs.client.enable = cfg.serviceIntegration.enable;
         home.packages =
           with pkgs;
           [
