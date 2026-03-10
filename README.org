@@ -2386,10 +2386,11 @@ Generate Table of Contents.
     )
 #+end_src
 * Apps
-** telga :ARCHIVE:
+** telga
 #+begin_src emacs-lisp
   (setup telega
     (:package telega)
+    (:option telega-avatar-workaround-rsvg-bugs t)
    )
 #+end_src
 
