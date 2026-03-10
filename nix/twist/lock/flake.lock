@@ -48,22 +48,6 @@
         "type": "github"
       }
     },
-    "centaur-tabs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763726747,
-        "narHash": "sha256-vij5xx5s882hY6AMaBNz1oqnr9IfyrZSVyuiLemfW8A=",
-        "owner": "ema2159",
-        "repo": "centaur-tabs",
-        "rev": "917544d139046232a10573f6c629d529b47e28aa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ema2159",
-        "repo": "centaur-tabs",
-        "type": "github"
-      }
-    },
     "citar": {
       "flake": false,
       "locked": {
@@ -323,16 +307,16 @@
     "dashboard": {
       "flake": false,
       "locked": {
-        "lastModified": 1755342687,
-        "narHash": "sha256-o6cT4+QrWHZTapge+06MJYGx/mGitXh/dbj10u+hBK4=",
+        "lastModified": 1772293755,
+        "narHash": "sha256-Lx2tWglP1/RzxEis/xxITBHt5YgdBJybWmc4v7aeDFA=",
         "owner": "emacs-dashboard",
-        "repo": "emacs-dashboard",
-        "rev": "e5fc08e78223487aa0da12539be1a23356c09ec7",
+        "repo": "dashboard",
+        "rev": "676be25d9b0382bd3253c9119b258a28cdcfc5fb",
         "type": "github"
       },
       "original": {
         "owner": "emacs-dashboard",
-        "repo": "emacs-dashboard",
+        "repo": "dashboard",
         "type": "github"
       }
     },
@@ -976,20 +960,20 @@
         "type": "github"
       }
     },
-    "kubernetes": {
+    "kubed": {
       "flake": false,
       "locked": {
-        "lastModified": 1760430650,
-        "narHash": "sha256-1eJsi8dAuTk9j3we0Icy0NVUemNAi2O5X/R+Ohv2qMM=",
-        "owner": "kubernetes-el",
-        "repo": "kubernetes-el",
-        "rev": "c60a0d2a52f2e24adf75e8b6f017c1f8f2d926fd",
-        "type": "github"
+        "lastModified": 1770994183,
+        "narHash": "sha256-ypXKOvwyKRxgN3QtSZ6r2TBgHkTqHb5spb/P+hwkYeg=",
+        "ref": "refs/heads/master",
+        "rev": "9d5007cd5a6121101f7461c33036f54d37c70495",
+        "revCount": 153,
+        "type": "git",
+        "url": "https://git.sr.ht/~eshel/kubed"
       },
       "original": {
-        "owner": "kubernetes-el",
-        "repo": "kubernetes-el",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.sr.ht/~eshel/kubed"
       }
     },
     "language-id": {
@@ -1069,22 +1053,6 @@
       "original": {
         "owner": "magit",
         "repo": "magit",
-        "type": "github"
-      }
-    },
-    "magit-popup": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1595153743,
-        "narHash": "sha256-AZs4wlZWTYjF9SHON6bTZ/XXqgFLkXPe8prdbfoz134=",
-        "owner": "magit",
-        "repo": "magit-popup",
-        "rev": "d8585fa39f88956963d877b921322530257ba9f5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "magit",
-        "repo": "magit-popup",
         "type": "github"
       }
     },
@@ -1649,22 +1617,6 @@
         "type": "github"
       }
     },
-    "powerline": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1668110182,
-        "narHash": "sha256-a6LbnwmzUy43BLTjYW4DapK0sQSI38g6nsuPjd4tNkw=",
-        "owner": "milkypostman",
-        "repo": "powerline",
-        "rev": "c35c35bdf5ce2d992882c1f06f0f078058870d4a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "milkypostman",
-        "repo": "powerline",
-        "type": "github"
-      }
-    },
     "projectile": {
       "flake": false,
       "locked": {
@@ -1713,28 +1665,11 @@
         "type": "github"
       }
     },
-    "request": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740009121,
-        "narHash": "sha256-BFxOsHTKHghIPFeUyaNXJGZbCD2mIMdRG2qby8p0TpU=",
-        "owner": "tkf",
-        "repo": "emacs-request",
-        "rev": "c22e3c23a6dd90f64be536e176ea0ed6113a5ba6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tkf",
-        "repo": "emacs-request",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "aio": "aio",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
-        "centaur-tabs": "centaur-tabs",
         "citar": "citar",
         "citar-org-roam": "citar-org-roam",
         "citeproc": "citeproc",
@@ -1792,13 +1727,12 @@
         "justl": "justl",
         "keyfreq": "keyfreq",
         "kotlin-mode": "kotlin-mode",
-        "kubernetes": "kubernetes",
+        "kubed": "kubed",
         "language-id": "language-id",
         "ligature": "ligature",
         "llama": "llama",
         "lv": "lv",
         "magit": "magit",
-        "magit-popup": "magit-popup",
         "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
@@ -1834,11 +1768,9 @@
         "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
-        "powerline": "powerline",
         "projectile": "projectile",
         "promise": "promise",
         "python-pytest": "python-pytest",
-        "request": "request",
         "s": "s",
         "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",

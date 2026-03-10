@@ -19,12 +19,6 @@
       repo = "cape";
       type = "github";
     };
-    centaur-tabs = {
-      flake = false;
-      owner = "ema2159";
-      repo = "centaur-tabs";
-      type = "github";
-    };
     citar = {
       flake = false;
       owner = "emacs-citar";
@@ -122,7 +116,7 @@
     dashboard = {
       flake = false;
       owner = "emacs-dashboard";
-      repo = "emacs-dashboard";
+      repo = "dashboard";
       type = "github";
     };
     demangle-mode = {
@@ -364,11 +358,10 @@
       repo = "kotlin-mode";
       type = "github";
     };
-    kubernetes = {
+    kubed = {
       flake = false;
-      owner = "kubernetes-el";
-      repo = "kubernetes-el";
-      type = "github";
+      type = "git";
+      url = "https://git.sr.ht/~eshel/kubed";
     };
     language-id = {
       flake = false;
@@ -398,12 +391,6 @@
       flake = false;
       owner = "magit";
       repo = "magit";
-      type = "github";
-    };
-    magit-popup = {
-      flake = false;
-      owner = "magit";
-      repo = "magit-popup";
       type = "github";
     };
     magit-section = {
@@ -616,12 +603,6 @@
       repo = "posframe";
       type = "github";
     };
-    powerline = {
-      flake = false;
-      owner = "milkypostman";
-      repo = "powerline";
-      type = "github";
-    };
     projectile = {
       flake = false;
       owner = "bbatsov";
@@ -638,12 +619,6 @@
       flake = false;
       owner = "wbolster";
       repo = "emacs-python-pytest";
-      type = "github";
-    };
-    request = {
-      flake = false;
-      owner = "tkf";
-      repo = "emacs-request";
       type = "github";
     };
     "s" = {
