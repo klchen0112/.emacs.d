@@ -60,27 +60,14 @@ in
       registries = import ../twist/registries.nix { inherit inputs pkgs emacsPackage; };
       extraSiteStartElisp =
         let
-          treesitterPackage = emacsPackage.pkgs.treesit-grammars.with-grammars (ps: [
-            ps.tree-sitter-dockerfile
-            ps.tree-sitter-elixir
-            ps.tree-sitter-go
-            ps.tree-sitter-gomod
-            ps.tree-sitter-heex
-            ps.tree-sitter-java
-            ps.tree-sitter-javascript
-            ps.tree-sitter-jsdoc
-            ps.tree-sitter-json
-            ps.tree-sitter-json5
-            ps.tree-sitter-lua
-            ps.tree-sitter-nix
-            ps.tree-sitter-nu
-            ps.tree-sitter-python
-            ps.tree-sitter-ruby
-            ps.tree-sitter-rust
-            ps.tree-sitter-typescript
-            ps.tree-sitter-yaml
-            ps.tree-sitter-toml
-          ]);
+          treesitterPackage = emacsPackage.pkgs.treesit-grammars.with-grammars (
+            _:
+            # tree-sitter-razor is marked as broken, so it needs to be
+            # excluded from the config.
+            (builtins.filter (
+              grammar: ((grammar.meta or { }).broken or null) != true
+            ) pkgs.tree-sitter.allGrammars)
+          );
         in
         ''
           (add-to-list 'treesit-extra-load-path "${treesitterPackage}/lib")
