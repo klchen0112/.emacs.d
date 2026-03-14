@@ -2101,13 +2101,22 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+begin_src emacs-lisp
   (setup java-ts
     (:autoload-this)
+    (:match-file "\\.java\\'")
     )
 
   (setup eglot-java
     (:autoload-this)
     (:nixpkgs jdt-language-server)
     (:package eglot-java)
-    (:hook-into java-base-mode-hook)
+    (:hook-into java-base-mode)
+    (:when-loaded
+      (define-key eglot-java-mode-map (kbd "C-c l n") #'eglot-java-file-new)
+      (define-key eglot-java-mode-map (kbd "C-c l x") #'eglot-java-run-main)
+      (define-key eglot-java-mode-map (kbd "C-c l t") #'eglot-java-run-test)
+      (define-key eglot-java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
+      (define-key eglot-java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
+      (define-key eglot-java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh)
+      )
     )
 #+end_src
 
