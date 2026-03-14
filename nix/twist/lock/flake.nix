@@ -202,6 +202,12 @@
       repo = "eglot-x";
       type = "github";
     };
+    elisp-refs = {
+      flake = false;
+      owner = "Wilfred";
+      repo = "elisp-refs";
+      type = "github";
+    };
     emacsql = {
       flake = false;
       owner = "magit";
@@ -308,6 +314,12 @@
       flake = false;
       owner = "hcl-emacs";
       repo = "hcl-mode";
+      type = "github";
+    };
+    helpful = {
+      flake = false;
+      owner = "Wilfred";
+      repo = "helpful";
       type = "github";
     };
     ht = {
@@ -445,6 +457,12 @@
       flake = false;
       owner = "xuchunyang";
       repo = "msgpack.el";
+      type = "github";
+    };
+    mvn = {
+      flake = false;
+      owner = "apg";
+      repo = "mvn-el";
       type = "github";
     };
     nerd-icons = {
