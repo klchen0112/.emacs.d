@@ -615,8 +615,9 @@ load sequence.
 #+begin_src emacs-lisp
   (setup display-fill-column-indicator
     (:hook-into prog-mode)
-    (:hook-into org-mode)
-    (:hook-into markdown-mode))
+    ;;(:hook-into org-mode)
+    ;;(:hook-into markdown-mode)
+    )
 
   (setup display-line-numbers
     (:hook-into prog-mode)
@@ -2337,7 +2338,6 @@ Generate Table of Contents.
 ** yaml
 #+begin_src emacs-lisp
   (setup yaml-ts
-    (:match-file "\\.\\(e?ya?\\|ra\\)ml\\'")
     (:hook indent-bars-mode)
     )
 #+end_src
