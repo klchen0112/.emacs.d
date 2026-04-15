@@ -1,2 +1,0 @@
-(org :fetcher git :url "https://code.tecosaur.net/tec/org-mode"
-	     :branch "dev")
