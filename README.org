@@ -1648,7 +1648,7 @@ Generic Language Server Protocol integration via ~eglot~.
 #+begin_src emacs-lisp
   (setup org
     (:autoload-this)
-    (:package org)
+    ;;(:package org)
     (:option org-directory "~/org")
     )
 
