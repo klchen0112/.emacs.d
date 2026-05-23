@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "avy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1730469433,
+        "narHash": "sha256-p4IY1gksiC6YonDvaccISEbp6glz2AJoLgHzsc5fbvQ=",
+        "owner": "abo-abo",
+        "repo": "avy",
+        "rev": "933d1f36cca0f71e4acb5fac707e9ae26c536264",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "avy",
+        "type": "github"
+      }
+    },
     "benchmark-init": {
       "flake": false,
       "locked": {
@@ -1040,6 +1056,22 @@
         "type": "github"
       }
     },
+    "link-hint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757552227,
+        "narHash": "sha256-FrWXo7R39qdiHa+Z2CFvqm6NBuG6YWXsYE/j7wjPP+w=",
+        "owner": "noctuid",
+        "repo": "link-hint.el",
+        "rev": "8fda5dcb9caff5a3c49d22b82e570ac9e29af7dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctuid",
+        "repo": "link-hint.el",
+        "type": "github"
+      }
+    },
     "llama": {
       "flake": false,
       "locked": {
@@ -1716,6 +1748,7 @@
     "root": {
       "inputs": {
         "aio": "aio",
+        "avy": "avy",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
         "citar": "citar",
@@ -1780,6 +1813,7 @@
         "kubed": "kubed",
         "language-id": "language-id",
         "ligature": "ligature",
+        "link-hint": "link-hint",
         "llama": "llama",
         "lv": "lv",
         "magit": "magit",

@@ -57,6 +57,12 @@ load sequence.
    inhibit-compacting-font-caches t
    load-prefer-newer t
    native-comp-async-report-warnings-errors 'slient
+   ;; Emacs 30+ startup optimizations
+   inhibit-splash-screen t
+   inhibit-startup-banner t
+   inhibit-startup-help-dialog t
+   inhibit-startup-tool-bar t
+   inhibit-startup-splash t
    )
 
   (advice-add #'x-apply-session-resources :override #'ignore)
@@ -234,8 +240,8 @@ load sequence.
 ** navive comp
 #+begin_src emacs-lisp
   (if (and (featurep 'native-compile)
-  	 (fboundp 'native-comp-available-p)
-  	 (native-comp-available-p))
+   	 (fboundp 'native-comp-available-p)
+   	 (native-comp-available-p))
       (setq package-native-compile t))
   (with-eval-after-load 'comp
     (setq native-comp-async-jobs-number 8)
@@ -243,6 +249,9 @@ load sequence.
     (setq native-comp-always-compile t))
   (setq native-comp-warning-on-missing-source init-file-debug
         native-comp-async-report-warnings-errors init-file-debug)
+
+  ;; Emacs 30+ native-comp verbose settings
+  (setq native-comp-verbose init-file-debug)
 
   (setq jka-compr-verbose init-file-debug)
   (setq byte-compile-warnings init-file-debug
@@ -533,8 +542,8 @@ load sequence.
     (interactive)
     (my/setup-fonts)
     (message "字体已重新加载"))
-  ;;(my/schedule-font-setup)
-  (my/profile-font-setup)
+  (my/schedule-font-setup)
+  ;;(my/profile-font-setup)
   (setup fonts
     (:nixpkgs material-design-icons)
     (:nixpkgs font-awesome)
@@ -601,7 +610,7 @@ load sequence.
       )
     )
 #+end_src
-** Dashboard
+** modeline
 #+begin_src emacs-lisp
   (setup doom-modeline
     (:package doom-modeline)
@@ -611,6 +620,15 @@ load sequence.
              column-number-mode t)
     )
 #+end_src
+** link-hint
+#+begin_src emacs-lisp
+  (setup link-hint
+    (:package link-hint)
+
+
+    )
+#+end_src
+
 ** display-line-number
 #+begin_src emacs-lisp
   (setup display-fill-column-indicator

@@ -7,6 +7,12 @@
       repo = "emacs-aio";
       type = "github";
     };
+    avy = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "avy";
+      type = "github";
+    };
     benchmark-init = {
       flake = false;
       owner = "dholm";
@@ -385,6 +391,12 @@
       flake = false;
       owner = "mickeynp";
       repo = "ligature.el";
+      type = "github";
+    };
+    link-hint = {
+      flake = false;
+      owner = "noctuid";
+      repo = "link-hint.el";
       type = "github";
     };
     llama = {
