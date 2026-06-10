@@ -575,35 +575,36 @@ load sequence.
     (:package dashboard)
     (:load-after nerd-icons)
     (:require dashboard)
-    (:option initial-buffer-choice 'dashboard-open
-             dashboard-projects-backend 'projectile
-             dashboard-center-content t
-             dashboard-vertically-center-content t
-             dashboard-icon-type 'nerd-icons
-             dashboard-display-icons-p t
-             dashboard-set-heading-icons t
-             dashboard-set-file-icons t
-             dashboard-items '((recents   . 10)
-                               (bookmarks . 5)
-                               (projects  . 5)
-                               (agenda    . 5)
-                               (registers . 5) )
-             dashboard-item-shortcuts '((recents . "r")
-                                        (bookmarks . "m")
-                                        (projects . "j")
-                                        (agenda . "a")
-                                        (registers . "e"))
+    (:option
+     ;;initial-buffer-choice 'dashboard-open
+     dashboard-projects-backend 'projectile
+     dashboard-center-content t
+     dashboard-vertically-center-content t
+     dashboard-icon-type 'nerd-icons
+     dashboard-display-icons-p t
+     dashboard-set-heading-icons t
+     dashboard-set-file-icons t
+     dashboard-items '((recents   . 10)
+                       (bookmarks . 5)
+                       (projects  . 5)
+                       (agenda    . 5)
+                       (registers . 5) )
+     dashboard-item-shortcuts '((recents . "r")
+                                (bookmarks . "m")
+                                (projects . "j")
+                                (agenda . "a")
+                                (registers . "e"))
 
-             dashboard-startupify-list '(dashboard-insert-banner
-                                         dashboard-insert-newline
-                                         dashboard-insert-banner-title
-                                         dashboard-insert-newline
-                                         dashboard-insert-navigator
-                                         dashboard-insert-newline
-                                         dashboard-insert-init-info
-                                         dashboard-insert-items
-                                         dashboard-insert-newline
-                                         dashboard-insert-footer))
+     dashboard-startupify-list '(dashboard-insert-banner
+                                 dashboard-insert-newline
+                                 dashboard-insert-banner-title
+                                 dashboard-insert-newline
+                                 dashboard-insert-navigator
+                                 dashboard-insert-newline
+                                 dashboard-insert-init-info
+                                 dashboard-insert-items
+                                 dashboard-insert-newline
+                                 dashboard-insert-footer))
     (if (daemonp)
         (add-hook 'server-after-make-frame-hook 'dashboard-open)
       (dashboard-setup-startup-hook)
