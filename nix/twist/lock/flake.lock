@@ -1456,23 +1456,6 @@
         "type": "github"
       }
     },
-    "org": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1776103967,
-        "narHash": "sha256-rfJdFJg+s4IO00B3avMQRdGi9oWz0+wnqXaeQc38wls=",
-        "ref": "bugfix",
-        "rev": "eb102873ce3543ae6cf5b6dd2b53316e4e89d453",
-        "revCount": 28629,
-        "type": "git",
-        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
-      },
-      "original": {
-        "ref": "bugfix",
-        "type": "git",
-        "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
-      }
-    },
     "org-appear": {
       "flake": false,
       "locked": {
@@ -1838,7 +1821,6 @@
         "nushell-ts-mode": "nushell-ts-mode",
         "ob-mermaid": "ob-mermaid",
         "orderless": "orderless",
-        "org": "org",
         "org-appear": "org-appear",
         "org-download": "org-download",
         "org-mac-link": "org-mac-link",
@@ -2056,17 +2038,17 @@
     "tabspaces": {
       "flake": false,
       "locked": {
-        "lastModified": 1770480187,
-        "narHash": "sha256-Ji+TLlWD4oFS96h/mtYF/JgZFHWG8udT/QH/k+D1WrI=",
-        "owner": "mclear-tools",
-        "repo": "tabspaces",
-        "rev": "cd9f780bd69747fb8a598be1d4347e2e161c2d82",
-        "type": "github"
+        "lastModified": 1780066355,
+        "narHash": "sha256-4aZFvrrsU+ukapCNVGGQqa50imEnGz/HC4aeQAN4+sE=",
+        "ref": "refs/heads/main",
+        "rev": "d3a74c0d39a0029d956dc37ddbf540802fb76973",
+        "revCount": 177,
+        "type": "git",
+        "url": "https://codeberg.org/mclear-tools/tabspaces.git"
       },
       "original": {
-        "owner": "mclear-tools",
-        "repo": "tabspaces",
-        "type": "github"
+        "type": "git",
+        "url": "https://codeberg.org/mclear-tools/tabspaces.git"
       }
     },
     "telega": {

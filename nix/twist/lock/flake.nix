@@ -543,12 +543,6 @@
       repo = "orderless";
       type = "github";
     };
-    org = {
-      flake = false;
-      ref = "bugfix";
-      type = "git";
-      url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
-    };
     org-appear = {
       flake = false;
       owner = "awth13";
@@ -712,9 +706,8 @@
     };
     tabspaces = {
       flake = false;
-      owner = "mclear-tools";
-      repo = "tabspaces";
-      type = "github";
+      type = "git";
+      url = "https://codeberg.org/mclear-tools/tabspaces.git";
     };
     telega = {
       flake = false;
