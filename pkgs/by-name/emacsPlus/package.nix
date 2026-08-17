@@ -8,6 +8,6 @@
   emacs-macport,
 }:
 if stdenv.isLinux then
-emacs-pgtk
+  emacs-igc-pgtk
 else
   emacs-macport

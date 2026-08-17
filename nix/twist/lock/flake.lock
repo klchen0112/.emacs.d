@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "acp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779917551,
+        "narHash": "sha256-hN5c1kOKBPq+rbuh0ILxq8oRVDgZLxQqQmeDj5PUKzE=",
+        "owner": "xenodium",
+        "repo": "acp.el",
+        "rev": "3ddfa907eb7f17949a4a8e731ea5c5241e6cbcb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xenodium",
+        "repo": "acp.el",
+        "type": "github"
+      }
+    },
+    "agent-shell": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781885179,
+        "narHash": "sha256-QlymnRCCdfqn/T1objK1rpegfJobZfK2VdJxX5m8K80=",
+        "owner": "xenodium",
+        "repo": "agent-shell",
+        "rev": "bb1bcfa97231d35f498197ac647debcc128ee3c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xenodium",
+        "repo": "agent-shell",
+        "type": "github"
+      }
+    },
     "aio": {
       "flake": false,
       "locked": {
@@ -61,54 +93,6 @@
       "original": {
         "owner": "minad",
         "repo": "cape",
-        "type": "github"
-      }
-    },
-    "citar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762688288,
-        "narHash": "sha256-SkOiFf7+0KKWMLM4jKcEIzvehNk5b0mwltk4fWOpf7k=",
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "rev": "dc7018eb36fb3540cb5b7fc526d6747144437eef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar",
-        "type": "github"
-      }
-    },
-    "citar-org-roam": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745507478,
-        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-citar",
-        "repo": "citar-org-roam",
-        "type": "github"
-      }
-    },
-    "citeproc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768301259,
-        "narHash": "sha256-KbxUMduCSP+cdpvMYw20n9mVn+D/nCNUx5/DEXO3Wh8=",
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
-        "rev": "4bde999a41803fe519ea80eab8b813d53503eebd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andras-simonyi",
-        "repo": "citeproc-el",
         "type": "github"
       }
     },
@@ -736,22 +720,6 @@
         "type": "github"
       }
     },
-    "gcmh": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1605567102,
-        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
-        "owner": "koral",
-        "repo": "gcmh",
-        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "koral",
-        "repo": "gcmh",
-        "type": "gitlab"
-      }
-    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -989,6 +957,22 @@
       "original": {
         "owner": "dacap",
         "repo": "keyfreq",
+        "type": "github"
+      }
+    },
+    "kkp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781690734,
+        "narHash": "sha256-x6N9sw+tT8qgyw6OW1DFkh/VNJ9lhEIGyzBW+M6NkCM=",
+        "owner": "benotn",
+        "repo": "kkp",
+        "rev": "0b77ce2fb9eefbb07ffa906f8fe2df14450a9cfc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benotn",
+        "repo": "kkp",
         "type": "github"
       }
     },
@@ -1616,22 +1600,6 @@
         "type": "github"
       }
     },
-    "parsebib": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764261112,
-        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
-        "type": "github"
-      },
-      "original": {
-        "owner": "joostkremers",
-        "repo": "parsebib",
-        "type": "github"
-      }
-    },
     "pdf-tools": {
       "flake": false,
       "locked": {
@@ -1730,13 +1698,12 @@
     },
     "root": {
       "inputs": {
+        "acp": "acp",
+        "agent-shell": "agent-shell",
         "aio": "aio",
         "avy": "avy",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
-        "citar": "citar",
-        "citar-org-roam": "citar-org-roam",
-        "citeproc": "citeproc",
         "closql": "closql",
         "cmake-mode": "cmake-mode",
         "cobol-mode": "cobol-mode",
@@ -1776,7 +1743,6 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
-        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-gen-test": "go-gen-test",
         "go-mode": "go-mode",
@@ -1792,6 +1758,7 @@
         "just-mode": "just-mode",
         "justl": "justl",
         "keyfreq": "keyfreq",
+        "kkp": "kkp",
         "kotlin-mode": "kotlin-mode",
         "kubed": "kubed",
         "language-id": "language-id",
@@ -1831,7 +1798,6 @@
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
-        "parsebib": "parsebib",
         "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
@@ -1842,10 +1808,10 @@
         "sbt-mode": "sbt-mode",
         "scala-mode": "scala-mode",
         "setup": "setup",
+        "shell-maker": "shell-maker",
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
-        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
         "tabspaces": "tabspaces",
@@ -1865,6 +1831,7 @@
         "vertico": "vertico",
         "vertico-posframe": "vertico-posframe",
         "visual-fill-column": "visual-fill-column",
+        "visual-replace": "visual-replace",
         "vulpea": "vulpea",
         "web-mode": "web-mode",
         "websocket": "websocket",
@@ -1939,6 +1906,22 @@
         "url": "https://codeberg.org/pkal/setup.el"
       }
     },
+    "shell-maker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781029418,
+        "narHash": "sha256-nJNZBZKmzEVn5gNEL0DT4S09Hfd8hk6DLaZTtoRksS0=",
+        "owner": "xenodium",
+        "repo": "shell-maker",
+        "rev": "43ee9e1862994cbaa89715d324edb7a424181f22",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xenodium",
+        "repo": "shell-maker",
+        "type": "github"
+      }
+    },
     "shrink-path": {
       "flake": false,
       "locked": {
@@ -1984,22 +1967,6 @@
       "original": {
         "owner": "laishulu",
         "repo": "emacs-smart-input-source",
-        "type": "github"
-      }
-    },
-    "string-inflection": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763116921,
-        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
-        "owner": "akicho8",
-        "repo": "string-inflection",
-        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
-        "type": "github"
-      },
-      "original": {
-        "owner": "akicho8",
-        "repo": "string-inflection",
         "type": "github"
       }
     },
@@ -2305,6 +2272,22 @@
       "original": {
         "type": "git",
         "url": "https://codeberg.org/joostkremers/visual-fill-column.git"
+      }
+    },
+    "visual-replace": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757797382,
+        "narHash": "sha256-KlMxS3RYFGhHuL+0H1+tqdZH8o5aIiO9dbu4SRFrEb0=",
+        "owner": "szermatt",
+        "repo": "visual-replace",
+        "rev": "cf6a02fae01d9962862920a6cfe2488df2f76684",
+        "type": "github"
+      },
+      "original": {
+        "owner": "szermatt",
+        "repo": "visual-replace",
+        "type": "github"
       }
     },
     "vulpea": {

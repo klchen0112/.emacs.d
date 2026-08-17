@@ -1,6 +1,18 @@
 {
   description = "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
+    acp = {
+      flake = false;
+      owner = "xenodium";
+      repo = "acp.el";
+      type = "github";
+    };
+    agent-shell = {
+      flake = false;
+      owner = "xenodium";
+      repo = "agent-shell";
+      type = "github";
+    };
     aio = {
       flake = false;
       owner = "skeeto";
@@ -23,24 +35,6 @@
       flake = false;
       owner = "minad";
       repo = "cape";
-      type = "github";
-    };
-    citar = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar";
-      type = "github";
-    };
-    citar-org-roam = {
-      flake = false;
-      owner = "emacs-citar";
-      repo = "citar-org-roam";
-      type = "github";
-    };
-    citeproc = {
-      flake = false;
-      owner = "andras-simonyi";
-      repo = "citeproc-el";
       type = "github";
     };
     closql = {
@@ -274,12 +268,6 @@
       repo = "emacs-format-all-the-code";
       type = "github";
     };
-    gcmh = {
-      flake = false;
-      owner = "koral";
-      repo = "gcmh";
-      type = "gitlab";
-    };
     ghub = {
       flake = false;
       owner = "magit";
@@ -368,6 +356,12 @@
       flake = false;
       owner = "dacap";
       repo = "keyfreq";
+      type = "github";
+    };
+    kkp = {
+      flake = false;
+      owner = "benotn";
+      repo = "kkp";
       type = "github";
     };
     kotlin-mode = {
@@ -603,12 +597,6 @@
       repo = "org-super-agenda";
       type = "github";
     };
-    parsebib = {
-      flake = false;
-      owner = "joostkremers";
-      repo = "parsebib";
-      type = "github";
-    };
     pdf-tools = {
       flake = false;
       owner = "vedang";
@@ -668,6 +656,12 @@
       type = "git";
       url = "https://codeberg.org/pkal/setup.el";
     };
+    shell-maker = {
+      flake = false;
+      owner = "xenodium";
+      repo = "shell-maker";
+      type = "github";
+    };
     shrink-path = {
       flake = false;
       owner = "bennya";
@@ -684,12 +678,6 @@
       flake = false;
       owner = "laishulu";
       repo = "emacs-smart-input-source";
-      type = "github";
-    };
-    string-inflection = {
-      flake = false;
-      owner = "akicho8";
-      repo = "string-inflection";
       type = "github";
     };
     switch-window = {
@@ -802,6 +790,12 @@
       flake = false;
       type = "git";
       url = "https://codeberg.org/joostkremers/visual-fill-column.git";
+    };
+    visual-replace = {
+      flake = false;
+      owner = "szermatt";
+      repo = "visual-replace";
+      type = "github";
     };
     vulpea = {
       flake = false;

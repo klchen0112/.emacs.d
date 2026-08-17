@@ -67,7 +67,7 @@ load sequence.
 
   (advice-add #'x-apply-session-resources :override #'ignore)
 #+end_src
-** gc
+** gc :ARCHIVE:
 #+begin_src emacs-lisp
   (let ((normal-gc-cons-threshold gc-cons-threshold)
         (normal-gc-cons-percentage gc-cons-percentage)
@@ -350,7 +350,7 @@ load sequence.
       )
     )
 #+end_src
-** gcmh
+** gcmh :ARCHIVE:
 #+begin_src emacs-lisp
   (setup gcmh
     (:package gcmh)
@@ -718,7 +718,14 @@ load sequence.
 
     )
 #+end_src
-
+** query replace
+#+begin_src emacs-lisp
+  (setup visual-replace
+    (:package visual-replace)
+    (:when-loaded
+      (visual-replace-global-mode 1))
+    )
+#+end_src
 ** save file
 #+begin_src emacs-lisp
   (setq global-auto-revert-mode t ;; auto refresh files
@@ -1936,7 +1943,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-noter
     (:package org-noter))
 #+end_src
-** citar
+** citar :ARCHIVE:
 #+begin_src emacs-lisp
   (setup citar
     (:package citar)
@@ -2307,7 +2314,6 @@ Generate Table of Contents.
     )
 #+end_src
 
-
 ** ruby
 ** rust
 #+begin_src emacs-lisp
@@ -2320,6 +2326,7 @@ Generate Table of Contents.
   ;;  (setup rustic
   ;;    (:package rustic))
 #+end_src
+
 ** scala
 #+begin_src emacs-lisp
   (setup sbt-mode
@@ -2379,6 +2386,7 @@ Generate Table of Contents.
     (:org-babel-language t)
     )
 #+end_src
+
 * Tool
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el
@@ -2397,6 +2405,7 @@ Generate Table of Contents.
   	   )
     )
 #+end_src
+
 
 ** Terminal
 *** eat
@@ -2428,8 +2437,6 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup reader
     (:package reader)
-
-
     )
 #+end_src
 ** pdf :note:
@@ -2440,6 +2447,7 @@ Generate Table of Contents.
       (:match-file ".pdf"))
     )
 #+end_src
+
 * Apps
 ** telga
 #+begin_src emacs-lisp
@@ -2453,6 +2461,23 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup tramp-rpc
     (:package tramp-rpc)
+    )
+#+end_src
+
+** Agent Shell
+#+begin_src emacs-lisp
+  (setup agent-shell
+    (:package agent-shell)
+    )
+#+end_src
+
+** kkp
+#+begin_src emacs-lisp
+  (setup kkp
+    (:package kkp)
+    (:with-function tty-setup
+      (:hook global-kkp-mode)
+      )
     )
 #+end_src
 * Thanks
