@@ -1491,17 +1491,34 @@ Lookup documentation via DevDocs.
 #+end_src
 
 ** Folding
-Code folding with treesit-fold
+Code folding with hideshow (hs-minor-mode).
 #+begin_src emacs-lisp
-  (setup treesit-fold
-    (:package treesit-fold)
-    (:only-if (fboundp 'treesit-available-p)
-  	    (:option hs-show-indicators t)
-              (:with-map kl-code-prefix-map
-                (:bind "c" treesit-fold-toggle)
-                )
-  	    )
-    )
+  (setup hs-minor-mode
+    ;; Enable in every programming mode
+    (:hook-into prog-mode)
+    ;; Fold comments along with code, and auto-open folds during isearch
+    (:option hs-hide-comments-when-hiding-all t
+             hs-isearch-open t
+             hs-hide-initial-comment-block t)
+    ;; Extra bindings on the C-c z prefix (kl-code-prefix-map).
+    ;; hs-minor-mode lives in the `hideshow' library, so wrap in
+    ;; :with-feature so the bindings wait for the right feature.
+    (:with-feature hideshow
+      (:with-map kl-code-prefix-map
+        (:bind "t" hs-toggle-hiding)
+        (:bind "h" hs-hide-block)
+        (:bind "s" hs-show-block)
+        (:bind "l" hs-hide-level)
+        (:bind "H" hs-hide-all)
+        (:bind "S" hs-show-all)))
+    ;; Show the number of hidden lines in the fold label
+    (defun kl/hs-set-up-overlay (ov)
+      (when (eq 'code (overlay-get ov 'hs))
+        (overlay-put ov 'display
+                     (format "… %d lines"
+                             (1+ (count-lines (overlay-start ov)
+                                              (overlay-end ov)))))))
+    (:option hs-set-up-overlay 'kl/hs-set-up-overlay))
 #+end_src
 
 ** Formatting
