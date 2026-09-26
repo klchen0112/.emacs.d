@@ -2470,6 +2470,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup telega
     (:package telega)
+    (:nixpkgs qrencode)
     (:option telega-avatar-workaround-rsvg-bugs t)
    )
 #+end_src

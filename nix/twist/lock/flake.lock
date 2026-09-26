@@ -96,6 +96,54 @@
         "type": "github"
       }
     },
+    "citar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790040736,
+        "narHash": "sha256-VWGpmCLukLMQLWpHEcvboHwKYVWzL4DDyRxbv1srDb4=",
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "rev": "5efc5ac78f235cdaafe361758d03c7a51a015dd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar",
+        "type": "github"
+      }
+    },
+    "citar-org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745507478,
+        "narHash": "sha256-orJuzllhaQ7kuxzqDBWkGpLHHMpFNvI6A78KnsVRn14=",
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "rev": "9750cfbbf330ab3d5b15066b65bd0a0fe7c296fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-citar",
+        "repo": "citar-org-roam",
+        "type": "github"
+      }
+    },
+    "citeproc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768301259,
+        "narHash": "sha256-KbxUMduCSP+cdpvMYw20n9mVn+D/nCNUx5/DEXO3Wh8=",
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
+        "rev": "4bde999a41803fe519ea80eab8b813d53503eebd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andras-simonyi",
+        "repo": "citeproc-el",
+        "type": "github"
+      }
+    },
     "closql": {
       "flake": false,
       "locked": {
@@ -1600,6 +1648,22 @@
         "type": "github"
       }
     },
+    "parsebib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764261112,
+        "narHash": "sha256-Bsn9zyY4PKeeFHj7IRbvZHcOX6cuYLhPZ2CKoZTpJr8=",
+        "owner": "joostkremers",
+        "repo": "parsebib",
+        "rev": "5b837e0a5b91a69cc0e5086d8e4a71d6d86dac93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joostkremers",
+        "repo": "parsebib",
+        "type": "github"
+      }
+    },
     "pdf-tools": {
       "flake": false,
       "locked": {
@@ -1704,6 +1768,9 @@
         "avy": "avy",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
+        "citar": "citar",
+        "citar-org-roam": "citar-org-roam",
+        "citeproc": "citeproc",
         "closql": "closql",
         "cmake-mode": "cmake-mode",
         "cobol-mode": "cobol-mode",
@@ -1798,6 +1865,7 @@
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
+        "parsebib": "parsebib",
         "pdf-tools": "pdf-tools",
         "pet": "pet",
         "posframe": "posframe",
@@ -1812,6 +1880,7 @@
         "shrink-path": "shrink-path",
         "simple-httpd": "simple-httpd",
         "sis": "sis",
+        "string-inflection": "string-inflection",
         "switch-window": "switch-window",
         "tablist": "tablist",
         "tabspaces": "tabspaces",
@@ -1822,7 +1891,6 @@
         "tramp-rpc": "tramp-rpc",
         "transient": "transient",
         "treepy": "treepy",
-        "treesit-fold": "treesit-fold",
         "ts": "ts",
         "twist": "twist",
         "typescript-mode": "typescript-mode",
@@ -1967,6 +2035,22 @@
       "original": {
         "owner": "laishulu",
         "repo": "emacs-smart-input-source",
+        "type": "github"
+      }
+    },
+    "string-inflection": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763116921,
+        "narHash": "sha256-kSvDB+IgdAZpmqd3SfdyFz8anqe6KOahQa/t9F1POGY=",
+        "owner": "akicho8",
+        "repo": "string-inflection",
+        "rev": "4a2f87d7b47f5efe702a78f8a40a98df36eeba13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akicho8",
+        "repo": "string-inflection",
         "type": "github"
       }
     },
@@ -2127,22 +2211,6 @@
       "original": {
         "owner": "volrath",
         "repo": "treepy.el",
-        "type": "github"
-      }
-    },
-    "treesit-fold": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757576223,
-        "narHash": "sha256-sO990vVAVzX/x3myuEGfymz/AG4Is5ob2/tQORToIxQ=",
-        "owner": "emacs-tree-sitter",
-        "repo": "treesit-fold",
-        "rev": "b44cdf3a15af1cff0d886a96637b89046b5aeac7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "emacs-tree-sitter",
-        "repo": "treesit-fold",
         "type": "github"
       }
     },
