@@ -1960,7 +1960,7 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-noter
     (:package org-noter))
 #+end_src
-** citar :ARCHIVE:
+** citar
 #+begin_src emacs-lisp
   (setup citar
     (:package citar)
