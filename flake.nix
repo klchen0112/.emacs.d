@@ -45,7 +45,7 @@
 
     # Emacs Twist
     org-babel.url = "github:emacs-twist/org-babel";
-    twist.url = "github:klchen0112/twist.nix/darwin";
+    twist.url = "github:emacs-twist/twist.nix";
     # twist.url = "git+file:///home/klchen/open/twist.nix";
     twist-overrides.url = "github:emacs-twist/overrides";
 

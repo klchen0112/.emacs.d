@@ -350,7 +350,7 @@ load sequence.
       )
     )
 #+end_src
-** gcmh
+** gcmh :ARCHIVE:
 #+begin_src emacs-lisp
   (setup gcmh
     (:package gcmh)
