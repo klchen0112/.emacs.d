@@ -544,22 +544,6 @@
         "type": "github"
       }
     },
-    "eglot-booster": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752690112,
-        "narHash": "sha256-xUBQrQpw+JZxcqT1fy/8C2tjKwa7sLFHXamBm45Fa4Y=",
-        "owner": "jdtsmith",
-        "repo": "eglot-booster",
-        "rev": "cab7803c4f0adc7fff9da6680f90110674bb7a22",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jdtsmith",
-        "repo": "eglot-booster",
-        "type": "github"
-      }
-    },
     "eglot-java": {
       "flake": false,
       "locked": {
@@ -1796,7 +1780,6 @@
         "easysession": "easysession",
         "eat": "eat",
         "ef-themes": "ef-themes",
-        "eglot-booster": "eglot-booster",
         "eglot-java": "eglot-java",
         "eglot-x": "eglot-x",
         "elisp-refs": "elisp-refs",

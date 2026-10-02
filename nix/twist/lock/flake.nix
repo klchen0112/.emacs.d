@@ -202,12 +202,6 @@
       repo = "ef-themes";
       type = "github";
     };
-    eglot-booster = {
-      flake = false;
-      owner = "jdtsmith";
-      repo = "eglot-booster";
-      type = "github";
-    };
     eglot-java = {
       flake = false;
       owner = "yveszoundi";

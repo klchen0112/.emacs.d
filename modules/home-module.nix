@@ -88,9 +88,7 @@ in
             # hunspell
             # languagetool
             # for emacs lsp booster
-            emacs-lsp-booster
             pkg-config
-            hugo
             # Font families used in my Emacs config
 
             nerd-fonts."m+"
