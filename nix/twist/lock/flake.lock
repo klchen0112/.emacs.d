@@ -752,6 +752,22 @@
         "type": "github"
       }
     },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "owner": "koral",
+        "repo": "gcmh",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "koral",
+        "repo": "gcmh",
+        "type": "gitlab"
+      }
+    },
     "ghub": {
       "flake": false,
       "locked": {
@@ -1793,6 +1809,7 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
+        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-gen-test": "go-gen-test",
         "go-mode": "go-mode",
