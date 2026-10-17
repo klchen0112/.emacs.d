@@ -16,7 +16,7 @@ let
     features: ob.excludeHeadlines (s: (ob.tag "@.*" s && !lib.any (tag: ob.tag "@${tag}" s) features));
   filterReadme =
     filters:
-    ob.tangleOrgBabel { processLines = lines: lib.pipe lines filters; } (builtins.readFile Readme);
+    ob.tangleOrgBabel { transformLines = lines: lib.pipe lines filters; } (builtins.readFile Readme);
 in
 {
   inherit

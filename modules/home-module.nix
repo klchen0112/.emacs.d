@@ -97,7 +97,7 @@ in
             noto-fonts-color-emoji # 彩色的表情符号字体
 
           ]
-          ++ (lib.optionals pkgs.stdenv.isDarwin) [
+          ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin) [
             # pngpaste for org mode download clip
             pngpaste
             # org-reminders

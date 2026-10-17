@@ -7,7 +7,7 @@
   emacs-igc-pgtk,
   emacs-macport,
 }:
-if stdenv.isLinux then
+if stdenv.hostPlatform.isLinux then
   emacs-igc-pgtk
 else
   emacs-macport
