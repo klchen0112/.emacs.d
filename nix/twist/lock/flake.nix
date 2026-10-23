@@ -185,6 +185,12 @@
       repo = "doom-modeline";
       type = "github";
     };
+    dsh-emacs = {
+      flake = false;
+      owner = "vritser";
+      repo = "dsh-emacs";
+      type = "github";
+    };
     easysession = {
       flake = false;
       owner = "jamescherti";
@@ -279,12 +285,6 @@
       owner = "lassik";
       repo = "emacs-format-all-the-code";
       type = "github";
-    };
-    gcmh = {
-      flake = false;
-      owner = "koral";
-      repo = "gcmh";
-      type = "gitlab";
     };
     ghub = {
       flake = false;
@@ -870,5 +870,5 @@
       type = "github";
     };
   };
-  outputs = { ... }: { };
+  outputs = _: { };
 }

@@ -2242,15 +2242,37 @@ Display outlines in text like files or use it in conjunction with other major mo
 #+begin_src emacs-lisp
   (setup markdown-mode
     (:package markdown-mode)
-    (:match-file
-     "\\.markdown\\'"
-     "\\.md\\'")
+    ;; NB: `:match-file' takes wildcard patterns, not regexps.
+    (:match-file "*.md" "*.markdown")
     (:option markdown-enable-wiki-links t)
     (:option markdown-fontify-code-blocks-natively t)
     (:option markdown-header-scaling t)
     (:option markdown-hide-markup t)
     (:option markdown-italic-underscore t)
     (:option markdown-make-gfm-checkboxes-buttons t)
+    )
+
+  ;; Emacs 31+ ships a tree-sitter based `markdown-ts-mode'.  Remap
+  ;; `markdown-mode' so *.md files use it (the remap wins regardless of which
+  ;; `auto-mode-alist' entry matches first, including the built-in
+  ;; `markdown-ts-mode-maybe' one).  `markdown-mode' remains the fallback when
+  ;; the tree-sitter grammars are unavailable.
+  (setup markdown-ts-mode
+    (:only-if (fboundp 'markdown-ts-mode))
+    (:autoload-this)
+    (when (and (fboundp 'treesit-language-available-p)
+               (treesit-language-available-p 'markdown)
+               (treesit-language-available-p 'markdown-inline))
+      (add-to-list 'major-mode-remap-alist '(markdown-mode . markdown-ts-mode))))
+
+  ;; Rendered while reading, source revealed at point: the buffer is displayed
+  ;; as rendered Markdown (no split preview, no generated files) and the
+  ;; smallest element under point reveals its markup while editing.
+  (setup markdown-ts-appear
+    (:package markdown-ts-appear)
+    (:only-if (fboundp 'markdown-ts-mode))
+    (:hook-into markdown-ts-mode)
+    (:option markdown-ts-appear-enable-math-preview nil)
     )
 #+end_src
 
@@ -2260,6 +2282,7 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
 (setup markdown-toc (:package markdown-toc))
 #+end_src
+
 
 
 ** nix
@@ -2479,6 +2502,24 @@ Generate Table of Contents.
 #+begin_src emacs-lisp
   (setup agent-shell
     (:package agent-shell)
+    )
+#+end_src
+
+** dsh-emacs
+DeepSeek Harness (=dsh=) client: talks to a running =dsh= server over HTTP.
+The server is started manually (=dsh web= in a terminal), so dsh-emacs never
+spawns one of its own; the launch token is random per server process, so take
+it from =DSH_WEB_TOKEN= when that is exported, otherwise dsh-emacs prompts for
+the =token== value printed by =dsh web= (once per server restart).
+#+begin_src emacs-lisp
+  (setup dsh-emacs
+    (:package dsh-emacs)
+    (:option dsh-emacs-server-auto-start nil
+             dsh-emacs-server-start-on-init nil
+             dsh-emacs-base-url "http://127.0.0.1:3080"
+             ;;dsh-emacs-server-auth-token (let ((token (getenv "DSH_WEB_TOKEN")))
+             ;;                              (and token (not (equal "" token)) token))
+             )
     )
 #+end_src
 

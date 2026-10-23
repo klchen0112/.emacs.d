@@ -496,6 +496,22 @@
         "type": "github"
       }
     },
+    "dsh-emacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792751749,
+        "narHash": "sha256-ITU8WRa3/blDcac1S18KfXrd1hMvC8XYuSvxE9w1SD0=",
+        "owner": "vritser",
+        "repo": "dsh-emacs",
+        "rev": "f4f2e403a7c5ed4b188a94f981fa1f344f8b7150",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vritser",
+        "repo": "dsh-emacs",
+        "type": "github"
+      }
+    },
     "easysession": {
       "flake": false,
       "locked": {
@@ -750,22 +766,6 @@
         "owner": "lassik",
         "repo": "emacs-format-all-the-code",
         "type": "github"
-      }
-    },
-    "gcmh": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1605567102,
-        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
-        "owner": "koral",
-        "repo": "gcmh",
-        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "koral",
-        "repo": "gcmh",
-        "type": "gitlab"
       }
     },
     "ghub": {
@@ -1793,6 +1793,7 @@
         "disaster": "disaster",
         "docker": "docker",
         "doom-modeline": "doom-modeline",
+        "dsh-emacs": "dsh-emacs",
         "easysession": "easysession",
         "eat": "eat",
         "ef-themes": "ef-themes",
@@ -1809,7 +1810,6 @@
         "flyover": "flyover",
         "forge": "forge",
         "format-all": "format-all",
-        "gcmh": "gcmh",
         "ghub": "ghub",
         "go-gen-test": "go-gen-test",
         "go-mode": "go-mode",
