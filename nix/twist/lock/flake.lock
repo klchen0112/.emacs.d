@@ -1216,6 +1216,22 @@
         "type": "github"
       }
     },
+    "markdown-ts-appear": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792501928,
+        "narHash": "sha256-zsptdRRQdT6TfFrTUk+cusA/OhMo0ILkHDv0Utz3Zfk=",
+        "owner": "Thysrael",
+        "repo": "markdown-ts-appear",
+        "rev": "618876c65980db3b484d6033f27f4b29466d5e17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Thysrael",
+        "repo": "markdown-ts-appear",
+        "type": "github"
+      }
+    },
     "meow": {
       "flake": false,
       "locked": {
@@ -1838,6 +1854,7 @@
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
         "markdown-toc": "markdown-toc",
+        "markdown-ts-appear": "markdown-ts-appear",
         "meow": "meow",
         "meow-tree-sitter": "meow-tree-sitter",
         "mermaid-mode": "mermaid-mode",
@@ -1904,7 +1921,6 @@
         "web-mode": "web-mode",
         "websocket": "websocket",
         "wgrep": "wgrep",
-        "which-key": "which-key",
         "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
         "yaml": "yaml"
@@ -2419,22 +2435,6 @@
       "original": {
         "owner": "mhayashi1120",
         "repo": "Emacs-wgrep",
-        "type": "github"
-      }
-    },
-    "which-key": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719328933,
-        "narHash": "sha256-fE445u1OSi8M4eucShxZL89BaXqsVZhlWqS+lSGjrSI=",
-        "owner": "justbur",
-        "repo": "emacs-which-key",
-        "rev": "38d4308d1143b61e4004b6e7a940686784e51500",
-        "type": "github"
-      },
-      "original": {
-        "owner": "justbur",
-        "repo": "emacs-which-key",
         "type": "github"
       }
     },

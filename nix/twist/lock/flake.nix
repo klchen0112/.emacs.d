@@ -453,6 +453,12 @@
       repo = "markdown-toc";
       type = "github";
     };
+    markdown-ts-appear = {
+      flake = false;
+      owner = "Thysrael";
+      repo = "markdown-ts-appear";
+      type = "github";
+    };
     meow = {
       flake = false;
       owner = "meow-edit";
@@ -843,12 +849,6 @@
       flake = false;
       owner = "mhayashi1120";
       repo = "Emacs-wgrep";
-      type = "github";
-    };
-    which-key = {
-      flake = false;
-      owner = "justbur";
-      repo = "emacs-which-key";
       type = "github";
     };
     which-key-posframe = {

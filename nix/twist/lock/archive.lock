@@ -30,21 +30,6 @@
     },
     "version": "1.27"
   },
-  "markdown-ts-appear": {
-    "archive": {
-      "narHash": "sha256-y8jHntTP6zf+AQhRmwwjF+u2ylLg3nPAfaiSc6L6Euk=",
-      "type": "tarball",
-      "url": "https://elpa.nongnu.org/nongnu/markdown-ts-appear-0.3.1.tar"
-    },
-    "inventory": {
-      "type": "archive",
-      "url": "https://elpa.nongnu.org/nongnu/"
-    },
-    "packageRequires": {
-      "emacs": "31.1"
-    },
-    "version": "0.3.1"
-  },
   "org-transclusion": {
     "archive": {
       "narHash": "sha256-B8f0Mj9jdOXW8GxKvAAn+qyVSWojJywiXoO047l5624=",
