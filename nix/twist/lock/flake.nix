@@ -37,6 +37,13 @@
       repo = "cape";
       type = "github";
     };
+    chai = {
+      flake = false;
+      owner = "yibie";
+      repo = "chai";
+      rev = "fad5c3b7ec41aadfc34f13ed524970cef07d3446";
+      type = "github";
+    };
     citar = {
       flake = false;
       owner = "emacs-citar";

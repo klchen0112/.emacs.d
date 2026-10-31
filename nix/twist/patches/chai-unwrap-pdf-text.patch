@@ -1,0 +1,87 @@
+diff --git a/convert-to-org.py b/convert-to-org.py
+index e644bc7..5c647a7 100755
+--- a/convert-to-org.py
++++ b/convert-to-org.py
+@@ -113,6 +113,67 @@ def apple_vision_ocr(pdf_path: Path) -> Optional[str]:
+         print(f"OCR Error: {str(e)}", file=sys.stderr)
+         return None
+ 
++def _chai_is_cjk(ch: str) -> bool:
++    """True for characters that take two columns and join without a space."""
++    return (
++        "\u2e80" <= ch <= "\u9fff"
++        or "\uf900" <= ch <= "\ufaff"
++        or "\uff00" <= ch <= "\uffef"
++        or "\u3000" <= ch <= "\u303f"
++    )
++
++def _chai_width(text: str) -> int:
++    """Display width of TEXT, counting wide characters as two columns."""
++    return sum(2 if _chai_is_cjk(ch) else 1 for ch in text)
++
++_CHAI_LIST_ITEM = re.compile(r"^(?:[-*\u2022\u00b7\u2013\u2014]|\(?\d+[.)])\s")
++
++def _chai_join_wrapped_lines(text: str) -> str:
++    """Undo the visual line wrapping of PDF text extraction.
++
++    A line that fills the column was wrapped by the layout, so the next line
++    belongs to it. A shorter line ended a paragraph, a heading or a list item,
++    and keeps its own line. List items are never merged with a neighbour,
++    however narrow the column is; Chinese is joined without a space.
++    """
++    lines = [line.strip() for line in text.splitlines()]
++    widths = sorted(_chai_width(line) for line in lines if line)
++    if not widths:
++        return text
++    full = max(40, int(widths[len(widths) * 3 // 4] * 0.85))
++
++    out = []
++    buf = ""
++    prev_width = 0
++    for line in lines:
++        if not line:
++            if buf:
++                out.append(buf)
++                buf = ""
++            out.append("")
++            prev_width = 0
++            continue
++        if not buf:
++            buf = line
++        elif (
++            prev_width >= full
++            and not _CHAI_LIST_ITEM.match(line)
++            and not _CHAI_LIST_ITEM.match(buf)
++        ):
++            if buf.endswith("-") and len(buf) > 1 and line[0].islower():
++                buf = buf[:-1] + line
++            elif _chai_is_cjk(buf[-1]) or _chai_is_cjk(line[0]):
++                buf += line
++            else:
++                buf += " " + line
++        else:
++            out.append(buf)
++            buf = line
++        prev_width = _chai_width(line)
++    if buf:
++        out.append(buf)
++    return "\n".join(out)
++
+ def convert_pdf_to_org(input_file: Path, output_file: Path) -> bool:
+     if not fitz: return False
+     
+@@ -133,10 +194,13 @@ def convert_pdf_to_org(input_file: Path, output_file: Path) -> bool:
+     if not content:
+         try:
+             with fitz.open(str(input_file)) as doc:
+-                content = "".join([page.get_text() for page in doc])
++                content = "\n".join(page.get_text() for page in doc)
+         except Exception as e:
+             print(f"PDF Extraction Error: {str(e)}", file=sys.stderr)
+ 
++    if content:
++        content = _chai_join_wrapped_lines(content)
++
+     if content and content.strip():
+         with open(output_file, 'w', encoding='utf-8') as f:
+             f.write(content)

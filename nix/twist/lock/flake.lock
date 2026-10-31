@@ -96,6 +96,23 @@
         "type": "github"
       }
     },
+    "chai": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790291170,
+        "narHash": "sha256-XtTYfcYnP9tA8srht9R2NO8wRZaEvvEHLOtH/XCYeaE=",
+        "owner": "yibie",
+        "repo": "chai",
+        "rev": "fad5c3b7ec41aadfc34f13ed524970cef07d3446",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yibie",
+        "repo": "chai",
+        "rev": "fad5c3b7ec41aadfc34f13ed524970cef07d3446",
+        "type": "github"
+      }
+    },
     "citar": {
       "flake": false,
       "locked": {
@@ -1784,6 +1801,7 @@
         "avy": "avy",
         "benchmark-init": "benchmark-init",
         "cape": "cape",
+        "chai": "chai",
         "citar": "citar",
         "citar-org-roam": "citar-org-roam",
         "citeproc": "citeproc",

@@ -53,6 +53,7 @@ in
           emacs-env-all-features = config.packages.emacs-env-all-features;
           emacs-temp-all-features = config.packages.emacs-temp-all-features;
           render-core = config.packages.render-core;
+          chai-python = config.packages.chai-python;
         }
       );
   };
@@ -78,6 +79,7 @@ in
             emacs-env-all-features = config.packages.emacs-env-all-features;
             emacs-temp-all-features = config.packages.emacs-temp-all-features;
             render-core = config.packages.render-core;
+            chai-python = config.packages.chai-python;
           })
         ];
         inherit system;

@@ -1953,6 +1953,63 @@ Generic Language Server Protocol integration via ~eglot~.
   (setup org-noter
     (:package org-noter))
 #+end_src
+** Chai
+Read a directory of Org books and mark them up.  Highlights stay plain Org
+syntax (=[[chai:TYPE][TEXT]]= links, =#+BEGIN_CHAI_COMMENT= blocks), so the
+files remain readable without the package; export keeps the source chapter
+headings, and the SQLite search index is a disposable side-car database.
+
+Importing PDF/Markdown/EPUB/HTML runs Chai's own =convert-to-org.py=, which the
+recipe installs next to =chai-library.el= (Chai locates it from its own
+load path).  It needs =pandoc= for every format and PyMuPDF for PDFs, hence
+=chai-python= (a =python3.withPackages= env defined in =pkgs/by-name/=
+) and =pandoc= on the wrapper's PATH.
+
+PDF extraction still leaves the layout's line wrapping behind, so
+=convert-to-org.py= is patched (=nix/twist/patches/chai-unwrap-pdf-text.patch=)
+to join the lines that fill the column.  For books imported before the patch,
+=kl/chai-unfill-imported= joins each paragraph of the current buffer into a
+single line, leaving headings, lists, tables and source blocks alone.
+#+begin_src emacs-lisp
+  (defconst kl/chai-directory "~/Documents/chai")
+
+  (defun kl/chai-unfill-imported ()
+    "Join the hard-wrapped lines of an imported book into single-line paragraphs."
+    (interactive)
+    (let ((fill-column 1000000)
+          (count 0))
+      (org-element-map (org-element-parse-buffer) 'paragraph
+        (lambda (node)
+          (let ((beg (org-element-property :contents-begin node))
+                (end (org-element-property :contents-end node)))
+            (when (and beg end (< beg end))
+              (fill-region beg end)
+              (setq count (1+ count))))))
+      (message "Chai: joined %d paragraph(s)" count)))
+
+  (setup chai
+    (:package chai)
+    (:load-after org)
+    (:require chai chai-library chai-library-table)
+    (:nixpkgs pandoc chai-python)
+    (:option chai-library-directory (expand-file-name "library/" kl/chai-directory)
+             chai-library-import-inbox (expand-file-name "inbox/" kl/chai-directory)
+             chai-library-import-archive (expand-file-name "archive/" kl/chai-directory)
+             chai-export-preview-directory (expand-file-name "exports/" kl/chai-directory)
+             chai-library-python-executable "python3")
+    (:after chai-index
+            (:option chai-index-file (expand-file-name "index.db" kl/chai-directory)))
+    (:when-loaded
+      ;; Chai creates the library directories on demand; this makes sure the
+      ;; base directory for the side-car index exists before the first search.
+      (make-directory kl/chai-directory t))
+    (:with-map kl-notes-prefix-map
+      (:bind "l" 'chai-library-open)
+      (:bind "b" 'chai-library-open-book)
+      (:bind "i" 'chai-library-import)
+      (:bind "u" 'kl/chai-unfill-imported))
+    )
+#+end_src
 ** citar
 #+begin_src emacs-lisp
   (setup citar

@@ -1,0 +1,4 @@
+(chai :fetcher github
+      :repo "yibie/chai"
+      :commit "fad5c3b7ec41aadfc34f13ed524970cef07d3446"
+      :files ("*.el" "*.py"))

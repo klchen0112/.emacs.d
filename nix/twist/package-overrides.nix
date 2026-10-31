@@ -58,6 +58,12 @@ builtins.intersectAttrs prev {
     buildInputs = old.buildInputs ++ (with pkgs; [ breakpointHook ]);
     files = ''(:defaults "${lib.getLib pkgs.render-core}/lib/render-core.*"))'';
   });
+  chai = prev.chai.overrideAttrs (old: {
+    # `convert-to-org.py` extracted PDF text with the layout's visual wrapping
+    # intact, so an imported book kept a newline in the middle of every
+    # paragraph.  The patch joins such lines (and leaves list items alone).
+    patches = (old.patches or [ ]) ++ [ ./patches/chai-unwrap-pdf-text.patch ];
+  });
   telega = prev.telega.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [
       pkgs.tdlib
