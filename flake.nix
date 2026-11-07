@@ -23,11 +23,8 @@
   };
 
   inputs = {
-    # Nixpkgs
-    nixpkgs = {
-      # url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-      follows = "emacs-overlay/nixpkgs";
-    };
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
+
     systems.url = "github:nix-systems/default";
 
     # Configuration Framework
@@ -40,7 +37,7 @@
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Emacs Twist
