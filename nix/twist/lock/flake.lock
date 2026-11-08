@@ -609,6 +609,22 @@
         "type": "github"
       }
     },
+    "elgrep": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1692015339,
+        "narHash": "sha256-/+J8HKknwSzUSTo8qfaQDvJY+30H8H5nmABgG4Ux0l8=",
+        "owner": "TobiasZawada",
+        "repo": "elgrep",
+        "rev": "329eaf2e9e994e5535c7f7fe2685ec21d8323384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TobiasZawada",
+        "repo": "elgrep",
+        "type": "github"
+      }
+    },
     "elisp-refs": {
       "flake": false,
       "locked": {
@@ -1249,6 +1265,22 @@
         "type": "github"
       }
     },
+    "mcp-server-lib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791203974,
+        "narHash": "sha256-sz72k5bSedLweaX8rkP/BPttdsWCmOJY+jRT9A8JUEg=",
+        "owner": "laurynas-biveinis",
+        "repo": "mcp-server-lib.el",
+        "rev": "e93ef3a2c0b9d4e965321608f2b1c19ea655bb52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "laurynas-biveinis",
+        "repo": "mcp-server-lib.el",
+        "type": "github"
+      }
+    },
     "meow": {
       "flake": false,
       "locked": {
@@ -1633,6 +1665,22 @@
         "type": "github"
       }
     },
+    "org-ql": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745199180,
+        "narHash": "sha256-MLbbxZzSm90Bq28mPHZTyAxndJR3FpFInBy9jKm1Pqg=",
+        "owner": "alphapapa",
+        "repo": "org-ql",
+        "rev": "4b8330a683c43bb4a2c64ccce8cd5a90c8b174ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "org-ql",
+        "type": "github"
+      }
+    },
     "org-roam": {
       "flake": false,
       "locked": {
@@ -1694,6 +1742,38 @@
       "original": {
         "owner": "alphapapa",
         "repo": "org-super-agenda",
+        "type": "github"
+      }
+    },
+    "org-wiki": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785445892,
+        "narHash": "sha256-EE4hXOaMaGR+QqPfsPDebu2kt3GpDMhIM028pq2nK0Q=",
+        "owner": "jwiegley",
+        "repo": "org-wiki",
+        "rev": "5e225ccccbb087a1460f557178f2415308f96f1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jwiegley",
+        "repo": "org-wiki",
+        "type": "github"
+      }
+    },
+    "ov": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684754226,
+        "narHash": "sha256-ZYnC9ZCF/PewNxU3SZDAtnrW9kIy4F26F7BfALDSFrk=",
+        "owner": "emacsorphanage",
+        "repo": "ov",
+        "rev": "e2971ad986b6ac441e9849031d34c56c980cf40b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacsorphanage",
+        "repo": "ov",
         "type": "github"
       }
     },
@@ -1849,6 +1929,7 @@
         "ef-themes": "ef-themes",
         "eglot-java": "eglot-java",
         "eglot-x": "eglot-x",
+        "elgrep": "elgrep",
         "elisp-refs": "elisp-refs",
         "emacsql": "emacsql",
         "embark": "embark",
@@ -1889,6 +1970,7 @@
         "markdown-mode": "markdown-mode",
         "markdown-toc": "markdown-toc",
         "markdown-ts-appear": "markdown-ts-appear",
+        "mcp-server-lib": "mcp-server-lib",
         "meow": "meow",
         "meow-tree-sitter": "meow-tree-sitter",
         "mermaid-mode": "mermaid-mode",
@@ -1913,10 +1995,13 @@
         "org-modern": "org-modern",
         "org-modern-indent": "org-modern-indent",
         "org-noter": "org-noter",
+        "org-ql": "org-ql",
         "org-roam": "org-roam",
         "org-roam-timestamps": "org-roam-timestamps",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
+        "org-wiki": "org-wiki",
+        "ov": "ov",
         "parsebib": "parsebib",
         "pdf-tools": "pdf-tools",
         "pet": "pet",

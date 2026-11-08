@@ -227,6 +227,12 @@
       repo = "eglot-x";
       type = "github";
     };
+    elgrep = {
+      flake = false;
+      owner = "TobiasZawada";
+      repo = "elgrep";
+      type = "github";
+    };
     elisp-refs = {
       flake = false;
       owner = "Wilfred";
@@ -466,6 +472,12 @@
       repo = "markdown-ts-appear";
       type = "github";
     };
+    mcp-server-lib = {
+      flake = false;
+      owner = "laurynas-biveinis";
+      repo = "mcp-server-lib.el";
+      type = "github";
+    };
     meow = {
       flake = false;
       owner = "meow-edit";
@@ -610,6 +622,12 @@
       repo = "org-noter";
       type = "github";
     };
+    org-ql = {
+      flake = false;
+      owner = "alphapapa";
+      repo = "org-ql";
+      type = "github";
+    };
     org-roam = {
       flake = false;
       owner = "org-roam";
@@ -632,6 +650,18 @@
       flake = false;
       owner = "alphapapa";
       repo = "org-super-agenda";
+      type = "github";
+    };
+    org-wiki = {
+      flake = false;
+      owner = "jwiegley";
+      repo = "org-wiki";
+      type = "github";
+    };
+    ov = {
+      flake = false;
+      owner = "emacsorphanage";
+      repo = "ov";
       type = "github";
     };
     parsebib = {
