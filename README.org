@@ -1948,6 +1948,53 @@ Generic Language Server Protocol integration via ~eglot~.
       )
     )
 #+end_src
+** Obsidian :ARCHIVE:
+Emacs 端读写 [[https://obsidian.md/][Obsidian]] vault：笔记在磁盘上仍是普通 Markdown，同步、
+手机端、图谱继续交给 Obsidian，Emacs 负责编辑、跳转、链接/标签补全和反链。
+obsidian.el 只读本地文件，不需要装 Obsidian 客户端。
+
+=obsidian-mode= 靠 =markdown-mode= 的 font-lock 文本属性识别链接，并且只对
+=markdown-mode= 派生的 buffer 生效；而本配置把 =*.md= 重映射成了
+=markdown-ts-mode=（=text-mode= 派生）。所以 vault 里的文件要切回
+=markdown-mode=，其余 Markdown 继续用 tree-sitter 版。
+
+#+begin_src emacs-lisp
+  (defconst kl/obsidian-vault-directory "~/wikis/history-of-computing"
+    "obsidian.el 打开的 vault。")
+
+  (defun kl/obsidian-keep-markdown-mode ()
+    "把 vault 里的 `markdown-ts-mode' buffer 换回 `markdown-mode'。
+`obsidian-mode' 依赖 `markdown-mode' 的 font-lock 属性识别链接。"
+    (when (and (derived-mode-p 'markdown-ts-mode)
+               (obsidian-file-p))
+      (markdown-mode)))
+
+  (setup obsidian
+    (:package obsidian)
+    ;; `global-obsidian-mode' 要在打开 vault 文件之前就位，所以直接 require。
+    (:require obsidian)
+    (:option obsidian-directory (expand-file-name kl/obsidian-vault-directory)
+             ;; Obsidian 的 newFileFolderPath 也是 wiki/，capture 的新笔记放这里
+             obsidian-inbox-directory "wiki"
+             ;; raw_sources/ 是抓下来的原始材料，不参与链接/标签/反链索引
+             obsidian-excluded-directories
+             (list (expand-file-name "raw_sources" kl/obsidian-vault-directory)))
+    (:when-loaded
+      ;; 顺序有意义：先让 `global-obsidian-mode' 注册自己的
+      ;; `after-change-major-mode-hook'，再把 vault 文件切成 markdown-mode。
+      (global-obsidian-mode 1)
+      (add-hook 'after-change-major-mode-hook #'kl/obsidian-keep-markdown-mode)
+      ;; 反链面板（`obsidian-backlinks-mode'）会常驻一个侧窗，按需用
+      ;; `obsidian-backlink-jump' 打开即可。
+      (define-key obsidian-mode-map (kbd "C-c C-n") #'obsidian-capture)
+      (define-key obsidian-mode-map (kbd "C-c C-l") #'obsidian-insert-wikilink)
+      (define-key obsidian-mode-map (kbd "C-c C-o") #'obsidian-follow-link-at-point)
+      (define-key obsidian-mode-map (kbd "C-c C-p") #'obsidian-jump)
+      (define-key obsidian-mode-map (kbd "C-c C-b") #'obsidian-backlink-jump))
+    (:with-map kl-notes-prefix-map
+      (:bind "o" 'obsidian-jump))
+    )
+#+end_src
 ** org-noter
 #+begin_src emacs-lisp
   (setup org-noter
@@ -2008,6 +2055,46 @@ single line, leaving headings, lists, tables and source blocks alone.
       (:bind "b" 'chai-library-open-book)
       (:bind "i" 'chai-library-import)
       (:bind "u" 'kl/chai-unfill-imported))
+    )
+#+end_src
+** org-wiki
+Org 原生的「LLM wiki」读层（[[https://github.com/jwiegley/org-wiki][jwiegley/org-wiki]]）：把 org-roam 语料里带
+=:WIKI_KIND:= 属性的 heading 当作 wiki 节点，提供搜索、按 ID 读正文、读属性、
+反链和结构体检。节点身份靠属性而不是路径，=org-wiki-root= 只决定新节点应该落在
+哪个目录。
+
+最小节点形态：
+
+#+begin_example
+* Content-Addressed Storage
+:PROPERTIES:
+:ID:         4f1c3b8e-9ad2-4b7e-9d04-1a5e6f7c8b91
+:WIKI_KIND:  Concept
+:END:
+#+end_example
+
+=:WIKI_KIND:= 的合法值（=org-wiki-kinds=）是 =Concept/Entity/Topic/Comparison/
+Question/Source-Record/Frozen/Index=。搜索优先走 =org-ql-semantic=（本配置没有装），
+没有时就退回对标题和正文的字面匹配，所以开箱即用。体检检查 =:ID:= 缺失/重复、
+=:WIKI_KIND:= 非法、缺 Summary、断链、=SOURCE_IDS= 与引用不一致之类的问题，
+纯本地、不调模型。
+
+这个包目前是只读的 spike，写回（ingest / mutation）还没实现；MCP 与 gptel 两层
+（=org-wiki-mcp-enable=、=org-wiki-gptel=）属于可选集成，本配置没有启用。
+#+begin_src emacs-lisp
+  (defconst kl/org-wiki-directory (expand-file-name "wiki/" org-directory))
+
+  (setup org-wiki
+    (:package org-wiki)
+    (:load-after org-roam)
+    (:require org-wiki org-wiki-commands org-wiki-health)
+    (:option org-wiki-root kl/org-wiki-directory)
+    (:when-loaded
+      ;; 目录不存在时先建好：候选发现和 org-roam 索引都按它找文件。
+      (make-directory kl/org-wiki-directory t))
+    (:with-map kl-notes-prefix-map
+      ;; 前缀键图：s 搜索 / f 按标题挑 / b 反链 / m 属性 / h 体检
+      (:bind "w" 'org-wiki-command-map))
     )
 #+end_src
 ** citar

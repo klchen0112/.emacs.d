@@ -1505,6 +1505,22 @@
         "type": "github"
       }
     },
+    "obsidian": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740091526,
+        "narHash": "sha256-P8US1Ivi+YxwPHZHJgk0irTnd2CMStwFzvmHiuGkXTY=",
+        "owner": "licht1stein",
+        "repo": "obsidian.el",
+        "rev": "0b31775d5da1dfd3d1ffcf9fa05908a3ba26ed15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "licht1stein",
+        "repo": "obsidian.el",
+        "type": "github"
+      }
+    },
     "orderless": {
       "flake": false,
       "locked": {
@@ -1889,6 +1905,7 @@
         "nodejs-repl": "nodejs-repl",
         "nushell-ts-mode": "nushell-ts-mode",
         "ob-mermaid": "ob-mermaid",
+        "obsidian": "obsidian",
         "orderless": "orderless",
         "org-appear": "org-appear",
         "org-download": "org-download",

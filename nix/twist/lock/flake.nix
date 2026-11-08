@@ -562,6 +562,12 @@
       repo = "ob-mermaid";
       type = "github";
     };
+    obsidian = {
+      flake = false;
+      owner = "licht1stein";
+      repo = "obsidian.el";
+      type = "github";
+    };
     orderless = {
       flake = false;
       owner = "oantolin";
