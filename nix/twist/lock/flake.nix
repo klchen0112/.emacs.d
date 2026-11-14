@@ -888,12 +888,6 @@
       repo = "emacs-websocket";
       type = "github";
     };
-    wgrep = {
-      flake = false;
-      owner = "mhayashi1120";
-      repo = "Emacs-wgrep";
-      type = "github";
-    };
     which-key-posframe = {
       flake = false;
       owner = "emacsorphanage";

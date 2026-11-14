@@ -1244,9 +1244,17 @@ Completion At Point Extensions.
                       (:bind "M-o" embark-act)))
     )
 
+#+end_src
 
-  (setup wgrep
-    (:package wgrep))
+
+*** grep
+#+begin_src emacs-lisp
+  (setup grep
+    (:with-map grep-mode-map
+      (:bind "C-c C-p" grep-change-to-grep-edit-mode
+             "C-x C-q" grep-change-to-grep-edit-mode))
+    (:with-map grep-edit-mode-map
+      (:bind "C-x C-q" grep-edit-save-changes)))
 #+end_src
 
 

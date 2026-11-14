@@ -2040,7 +2040,6 @@
         "vulpea": "vulpea",
         "web-mode": "web-mode",
         "websocket": "websocket",
-        "wgrep": "wgrep",
         "which-key-posframe": "which-key-posframe",
         "with-editor": "with-editor",
         "yaml": "yaml"
@@ -2539,22 +2538,6 @@
       "original": {
         "owner": "ahyatt",
         "repo": "emacs-websocket",
-        "type": "github"
-      }
-    },
-    "wgrep": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733490377,
-        "narHash": "sha256-SQR3R/Vue/Rx3MvQiI6BotOKs39nES07hXsiOKMb/Kc=",
-        "owner": "mhayashi1120",
-        "repo": "Emacs-wgrep",
-        "rev": "49f09ab9b706d2312cab1199e1eeb1bcd3f27f6f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mhayashi1120",
-        "repo": "Emacs-wgrep",
         "type": "github"
       }
     },
