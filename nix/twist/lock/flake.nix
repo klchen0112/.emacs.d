@@ -654,7 +654,8 @@
     };
     org-wiki = {
       flake = false;
-      owner = "jwiegley";
+      owner = "klchen0112";
+      ref = "feat/qmd-search";
       repo = "org-wiki";
       type = "github";
     };

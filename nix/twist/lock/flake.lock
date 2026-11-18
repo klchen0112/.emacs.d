@@ -1748,15 +1748,16 @@
     "org-wiki": {
       "flake": false,
       "locked": {
-        "lastModified": 1785445892,
-        "narHash": "sha256-EE4hXOaMaGR+QqPfsPDebu2kt3GpDMhIM028pq2nK0Q=",
-        "owner": "jwiegley",
+        "lastModified": 1794935646,
+        "narHash": "sha256-c0ozeMxaykYnvYFLm1s1sXNFBcHdzCfWqk7SaeiDAoA=",
+        "owner": "klchen0112",
         "repo": "org-wiki",
-        "rev": "5e225ccccbb087a1460f557178f2415308f96f1e",
+        "rev": "4e79364f575f72feed346dcf918b7509ee577f98",
         "type": "github"
       },
       "original": {
-        "owner": "jwiegley",
+        "owner": "klchen0112",
+        "ref": "feat/qmd-search",
         "repo": "org-wiki",
         "type": "github"
       }

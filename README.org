@@ -2066,7 +2066,7 @@ single line, leaving headings, lists, tables and source blocks alone.
     )
 #+end_src
 ** org-wiki
-Org 原生的「LLM wiki」读层（[[https://github.com/jwiegley/org-wiki][jwiegley/org-wiki]]）：把 org-roam 语料里带
+Org 原生的「LLM wiki」读层（[[https://github.com/klchen0112/org-wiki/tree/feat/qmd-search][org-wiki / qmd 分支]]）：把 org-roam 语料里带
 =:WIKI_KIND:= 属性的 heading 当作 wiki 节点，提供搜索、按 ID 读正文、读属性、
 反链和结构体检。节点身份靠属性而不是路径，=org-wiki-root= 只决定新节点应该落在
 哪个目录。
@@ -2082,10 +2082,17 @@ Org 原生的「LLM wiki」读层（[[https://github.com/jwiegley/org-wiki][jwie
 #+end_example
 
 =:WIKI_KIND:= 的合法值（=org-wiki-kinds=）是 =Concept/Entity/Topic/Comparison/
-Question/Source-Record/Frozen/Index=。搜索优先走 =org-ql-semantic=（本配置没有装），
-没有时就退回对标题和正文的字面匹配，所以开箱即用。体检检查 =:ID:= 缺失/重复、
-=:WIKI_KIND:= 非法、缺 Summary、断链、=SOURCE_IDS= 与引用不一致之类的问题，
-纯本地、不调模型。
+Question/Source-Record/Frozen/Index=。本配置启用 qmd 2.8.3 的关键词搜索，不需要模型。
+索引未就绪、qmd 不可用或无结果时，=auto= 会继续尝试 =org-ql-semantic=（本配置没有装），
+最后退回标题和正文的字面匹配。体检检查 =:ID:= 缺失/重复、=:WIKI_KIND:= 非法、
+缺 Summary、断链、=SOURCE_IDS= 与引用不一致之类的问题，纯本地、不调模型。
+
+首次使用先保存 Org 文件，运行 =M-x org-wiki-qmd-setup=，再运行
+=M-x org-wiki-qmd-sync=；以后修改节点后手动 sync。用 =M-x org-wiki-qmd-status=
+检查状态。缓存固定在 =~/.cache/org-wiki/qmd/=（尊重 =XDG_CACHE_HOME=），供当前
+wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另一个缓存目录。
+启动配置只加载后端，不自动建索引、同步或下载模型。只有带 =WIKI_KIND= 的 heading
+才会被索引，普通 Org 文件不会自动变成 wiki 节点。
 
 这个包目前是只读的 spike，写回（ingest / mutation）还没实现；MCP 与 gptel 两层
 （=org-wiki-mcp-enable=、=org-wiki-gptel=）属于可选集成，本配置没有启用。
@@ -2095,14 +2102,26 @@ Question/Source-Record/Frozen/Index=。搜索优先走 =org-ql-semantic=（本�
   (setup org-wiki
     (:package org-wiki)
     (:load-after org-roam)
-    (:require org-wiki org-wiki-commands org-wiki-health)
-    (:option org-wiki-root kl/org-wiki-directory)
+    (:require org-wiki org-wiki-commands org-wiki-health org-wiki-qmd)
+    (:option org-wiki-root kl/org-wiki-directory
+             org-wiki-search-backend 'auto
+             org-wiki-qmd-enabled t
+             org-wiki-qmd-collection "wiki"
+             org-wiki-qmd-search-mode 'search
+             org-wiki-qmd-cache-directory
+             (expand-file-name "org-wiki/qmd/"
+                               (or (getenv "XDG_CACHE_HOME") "~/.cache/")))
     (:when-loaded
       ;; 目录不存在时先建好：候选发现和 org-roam 索引都按它找文件。
       (make-directory kl/org-wiki-directory t))
     (:with-map kl-notes-prefix-map
       ;; 前缀键图：s 搜索 / f 按标题挑 / b 反链 / m 属性 / h 体检
       (:bind "w" 'org-wiki-command-map))
+    (:with-map org-wiki-command-map
+      ;; qmd 的维护由用户显式触发。
+      (:bind "S" 'org-wiki-qmd-setup)
+      (:bind "u" 'org-wiki-qmd-sync)
+      (:bind "d" 'org-wiki-qmd-status))
     )
 #+end_src
 ** citar
