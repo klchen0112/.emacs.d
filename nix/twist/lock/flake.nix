@@ -227,12 +227,6 @@
       repo = "eglot-x";
       type = "github";
     };
-    elgrep = {
-      flake = false;
-      owner = "TobiasZawada";
-      repo = "elgrep";
-      type = "github";
-    };
     elisp-refs = {
       flake = false;
       owner = "Wilfred";
@@ -572,12 +566,6 @@
       flake = false;
       owner = "arnm";
       repo = "ob-mermaid";
-      type = "github";
-    };
-    obsidian = {
-      flake = false;
-      owner = "licht1stein";
-      repo = "obsidian.el";
       type = "github";
     };
     orderless = {

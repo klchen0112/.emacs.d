@@ -609,22 +609,6 @@
         "type": "github"
       }
     },
-    "elgrep": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1692015339,
-        "narHash": "sha256-/+J8HKknwSzUSTo8qfaQDvJY+30H8H5nmABgG4Ux0l8=",
-        "owner": "TobiasZawada",
-        "repo": "elgrep",
-        "rev": "329eaf2e9e994e5535c7f7fe2685ec21d8323384",
-        "type": "github"
-      },
-      "original": {
-        "owner": "TobiasZawada",
-        "repo": "elgrep",
-        "type": "github"
-      }
-    },
     "elisp-refs": {
       "flake": false,
       "locked": {
@@ -1537,22 +1521,6 @@
         "type": "github"
       }
     },
-    "obsidian": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740091526,
-        "narHash": "sha256-P8US1Ivi+YxwPHZHJgk0irTnd2CMStwFzvmHiuGkXTY=",
-        "owner": "licht1stein",
-        "repo": "obsidian.el",
-        "rev": "0b31775d5da1dfd3d1ffcf9fa05908a3ba26ed15",
-        "type": "github"
-      },
-      "original": {
-        "owner": "licht1stein",
-        "repo": "obsidian.el",
-        "type": "github"
-      }
-    },
     "orderless": {
       "flake": false,
       "locked": {
@@ -1930,7 +1898,6 @@
         "ef-themes": "ef-themes",
         "eglot-java": "eglot-java",
         "eglot-x": "eglot-x",
-        "elgrep": "elgrep",
         "elisp-refs": "elisp-refs",
         "emacsql": "emacsql",
         "embark": "embark",
@@ -1988,7 +1955,6 @@
         "nodejs-repl": "nodejs-repl",
         "nushell-ts-mode": "nushell-ts-mode",
         "ob-mermaid": "ob-mermaid",
-        "obsidian": "obsidian",
         "orderless": "orderless",
         "org-appear": "org-appear",
         "org-download": "org-download",
