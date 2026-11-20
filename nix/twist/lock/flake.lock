@@ -1748,11 +1748,11 @@
     "org-wiki": {
       "flake": false,
       "locked": {
-        "lastModified": 1794935646,
-        "narHash": "sha256-c0ozeMxaykYnvYFLm1s1sXNFBcHdzCfWqk7SaeiDAoA=",
+        "lastModified": 1795085700,
+        "narHash": "sha256-xgxtbfj89Hrq2A1rSMySAdH1gIeVdSxc87+2/xm+OWk=",
         "owner": "klchen0112",
         "repo": "org-wiki",
-        "rev": "4e79364f575f72feed346dcf918b7509ee577f98",
+        "rev": "83f549cb19fa93bd2c558e2d3edd9dc3ea606206",
         "type": "github"
       },
       "original": {

@@ -2067,22 +2067,25 @@ single line, leaving headings, lists, tables and source blocks alone.
 #+end_src
 ** org-wiki
 Org 原生的「LLM wiki」读层（[[https://github.com/klchen0112/org-wiki/tree/feat/qmd-search][org-wiki / qmd 分支]]）：把 org-roam 语料里带
-=:WIKI_KIND:= 属性的 heading 当作 wiki 节点，提供搜索、按 ID 读正文、读属性、
+=:WIKI_KIND:= 属性的文件和标题当作 wiki 节点，提供搜索、按 ID 读正文、读属性、
 反链和结构体检。节点身份靠属性而不是路径，=org-wiki-root= 只决定新节点应该落在
 哪个目录。
 
-最小节点形态：
+文件节点示例（属性抽屉放在文件开头）：
 
 #+begin_example
-* Content-Addressed Storage
 :PROPERTIES:
 :ID:         4f1c3b8e-9ad2-4b7e-9d04-1a5e6f7c8b91
 :WIKI_KIND:  Concept
 :END:
+#+title: Content-Addressed Storage
+
+,* Summary
+按内容的哈希值寻址。
 #+end_example
 
 =:WIKI_KIND:= 的合法值（=org-wiki-kinds=）是 =Concept/Entity/Topic/Comparison/
-Question/Source-Record/Frozen/Index=。本配置启用 qmd 2.8.3 的关键词搜索，不需要模型。
+Question/Source-Record/Frozen/Index=。本配置使用 =~/.npm-global/bin/qmd=（2.9.0）进行关键词搜索，不需要模型。
 索引未就绪、qmd 不可用或无结果时，=auto= 会继续尝试 =org-ql-semantic=（本配置没有装），
 最后退回标题和正文的字面匹配。体检检查 =:ID:= 缺失/重复、=:WIKI_KIND:= 非法、
 缺 Summary、断链、=SOURCE_IDS= 与引用不一致之类的问题，纯本地、不调模型。
@@ -2091,8 +2094,8 @@ Question/Source-Record/Frozen/Index=。本配置启用 qmd 2.8.3 的关键词搜
 =M-x org-wiki-qmd-sync=；以后修改节点后手动 sync。用 =M-x org-wiki-qmd-status=
 检查状态。缓存固定在 =~/.cache/org-wiki/qmd/=（尊重 =XDG_CACHE_HOME=），供当前
 wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另一个缓存目录。
-启动配置只加载后端，不自动建索引、同步或下载模型。只有带 =WIKI_KIND= 的 heading
-才会被索引，普通 Org 文件不会自动变成 wiki 节点。
+启动配置只加载后端，不自动建索引、同步或下载模型。每个带 =WIKI_KIND= 和唯一 =ID= 的文件或标题各占一条索引；
+普通章节的正文归最近的 wiki 节点。文件头只有 =ID= 时，仍可用它引用文件里的首个 wiki 标题。
 
 这个包目前是只读的 spike，写回（ingest / mutation）还没实现；MCP 与 gptel 两层
 （=org-wiki-mcp-enable=、=org-wiki-gptel=）属于可选集成，本配置没有启用。
@@ -2106,6 +2109,7 @@ wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另�
     (:option org-wiki-root kl/org-wiki-directory
              org-wiki-search-backend 'auto
              org-wiki-qmd-enabled t
+             org-wiki-qmd-program (expand-file-name "~/.npm-global/bin/qmd")
              org-wiki-qmd-collection "wiki"
              org-wiki-qmd-search-mode 'search
              org-wiki-qmd-cache-directory

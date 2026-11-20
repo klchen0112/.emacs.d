@@ -58,6 +58,14 @@ builtins.intersectAttrs prev {
     buildInputs = old.buildInputs ++ (with pkgs; [ breakpointHook ]);
     files = ''(:defaults "${lib.getLib pkgs.render-core}/lib/render-core.*"))'';
   });
+  # The local keyword-search CLI passed org-wiki's real qmd integration test.
+  org-wiki = prev.org-wiki.overrideAttrs (old: {
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace org-wiki-qmd.el \
+        --replace-fail '(defconst org-wiki-qmd--version "2.8.3"' \
+                       '(defconst org-wiki-qmd--version "2.9.0"'
+    '';
+  });
   chai = prev.chai.overrideAttrs (old: {
     # `convert-to-org.py` extracted PDF text with the layout's visual wrapping
     # intact, so an imported book kept a newline in the middle of every
