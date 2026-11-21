@@ -1716,11 +1716,11 @@
     "org-wiki": {
       "flake": false,
       "locked": {
-        "lastModified": 1795085700,
-        "narHash": "sha256-xgxtbfj89Hrq2A1rSMySAdH1gIeVdSxc87+2/xm+OWk=",
+        "lastModified": 1795263737,
+        "narHash": "sha256-0NwE/BGyFyn8v8PCCMuiXKcXaT7CRJr0a74MiOwromI=",
         "owner": "klchen0112",
         "repo": "org-wiki",
-        "rev": "83f549cb19fa93bd2c558e2d3edd9dc3ea606206",
+        "rev": "df9f82e3eb5a16f2ddbc641d2a6abf8a1b414a87",
         "type": "github"
       },
       "original": {

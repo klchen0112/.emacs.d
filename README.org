@@ -2097,17 +2097,20 @@ wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另�
 启动配置只加载后端，不自动建索引、同步或下载模型。每个带 =WIKI_KIND= 和唯一 =ID= 的文件或标题各占一条索引；
 普通章节的正文归最近的 wiki 节点。文件头只有 =ID= 时，仍可用它引用文件里的首个 wiki 标题。
 
-这个包目前是只读的 spike，写回（ingest / mutation）还没实现；MCP 与 gptel 两层
-（=org-wiki-mcp-enable=、=org-wiki-gptel=）属于可选集成，本配置没有启用。
+Emacs 启动时注册专用的 =org-wiki-memory= MCP 服务。Codex、Pi 和 DSH 通过它
+读写 =org-wiki-root/agent-memory/= 下的项目记忆与个人偏好。
 #+begin_src emacs-lisp
   (defconst kl/org-wiki-directory (expand-file-name "wiki/" org-directory))
+
+  (require 'org-wiki-memory)
+  (setq org-wiki-root kl/org-wiki-directory)
+  (org-wiki-memory-enable)
 
   (setup org-wiki
     (:package org-wiki)
     (:load-after org-roam)
     (:require org-wiki org-wiki-commands org-wiki-health org-wiki-qmd)
-    (:option org-wiki-root kl/org-wiki-directory
-             org-wiki-search-backend 'auto
+    (:option org-wiki-search-backend 'auto
              org-wiki-qmd-enabled t
              org-wiki-qmd-program (expand-file-name "~/.npm-global/bin/qmd")
              org-wiki-qmd-collection "wiki"
