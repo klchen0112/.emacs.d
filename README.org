@@ -2084,8 +2084,9 @@ Org 原生的「LLM wiki」读层（[[https://github.com/klchen0112/org-wiki/tre
 按内容的哈希值寻址。
 #+end_example
 
-=:WIKI_KIND:= 的合法值（=org-wiki-kinds=）是 =Concept/Entity/Topic/Comparison/
-Question/Source-Record/Frozen/Index=。本配置使用 =~/.npm-global/bin/qmd=（2.9.0）进行关键词搜索，不需要模型。
+普通 wiki 节点可用 =Concept=、=Entity=、=Topic=、=Comparison=、=Question=、
+=Source-Record=、=Frozen= 和 =Index=。记忆使用 =Memory=、=道=、=法= 或 =术=。
+本配置使用 =~/.npm-global/bin/qmd=（2.9.0）进行关键词搜索，不需要模型。
 索引未就绪、qmd 不可用或无结果时，=auto= 会继续尝试 =org-ql-semantic=（本配置没有装），
 最后退回标题和正文的字面匹配。体检检查 =:ID:= 缺失/重复、=:WIKI_KIND:= 非法、
 缺 Summary、断链、=SOURCE_IDS= 与引用不一致之类的问题，纯本地、不调模型。
@@ -2099,6 +2100,13 @@ wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另�
 
 Emacs 启动时注册专用的 =org-wiki-memory= MCP 服务。Codex、Pi 和 DSH 通过它
 读写 =org-wiki-root/agent-memory/= 下的项目记忆与个人偏好。
+新建记忆时，Emacs 在文件头调用 =org-id-get-create=，遵循 =org-id-method= 和
+=org-id-prefix=。修订旧记忆后，原有的 =mem-…= 链接仍可打开。
+
+保存或修订记忆时，Emacs 在标题、摘要和正文中查找显式 ID、节点标题和别名，
+把匹配的 Org-roam 节点写成 =Relations= 段下的 =id:= 链接。默认最多关联五个目标。
+若多个可见节点同名，写出目标的 ID 即可指定其中一个。
+
 #+begin_src emacs-lisp
   (defconst kl/org-wiki-directory (expand-file-name "wiki/" org-directory))
 
