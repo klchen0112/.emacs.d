@@ -831,25 +831,11 @@ load sequence.
     (:option meow-use-clipboard t)
     (:when-loaded
       (setq meow-cheatsheet-layout meow-cheatsheet-layout-engrammer)
-      (meow-motion-overwrite-define-key
-       ;; 'j' and 'k' are suggested to be bound to `meow-next' and `meow-prev', but
-       ;; these deactivate the region, which is not helpful unless we're in normal
-       ;; state.
-       ;; TODO PR in suggested bindings
-       '("n" . meow-next)
-       '("p" . meow-prev)
+      (meow-motion-define-key
        '("<escape>" . ignore))
       (meow-leader-define-key
-       ;; ;; The suggested bindings would have allowed us to use 'SPC j' and 'SPC k'
-       ;; ;; to run whatever commands were originally mapped to 'j' and 'k' while in
-       ;; ;; Motion state. But our bindings make SPC k the prefix for
-       ;; ;; `doom-leader-code-map', so that won't work. Nevertheless, we leave
-       ;; ;; those bindings here anyway.
-       ;; SPC j/k will run the original command in MOTION state
-       ;; <SPC> j/k to run original command while staying in motion state
        '("j" . self-insert-command)
        '("k" . self-insert-command)
-       ;; (because we set `meow-motion-remap-prefix' to "C-")
        ;; Use SPC (0-9) for digit arguments.
        '("1" . meow-digit-argument)
        '("2" . meow-digit-argument)
@@ -887,7 +873,6 @@ load sequence.
        '("B" . meow-back-symbol)
        '("c" . meow-change)
        '("C" . meow-cancel)
-       '("d" . meow-prev)
        '("D" . meow-prev-expand)
        '("e" . meow-next-word)
        '("E" . meow-next-symbol)
@@ -895,7 +880,6 @@ load sequence.
        '("F" . meow-find-ref)
        '("g" . meow-cancel-selection)
        '("G" . meow-grab)
-       '("h" . meow-left)
        '("H" . meow-left-expand)
        '("i" . meow-insert)
        '("I" . meow-open-above)
@@ -907,7 +891,6 @@ load sequence.
        '("L" . meow-goto-line)
        '("m" . meow-mark-word)
        '("M" . meow-mark-symbol)
-       '("n" . meow-next)
        '("N" . meow-next-expand)
        '("o" . meow-block)
        '("O" . meow-to-block)
@@ -917,9 +900,7 @@ load sequence.
        '("Q" . meow-search)
        '("r" . meow-replace)
        '("R" . meow-swap-grab)
-       '("s" . meow-right)
        '("S" . meow-right-expand)
-       '("t" . meow-next)
        '("T" . meow-next-expand)
        '("u" . meow-undo)
        '("U" . meow-undo-in-selection)
