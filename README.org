@@ -2079,8 +2079,12 @@ wiki 使用，临时 Emacs 启动也能复用；更换知识库时请使用另�
 启动配置只加载后端，不自动建索引、同步或下载模型。每个带 =WIKI_KIND= 和唯一 =ID= 的文件或标题各占一条索引；
 普通章节的正文归最近的 wiki 节点。文件头只有 =ID= 时，仍可用它引用文件里的首个 wiki 标题。
 
-Emacs 启动时注册专用的 =org-wiki-memory= MCP 服务。Codex、Pi 和 DSH 通过它
-读写 =org-wiki-root/agent-memory/= 下的项目记忆与个人偏好。
+Emacs 启动时为每个工作区注册一个 MCP 服务（=mcp-server-lib= 0.5）。服务名是
+=org-wiki-memory-enable= 的第一个参数，客户端用上游的 =emacs-mcp-stdio.sh
+--server-id=服务名= 连接，Pi、Codex、Claude 和 DSH 都走各自的 MCP 客户端。
+项目记忆的归属由注册时的工作区决定，多一个项目就多注册一行。记忆仍保存在
+=org-wiki-root/agent-memory/= 下的项目目录和个人目录。
+注册后运行 =M-x mcp-server-lib-install= 安装桥接脚本，再把各客户端的命令指向它。
 新建记忆时，Emacs 在文件头调用 =org-id-get-create=，遵循 =org-id-method= 和
 =org-id-prefix=。修订旧记忆后，原有的 =mem-…= 链接仍可打开。
 
@@ -2090,10 +2094,14 @@ Emacs 启动时注册专用的 =org-wiki-memory= MCP 服务。Codex、Pi 和 DSH
 
 #+begin_src emacs-lisp
   (defconst kl/org-wiki-directory (expand-file-name "wiki/" org-directory))
+  ;; 一个服务名绑定一个工作区：项目记忆就落在该工作区的项目键下。
+  (defconst kl/org-wiki-memory-workspaces
+    '(("org-wiki" . "~/open/org-wiki")))
 
   (require 'org-wiki-memory)
   (setq org-wiki-root kl/org-wiki-directory)
-  (org-wiki-memory-enable)
+  (dolist (workspace kl/org-wiki-memory-workspaces)
+    (org-wiki-memory-enable (car workspace) (expand-file-name (cdr workspace))))
 
   (setup org-wiki
     (:package org-wiki)

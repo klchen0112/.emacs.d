@@ -1700,11 +1700,11 @@
     "org-wiki": {
       "flake": false,
       "locked": {
-        "lastModified": 1795604985,
-        "narHash": "sha256-6SYBjp475SNnGKyHRnr6soW9pd3Q0AI987XfWwdVDRc=",
+        "lastModified": 1795667166,
+        "narHash": "sha256-7PwExvA716xlcqz5A6Adx3FlTN1mr+QcrX5BNsSeo/s=",
         "owner": "klchen0112",
         "repo": "org-wiki",
-        "rev": "92484d1d4fbfb410756f6c31bf10928bf482992b",
+        "rev": "f7a4e1f481cf48c12d279a128cee497c840b29ac",
         "type": "github"
       },
       "original": {
