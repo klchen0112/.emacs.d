@@ -2592,7 +2592,11 @@ Generate Table of Contents.
     (:org-babel-language pele)
     (:org-babel-language mermaid)
     (:with-mode org-mode
-      (:hook pele-org-mode)))
+      (:hook pele-org-mode))
+    (:with-mode markdown-mode
+      (:hook pele-markdown-mode))
+    (:with-mode markdown-ts-mode
+      (:hook pele-markdown-mode)))
 
   ;; Let existing mermaid Babel blocks use Pele for SVG export too.
   (setup ob-pele
