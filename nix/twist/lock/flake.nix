@@ -484,12 +484,6 @@
       repo = "meow-tree-sitter";
       type = "github";
     };
-    mermaid-mode = {
-      flake = false;
-      owner = "abrochard";
-      repo = "mermaid-mode";
-      type = "github";
-    };
     modus-themes = {
       flake = false;
       owner = "protesilaos";
@@ -560,12 +554,6 @@
       flake = false;
       owner = "herbertjones";
       repo = "nushell-ts-mode";
-      type = "github";
-    };
-    ob-mermaid = {
-      flake = false;
-      owner = "arnm";
-      repo = "ob-mermaid";
       type = "github";
     };
     orderless = {
@@ -663,6 +651,12 @@
       flake = false;
       owner = "vedang";
       repo = "pdf-tools";
+      type = "github";
+    };
+    pele = {
+      flake = false;
+      owner = "LuciusChen";
+      repo = "pele.el";
       type = "github";
     };
     pet = {

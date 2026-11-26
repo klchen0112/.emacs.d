@@ -72,6 +72,37 @@ builtins.intersectAttrs prev {
     # paragraph.  The patch joins such lines (and leaves list items alone).
     patches = (old.patches or [ ]) ++ [ ./patches/chai-unwrap-pdf-text.patch ];
   });
+  # pele.el renders with a native module built from vendored Pele and QuickJS.
+  # Its prebuilt download cannot run on NixOS, so build it here and let the
+  # dynamic loader find Pango, Cairo and Fontconfig through the RPATH.
+  pele = prev.pele.overrideAttrs (old: {
+    phases = (old.phases or [ ]) ++ [ "fixupPhase" ];
+    nativeBuildInputs =
+      (old.nativeBuildInputs or [ ])
+      ++ (with pkgs; [
+        autoPatchelfHook
+        pkg-config
+        python3
+      ]);
+    buildInputs =
+      (old.buildInputs or [ ])
+      ++ (with pkgs; [
+        cairo
+        fontconfig
+        freetype
+        glib
+        harfbuzz
+        pango
+      ]);
+    preBuild = (old.preBuild or "") + ''
+      make -j$NIX_BUILD_CORES EMACS_INCLUDE=${emacsPackage}/include
+    '';
+    postBuild = (old.postBuild or "") + ''
+      # Keep the renderer and the upstream license notices only.
+      rm -rf build src scripts test docs examples
+      rm -f vendor/quickjs/*.c vendor/quickjs/*.h vendor/pele/pele.global.js
+    '';
+  });
   telega = prev.telega.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [
       pkgs.tdlib

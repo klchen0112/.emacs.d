@@ -2574,17 +2574,24 @@ Generate Table of Contents.
     (:match-file "\\.toml\\'")
     )
 #+end_src
-** mermaid
+** pele
 #+begin_src emacs-lisp
-  (setup mermaid
-    (:package mermaid-mode)
+  (setup pele
+    (:package pele)
     (:org-src-lang "mermaid")
-    (:match-file "\\.mmd$" )
-    (:match-file "\\.mermaid$" )
-    (:package ob-mermaid)
-    (:nixpkgs mermaid-cli)
-    (:org-babel-language t)
-    )
+    (:match-file "*.mmd")
+    (:match-file "*.mermaid")
+    (:org-babel-language pele)
+    (:org-babel-language mermaid)
+    (:with-mode org-mode
+      (:hook pele-org-mode)))
+
+  ;; Let existing mermaid Babel blocks use Pele for SVG export too.
+  (setup ob-pele
+    (:package pele)
+    (:load-after org)
+    (:when-loaded
+      (pele-babel-enable-mermaid)))
 #+end_src
 
 * Tool
