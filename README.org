@@ -2656,6 +2656,29 @@ Generate Table of Contents.
 #+end_src
 
 * Apps
+** gptel
+LLM 客户端。API key 不写进配置：`gptel-api-key' 保持默认的
+`gptel-api-key-from-auth-source'，它按当前 backend 的 host 去
+`~/.authinfo' 取 =login apikey= 对应的 password。ChatGPT 和 DeepSeek 的 key
+分别对应 =machine api.openai.com= 和 =machine api.deepseek.com=。
+
+#+begin_src emacs-lisp
+  (setup gptel
+    (:package gptel)
+    (:when-loaded
+      ;; gptel 不再自动创建 ChatGPT backend，两个都显式注册，菜单里可切换。
+      ;; key 都交给 `gptel-api-key'，按 host 查 auth-source，配置里没有明文。
+      (setq gptel-default-mode 'org-mode)
+      (gptel-make-openai "ChatGPT"
+        :stream t
+        :key 'gptel-api-key)
+      (setq gptel-backend (gptel-make-deepseek "DeepSeek"
+                            :stream t
+                            :key 'gptel-api-key))
+      (setq gptel-model (car (gptel-backend-models gptel-backend))))
+    )
+#+end_src
+
 ** telga
 #+begin_src emacs-lisp
   (setup telega

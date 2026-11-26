@@ -323,6 +323,12 @@
       repo = "gorepl-mode";
       type = "github";
     };
+    gptel = {
+      flake = false;
+      owner = "karthink";
+      repo = "gptel";
+      type = "github";
+    };
     gradle-mode = {
       flake = false;
       owner = "scubacabra";

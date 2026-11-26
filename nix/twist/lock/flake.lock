@@ -865,6 +865,22 @@
         "type": "github"
       }
     },
+    "gptel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795250773,
+        "narHash": "sha256-ZoqWG1tfq8MUOLFX8t13IeMp2MCYcOoISbG9fdAUJLs=",
+        "owner": "karthink",
+        "repo": "gptel",
+        "rev": "743173759fd7e545deaaf80e39d08ec441d6c8ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karthink",
+        "repo": "gptel",
+        "type": "github"
+      }
+    },
     "gradle-mode": {
       "flake": false,
       "locked": {
@@ -1898,6 +1914,7 @@
         "go-mode": "go-mode",
         "go-tag": "go-tag",
         "gorepl-mode": "gorepl-mode",
+        "gptel": "gptel",
         "gradle-mode": "gradle-mode",
         "hcl-mode": "hcl-mode",
         "helpful": "helpful",
