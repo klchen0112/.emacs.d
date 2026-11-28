@@ -1,0 +1,56 @@
+name: Update Emacs packages
+
+# PR 2/2: the 151 package revisions in nix/twist/lock/flake.lock plus the ELPA
+# archive pins in archive.lock. Same order as `just update`:
+# archive -> lock dir -> regenerated flake.nix / archive.lock.
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub cron uses UTC: 1st of every month, 02:00 UTC = 10:00 Asia/Shanghai
+    - cron: "0 2 1 * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      # Unauthenticated: Nix resolves the 151 `github:` inputs through the
+      # anonymous GitHub API (60 req/h). If this ever fails with
+      # "rate limit exceeded", add
+      #   with:
+      #     extra_nix_config: access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      # to determinate-nix-action above.
+      - name: Update package revisions
+        run: |
+          cd nix/twist/lock
+          nix flake update
+          cd "$GITHUB_WORKSPACE"
+          nix run .#update --impure
+          nix run .#lock --impure
+
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+          branch: automation/packages
+          delete-branch: true
+          commit-message: "chore(lock): update emacs packages"
+          title: "chore(lock): update emacs packages"
+          body: |
+            1. `nix flake update` in `nix/twist/lock` (all 151 git packages)
+            2. `nix run .#update` + `nix run .#lock` (ELPA archives, regenerated
+               `flake.nix` / `archive.lock`)
+
+            nixpkgs and emacs-overlay are not in this PR — see the
+            `Update flake inputs` workflow.

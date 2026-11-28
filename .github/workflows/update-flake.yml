@@ -1,0 +1,44 @@
+name: Update flake inputs
+
+# PR 1/2: every input of the root flake (nixpkgs, emacs-overlay, twist, the
+# MELPA/ELPA recipe registries). The 151 Emacs packages live in another
+# workflow, so the two diffs never touch the same file.
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub cron uses UTC: 1st of every month, 01:00 UTC = 09:00 Asia/Shanghai
+    - cron: "0 1 1 * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Update nixpkgs and Emacs build machinery
+        run: nix flake update
+
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+          branch: automation/flake
+          delete-branch: true
+          commit-message: "chore(flake): update nixpkgs and emacs inputs"
+          title: "chore(flake): update nixpkgs and emacs inputs"
+          body: |
+            `nix flake update` at the repo root: nixpkgs, emacs-overlay, twist,
+            org-babel and the MELPA/ELPA recipe registries.
+
+            Emacs package revisions are not in this PR — see the
+            `Update Emacs packages` workflow.
