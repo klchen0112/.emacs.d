@@ -513,22 +513,6 @@
         "type": "github"
       }
     },
-    "dsh-emacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1793850958,
-        "narHash": "sha256-QGjxJt+Eb20YbbO57ogyhLMGBMyfmOP1MnPr7oxlegY=",
-        "owner": "vritser",
-        "repo": "dsh-emacs",
-        "rev": "bc26985f28612316c68ca8fc396171040d6273be",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vritser",
-        "repo": "dsh-emacs",
-        "type": "github"
-      }
-    },
     "easysession": {
       "flake": false,
       "locked": {
@@ -1908,7 +1892,6 @@
         "disaster": "disaster",
         "docker": "docker",
         "doom-modeline": "doom-modeline",
-        "dsh-emacs": "dsh-emacs",
         "easysession": "easysession",
         "eat": "eat",
         "ef-themes": "ef-themes",

@@ -192,12 +192,6 @@
       repo = "doom-modeline";
       type = "github";
     };
-    dsh-emacs = {
-      flake = false;
-      owner = "vritser";
-      repo = "dsh-emacs";
-      type = "github";
-    };
     easysession = {
       flake = false;
       owner = "jamescherti";

@@ -2714,24 +2714,6 @@ LLM 客户端。API key 不写进配置：`gptel-api-key' 保持默认的
     )
 #+end_src
 
-** dsh-emacs
-DeepSeek Harness (=dsh=) client: talks to a running =dsh= server over HTTP.
-The server is started manually (=dsh web= in a terminal), so dsh-emacs never
-spawns one of its own; the launch token is random per server process, so take
-it from =DSH_WEB_TOKEN= when that is exported, otherwise dsh-emacs prompts for
-the =token== value printed by =dsh web= (once per server restart).
-#+begin_src emacs-lisp
-  (setup dsh-emacs
-    (:package dsh-emacs)
-    (:option dsh-emacs-server-auto-start nil
-             dsh-emacs-server-start-on-init nil
-             dsh-emacs-base-url "http://127.0.0.1:3080"
-             ;;dsh-emacs-server-auth-token (let ((token (getenv "DSH_WEB_TOKEN")))
-             ;;                              (and token (not (equal "" token)) token))
-             )
-    )
-#+end_src
-
 ** kkp
 #+begin_src emacs-lisp
   (setup kkp
