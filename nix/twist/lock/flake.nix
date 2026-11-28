@@ -695,6 +695,12 @@
       repo = "emacs-python-pytest";
       type = "github";
     };
+    reformatter = {
+      flake = false;
+      owner = "purcell";
+      repo = "emacs-reformatter";
+      type = "github";
+    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -787,6 +793,12 @@
       flake = false;
       owner = "hcl-emacs";
       repo = "terraform-mode";
+      type = "github";
+    };
+    timeout = {
+      flake = false;
+      owner = "karthink";
+      repo = "timeout";
       type = "github";
     };
     tramp-rpc = {
